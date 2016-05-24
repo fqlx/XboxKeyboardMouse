@@ -17,6 +17,8 @@ namespace XboxKeyboardMouse
 
         private static readonly Dictionary<Key, X360Buttons> buttonsmap = new Dictionary<Key, X360Buttons>
         {
+            { Key.Space, X360Buttons.A },
+            { Key.F, X360Buttons.B},
             { Key.E, X360Buttons.X },
             { Key.Tab, X360Buttons.Y},
         };

@@ -1,4 +1,4 @@
-﻿namespace XboxMouse_Keyboard
+﻿namespace XboxKeyboardMouse
 {
     partial class Form1
     {

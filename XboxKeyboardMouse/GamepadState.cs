@@ -96,13 +96,12 @@ namespace Gamepad
             RightStickX = gamepadState.RightThumbX;
             RightStickY = gamepadState.RightThumbY;
 
-
             // Thumbsticks
             LeftStick = new ThumbstickState(
-                Normalize(gamepadState.LeftThumbX, gamepadState.LeftThumbY, Gamepad.GamepadLeftThumbDeadZone),
+                Normalize(gamepadState.LeftThumbX, gamepadState.LeftThumbY, SlimDX.XInput.Gamepad.GamepadLeftThumbDeadZone),
                 (gamepadState.Buttons & GamepadButtonFlags.LeftThumb) != 0);
             RightStick = new ThumbstickState(
-                Normalize(gamepadState.RightThumbX, gamepadState.RightThumbY, Gamepad.GamepadRightThumbDeadZone),
+                Normalize(gamepadState.RightThumbX, gamepadState.RightThumbY, SlimDX.XInput.Gamepad.GamepadRightThumbDeadZone),
                 (gamepadState.Buttons & GamepadButtonFlags.RightThumb) != 0);
 
         }
