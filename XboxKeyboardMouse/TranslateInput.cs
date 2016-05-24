@@ -1,8 +1,7 @@
 ﻿using ScpDriverInterface;
-using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Windows.Input;
-using System.Drawing;
+
 
 namespace XboxKeyboardMouse
 {
@@ -12,8 +11,8 @@ namespace XboxKeyboardMouse
         {
             private static readonly Dictionary<Key, short> mapLeftStickY = new Dictionary<Key, short>
             {
-                { Key.W, short.MinValue },
-                { Key.S, short.MaxValue },
+                { Key.W, short.MaxValue },
+                { Key.S, short.MinValue },
             };
 
             private static readonly Dictionary<Key, short> mapLeftStickX = new Dictionary<Key, short>
@@ -30,7 +29,7 @@ namespace XboxKeyboardMouse
                 { Key.Tab, X360Buttons.Y},
             };
 
-            public static X360Controller keyboardInput(X360Controller controller)
+            public static void keyboardInput(X360Controller controller)
             {
                 foreach (KeyValuePair<Key, short> entry in mapLeftStickY)
                 {
@@ -64,37 +63,14 @@ namespace XboxKeyboardMouse
                         controller.Buttons = controller.Buttons & ~entry.Value;
                 }
 
-                return controller;
-            }
-        }
-
-        private class TranslateMouse
-        {
-            static Point previousPosition;
-
-            public static X360Controller mouseInput(X360Controller controller)
-            {
-                Point mousePos = Control.MousePosition;
-
-                if (mousePos == previousPosition)
-                    return controller;
-
-                int deltaX = System.Math.Abs(mousePos.X - previousPosition.X);
-                int deltaY = System.Math.Abs(mousePos.Y - previousPosition.Y);
-
-                controller.RightStickX = (short)(deltaX * 5000);
-                controller.RightStickY = (short)(-deltaY * 5000);
-
-                previousPosition = mousePos;
-                return controller;
+                return;
             }
         }
 
         public static X360Controller translateInput(X360Controller controller)
         {
-            TranslateMouse.mouseInput(controller);
             TranslateKeyboard.keyboardInput(controller);
-
+            XboxMouse_Keyboard.TranslateMouse.mouseInput(controller);
             return controller;
         }
     }
