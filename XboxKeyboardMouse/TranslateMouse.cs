@@ -102,8 +102,22 @@ namespace XboxMouse_Keyboard
             mouseDevice.Acquire();
         }
 
+        private static void mouseButtonsInput(X360Controller controller)
+        { 
+            //mouse clicks to triggers
+            if (currentMouseState.IsPressed((int)MouseKeyIO.XBUTTON0))
+                controller.RightTrigger = byte.MaxValue;
+            else
+                controller.RightTrigger = 0;
+
+            if (currentMouseState.IsPressed((int)MouseKeyIO.XBUTTON1))
+                controller.LeftTrigger = byte.MaxValue;
+            else
+                controller.LeftTrigger = 0;
+        }
+
         static bool started = false;  //fix bool start flag
-        public static void mouseInput(X360Controller controller)
+        private static void mouseMovementInput(X360Controller controller)
         {
             if (started == false)
             {
@@ -160,18 +174,13 @@ namespace XboxMouse_Keyboard
             else if (Cursor.Position.Y <= OUTERDEADZONEY)
                 controller.RightStickY = short.MaxValue;
 
-            //mouse clicks to triggers
-            if (currentMouseState.IsPressed((int)MouseKeyIO.XBUTTON0))
-                controller.RightTrigger = byte.MaxValue;
-            else
-                controller.RightTrigger = 0;
-
-            if (currentMouseState.IsPressed((int)MouseKeyIO.XBUTTON1))
-                controller.LeftTrigger = byte.MaxValue;
-            else
-                controller.LeftTrigger = 0;
-
             return;
+        }
+
+        public static void translateMouse(X360Controller controller)
+        {
+            mouseMovementInput(controller);
+            mouseButtonsInput(controller);
         }
     }
 
