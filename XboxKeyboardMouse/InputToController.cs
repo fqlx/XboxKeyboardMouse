@@ -9,12 +9,12 @@ namespace XboxKeyboardMouse
         const int CONTROLLER_NUMBER = 1; 
         static ScpBus scpbus = null;
 
-        public static void startSCPBus()
+        public static void ActivateKeyboardAndMouse()
         {
             X360Controller controller = new X360Controller();
             byte[] report = controller.GetReport();
             byte[] output = new byte[8];
-     
+
             try
             {
                 scpbus = new ScpBus();
@@ -29,10 +29,10 @@ namespace XboxKeyboardMouse
 
             while(true)
             {
-                controller = TranslateInput.keyboardInput(controller);
+                controller = TranslateInput.translateInput(controller);
 
                 report = controller.GetReport();
-                scpbus.Report(CONTROLLER_NUMBER, report, output);
+                bool ret = scpbus.Report(CONTROLLER_NUMBER, report, output);
             }
         }
 
