@@ -1,9 +1,5 @@
 ﻿using ScpDriverInterface;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace XboxMouse_Keyboard
@@ -27,7 +23,22 @@ namespace XboxMouse_Keyboard
                 { Key.Space, X360Buttons.A },
                 { Key.F, X360Buttons.B},
                 { Key.E, X360Buttons.X },
-                { Key.Tab, X360Buttons.Y},
+                { Key.Q, X360Buttons.Y},
+
+                { Key.D1, X360Buttons.RightBumper},
+                { Key.D2, X360Buttons.LeftBumper},
+
+                { Key.OemTilde, X360Buttons.Start},  //don't use escape, will close streaming app
+                { Key.Tab, X360Buttons.None},
+                { Key.Return, X360Buttons.Logo},
+
+                { Key.Up, X360Buttons.Up},
+                { Key.Down, X360Buttons.Down},
+                { Key.Left, X360Buttons.Left},
+                { Key.Right, X360Buttons.Right},
+
+                { Key.LeftShift, X360Buttons.LeftStick},
+                { Key.R, X360Buttons.RightStick},
             };
 
         private static void keyboardInput(X360Controller controller)

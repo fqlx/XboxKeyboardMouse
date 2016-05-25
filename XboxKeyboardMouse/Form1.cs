@@ -14,6 +14,7 @@ namespace XboxKeyboardMouse
 {
     public partial class Form1 : Form
     {
+        private static Thread thread;
         public Form1()
         {
             InitializeComponent();
@@ -31,9 +32,19 @@ namespace XboxKeyboardMouse
 
         private void activate_Click(object sender, EventArgs e)
         {
-            Thread thread = new Thread(InputToController.ActivateKeyboardAndMouse);
+            thread = new Thread(InputToController.ActivateKeyboardAndMouse);
             thread.SetApartmentState(ApartmentState.STA);
             thread.Start();
+        }
+
+        public static void OnProcessExit(object sender, EventArgs e)
+        {
+            thread.Abort();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

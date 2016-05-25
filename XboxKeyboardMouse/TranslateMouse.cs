@@ -15,45 +15,44 @@ namespace XboxMouse_Keyboard
 {
     class TranslateMouse
     {
-        //tick = ~100ns, 1frame/60fps = 16.67ms,  16.67ms * 100ticks = 1667ticks/frame
-        private const uint FRAME_PER_TICK = 1667;
+        //tick = ~100ns, 1frame/60fps = 16.67ms,  16.67ms * 100ns/ticks = 1667ticks/frame
+        //3334 = 30fps inbetween is a good value
+        //idealy we want a low tick count and we increase in game sensitivity to offset it
+        private const uint FRAME_PER_TICK = 3334;
 
         static private DirectInput device;
         static private Mouse mouse;
         static bool started = false;  //fix bool start flag
         static Point originalMouseState = Control.MousePosition;
-        static long tick = 0;
+        static Stopwatch s = new Stopwatch();
+
         private static void mouseMovementInput(X360Controller controller)
         {
-            Stopwatch s = Stopwatch.StartNew();
             Point currentMouseState = Control.MousePosition;
 
-            if (tick > FRAME_PER_TICK || tick == 0)
+            if (s.ElapsedTicks >= FRAME_PER_TICK || s.ElapsedTicks == 0)
             {
-                    int xDifference = currentMouseState.X - originalMouseState.X;
-                    int yDifference = currentMouseState.Y - originalMouseState.Y;
+                int xDifference = currentMouseState.X - originalMouseState.X;
+                int yDifference = currentMouseState.Y - originalMouseState.Y;
 
-                    if (xDifference > 0)
-                        controller.RightStickX = short.MaxValue;
-                    else if (xDifference < 0)
-                        controller.RightStickX = short.MinValue;
-                    else
-                        controller.RightStickX = 0;
+                if (xDifference > 0)
+                    controller.RightStickX = short.MaxValue;
+                else if (xDifference < 0)
+                    controller.RightStickX = short.MinValue;
+                else
+                    controller.RightStickX = 0;
 
-                    if (yDifference > 0)
-                        controller.RightStickY = short.MinValue;
-                    else if (yDifference < 0)
-                        controller.RightStickY = short.MaxValue;
-                    else
-                        controller.RightStickY = 0;
+                if (yDifference > 0)
+                    controller.RightStickY = short.MinValue;
+                else if (yDifference < 0)
+                    controller.RightStickY = short.MaxValue;
+                else
+                    controller.RightStickY = 0;
 
-                    Cursor.Position = new Point(Screen.PrimaryScreen.Bounds.Width / 2, Screen.PrimaryScreen.Bounds.Height / 2);
+                Cursor.Position = new Point(Screen.PrimaryScreen.Bounds.Width / 2, Screen.PrimaryScreen.Bounds.Height / 2);
 
-                    tick = 0;
-               
+                s.Restart();
             }
-            s.Stop();
-            tick += s.ElapsedTicks;
 
             return;
         }

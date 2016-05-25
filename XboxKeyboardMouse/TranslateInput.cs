@@ -1,6 +1,4 @@
 ﻿using ScpDriverInterface;
-using System.Collections.Generic;
-using System.Windows.Input;
 using XboxMouse_Keyboard;
 
 namespace XboxKeyboardMouse

@@ -29,16 +29,17 @@ namespace XboxKeyboardMouse
 
             while(true)
             {
-                controller = TranslateInput.translateInput(controller);
+                TranslateInput.translateInput(controller);
 
                 report = controller.GetReport();
                 bool ret = scpbus.Report(CONTROLLER_NUMBER, report, output);
             }
         }
 
-        static void OnProcessExit(object sender, EventArgs e)
+        public static void OnProcessExit(object sender, EventArgs e)
         {
             scpbus.Unplug(CONTROLLER_NUMBER);
+            Application.ExitThread();
         }
     }
 }
