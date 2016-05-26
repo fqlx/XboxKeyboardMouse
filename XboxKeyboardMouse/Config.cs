@@ -22,12 +22,17 @@ namespace XboxMouse_Keyboard
                 private Key left;
             }
             
-            private Key rightBumper;
-            private Key leftBumper;
-    
-            private Key rightStick;
-            private Key leftStick;
-       
+            private class Bumpers
+            {
+                private Key right;
+                private Key left;
+            }
+            
+            private class Sticks
+            {
+                private Key right;
+                private Key left;
+            }
             private Key menu;  //aka Start
             private Key view;  //aka Back or Select or Nav
             private Key home;  //aka Guide 
@@ -37,6 +42,11 @@ namespace XboxMouse_Keyboard
         private class App
         {
             private uint ticks_per_frame;
+        }
+        
+        public class LoadConfig()
+        {
+            
         }
         
       //todo getters and setters
