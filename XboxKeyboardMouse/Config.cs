@@ -41,7 +41,7 @@ namespace XboxMouse_Keyboard
         
         private class App
         {
-            private uint ticks_per_frame;
+            private uint frame_per_ticks;
         }
         
         public class LoadConfig()
