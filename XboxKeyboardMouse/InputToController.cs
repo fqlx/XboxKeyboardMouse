@@ -29,7 +29,7 @@ namespace XboxKeyboardMouse
 
             while(true)
             {
-                TranslateInput.translateInput(controller);
+                TranslateInput.TranslateInput(controller);
 
                 report = controller.GetReport();
                 bool ret = scpbus.Report(CONTROLLER_NUMBER, report, output);
