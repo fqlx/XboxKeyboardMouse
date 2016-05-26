@@ -78,7 +78,7 @@ namespace XboxMouse_Keyboard
             return;
         }
 
-        public static void translateKeyboard(X360Controller controller)
+        public static void TranslateKeyboard(X360Controller controller)
         {
             KeyboardInput(controller);
         }
