@@ -26,7 +26,7 @@ namespace XboxMouse_Keyboard
         static Point originalMouseState = Control.MousePosition;
         static Stopwatch s = new Stopwatch();
 
-        private static void mouseMovementInput(X360Controller controller)
+        private static void MouseMovementInput(X360Controller controller)
         {
             Point currentMouseState = Control.MousePosition;
 
@@ -57,7 +57,7 @@ namespace XboxMouse_Keyboard
             return;
         }
 
-        private static void mouseButtonsInput(X360Controller controller)
+        private static void MouseButtonsInput(X360Controller controller)
         {
 
             MouseState state = mouse.GetCurrentState();
@@ -73,7 +73,7 @@ namespace XboxMouse_Keyboard
                 controller.LeftTrigger = 0;
         }
 
-        private static void init()
+        private static void Init()
         {
             if (started == false)
             {
@@ -86,11 +86,11 @@ namespace XboxMouse_Keyboard
             }
         }
 
-        public static void translateMouse(X360Controller controller)
+        public static void TranslateMouse(X360Controller controller)
         {
-            init();
-            mouseMovementInput(controller);
-            mouseButtonsInput(controller);
+            Init();
+            MouseMovementInput(controller);
+            MouseButtonsInput(controller);
         }
     }
 
