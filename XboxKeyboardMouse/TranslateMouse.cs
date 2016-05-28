@@ -30,7 +30,7 @@ namespace XboxMouse_Keyboard
         {
             Point currentMouseState = Control.MousePosition;
 
-            if (s.ElapsedTicks >= FRAME_PER_TICK || s.ElapsedTicks == 0)
+            if ((s.ElapsedTicks / Stopwatch.Frequency) >= FRAME_PER_TICK || s.ElapsedTicks == 0)
             {
                 int xDifference = currentMouseState.X - originalMouseState.X;
                 int yDifference = currentMouseState.Y - originalMouseState.Y;
