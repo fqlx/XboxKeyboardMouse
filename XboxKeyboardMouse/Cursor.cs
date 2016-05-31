@@ -1,12 +1,19 @@
+using System.Drawing;
+using System.Threading;
+using System.Windows.Forms;
 using XboxMouse_Keyboard;
 
 namespace XboxKeyboardMouse
 {
     class CursorView
     {
+        private const int FORM_SIZE_TO_HIDE_CURSOR = 200;
+
+        private static Form form = null;
+
         private static void CreateTopMostHiddenForm()
         {
-            Form form = new Form();
+            form = new Form();
 
             form.Size = new Size(FORM_SIZE_TO_HIDE_CURSOR, FORM_SIZE_TO_HIDE_CURSOR);
 
@@ -26,19 +33,22 @@ namespace XboxKeyboardMouse
         //making a hidden top most form and setcursor(false)
         public static void HideCursorWhenOn()
         {
-        
-            CreateTopMostHiddenForm();
-
             //todo, check if Xbox app is open
-            boolean XboxAppOpen = true;
+            bool XboxAppOpen = true;
             
             while(true)
             {
-                if(XboxAppOpen == true)
-                   Cursor.Hide()
-                else
-                   Cursor.Show();
-                
+                if (XboxAppOpen == true && form != null)
+                {
+                    CreateTopMostHiddenForm();
+
+                    Cursor.Hide();
+                }
+                else if(XboxAppOpen == false)
+                {
+                    //Cursor.Show();
+                    form.Close();
+                }
                 Thread.Sleep(1000);
             }
         }

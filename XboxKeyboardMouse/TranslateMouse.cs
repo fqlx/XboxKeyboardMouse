@@ -11,7 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace XboxMouse_Keyboard
+namespace XboxKeyboardMouse
 {
     class TranslateMouse
     {
@@ -86,7 +86,7 @@ namespace XboxMouse_Keyboard
             }
         }
 
-        public static void TranslateMouse(X360Controller controller)
+        public static void StartMouse(X360Controller controller)
         {
             Init();
             MouseMovementInput(controller);

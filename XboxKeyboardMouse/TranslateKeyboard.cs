@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Input;
 
-namespace XboxMouse_Keyboard
+namespace XboxKeyboardMouse
 {
     class TranslateKeyboard
     {
@@ -78,7 +78,7 @@ namespace XboxMouse_Keyboard
             return;
         }
 
-        public static void TranslateKeyboard(X360Controller controller)
+        public static void StartKeyboard(X360Controller controller)
         {
             KeyboardInput(controller);
         }
