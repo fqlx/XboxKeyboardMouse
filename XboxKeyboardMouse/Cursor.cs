@@ -23,11 +23,15 @@ namespace XboxKeyboardMouse
 
             form.TopMost = true;
 
+            /*
             form.TransparencyKey = System.Drawing.Color.Turquoise;  //hacky method for transparent background, acts like a greenscreen
             form.BackColor = System.Drawing.Color.Turquoise;
             form.FormBorderStyle = FormBorderStyle.None;
+            */
 
-           form.Show();
+            form.Opacity = .01;
+
+            form.Show();
         }
         
         //making a hidden top most form and setcursor(false)

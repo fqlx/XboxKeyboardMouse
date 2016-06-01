@@ -41,7 +41,7 @@ namespace XboxKeyboardMouse
                 { Key.R, X360Buttons.RightStick},
             };
 
-        private static void KeyboardInput(X360Controller controller)
+        private static void KeyInput(X360Controller controller)
         {
             foreach (KeyValuePair<Key, short> entry in mapLeftStickY)
             {
@@ -78,9 +78,9 @@ namespace XboxKeyboardMouse
             return;
         }
 
-        public static void StartKeyboard(X360Controller controller)
+        public static void KeyboardInput(X360Controller controller)
         {
-            KeyboardInput(controller);
+            KeyInput(controller);
         }
     }
 }

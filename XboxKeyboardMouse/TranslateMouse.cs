@@ -26,40 +26,43 @@ namespace XboxKeyboardMouse
         static Point originalMouseState = Control.MousePosition;
         static Stopwatch s = new Stopwatch();
 
-        private static void MouseMovementInput(X360Controller controller)
+        public static void MouseMovementInput()
         {
+            X360Controller controller;
             Point currentMouseState = Control.MousePosition;
 
-            if ((s.ElapsedTicks / Stopwatch.Frequency) >= FRAME_PER_TICK || s.ElapsedTicks == 0)
+            while (true)
             {
-                int xDifference = currentMouseState.X - originalMouseState.X;
-                int yDifference = currentMouseState.Y - originalMouseState.Y;
+                if ((s.ElapsedTicks / Stopwatch.Frequency) >= FRAME_PER_TICK || s.ElapsedTicks == 0)
+                {
+                    int xDifference = currentMouseState.X - originalMouseState.X;
+                    int yDifference = currentMouseState.Y - originalMouseState.Y;
 
-                if (xDifference > 0)
-                    controller.RightStickX = short.MaxValue;
-                else if (xDifference < 0)
-                    controller.RightStickX = short.MinValue;
-                else
-                    controller.RightStickX = 0;
+                    if (xDifference > 0)
+                        controller.RightStickX = short.MaxValue;
+                    else if (xDifference < 0)
+                        controller.RightStickX = short.MinValue;
+                    else
+                        controller.RightStickX = 0;
 
-                if (yDifference > 0)
-                    controller.RightStickY = short.MinValue;
-                else if (yDifference < 0)
-                    controller.RightStickY = short.MaxValue;
-                else
-                    controller.RightStickY = 0;
+                    if (yDifference > 0)
+                        controller.RightStickY = short.MinValue;
+                    else if (yDifference < 0)
+                        controller.RightStickY = short.MaxValue;
+                    else
+                        controller.RightStickY = 0;
 
-                Cursor.Position = new Point(Screen.PrimaryScreen.Bounds.Width / 2, Screen.PrimaryScreen.Bounds.Height / 2);
+                    Cursor.Position = new Point(Screen.PrimaryScreen.Bounds.Width / 2, Screen.PrimaryScreen.Bounds.Height / 2);
 
-                s.Restart();
+                    s.Restart();
+                }
+
+                InputToController.SendtoController(controller);
             }
-
-            return;
         }
 
-        private static void MouseButtonsInput(X360Controller controller)
+        public static void MouseButtonsInput(X360Controller controller)
         {
-
             MouseState state = mouse.GetCurrentState();
 
             if (state.IsPressed(0))
@@ -73,7 +76,7 @@ namespace XboxKeyboardMouse
                 controller.LeftTrigger = 0;
         }
 
-        private static void Init()
+        public static void Init()
         {
             if (started == false)
             {
@@ -84,13 +87,6 @@ namespace XboxKeyboardMouse
                 originalMouseState = Control.MousePosition;
                 started = true;
             }
-        }
-
-        public static void StartMouse(X360Controller controller)
-        {
-            Init();
-            MouseMovementInput(controller);
-            MouseButtonsInput(controller);
         }
     }
 

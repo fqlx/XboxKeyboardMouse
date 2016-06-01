@@ -31,20 +31,29 @@ namespace XboxKeyboardMouse
 
         public static void ActivateKeyboardAndMouse()
         {
-            byte[] report;
-            byte[] output = new byte[8];
-
             var threadCursor = new Thread(() => CursorView.ToggleCursor());
 
             X360Controller controller = CreateController();
 
+            TranslateMouse.Init();
+
+            var thMouseMovement = new Thread(() => TranslateMouse.MouseMovementInput());
+
             while (true)
             {
-                TranslateInput.StartTranslate(controller);
+                TranslateKeyboard.KeyboardInput(controller);
+                TranslateMouse.MouseButtonsInput(controller);
 
-                report = controller.GetReport();
-                bool ret = scpbus.Report(CONTROLLER_NUMBER, report, output);
+                SendtoController(controller);
             }
+        }
+
+        public static void SendtoController(X360Controller controller)
+        {
+            byte[] report = controller.GetReport();
+            byte[] output = new byte[8];
+
+            scpbus.Report(CONTROLLER_NUMBER, report, output);
         }
 
         public static void OnProcessExit(object sender, EventArgs e)
