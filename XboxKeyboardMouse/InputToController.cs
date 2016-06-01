@@ -1,5 +1,6 @@
 ﻿using ScpDriverInterface;
 using System;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace XboxKeyboardMouse
@@ -9,11 +10,9 @@ namespace XboxKeyboardMouse
         const int CONTROLLER_NUMBER = 1; 
         static ScpBus scpbus = null;
 
-        public static void ActivateKeyboardAndMouse()
+        private static X360Controller CreateController()
         {
             X360Controller controller = new X360Controller();
-            byte[] report = controller.GetReport();
-            byte[] output = new byte[8];
 
             try
             {
@@ -27,7 +26,19 @@ namespace XboxKeyboardMouse
 
             scpbus.PlugIn(1);
 
-            while(true)
+            return controller;
+        }
+
+        public static void ActivateKeyboardAndMouse()
+        {
+            byte[] report;
+            byte[] output = new byte[8];
+
+            var threadCursor = new Thread(() => CursorView.ToggleCursor());
+
+            X360Controller controller = CreateController();
+
+            while (true)
             {
                 TranslateInput.StartTranslate(controller);
 

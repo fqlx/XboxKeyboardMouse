@@ -31,7 +31,7 @@ namespace XboxKeyboardMouse
         }
         
         //making a hidden top most form and setcursor(false)
-        public static void HideCursorWhenOn()
+        public static void ToggleCursor()
         {
             //todo, check if Xbox app is open
             bool XboxAppOpen = true;
