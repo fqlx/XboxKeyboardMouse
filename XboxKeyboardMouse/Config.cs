@@ -61,7 +61,7 @@ namespace XboxMouse_Keyboard
           //private uint outerDeadzone;
         }
         
-        public class LoadConfig()
+        public static void LoadConfig()
         {
             
         }

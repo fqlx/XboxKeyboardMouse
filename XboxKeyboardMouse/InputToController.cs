@@ -31,13 +31,13 @@ namespace XboxKeyboardMouse
 
         public static void ActivateKeyboardAndMouse()
         {
-            var threadCursor = new Thread(() => CursorView.ToggleCursor());
-
             X360Controller controller = CreateController();
 
-            TranslateMouse.Init();
+            TranslateMouse.InitMouse();
 
-            var thMouseMovement = new Thread(() => TranslateMouse.MouseMovementInput());
+            Thread thrStream = new Thread(XboxStream.ToggleCursor);
+            thrStream.SetApartmentState(ApartmentState.STA);
+            thrStream.Start();
 
             while (true)
             {

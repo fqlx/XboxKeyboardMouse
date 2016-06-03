@@ -28,33 +28,30 @@ namespace XboxKeyboardMouse
             form.BackColor = System.Drawing.Color.Turquoise;
             form.FormBorderStyle = FormBorderStyle.None;
             */
-
-            form.Opacity = .01;
+        
+            form.Opacity = .2;
 
             form.Show();
         }
-        
-        //making a hidden top most form and setcursor(false)
-        public static void ToggleCursor()
-        {
-            //todo, check if Xbox app is open
-            bool XboxAppOpen = true;
-            
-            while(true)
-            {
-                if (XboxAppOpen == true && form != null)
-                {
-                    CreateTopMostHiddenForm();
 
-                    Cursor.Hide();
-                }
-                else if(XboxAppOpen == false)
-                {
-                    //Cursor.Show();
-                    form.Close();
-                }
-                Thread.Sleep(1000);
+        public static void CursorHide()
+        {
+            if(form == null)
+                CreateTopMostHiddenForm();
+
+            if(form != null)
+                Cursor.Hide();
+        }
+
+        public static void CursorShow()
+        {
+            if (form != null)
+            {
+                Cursor.Show();
+                form.Dispose();
+                form = null;  //dispose doesn't set form to null?
             }
         }
+        
     }
 }

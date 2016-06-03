@@ -22,18 +22,17 @@ namespace XboxKeyboardMouse
 
         static private DirectInput device;
         static private Mouse mouse;
-        static bool started = false;  //fix bool start flag
         static Point originalMouseState = Control.MousePosition;
         static Stopwatch s = new Stopwatch();
 
         public static void MouseMovementInput()
         {
-            X360Controller controller;
+            X360Controller controller = new X360Controller();
             Point currentMouseState = Control.MousePosition;
 
             while (true)
             {
-                if ((s.ElapsedTicks / Stopwatch.Frequency) >= FRAME_PER_TICK || s.ElapsedTicks == 0)
+                if ((s.ElapsedTicks) >= FRAME_PER_TICK || s.ElapsedTicks == 0)
                 {
                     int xDifference = currentMouseState.X - originalMouseState.X;
                     int yDifference = currentMouseState.Y - originalMouseState.Y;
@@ -76,17 +75,13 @@ namespace XboxKeyboardMouse
                 controller.LeftTrigger = 0;
         }
 
-        public static void Init()
+        public static void InitMouse()
         {
-            if (started == false)
-            {
                 device = new DirectInput();
                 mouse = new Mouse(device);
                 mouse.Acquire();
                 Cursor.Position = new Point(Screen.PrimaryScreen.Bounds.Width / 2, Screen.PrimaryScreen.Bounds.Height / 2);
                 originalMouseState = Control.MousePosition;
-                started = true;
-            }
         }
     }
 

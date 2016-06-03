@@ -68,7 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config.cs" />
-    <Compile Include="Cursor.cs" />
+    <Compile Include="CursorView.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +83,7 @@
     <Compile Include="TranslateKeyboard.cs" />
     <Compile Include="TranslateMouse.cs" />
     <Compile Include="X360Controller.cs" />
+    <Compile Include="XboxStream.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
