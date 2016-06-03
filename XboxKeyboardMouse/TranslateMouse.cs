@@ -28,6 +28,8 @@ namespace XboxKeyboardMouse
 
         public static void MouseMovementInput()
         {
+            const uint ESTIMATED_LOOP_COMPLETION = 50;
+
             Cursor.Position = new Point(Screen.PrimaryScreen.Bounds.Width / 2, Screen.PrimaryScreen.Bounds.Height / 2);
             Point originalMouseState = Control.MousePosition;
 
@@ -36,8 +38,8 @@ namespace XboxKeyboardMouse
             while (true)
             {
                 Point currentMouseState = Control.MousePosition;
-                //todo: profile code on load and subtract the time it takes to calc/send mousemovement to controller and subtract
-                double frame_per_tick = FRAME_PER_60FPS_IN_MS * nanosecPerTick;
+                //todo: profile code on load and subtract the time it takes to calc/send mousemovement to controller and subtract for ESTIMATED_LOOP_COMPLETION
+                double frame_per_tick = FRAME_PER_60FPS_IN_MS * nanosecPerTick - ESTIMATED_LOOP_COMPLETION;
 
                 if (s.ElapsedTicks >= frame_per_tick || s.ElapsedTicks == 0)
                 {

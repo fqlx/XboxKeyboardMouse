@@ -38,7 +38,7 @@ namespace XboxKeyboardMouse
                 { Key.Right, X360Buttons.Right},
 
                 { Key.LeftShift, X360Buttons.LeftStick},
-                { Key.R, X360Buttons.RightStick},
+                { Key.LeftCtrl, X360Buttons.RightStick},
             };
 
         private static void KeyInput(X360Controller controller)
