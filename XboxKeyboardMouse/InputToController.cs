@@ -9,7 +9,7 @@ namespace XboxKeyboardMouse
     {
         const int CONTROLLER_NUMBER = 1; 
         static ScpBus scpbus = null;
-
+        public static X360Controller controller;
         private static X360Controller CreateController()
         {
             X360Controller controller = new X360Controller();
@@ -31,7 +31,7 @@ namespace XboxKeyboardMouse
 
         public static void ActivateKeyboardAndMouse()
         {
-            X360Controller controller = CreateController();
+            controller = CreateController();
 
             TranslateMouse.InitMouse();
 

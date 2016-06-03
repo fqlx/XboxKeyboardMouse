@@ -18,45 +18,51 @@ namespace XboxKeyboardMouse
         //tick = ~100ns, 1frame/60fps = 16.67ms,  16.67ms * 100ns/ticks = 1667ticks/frame
         //3334 = 30fps inbetween is a good value
         //idealy we want a low tick count and we increase in game sensitivity to offset it
-        private const uint FRAME_PER_TICK = 3334;
+        private const double FRAME_PER_30FPS_IN_MS = 33.3333333333;
+        private const double FRAME_PER_60FPS_IN_MS = 16.6666666667;
 
         static private DirectInput device;
         static private Mouse mouse;
-        static Point originalMouseState = Control.MousePosition;
         static Stopwatch s = new Stopwatch();
+        
 
         public static void MouseMovementInput()
         {
-            X360Controller controller = new X360Controller();
-            Point currentMouseState = Control.MousePosition;
+            Cursor.Position = new Point(Screen.PrimaryScreen.Bounds.Width / 2, Screen.PrimaryScreen.Bounds.Height / 2);
+            Point originalMouseState = Control.MousePosition;
+
+            double nanosecPerTick = (1000D * 1000D * 1000D) / Stopwatch.Frequency;
 
             while (true)
             {
-                if ((s.ElapsedTicks) >= FRAME_PER_TICK || s.ElapsedTicks == 0)
+                Point currentMouseState = Control.MousePosition;
+                double frame_per_tick = FRAME_PER_60FPS_IN_MS * nanosecPerTick;
+
+                if (s.ElapsedTicks >= frame_per_tick || s.ElapsedTicks == 0)
                 {
                     int xDifference = currentMouseState.X - originalMouseState.X;
                     int yDifference = currentMouseState.Y - originalMouseState.Y;
 
                     if (xDifference > 0)
-                        controller.RightStickX = short.MaxValue;
+                        InputToController.controller.RightStickX = short.MaxValue;
                     else if (xDifference < 0)
-                        controller.RightStickX = short.MinValue;
+                        InputToController.controller.RightStickX = short.MinValue;
                     else
-                        controller.RightStickX = 0;
+                        InputToController.controller.RightStickX = 0;
 
                     if (yDifference > 0)
-                        controller.RightStickY = short.MinValue;
+                        InputToController.controller.RightStickY = short.MinValue;
                     else if (yDifference < 0)
-                        controller.RightStickY = short.MaxValue;
+                        InputToController.controller.RightStickY = short.MaxValue;
                     else
-                        controller.RightStickY = 0;
+                        InputToController.controller.RightStickY = 0;
 
                     Cursor.Position = new Point(Screen.PrimaryScreen.Bounds.Width / 2, Screen.PrimaryScreen.Bounds.Height / 2);
 
                     s.Restart();
                 }
-
-                InputToController.SendtoController(controller);
+               
+                InputToController.SendtoController(InputToController.controller);
             }
         }
 
@@ -80,8 +86,6 @@ namespace XboxKeyboardMouse
                 device = new DirectInput();
                 mouse = new Mouse(device);
                 mouse.Acquire();
-                Cursor.Position = new Point(Screen.PrimaryScreen.Bounds.Width / 2, Screen.PrimaryScreen.Bounds.Height / 2);
-                originalMouseState = Control.MousePosition;
         }
     }
 
