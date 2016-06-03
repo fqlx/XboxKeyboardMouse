@@ -31,6 +31,7 @@ namespace XboxKeyboardMouse
         
             form.Opacity = .2;
 
+            form.Focus();
             form.Show();
         }
 

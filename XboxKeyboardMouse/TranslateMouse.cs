@@ -36,6 +36,7 @@ namespace XboxKeyboardMouse
             while (true)
             {
                 Point currentMouseState = Control.MousePosition;
+                //todo: profile code on load and subtract the time it takes to calc/send mousemovement to controller and subtract
                 double frame_per_tick = FRAME_PER_60FPS_IN_MS * nanosecPerTick;
 
                 if (s.ElapsedTicks >= frame_per_tick || s.ElapsedTicks == 0)
