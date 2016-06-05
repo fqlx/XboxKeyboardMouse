@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace XboxMouseKeyboard.Properties {
+namespace XboxKeyboardMouse.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

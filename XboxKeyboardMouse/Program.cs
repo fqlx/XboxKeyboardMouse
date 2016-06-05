@@ -46,16 +46,24 @@ namespace XboxKeyboardMouse
             {
                 if (Keyboard.IsKeyDown(Key.LeftAlt) && Keyboard.IsKeyDown(Key.C))
                 {
-                    if (Activate.tKMInput != null && Activate.tXboxStream != null && XboxStream.tMouseMovement != null)
+                    if (Activate.tKMInput.IsAlive == true && Activate.tXboxStream.IsAlive == true)
                     {
                         Activate.tXboxStream.Abort();
                         Activate.tKMInput.Abort();
                         XboxStream.tMouseMovement.Abort();
+                        CursorView.CursorShow();
 
                         if (Activate.tKMInput.IsAlive == true && Activate.tXboxStream.IsAlive == true)
                             MessageBox.Show("Error:  Threads failed to abort");
                         else
                             mainform.StatusStopped();
+                    }
+                    else if (Activate.tKMInput.IsAlive == false && Activate.tXboxStream.IsAlive == false)
+                    {
+                        Thread tActivateKM = new Thread(Activate.ActivateKeyboardAndMouse);
+                        tActivateKM.SetApartmentState(ApartmentState.STA);
+                        tActivateKM.IsBackground = true;
+                        tActivateKM.Start();
                     }
                 }
                 Thread.Sleep(100);

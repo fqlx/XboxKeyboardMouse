@@ -1,6 +1,6 @@
 using System.Windows.Input;
 
-namespace XboxMouse_Keyboard
+namespace XboxKeyboardMouse
 {
     class Config
     {

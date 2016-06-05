@@ -1,10 +1,7 @@
-using SlimDX.Direct3D9;
 using System;
-using System.Drawing;
+using System.IO;
 using System.Runtime.InteropServices;
-using System.Threading;
 using System.Windows.Forms;
-using XboxMouse_Keyboard;
 
 namespace XboxKeyboardMouse
 {
@@ -53,9 +50,10 @@ namespace XboxKeyboardMouse
             cursorPosition = pci.ptScreenPos;
             cursorHandle = CopyIcon(pci.hCursor);
 
-            //todo:  add no cursor as a resource file
-            IntPtr cursor = LoadCursorFromFile(@"nocursor.cur");
-            SetSystemCursor(cursor, OCR_NORMAL);
+            MemoryStream cursorMemoryStream = new MemoryStream(Properties.Resources.nocursor);
+            Cursor cursor = new Cursor(cursorMemoryStream);
+
+            SetSystemCursor(cursor.Handle, OCR_NORMAL);
 
         }
 
