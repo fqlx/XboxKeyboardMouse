@@ -15,14 +15,11 @@ It sends keyboard and mouse inputs to an emulated Xbox controller using SCP driv
 > Space         -> A  
 > F             -> B  
 > E             -> X  
-> Q             -> Y
+> Q             -> Y  
 ___
-
-1             -> Right Bumper
-
-2             -> Left Bumper
-
-
+> 1             -> Right Bumper  
+> 2             -> Left Bumper  
+___
 Left Shift    -> Left Stick Click
 
 Right Shift   -> Right Stick Click
