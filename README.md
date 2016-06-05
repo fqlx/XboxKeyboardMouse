@@ -12,6 +12,7 @@ It sends keyboard and mouse inputs to an emulated Xbox controller using SCP driv
 3. 
 
 #Current Layout
+___
 > Space         -> A  
 > F             -> B  
 > E             -> X  
@@ -36,7 +37,7 @@ ___
 > WASD          -> Left Stick
 > ___
 > Mouse         -> Right Stick
-
+___
 
 #Compile
 1.  SlimDx SDK installed - https://slimdx.org/
