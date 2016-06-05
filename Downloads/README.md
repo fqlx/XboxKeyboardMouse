@@ -1,2 +1,2 @@
 #Downloads
-Get the exe
+Get the exe and nocursor.cur file
