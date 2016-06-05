@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Input;
 using XboxKeyboardMouse;
@@ -14,23 +11,55 @@ namespace XboxKeyboardMouse
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
+        /// 
+        public static MainForm mainform = new MainForm();
+
         [STAThread]
         static void Main()
         {
+            Thread tApplicationRun = new Thread(ApplicationRun);
+            tApplicationRun.SetApartmentState(ApartmentState.STA);
+            tApplicationRun.Start();
+
+            Thread.Sleep(3000);  //just for status "change effect"
+
+            Thread tPause = new Thread(Pause);
+            tPause.SetApartmentState(ApartmentState.STA);
+            tPause.IsBackground = true;
+            tPause.Start();
+
+            Thread tActivateKM = new Thread(Activate.ActivateKeyboardAndMouse);
+            tActivateKM.SetApartmentState(ApartmentState.STA);
+            tActivateKM.IsBackground = true;
+            tActivateKM.Start();
+        }
+
+        private static void ApplicationRun()
+        {
             Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(mainform);
+        }
 
-            AppDomain.CurrentDomain.ProcessExit += new EventHandler(InputToController.OnProcessExit);
-            AppDomain.CurrentDomain.ProcessExit += new EventHandler(Form1.OnProcessExit);
-
+        private static void Pause()
+        {
             while (true)
             {
-                if (Keyboard.IsKeyDown(Key.LeftAlt) && Keyboard.IsKeyDown(Key.F4))
-                    Environment.Exit(0);
-                Thread.Sleep(1000);
-            }
+                if (Keyboard.IsKeyDown(Key.LeftAlt) && Keyboard.IsKeyDown(Key.C))
+                {
+                    if (Activate.tKMInput != null && Activate.tXboxStream != null && XboxStream.tMouseMovement != null)
+                    {
+                        Activate.tXboxStream.Abort();
+                        Activate.tKMInput.Abort();
+                        XboxStream.tMouseMovement.Abort();
 
+                        if (Activate.tKMInput.IsAlive == true && Activate.tXboxStream.IsAlive == true)
+                            MessageBox.Show("Error:  Threads failed to abort");
+                        else
+                            mainform.StatusStopped();
+                    }
+                }
+                Thread.Sleep(100);
+            }
         }
 
     }

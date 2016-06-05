@@ -5,11 +5,14 @@ using System.Windows.Forms;
 
 namespace XboxKeyboardMouse
 {
-    class InputToController
+    class Activate
     {
         const int CONTROLLER_NUMBER = 1; 
         static ScpBus scpbus = null;
         public static X360Controller controller;
+
+        public static Thread tXboxStream, tKMInput;
+
         private static X360Controller CreateController()
         {
             X360Controller controller = new X360Controller();
@@ -29,16 +32,15 @@ namespace XboxKeyboardMouse
             return controller;
         }
 
-        public static void ActivateKeyboardAndMouse()
+        private static void Init()
         {
             controller = CreateController();
 
             TranslateMouse.InitMouse();
+        }
 
-            Thread thrStream = new Thread(XboxStream.ToggleCursor);
-            thrStream.SetApartmentState(ApartmentState.STA);
-            thrStream.Start();
-
+        private static void KeyboardMouseInput()
+        {
             while (true)
             {
                 TranslateKeyboard.KeyboardInput(controller);
@@ -46,6 +48,24 @@ namespace XboxKeyboardMouse
 
                 SendtoController(controller);
             }
+        }
+
+
+        public static void ActivateKeyboardAndMouse()
+        {
+            Init();
+
+            tXboxStream = new Thread(XboxStream.ToggleCursor);
+            tXboxStream.SetApartmentState(ApartmentState.STA);
+            tXboxStream.IsBackground = true;
+            tXboxStream.Start();
+
+            tKMInput = new Thread(Activate.KeyboardMouseInput);
+            tKMInput.SetApartmentState(ApartmentState.STA);
+            tKMInput.IsBackground = true;
+            tKMInput.Start();
+            
+            Program.mainform.StatusRunning();
         }
 
         public static void SendtoController(X360Controller controller)

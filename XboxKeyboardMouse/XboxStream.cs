@@ -17,12 +17,12 @@ namespace XboxKeyboardMouse
         [DllImport("user32.dll")]
         private static extern int GetWindowText(IntPtr hWnd, StringBuilder lpString, int nMaxCount);
 
+        public static Thread tMouseMovement;
+
         public static void ToggleCursor()
         {
             const String XBOXAPP = "Xbox";
-            bool started = false;
-            Thread thrMouseMovement = null;
-           
+            bool started = false;           
 
             const int count = 512;
             StringBuilder text = new StringBuilder(count);
@@ -39,9 +39,10 @@ namespace XboxKeyboardMouse
 
                             CursorView.CursorHide();
 
-                            thrMouseMovement = new Thread(TranslateMouse.MouseMovementInput);
-                            thrMouseMovement.SetApartmentState(ApartmentState.STA);
-                            thrMouseMovement.Start();
+                            tMouseMovement = new Thread(TranslateMouse.MouseMovementInput);
+                            tMouseMovement.SetApartmentState(ApartmentState.STA);
+                            tMouseMovement.IsBackground = true;
+                            tMouseMovement.Start();
 
                             started = true;
                         }
@@ -51,8 +52,8 @@ namespace XboxKeyboardMouse
                     {
                         CursorView.CursorShow();
                         
-                        if(thrMouseMovement != null)
-                            thrMouseMovement.Abort();
+                        if(tMouseMovement != null)
+                            tMouseMovement.Abort();
 
                         started = false;
                     }

@@ -47,25 +47,25 @@ namespace XboxKeyboardMouse
                     int yDifference = currentMouseState.Y - originalMouseState.Y;
 
                     if (xDifference > 0)
-                        InputToController.controller.RightStickX = short.MaxValue;
+                        Activate.controller.RightStickX = short.MaxValue;
                     else if (xDifference < 0)
-                        InputToController.controller.RightStickX = short.MinValue;
+                        Activate.controller.RightStickX = short.MinValue;
                     else
-                        InputToController.controller.RightStickX = 0;
+                        Activate.controller.RightStickX = 0;
 
                     if (yDifference > 0)
-                        InputToController.controller.RightStickY = short.MinValue;
+                        Activate.controller.RightStickY = short.MinValue;
                     else if (yDifference < 0)
-                        InputToController.controller.RightStickY = short.MaxValue;
+                        Activate.controller.RightStickY = short.MaxValue;
                     else
-                        InputToController.controller.RightStickY = 0;
+                        Activate.controller.RightStickY = 0;
 
                     Cursor.Position = new Point(Screen.PrimaryScreen.Bounds.Width / 2, Screen.PrimaryScreen.Bounds.Height / 2);
 
                     s.Restart();
                 }
-               
-                InputToController.SendtoController(InputToController.controller);
+
+                Activate.SendtoController(Activate.controller);
             }
         }
 
