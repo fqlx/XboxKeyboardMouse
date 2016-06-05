@@ -28,18 +28,14 @@ It sends keyboard and mouse inputs to an emulated Xbox controller using SCP driv
 | ~             | Start/Menu        |
 | Tab           | Select/Back/Nav   |
 | Enter/Return  | Xbox Logo         |
-
-
-> Arrow Keys    -> DPAD
-___
-> Left Click    -> Right Trigger
-___
-> Right Click   -> Left Trigger
-> ___
-> WASD          -> Left Stick
-> ___
-> Mouse         -> Right Stick
-___
+|               |                   |
+| Arrow Keys    | DPAD              |
+|               |                   |
+| Left Click    | Right Trigger     |
+| Right Click   | Left Trigger      |
+|               |                   |
+| WASD          | Left Stick        |
+| Mouse         | Right Stick       |
 
 #Compile
 1.  SlimDx SDK installed - https://slimdx.org/
