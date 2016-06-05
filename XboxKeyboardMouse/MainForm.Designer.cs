@@ -61,7 +61,6 @@
             this.Status.Size = new System.Drawing.Size(43, 29);
             this.Status.TabIndex = 4;
             this.Status.Text = "Off";
-            this.Status.Click += new System.EventHandler(this.Status_Click);
             // 
             // MainForm
             // 

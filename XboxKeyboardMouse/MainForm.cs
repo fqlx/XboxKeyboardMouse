@@ -51,9 +51,18 @@ namespace XboxKeyboardMouse
             Status.ForeColor = System.Drawing.Color.Red;
         }
 
-        private void Status_Click(object sender, EventArgs e)
+        public void StatusWaiting()
         {
-
+            if (InvokeRequired)
+            {
+                MethodInvoker method = new MethodInvoker(StatusWaiting);
+                Invoke(method);
+                return;
+            }
+            Status.Text = string.Format("Waiting");
+            Status.ForeColor = System.Drawing.Color.YellowGreen;
         }
+
+
     }
 }

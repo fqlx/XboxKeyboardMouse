@@ -37,7 +37,8 @@ namespace XboxKeyboardMouse
 
         private static POINT cursorPosition;
         private static IntPtr cursorHandle;
-        private const int OCR_NORMAL = 32512;
+        //private const int OCR_NORMAL = 32512;
+        private const int OCR_HAND = 32649;
 
         [DllImport("user32")]
         internal static extern long SystemParametersInfo(uint uAction, IntPtr lpvParam, uint uParam, uint fuWinIni);
@@ -53,7 +54,7 @@ namespace XboxKeyboardMouse
             MemoryStream cursorMemoryStream = new MemoryStream(Properties.Resources.nocursor);
             Cursor cursor = new Cursor(cursorMemoryStream);
 
-            SetSystemCursor(cursor.Handle, OCR_NORMAL);
+            SetSystemCursor(cursor.Handle, OCR_HAND);
 
         }
 

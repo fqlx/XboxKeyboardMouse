@@ -65,7 +65,7 @@ namespace XboxKeyboardMouse
             tKMInput.IsBackground = true;
             tKMInput.Start();
             
-            Program.mainform.StatusRunning();
+            Program.mainform.StatusWaiting();
         }
 
         public static void SendtoController(X360Controller controller)
