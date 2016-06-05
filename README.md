@@ -9,7 +9,7 @@ It sends keyboard and mouse inputs to an emulated Xbox controller using SCP driv
 #Download
 1. Go to download folder
 2. Get the latest exe
-3. 
+3. 'View Raw'
 
 #Current Layout
 | Keyboard/Mouse| Xbox Controller   |
