@@ -1,2 +1,2 @@
 #Downloads
-Get the exe and nocursor.cur file
+Get the exe to download and "view raw"
