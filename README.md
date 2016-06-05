@@ -20,29 +20,22 @@ ___
 > 1             -> Right Bumper  
 > 2             -> Left Bumper  
 ___
-Left Shift    -> Left Stick Click
-
-Right Shift   -> Right Stick Click
-
-
-~             -> Start/Menu
-
-Tab           -> Select/Back/Nav
-
-Enter/Return  -> Xbox Logo
-
-
-Arrow Keys    -> DPAD
-
-
-Left Click    -> Right Trigger
-
-Right Click   -> Left Trigger
-
-
-WASD          -> Left Stick
-
-Mouse         -> Right Stick
+> Left Shift    -> Left Stick Click
+> Right Shift   -> Right Stick Click
+___
+> ~             -> Start/Menu
+> Tab           -> Select/Back/Nav
+> Enter/Return  -> Xbox Logo
+___
+> Arrow Keys    -> DPAD
+___
+> Left Click    -> Right Trigger
+___
+> Right Click   -> Left Trigger
+> ___
+> WASD          -> Left Stick
+> ___
+> Mouse         -> Right Stick
 
 
 #Compile
