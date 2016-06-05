@@ -12,13 +12,10 @@ It sends keyboard and mouse inputs to an emulated Xbox controller using SCP driv
 3. 
 
 #Current Layout
-Space         -> A
-
-F             -> B
-
-E             -> X
-
-Q             -> Y
+ > Space         -> A
+ > F             -> B
+ > E             -> X
+ > Q             -> Y
 
 
 1             -> Right Bumper
