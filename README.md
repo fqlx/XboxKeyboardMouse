@@ -45,3 +45,8 @@ It sends keyboard and mouse inputs to an emulated Xbox controller using SCP driv
 
 #Could be better
 1.  Problems translating mouse movement into the right stick directional look.  Very challenging to make it a smooth experience.  
+
+#Todo
+1.  Check if SlimDX and SCP driver are installed and if not throw an understandable error.
+2.  Add custom configs
+3.  Work on smoothing mouse translation/normalization
