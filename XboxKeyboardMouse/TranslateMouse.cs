@@ -1,14 +1,7 @@
 ﻿using ScpDriverInterface;
 using SlimDX.DirectInput;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace XboxKeyboardMouse
@@ -24,22 +17,24 @@ namespace XboxKeyboardMouse
         static private DirectInput device;
         static private Mouse mouse;
         static Stopwatch s = new Stopwatch();
-        
+
+        static double frame_per_tick = 0;
+
+        public static void SetFramePerTick(int value)
+        {
+            if (value > 0)
+                frame_per_tick = value;
+        }
 
         public static void MouseMovementInput()
         {
-            const uint ESTIMATED_LOOP_COMPLETION = 50;
-
             Cursor.Position = new Point(Screen.PrimaryScreen.Bounds.Width / 2, Screen.PrimaryScreen.Bounds.Height / 2);
             Point originalMouseState = Control.MousePosition;
-
-            double nanosecPerTick = (1000D * 1000D * 1000D) / Stopwatch.Frequency;
 
             while (true)
             {
                 Point currentMouseState = Control.MousePosition;
                 //todo: profile code on load and subtract the time it takes to calc/send mousemovement to controller and subtract for ESTIMATED_LOOP_COMPLETION
-                double frame_per_tick = FRAME_PER_60FPS_IN_MS * nanosecPerTick - ESTIMATED_LOOP_COMPLETION;
 
                 if (s.ElapsedTicks >= frame_per_tick || s.ElapsedTicks == 0)
                 {
@@ -89,6 +84,13 @@ namespace XboxKeyboardMouse
                 device = new DirectInput();
                 mouse = new Mouse(device);
                 mouse.Acquire();
+
+                const uint ESTIMATED_LOOP_COMPLETION = 50;
+
+                double nanosecPerTick = (1000D * 1000D * 1000D) / Stopwatch.Frequency;
+                frame_per_tick = FRAME_PER_60FPS_IN_MS * nanosecPerTick - ESTIMATED_LOOP_COMPLETION;
+                Program.mainform.SetTickCount((int)frame_per_tick);
+
         }
     }
 

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Forms;
-using XboxKeyboardMouse;
 
 namespace XboxKeyboardMouse
 {
@@ -63,6 +62,44 @@ namespace XboxKeyboardMouse
             Status.ForeColor = System.Drawing.Color.YellowGreen;
         }
 
+
+        public void StatusTickCountSaved()
+        {
+            if (InvokeRequired)
+            {
+                MethodInvoker method = new MethodInvoker(StatusTickCountSaved);
+                Invoke(method);
+                return;
+            }
+            Status.Text = string.Format("Tick Count Saved");
+            Status.ForeColor = System.Drawing.Color.Green;
+        }
+
+        private void Tickcount_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            NumericUpDown numeric = (NumericUpDown)sender;
+            decimal value = numeric.Value;
+            SetTickCount((int)value);
+        }
+
+        public void SetTickCount(int tickcount)
+        {
+            if (InvokeRequired)
+            {
+                this.Invoke((MethodInvoker)delegate {
+                    SetTickCount(tickcount);
+                });
+                return;
+            }
+            numericUpDown1.Value = tickcount;
+            TranslateMouse.SetFramePerTick(tickcount);
+            StatusTickCountSaved();
+        }
+
+        public int GetTickCount()
+        {
+            return (int)numericUpDown1.Value;
+        }
 
     }
 }
