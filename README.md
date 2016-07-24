@@ -4,7 +4,9 @@ It sends keyboard and mouse inputs to an emulated Xbox controller using SCP driv
 
 #Prereq
 1.  You need SCPToolkit driver installed to use
-2.  https://github.com/nefarius/ScpToolkit
+2.  You need SlimDX Runtime installed
+3.  https://github.com/nefarius/ScpToolkit
+4.  https://slimdx.org/download.php
 
 #Download
 1. Go to download folder
@@ -23,7 +25,7 @@ It sends keyboard and mouse inputs to an emulated Xbox controller using SCP driv
 | 2             | Left Bumper       |
 |               |                   |
 | Left Shift    | Left Stick Click  |
-| Right Shift   | Right Stick Click |
+| Left Control  | Right Stick Click |
 |               |                   |
 | ~             | Start/Menu        |
 | Tab           | Select/Back/Nav   |
@@ -43,3 +45,8 @@ It sends keyboard and mouse inputs to an emulated Xbox controller using SCP driv
 
 #Could be better
 1.  Problems translating mouse movement into the right stick directional look.  Very challenging to make it a smooth experience.  
+
+#Todo
+1.  Check if SlimDX and SCP driver are installed and if not throw an understandable error.
+2.  Add custom configs
+3.  Work on smoothing mouse translation/normalization
