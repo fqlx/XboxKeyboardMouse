@@ -28,7 +28,7 @@ It sends keyboard and mouse inputs to an emulated Xbox controller using SCP driv
 | Left Control  | Right Stick Click |
 |               |                   |
 | ~             | Start/Menu        |
-| Tab           | Select/Back/Nav   |
+| B           | Select/Back/Nav   |
 | Enter/Return  | Xbox Logo         |
 |               |                   |
 | Arrow Keys    | DPAD              |
