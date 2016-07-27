@@ -29,7 +29,7 @@ namespace XboxKeyboardMouse
                 { Key.D2, X360Buttons.LeftBumper},
 
                 { Key.OemTilde, X360Buttons.Start},  //don't use escape, will close streaming app
-                { Key.Tab, X360Buttons.None},
+                { Key.B, X360Buttons.Back},
                 { Key.Return, X360Buttons.Logo},
 
                 { Key.Up, X360Buttons.Up},
