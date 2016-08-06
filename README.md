@@ -4,7 +4,7 @@ It sends keyboard and mouse inputs to an emulated Xbox controller using SCP driv
 
 #Prereq
 1.  You need SCPToolkit driver installed to use
-2.  You need SlimDX Runtime installed
+2.  You need SlimDX Runtime installed (x86)
 3.  https://github.com/nefarius/ScpToolkit
 4.  https://slimdx.org/download.php
 
