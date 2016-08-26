@@ -79,7 +79,7 @@ namespace XboxKeyboardMouse
         {
             NumericUpDown numeric = (NumericUpDown)sender;
             decimal value = numeric.Value;
-            SetTickCount((int)value);
+            SetTickCount(1);
         }
 
         public void SetTickCount(int tickcount)
