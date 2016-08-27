@@ -40,9 +40,9 @@ It sends keyboard and mouse inputs to an emulated Xbox controller using SCP driv
 | Mouse         | Right Stick       |
 
 #Lag
-Run ScpToolkit Global Configuration
-Use asynchronoous HID Report Processing
-Disable Rumble and Native Feed
+1.  Run ScpToolkit Global Configuration
+2.  Use asynchronoous HID Report Processing
+3.  Disable Rumble and Native Feed
 
 #Compile
 1.  SlimDx SDK installed - https://slimdx.org/
