@@ -40,7 +40,7 @@ It sends keyboard and mouse inputs to an emulated Xbox controller using SCP driv
 | Mouse         | Right Stick       |
 
 #Lag
-1.  Run ScpToolkit Global Configuration
+1.  Run ScpToolkit Settings Manager
 2.  Use asynchronoous HID Report Processing
 3.  Disable Rumble and Native Feed
 
