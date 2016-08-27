@@ -39,6 +39,11 @@ It sends keyboard and mouse inputs to an emulated Xbox controller using SCP driv
 | WASD          | Left Stick        |
 | Mouse         | Right Stick       |
 
+#Lag
+Run ScpToolkit Global Configuration
+Use asynchronoous HID Report Processing
+Disable Rumble and Native Feed
+
 #Compile
 1.  SlimDx SDK installed - https://slimdx.org/
 2.  SCPToolkit driver installed
