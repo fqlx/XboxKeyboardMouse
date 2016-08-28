@@ -91,8 +91,9 @@ namespace XboxKeyboardMouse
                 });
                 return;
             }
+            // TODO: allow users to set the interval of the timer
             numericUpDown1.Value = tickcount;
-            TranslateMouse.SetFramePerTick(tickcount);
+         //   TranslateMouse.SetFramePerTick(tickcount);
             StatusTickCountSaved();
         }
 
