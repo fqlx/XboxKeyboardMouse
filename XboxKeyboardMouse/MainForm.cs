@@ -6,6 +6,12 @@ namespace XboxKeyboardMouse
 {
     public partial class MainForm : Form
     {
+        private static string helpText = "In order to have the most lag-free, precise mouse movements, you can change how fast the program calculates for mouse inputs." + System.Environment.NewLine + System.Environment.NewLine +
+            "The lower the number, the more precise your mouse movements will be. With number such as 50 ticks, the program will calculate your mouse inputs every 50 milliseconds (around 20 fps)." + System.Environment.NewLine + System.Environment.NewLine +
+            "If you have a faster computer, you can set the ticks lower, such as 10 ticks to get 100 fps." + System.Environment.NewLine + System.Environment.NewLine +
+            "HOWEVER, if you set the ticks too low and your computer can’t handle it, you will see noticeable lag and stuttering in your game. At this point you should set your ticks higher to a comfortable level until the stuttering disappears." + System.Environment.NewLine + System.Environment.NewLine +
+            "Changing your ticks a significant amount may alter your mouse sensitivity slightly. To offset this, you can change your sensitivity in-game.";
+
         public MainForm()
         {
             InitializeComponent();
@@ -79,7 +85,7 @@ namespace XboxKeyboardMouse
         {
             NumericUpDown numeric = (NumericUpDown)sender;
             decimal value = numeric.Value;
-            SetTickCount(1);
+            SetTickCount((int)value);
         }
 
         public void SetTickCount(int tickcount)
@@ -91,9 +97,9 @@ namespace XboxKeyboardMouse
                 });
                 return;
             }
-            // TODO: allow users to set the interval of the timer
+
             numericUpDown1.Value = tickcount;
-         //   TranslateMouse.SetFramePerTick(tickcount);
+            TranslateMouse.SetFramePerTick(tickcount);
             StatusTickCountSaved();
         }
 
@@ -102,5 +108,10 @@ namespace XboxKeyboardMouse
             return (int)numericUpDown1.Value;
         }
 
+        private void helpTicksBtn_Click(object sender, EventArgs e)
+        {
+            // TODO: put text helping the user here.    Matthew Mistele 8/29/16
+            MessageBox.Show(helpText, "What are ticks?", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }

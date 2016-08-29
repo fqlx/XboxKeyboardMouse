@@ -15,6 +15,7 @@ namespace XboxKeyboardMouse
 
         static System.Timers.Timer timer = new System.Timers.Timer();
         static bool done = true;
+        static int interval = 50;
 
         public static void InitMouse()
         {
@@ -26,7 +27,7 @@ namespace XboxKeyboardMouse
         public static void MouseMovementInput()
         {
             timer.Elapsed += new ElapsedEventHandler(tick);
-            timer.Interval = 50;
+            timer.Interval = interval;
             timer.Enabled = true;
 
             Cursor.Position = new Point(Screen.PrimaryScreen.Bounds.Width / 2, Screen.PrimaryScreen.Bounds.Height / 2);
@@ -71,6 +72,11 @@ namespace XboxKeyboardMouse
         public static void tick(object source, ElapsedEventArgs e)
         {
             done = true;
+        }
+
+        public static void SetFramePerTick(int tick)
+        {
+            interval = tick;
         }
 
 

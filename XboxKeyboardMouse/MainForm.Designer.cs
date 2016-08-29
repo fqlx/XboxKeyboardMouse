@@ -34,6 +34,7 @@
             this.Status = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.helpTicksBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,7 +69,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(288, 101);
+            this.label2.Location = new System.Drawing.Point(231, 114);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(36, 13);
             this.label2.TabIndex = 6;
@@ -76,22 +77,38 @@
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(291, 117);
+            this.numericUpDown1.Location = new System.Drawing.Point(273, 112);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             100000000,
             0,
             0,
             0});
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(85, 20);
+            this.numericUpDown1.Size = new System.Drawing.Size(65, 20);
             this.numericUpDown1.TabIndex = 8;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
             this.numericUpDown1.ValueChanged += new System.EventHandler(this.Tickcount_SelectedIndexChanged);
+            // 
+            // helpTicksBtn
+            // 
+            this.helpTicksBtn.Location = new System.Drawing.Point(344, 110);
+            this.helpTicksBtn.Name = "helpTicksBtn";
+            this.helpTicksBtn.Size = new System.Drawing.Size(32, 23);
+            this.helpTicksBtn.TabIndex = 9;
+            this.helpTicksBtn.Text = "?";
+            this.helpTicksBtn.UseVisualStyleBackColor = true;
+            this.helpTicksBtn.Click += new System.EventHandler(this.helpTicksBtn_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(388, 141);
+            this.Controls.Add(this.helpTicksBtn);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.Status);
@@ -113,6 +130,7 @@
         private System.Windows.Forms.Label Status;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Button helpTicksBtn;
     }
 }
 
