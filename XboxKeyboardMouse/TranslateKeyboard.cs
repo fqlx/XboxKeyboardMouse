@@ -21,16 +21,16 @@ namespace XboxKeyboardMouse
         private static readonly Dictionary<Key, X360Buttons> buttonsmap = new Dictionary<Key, X360Buttons>
             {
                 { Key.Space, X360Buttons.A },
-                { Key.F, X360Buttons.B},
-                { Key.E, X360Buttons.X },
-                { Key.Q, X360Buttons.Y},
+                { Key.LeftCtrl, X360Buttons.B},
+                { Key.R, X360Buttons.X },
+                { Key.D1, X360Buttons.Y},
 
-                { Key.D1, X360Buttons.RightBumper},
-                { Key.D2, X360Buttons.LeftBumper},
+                { Key.E, X360Buttons.RightBumper},
+                { Key.Q, X360Buttons.LeftBumper},
 
                 { Key.OemTilde, X360Buttons.Start},  //don't use escape, will close streaming app
-                { Key.B, X360Buttons.Back},
-                { Key.Return, X360Buttons.Logo},
+                { Key.V, X360Buttons.Back},
+                { Key.G, X360Buttons.Logo},
 
                 { Key.Up, X360Buttons.Up},
                 { Key.Down, X360Buttons.Down},
@@ -38,7 +38,8 @@ namespace XboxKeyboardMouse
                 { Key.Right, X360Buttons.Right},
 
                 { Key.LeftShift, X360Buttons.LeftStick},
-                { Key.LeftCtrl, X360Buttons.RightStick},
+                { Key.C, X360Buttons.RightStick},
+                {Key.H, X360Buttons.Logo }
             };
 
         private static void KeyInput(X360Controller controller)
