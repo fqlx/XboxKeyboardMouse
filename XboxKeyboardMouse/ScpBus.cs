@@ -20,13 +20,11 @@ using System.Runtime.InteropServices;
 using Microsoft.Win32.SafeHandles;
 [assembly: CLSCompliant(true)]
 
-namespace ScpDriverInterface
-{
+namespace ScpDriverInterface {
     /// <summary>
     /// Emulates XBox 360 controllers via Scarlet.Crush's SCP Virtual Bus Driver.
     /// </summary>
-    public class ScpBus : IDisposable
-    {
+    public class ScpBus : IDisposable {
         private const string SCP_BUS_CLASS_GUID = "{F679F562-3164-42CE-A4DB-E7DDBE723909}";
         private const int ReportSize = 28;
 
@@ -41,16 +39,12 @@ namespace ScpDriverInterface
         /// Creates a new ScpBus object, which will then try to get a handle to the SCP Virtual Bus device. If it is unable to get the handle, an IOException will be thrown.
         /// </summary>
         /// <param name="instance">Specifies which SCP Virtual Bus device to use. This is 0-based.</param>
-        public ScpBus(int instance)
-        {
+        public ScpBus(int instance) {
             string devicePath = "";
 
-            if (Find(new Guid(SCP_BUS_CLASS_GUID), ref devicePath, instance))
-            {
+            if (Find(new Guid(SCP_BUS_CLASS_GUID), ref devicePath, instance)) {
                 _deviceHandle = GetHandle(devicePath);
-            }
-            else
-            {
+            } else {
                 throw new IOException("SCP Virtual Bus Device not found");
             }
         }
@@ -59,8 +53,7 @@ namespace ScpDriverInterface
         /// Creates a new ScpBus object, which will then try to get a handle to the specified SCP Virtual Bus device. If it is unable to get the handle, an IOException will be thrown.
         /// </summary>
         /// <param name="devicePath">The path to the SCP Virtual Bus device that you want to use.</param>
-        public ScpBus(string devicePath)
-        {
+        public ScpBus(string devicePath) {
             _deviceHandle = GetHandle(devicePath);
         }
 
@@ -69,24 +62,20 @@ namespace ScpDriverInterface
         /// 
         /// (This method does the same thing as the Dispose() method. Use one or the other.)
         /// </summary>
-        public void Close()
-        {
+        public void Close() {
             Dispose();
         }
 
         /// <summary>
         /// Closes the handle to the SCP Virtual Bus device. Call this when you are done with your instance of ScpBus.
         /// </summary>
-        public void Dispose()
-        {
+        public void Dispose() {
             Dispose(true);
             GC.SuppressFinalize(this);
         }
 
-        protected virtual void Dispose(bool disposing)
-        {
-            if (_deviceHandle != null && !_deviceHandle.IsInvalid)
-            {
+        protected virtual void Dispose(bool disposing) {
+            if (_deviceHandle != null && !_deviceHandle.IsInvalid) {
                 _deviceHandle.Dispose();
             }
         }
@@ -96,8 +85,7 @@ namespace ScpDriverInterface
         /// </summary>
         /// <param name="controllerNumber">Used to identify the controller. Give each controller you plug in a different number. Number must be non-zero.</param>
         /// <returns>True if the operation was successful, false otherwise.</returns>
-        public bool PlugIn(int controllerNumber)
-        {
+        public bool PlugIn(int controllerNumber) {
             if (_deviceHandle.IsInvalid)
                 throw new ObjectDisposedException("SCP Virtual Bus device handle is closed");
 
@@ -122,8 +110,7 @@ namespace ScpDriverInterface
         /// </summary>
         /// <param name="controllerNumber">The controller you want to unplug.</param>
         /// <returns>True if the operation was successful, false otherwise.</returns>
-        public bool Unplug(int controllerNumber)
-        {
+        public bool Unplug(int controllerNumber) {
             if (_deviceHandle.IsInvalid)
                 throw new ObjectDisposedException("SCP Virtual Bus device handle is closed");
 
@@ -147,8 +134,7 @@ namespace ScpDriverInterface
         /// Unplugs all emulated XBox 360 controllers.
         /// </summary>
         /// <returns>True if the operation was successful, false otherwise.</returns>
-        public bool UnplugAll()
-        {
+        public bool UnplugAll() {
             if (_deviceHandle.IsInvalid)
                 throw new ObjectDisposedException("SCP Virtual Bus device handle is closed");
 
@@ -169,8 +155,7 @@ namespace ScpDriverInterface
         /// <param name="controllerNumber">The controller to report.</param>
         /// <param name="controllerReport">The controller report. If using the included X360Controller class, this can be generated with the GetReport() method. Otherwise see http://free60.org/wiki/GamePad#Input_report for details.</param>
         /// <returns>True if the operation was successful, false otherwise.</returns>
-        public bool Report(int controllerNumber, byte[] controllerReport)
-        {
+        public bool Report(int controllerNumber, byte[] controllerReport) {
             return Report(controllerNumber, controllerReport, null);
         }
 
@@ -181,8 +166,7 @@ namespace ScpDriverInterface
         /// <param name="controllerReport">The controller report. If using the included X360Controller class, this can be generated with the GetReport() method. Otherwise see http://free60.org/wiki/GamePad#Input_report for details.</param>
         /// <param name="outputBuffer">The buffer for the output report, which takes the form specified here: http://free60.org/wiki/GamePad#Output_report. Use an 8-byte buffer if you care about rumble data, or null otherwise.</param>
         /// <returns>True if the operation was successful, false otherwise.</returns>
-        public bool Report(int controllerNumber, byte[] controllerReport, byte[] outputBuffer)
-        {
+        public bool Report(int controllerNumber, byte[] controllerReport, byte[] outputBuffer) {
             if (_deviceHandle.IsInvalid)
                 throw new ObjectDisposedException("SCP Virtual Bus device handle is closed");
 
@@ -203,13 +187,11 @@ namespace ScpDriverInterface
             return NativeMethods.DeviceIoControl(_deviceHandle, 0x2A400C, fullReport, fullReport.Length, outputBuffer, outputBuffer?.Length ?? 0, ref transferred, IntPtr.Zero) && transferred > 0;
         }
 
-        private static bool Find(Guid target, ref string path, int instance = 0)
-        {
+        private static bool Find(Guid target, ref string path, int instance = 0) {
             IntPtr detailDataBuffer = IntPtr.Zero;
             IntPtr deviceInfoSet = IntPtr.Zero;
 
-            try
-            {
+            try {
                 NativeMethods.SP_DEVICE_INTERFACE_DATA DeviceInterfaceData = new NativeMethods.SP_DEVICE_INTERFACE_DATA(), da = new NativeMethods.SP_DEVICE_INTERFACE_DATA();
                 int bufferSize = 0, memberIndex = 0;
 
@@ -217,32 +199,26 @@ namespace ScpDriverInterface
 
                 DeviceInterfaceData.cbSize = da.cbSize = Marshal.SizeOf(DeviceInterfaceData);
 
-                while (NativeMethods.SetupDiEnumDeviceInterfaces(deviceInfoSet, IntPtr.Zero, ref target, memberIndex, ref DeviceInterfaceData))
-                {
+                while (NativeMethods.SetupDiEnumDeviceInterfaces(deviceInfoSet, IntPtr.Zero, ref target, memberIndex, ref DeviceInterfaceData)) {
                     NativeMethods.SetupDiGetDeviceInterfaceDetail(deviceInfoSet, ref DeviceInterfaceData, IntPtr.Zero, 0, ref bufferSize, ref da);
                     detailDataBuffer = Marshal.AllocHGlobal(bufferSize);
 
                     Marshal.WriteInt32(detailDataBuffer, (IntPtr.Size == 4) ? (4 + Marshal.SystemDefaultCharSize) : 8);
 
-                    if (NativeMethods.SetupDiGetDeviceInterfaceDetail(deviceInfoSet, ref DeviceInterfaceData, detailDataBuffer, bufferSize, ref bufferSize, ref da))
-                    {
+                    if (NativeMethods.SetupDiGetDeviceInterfaceDetail(deviceInfoSet, ref DeviceInterfaceData, detailDataBuffer, bufferSize, ref bufferSize, ref da)) {
                         IntPtr pDevicePathName = detailDataBuffer + 4;
 
                         path = Marshal.PtrToStringAuto(pDevicePathName).ToUpper(CultureInfo.InvariantCulture);
                         Marshal.FreeHGlobal(detailDataBuffer);
 
                         if (memberIndex == instance) return true;
-                    }
-                    else Marshal.FreeHGlobal(detailDataBuffer);
+                    } else Marshal.FreeHGlobal(detailDataBuffer);
 
 
                     memberIndex++;
                 }
-            }
-            finally
-            {
-                if (deviceInfoSet != IntPtr.Zero)
-                {
+            } finally {
+                if (deviceInfoSet != IntPtr.Zero) {
                     NativeMethods.SetupDiDestroyDeviceInfoList(deviceInfoSet);
                 }
             }
@@ -250,14 +226,12 @@ namespace ScpDriverInterface
             return false;
         }
 
-        private static SafeFileHandle GetHandle(string devicePath)
-        {
+        private static SafeFileHandle GetHandle(string devicePath) {
             devicePath = devicePath.ToUpper(CultureInfo.InvariantCulture);
 
             SafeFileHandle handle = NativeMethods.CreateFile(devicePath, (NativeMethods.GENERIC_WRITE | NativeMethods.GENERIC_READ), NativeMethods.FILE_SHARE_READ | NativeMethods.FILE_SHARE_WRITE, IntPtr.Zero, NativeMethods.OPEN_EXISTING, NativeMethods.FILE_ATTRIBUTE_NORMAL | NativeMethods.FILE_FLAG_OVERLAPPED, UIntPtr.Zero);
 
-            if (handle == null || handle.IsInvalid)
-            {
+            if (handle == null || handle.IsInvalid) {
                 throw new IOException("Unable to get SCP Virtual Bus Device handle");
             }
 
@@ -265,11 +239,9 @@ namespace ScpDriverInterface
         }
     }
 
-    internal static class NativeMethods
-    {
+    internal static class NativeMethods {
         [StructLayout(LayoutKind.Sequential)]
-        internal struct SP_DEVICE_INTERFACE_DATA
-        {
+        internal struct SP_DEVICE_INTERFACE_DATA {
             internal int cbSize;
             internal Guid InterfaceClassGuid;
             internal int Flags;

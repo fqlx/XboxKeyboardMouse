@@ -3,26 +3,20 @@ using System;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace XboxKeyboardMouse
-{
-    class Activate
-    {
-        const int CONTROLLER_NUMBER = 1; 
+namespace XboxKeyboardMouse {
+    class Activate {
+        const int CONTROLLER_NUMBER = 1;
         static ScpBus scpbus = null;
         public static X360Controller controller;
 
         public static Thread tXboxStream, tKMInput;
 
-        private static X360Controller CreateController()
-        {
+        private static X360Controller CreateController() {
             X360Controller controller = new X360Controller();
 
-            try
-            {
+            try {
                 scpbus = new ScpBus();
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 MessageBox.Show("SCP Bus failed to initialize");
                 MessageBox.Show(ex.ToString());
             }
@@ -32,17 +26,14 @@ namespace XboxKeyboardMouse
             return controller;
         }
 
-        private static void Init()
-        {
+        private static void Init() {
             controller = CreateController();
 
             TranslateMouse.InitMouse();
         }
 
-        private static void KeyboardMouseInput()
-        {
-            while (true)
-            {
+        private static void KeyboardMouseInput() {
+            while (true) {
                 TranslateKeyboard.KeyboardInput(controller);
                 TranslateMouse.MouseButtonsInput(controller);
 
@@ -51,8 +42,7 @@ namespace XboxKeyboardMouse
         }
 
 
-        public static void ActivateKeyboardAndMouse()
-        {
+        public static void ActivateKeyboardAndMouse() {
             Init();
 
             tXboxStream = new Thread(XboxStream.ToggleCursor);
@@ -64,22 +54,33 @@ namespace XboxKeyboardMouse
             tKMInput.SetApartmentState(ApartmentState.STA);
             tKMInput.IsBackground = true;
             tKMInput.Start();
-            
+
             Program.mainform.StatusWaiting();
         }
 
-        public static void SendtoController(X360Controller controller)
-        {
+        public static void SendtoController(X360Controller controller) {
             byte[] report = controller.GetReport();
             byte[] output = new byte[8];
 
             scpbus.Report(CONTROLLER_NUMBER, report, output);
         }
 
-        public static void OnProcessExit(object sender, EventArgs e)
-        {
+        public static void OnProcessExit(object sender, EventArgs e) {
             scpbus.Unplug(CONTROLLER_NUMBER);
             Application.ExitThread();
+        }
+
+
+        public static void ResetController() {
+            controller.RightStickX = 0;
+            controller.RightStickY = 0;
+            controller.LeftStickX = 0;
+            controller.LeftStickY = 0;
+
+            controller.LeftTrigger = 0;
+            controller.RightTrigger = 0;
+
+            controller.Buttons = X360Buttons.None;
         }
     }
 }

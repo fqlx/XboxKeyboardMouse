@@ -1,2 +1,2 @@
 #Downloads
-Get the exe to download and "view raw"
+Get the zip to download and "view raw"
