@@ -1,86 +1,112 @@
 ﻿using ScpDriverInterface;
+using System;
 using System.Collections.Generic;
 using System.Windows.Input;
 
-namespace XboxKeyboardMouse
-{
-    class TranslateKeyboard
-    {
-        private static readonly Dictionary<Key, short> mapLeftStickY = new Dictionary<Key, short>
-            {
-                { Key.W, short.MaxValue },
-                { Key.S, short.MinValue },
-            };
+namespace XboxKeyboardMouse {
+    class TranslateKeyboard {
+        public enum TriggerType {
+            LeftTrigger,
+            RightTrigger
+        }
 
-        private static readonly Dictionary<Key, short> mapLeftStickX = new Dictionary<Key, short>
-            {
-                { Key.A, short.MinValue },
-                { Key.D, short.MaxValue },
-            };
+        public static Dictionary<Key, short> mapLeftStickY = new Dictionary<Key, short> {
+            { Key.W, short.MaxValue },
+            { Key.S, short.MinValue },
+        };
 
-        private static readonly Dictionary<Key, X360Buttons> buttonsmap = new Dictionary<Key, X360Buttons>
-            {
-                { Key.Space, X360Buttons.A },
-                { Key.LeftCtrl, X360Buttons.B},
-                { Key.R, X360Buttons.X },
-                { Key.D1, X360Buttons.Y},
+        public static Dictionary<Key, short> mapLeftStickX = new Dictionary<Key, short> {
+            { Key.A, short.MinValue },
+            { Key.D, short.MaxValue },
+        };
 
-                { Key.E, X360Buttons.RightBumper},
-                { Key.Q, X360Buttons.LeftBumper},
+        public static Dictionary<Key, X360Buttons> buttons = new Dictionary<Key, X360Buttons> {
+            { Key.Space, X360Buttons.A },
+            { Key.LeftCtrl, X360Buttons.B},
+            { Key.R, X360Buttons.X },
+            { Key.D1, X360Buttons.Y},
 
-                { Key.OemTilde, X360Buttons.Start},  //don't use escape, will close streaming app
-                { Key.V, X360Buttons.Back},
-                { Key.G, X360Buttons.Logo},
+            { Key.E, X360Buttons.RightBumper},
+            { Key.Q, X360Buttons.LeftBumper},
 
-                { Key.Up, X360Buttons.Up},
-                { Key.Down, X360Buttons.Down},
-                { Key.Left, X360Buttons.Left},
-                { Key.Right, X360Buttons.Right},
+            { Key.B, X360Buttons.Start},  //don't use escape, will close streaming app
+            { Key.V, X360Buttons.Back},
+            { Key.G, X360Buttons.Logo},
 
-                { Key.LeftShift, X360Buttons.LeftStick},
-                { Key.C, X360Buttons.RightStick},
-                {Key.H, X360Buttons.Logo }
-            };
+            { Key.Up, X360Buttons.Up},
+            { Key.Down, X360Buttons.Down},
+            { Key.Left, X360Buttons.Left},
+            { Key.Right, X360Buttons.Right},
 
-        private static void KeyInput(X360Controller controller)
-        {
-            foreach (KeyValuePair<Key, short> entry in mapLeftStickY)
-            {
-                if (Keyboard.IsKeyDown(entry.Key))
-                    controller.LeftStickY = entry.Value;
-            }
+            { Key.LeftShift, X360Buttons.LeftStick},
+            { Key.C, X360Buttons.RightStick}
+        };
 
-            //todo fix later use map
-            if (Keyboard.IsKeyUp(Key.W) && Keyboard.IsKeyUp(Key.S))
-            {
-                controller.LeftStickY = 0;
-            }
+        public static Dictionary<Key, TriggerType> triggers = new Dictionary<Key, TriggerType>();
 
-            foreach (KeyValuePair<Key, short> entry in mapLeftStickX)
-            {
-                if (Keyboard.IsKeyDown(entry.Key))
-                    controller.LeftStickX = entry.Value;
-            }
+        private static void KeyInput(X360Controller controller) {
+            List<bool> btnStatus = new List<bool>();
 
-            //todo fix later use map
-            if (Keyboard.IsKeyUp(Key.A) && Keyboard.IsKeyUp(Key.D))
-            {
-                controller.LeftStickX = 0;
-            }
+            bool tLeft  = false;
+            bool tRight = false;
 
-            foreach (KeyValuePair<Key, X360Buttons> entry in buttonsmap)
-            {
-                if (Keyboard.IsKeyDown(entry.Key))
-                    controller.Buttons = controller.Buttons | entry.Value;
-                else
-                    controller.Buttons = controller.Buttons & ~entry.Value;
+            try {
+                btnStatus.Clear();
+                foreach (KeyValuePair<Key, short> entry in mapLeftStickY) {
+                    bool v = Keyboard.IsKeyDown(entry.Key);
+                    if (v) 
+                        controller.LeftStickY = entry.Value;
+                    btnStatus.Add(v);
+                }
+                if (!btnStatus.Contains(true)) {
+                    controller.LeftStickY = 0;
+                }
+
+                btnStatus.Clear();
+                foreach (KeyValuePair<Key, short> entry in mapLeftStickX) {
+                    bool v = Keyboard.IsKeyDown(entry.Key);
+                    if (v)
+                        controller.LeftStickX = entry.Value;
+                    btnStatus.Add(v);
+                }
+                if (!btnStatus.Contains(true)) {
+                    controller.LeftStickX = 0;
+                }
+
+                foreach (KeyValuePair<Key, X360Buttons> entry in buttons) {
+                    if (entry.Key == Key.None) continue;
+
+                    if (Keyboard.IsKeyDown(entry.Key))
+                         controller.Buttons = controller.Buttons | entry.Value;
+                    else controller.Buttons = controller.Buttons & ~entry.Value;
+                }
+                
+                /*foreach (KeyValuePair<Key, TriggerType> entry in triggers) {
+                    var dwn  = Keyboard.IsKeyDown(entry.Key);
+                    var left = (entry.Value == TriggerType.LeftTrigger);
+
+                    if (dwn && left)
+                        tLeft = true;
+                    else if (dwn && !left)
+                        tRight = true;
+
+                    if (dwn) {
+                        if (left)
+                             controller.LeftTrigger = 255;
+                        else controller.RightTrigger = 255;
+                    }
+                }*/
+
+                if (!tLeft)       controller.LeftTrigger = 0;
+                else if (!tRight) controller.RightTrigger = 0;
+            } catch (Exception ex) {
+                // This occures when changing presets
             }
 
             return;
         }
 
-        public static void KeyboardInput(X360Controller controller)
-        {
+        public static void KeyboardInput(X360Controller controller) {
             KeyInput(controller);
         }
     }

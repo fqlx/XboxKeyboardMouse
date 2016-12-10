@@ -61,12 +61,42 @@ namespace XboxKeyboardMouse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap _360_LT {
+            get {
+                object obj = ResourceManager.GetObject("360_LT", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap _360_RT {
+            get {
+                object obj = ResourceManager.GetObject("360_RT", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         public static byte[] nocursor {
             get {
                 object obj = ResourceManager.GetObject("nocursor", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap XboxOne_Elite_Closer {
+            get {
+                object obj = ResourceManager.GetObject("XboxOne_Elite_Closer", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

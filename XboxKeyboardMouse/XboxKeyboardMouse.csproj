@@ -51,7 +51,7 @@
     <Reference Include="PresentationCore" />
     <Reference Include="SlimDX, Version=4.0.13.43, Culture=neutral, PublicKeyToken=b1b0c32fd1ffe4f9, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\SlimDX SDK (January 2012)\Bin\net40\x86\SlimDX.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\SlimDX\SDK (January 2012)\Bin\net40\x64\SlimDX.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -67,12 +67,51 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Config\Data.cs" />
+    <Compile Include="Config\IniFile.cs" />
     <Compile Include="CursorView.cs" />
-    <Compile Include="MainForm.cs">
+    <Compile Include="Forms\ControllerPreview.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="Forms\ControllerPreview.Designer.cs">
+      <DependentUpon>ControllerPreview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Options.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Options.Designer.cs">
+      <DependentUpon>Options.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SelectKey.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SelectKey.Designer.cs">
+      <DependentUpon>SelectKey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SelectKey_Modifier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SelectKey_Modifier.Designer.cs">
+      <DependentUpon>SelectKey_Modifier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SelectKey_Storage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SelectKey_Storage.Designer.cs">
+      <DependentUpon>SelectKey_Storage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SelectKey_Storage.cs" />
+    <Compile Include="Forms\SelectMouseButton.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SelectMouseButton.Designer.cs">
+      <DependentUpon>SelectMouseButton.cs</DependentUpon>
     </Compile>
     <Compile Include="GamepadState.cs" />
     <Compile Include="Activate.cs" />
@@ -88,14 +127,31 @@
     <Compile Include="TranslateMouse.cs" />
     <Compile Include="X360Controller.cs" />
     <Compile Include="XboxStream.cs" />
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="Forms\ControllerPreview.resx">
+      <DependentUpon>ControllerPreview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Options.resx">
+      <DependentUpon>Options.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SelectKey.resx">
+      <DependentUpon>SelectKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SelectKey_Modifier.resx">
+      <DependentUpon>SelectKey_Modifier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SelectKey_Storage.resx">
+      <DependentUpon>SelectKey_Storage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SelectMouseButton.resx">
+      <DependentUpon>SelectMouseButton.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -123,6 +179,24 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\nocursor.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\XboxOne_Controller.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\XboxOne_Closer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\xbox_elite_controller_front_circle_pad.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\XboxOne_Elite_Closer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\360_LT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\360_RT.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,6 +1,9 @@
+#XboxKeyboardMouse
 Keyboard and mouse for Xbox One streaming to Windows 10.
 
 It sends keyboard and mouse inputs to an emulated Xbox controller using SCP driver.
+
+![Screenshot](http://callumcarmicheal.com/projects/KeyboardMouseXbox.png "Image of the GUI")
 
 #Prereq
 1.  You need SCPToolkit driver installed to use
@@ -14,22 +17,24 @@ It sends keyboard and mouse inputs to an emulated Xbox controller using SCP driv
 3. 'View Raw'
 
 #Current Layout
+You may customise your own controller layout through the gui but the default layout is 
+
 | Keyboard/Mouse| Xbox Controller   |
 | ------------- |:-----------------:|
 | Space         | A                 |
-| F             | B                 |
-| E             | X                 |
-| Q             | Y                 |
+| Left Ctrl     | B                 |
+| R             | X                 |
+| Number 1      | Y                 |
 |               |                   |
-| 1             | Right Bumper      |
-| 2             | Left Bumper       |
+| Q             | Right Bumper      |
+| E             | Left Bumper       |
 |               |                   |
 | Left Shift    | Left Stick Click  |
-| Left Control  | Right Stick Click |
+| C             | Right Stick Click |
 |               |                   |
-| ~             | Start/Menu        |
-| B           | Select/Back/Nav   |
-| Enter/Return  | Xbox Logo         |
+| B             | Start/Menu        |
+| V             | Select/Back/Nav   |
+| G             | Xbox Logo         |
 |               |                   |
 | Arrow Keys    | DPAD              |
 |               |                   |
@@ -50,8 +55,13 @@ It sends keyboard and mouse inputs to an emulated Xbox controller using SCP driv
 
 #Could be better
 1.  Problems translating mouse movement into the right stick directional look.  Very challenging to make it a smooth experience.  
+    - Was altered from the original to be smoother but still a 50/50 experience.
+2.  Live preview
 
 #Todo
 1.  Check if SlimDX and SCP driver are installed and if not throw an understandable error.
-2.  Add custom configs
-3.  Work on smoothing mouse translation/normalization
+2.  Work on smoothing mouse translation/normalization
+3.  Mouse input buttons dont work as of yet.
+4.  Scroll Wheel movement has not been added (Main usage maybe RTS).
+5.  There is no help text options yet.
+6.  You cant use the keyboard for triggers... Yet

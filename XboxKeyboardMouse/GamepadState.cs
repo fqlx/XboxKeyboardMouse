@@ -2,14 +2,11 @@
 using SlimDX;
 using SlimDX.XInput;
 
-namespace Gamepad
-{
-    public class GamepadState
-    {
+namespace Gamepad {
+    public class GamepadState {
         uint lastPacket;
 
-        public GamepadState(UserIndex userIndex)
-        {
+        public GamepadState(UserIndex userIndex) {
             UserIndex = userIndex;
             Controller = new Controller(userIndex);
         }
@@ -41,22 +38,20 @@ namespace Gamepad
         public float RightTrigger { get; private set; }
         public float LeftTrigger { get; private set; }
 
-        public bool Connected
-        {
+        public bool Guide { get; private set; }
+
+        public bool Connected {
             get { return Controller.IsConnected; }
         }
 
-        public void Vibrate(float leftMotor, float rightMotor)
-        {
-            Controller.SetVibration(new Vibration
-            {
+        public void Vibrate(float leftMotor, float rightMotor) {
+            Controller.SetVibration(new Vibration {
                 LeftMotorSpeed = (ushort)(MathHelper.Saturate(leftMotor) * ushort.MaxValue),
                 RightMotorSpeed = (ushort)(MathHelper.Saturate(rightMotor) * ushort.MaxValue)
             });
         }
 
-        public void Update()
-        {
+        public void Update() {
             // If not connected, nothing to update
             if (!Connected) return;
 
@@ -104,10 +99,11 @@ namespace Gamepad
                 Normalize(gamepadState.RightThumbX, gamepadState.RightThumbY, SlimDX.XInput.Gamepad.GamepadRightThumbDeadZone),
                 (gamepadState.Buttons & GamepadButtonFlags.RightThumb) != 0);
 
+            int GuideFlag = (1 << 10);
+            Guide = (((int)gamepadState.Buttons) & GuideFlag) != 0;
         }
 
-        static Vector2 Normalize(short rawX, short rawY, short threshold)
-        {
+        static Vector2 Normalize(short rawX, short rawY, short threshold) {
             var value = new Vector2(rawX, rawY);
             var magnitude = value.Length();
             var direction = value / (magnitude == 0 ? 1 : magnitude);
@@ -119,33 +115,27 @@ namespace Gamepad
             return direction * normalizedMagnitude;
         }
 
-        public struct DPadState
-        {
+        public struct DPadState {
             public readonly bool Up, Down, Left, Right;
 
-            public DPadState(bool up, bool down, bool left, bool right)
-            {
+            public DPadState(bool up, bool down, bool left, bool right) {
                 Up = up; Down = down; Left = left; Right = right;
             }
         }
 
-        public struct ThumbstickState
-        {
+        public struct ThumbstickState {
             public readonly Vector2 Position;
             public readonly bool Clicked;
 
-            public ThumbstickState(Vector2 position, bool clicked)
-            {
+            public ThumbstickState(Vector2 position, bool clicked) {
                 Clicked = clicked;
                 Position = position;
             }
         }
     }
 
-    public static class MathHelper
-    {
-        public static float Saturate(float value)
-        {
+    public static class MathHelper {
+        public static float Saturate(float value) {
             return value < 0 ? 0 : value > 1 ? 1 : value;
         }
     }

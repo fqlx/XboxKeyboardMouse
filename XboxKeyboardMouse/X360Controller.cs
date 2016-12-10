@@ -1,17 +1,14 @@
 ﻿using System;
 
-namespace ScpDriverInterface
-{
+namespace ScpDriverInterface {
     /// <summary>
     /// A virtual XBox 360 Controller. After setting the desired values, use the GetReport() method to generate a controller report that can be used with ScpBus's Report() method.
     /// </summary>
-    public class X360Controller
-    {
+    public class X360Controller {
         /// <summary>
         /// Generates a new X360Controller object with the default initial state (no buttons pressed, all analog inputs 0).
         /// </summary>
-        public X360Controller()
-        {
+        public X360Controller() {
             Buttons = X360Buttons.None;
             LeftTrigger = 0;
             RightTrigger = 0;
@@ -31,8 +28,7 @@ namespace ScpDriverInterface
         /// <param name="leftStickY">Left stick Y-axis. -32,768 to 32,767.</param>
         /// <param name="rightStickX">Right stick X-axis. -32,768 to 32,767.</param>
         /// <param name="rightStickY">Right stick Y-axis. -32,768 to 32,767.</param>
-        public X360Controller(X360Buttons buttons, byte leftTrigger, byte rightTrigger, short leftStickX, short leftStickY, short rightStickX, short rightStickY)
-        {
+        public X360Controller(X360Buttons buttons, byte leftTrigger, byte rightTrigger, short leftStickX, short leftStickY, short rightStickX, short rightStickY) {
             Buttons = buttons;
             LeftTrigger = leftTrigger;
             RightTrigger = rightTrigger;
@@ -46,8 +42,7 @@ namespace ScpDriverInterface
         /// Generates a new X360Controller object with the same values as the specified X360Controller object.
         /// </summary>
         /// <param name="controller">An X360Controller object to copy values from.</param>
-        public X360Controller(X360Controller controller)
-        {
+        public X360Controller(X360Controller controller) {
             Buttons = controller.Buttons;
             LeftTrigger = controller.LeftTrigger;
             RightTrigger = controller.RightTrigger;
@@ -96,8 +91,7 @@ namespace ScpDriverInterface
         /// Generates a XBox 360 controller report as specified here: http://free60.org/wiki/GamePad#Input_report. This can be used with ScpBus's Report() method.
         /// </summary>
         /// <returns>A 20-byte XBox 360 controller report.</returns>
-        public byte[] GetReport()
-        {
+        public byte[] GetReport() {
             byte[] bytes = new byte[20];
 
             bytes[0] = 0x00;                                 // Message type (input report)
@@ -129,8 +123,7 @@ namespace ScpDriverInterface
     /// The buttons to be used with an X360Controller object.
     /// </summary>
     [Flags]
-    public enum X360Buttons
-    {
+    public enum X360Buttons {
         None = 0,
 
         Up = 1 << 0,
