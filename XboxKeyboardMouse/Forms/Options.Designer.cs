@@ -32,6 +32,8 @@
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.editor_Preset = new System.Windows.Forms.GroupBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.optDetachKey = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
@@ -109,8 +111,6 @@
             this.btnCreatePreset = new System.Windows.Forms.Button();
             this.tbCreateName = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -257,6 +257,26 @@
             this.editor_Preset.TabIndex = 9;
             this.editor_Preset.TabStop = false;
             this.editor_Preset.Text = "Select a preset to get started";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Default"});
+            this.comboBox1.Location = new System.Drawing.Point(79, 217);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(124, 21);
+            this.comboBox1.TabIndex = 26;
+            this.comboBox1.Text = "Default";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(14, 220);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(43, 13);
+            this.label2.TabIndex = 25;
+            this.label2.Text = "Engine:";
             // 
             // optDetachKey
             // 
@@ -645,6 +665,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(58, 77);
             this.panel2.TabIndex = 21;
+            this.panel2.Visible = false;
             // 
             // xbo_k_TRight
             // 
@@ -929,6 +950,7 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(58, 77);
             this.panel3.TabIndex = 23;
+            this.panel3.Visible = false;
             // 
             // xbo_m_TRight
             // 
@@ -953,6 +975,7 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(58, 77);
             this.panel4.TabIndex = 22;
+            this.panel4.Visible = false;
             // 
             // xbo_m_TLeft
             // 
@@ -1225,26 +1248,6 @@
             this.label21.Size = new System.Drawing.Size(41, 13);
             this.label21.TabIndex = 0;
             this.label21.Text = "Name: ";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(14, 220);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 13);
-            this.label2.TabIndex = 25;
-            this.label2.Text = "Engine:";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Default"});
-            this.comboBox1.Location = new System.Drawing.Point(79, 217);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(124, 21);
-            this.comboBox1.TabIndex = 26;
-            this.comboBox1.Text = "Default";
             // 
             // Options
             // 
