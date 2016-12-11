@@ -41,8 +41,7 @@ namespace XboxKeyboardMouse.Forms {
             //     The second extended mouse button.
             XButton2 = 4
         }
-
-
+        
         public Options() {
             InitializeComponent();
         }
@@ -74,7 +73,6 @@ namespace XboxKeyboardMouse.Forms {
             xbo_k_TRight.MouseLeave += XBO_Input_OnLeaveTrig;
             xbo_k_TRight.MouseDoubleClick += XBO_Input_SelectKey;
 
-
             foreach (Control ctrl in editor_InputMouse.Controls) {
                 if (ctrl is Label) {
                     ctrl.MouseHover += XBO_Input_OnEnter;
@@ -88,8 +86,12 @@ namespace XboxKeyboardMouse.Forms {
 
         private void XBO_Input_SelectKey(object sender, MouseEventArgs e) {
             var lbl = (Label)sender;
-            SelectKey k = new SelectKey(cfg, (string)lbl.Tag);
-            k.ShowDialog();
+
+            var bEscape = Hooks.LowLevelKeyboardHook.LockEscape;
+            Hooks.LowLevelKeyboardHook.LockEscape = false; {
+                SelectKey k = new SelectKey(cfg, (string)lbl.Tag);
+                k.ShowDialog();
+            } Hooks.LowLevelKeyboardHook.LockEscape = bEscape;
 
             LoadXboxInputButtons();
         }
@@ -103,7 +105,6 @@ namespace XboxKeyboardMouse.Forms {
             var lbl = (Label)sender;
             lbl.ForeColor = Color.Black;
         }
-
 
         private void XBO_Input_OnEnter(object sender, EventArgs e) {
             var lbl = (Label)sender;
@@ -428,9 +429,12 @@ namespace XboxKeyboardMouse.Forms {
                 inputKey = cfg.Controls_KB_Detach_KEY,
                 inputMod = cfg.Controls_KB_Detach_MOD
             };
-            
-            var frm = new SelectKey_Modifier(storage, true);
-            frm.ShowDialog();
+
+            var bEscape = Hooks.LowLevelKeyboardHook.LockEscape;
+            Hooks.LowLevelKeyboardHook.LockEscape = false; {
+                var frm = new SelectKey_Modifier(storage, true);
+                frm.ShowDialog();
+            } Hooks.LowLevelKeyboardHook.LockEscape = bEscape;
 
             if (storage.Cancel) goto CheckReturn;
 

@@ -32,12 +32,14 @@
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.editor_Preset = new System.Windows.Forms.GroupBox();
+            this.linkLabel8 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel7 = new System.Windows.Forms.LinkLabel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.optDetachKey = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.label19 = new System.Windows.Forms.Label();
             this.linkLabel6 = new System.Windows.Forms.LinkLabel();
             this.linkLabel5 = new System.Windows.Forms.LinkLabel();
             this.linkLabel4 = new System.Windows.Forms.LinkLabel();
@@ -111,6 +113,7 @@
             this.btnCreatePreset = new System.Windows.Forms.Button();
             this.tbCreateName = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -224,12 +227,14 @@
             this.editor_Preset.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.editor_Preset.Controls.Add(this.linkLabel8);
+            this.editor_Preset.Controls.Add(this.linkLabel7);
+            this.editor_Preset.Controls.Add(this.label4);
+            this.editor_Preset.Controls.Add(this.label3);
             this.editor_Preset.Controls.Add(this.comboBox1);
             this.editor_Preset.Controls.Add(this.label2);
             this.editor_Preset.Controls.Add(this.optDetachKey);
             this.editor_Preset.Controls.Add(this.label1);
-            this.editor_Preset.Controls.Add(this.richTextBox1);
-            this.editor_Preset.Controls.Add(this.label19);
             this.editor_Preset.Controls.Add(this.linkLabel6);
             this.editor_Preset.Controls.Add(this.linkLabel5);
             this.editor_Preset.Controls.Add(this.linkLabel4);
@@ -258,12 +263,52 @@
             this.editor_Preset.TabStop = false;
             this.editor_Preset.Text = "Select a preset to get started";
             // 
+            // linkLabel8
+            // 
+            this.linkLabel8.AutoSize = true;
+            this.linkLabel8.Location = new System.Drawing.Point(210, 260);
+            this.linkLabel8.Name = "linkLabel8";
+            this.linkLabel8.Size = new System.Drawing.Size(13, 13);
+            this.linkLabel8.TabIndex = 31;
+            this.linkLabel8.TabStop = true;
+            this.linkLabel8.Text = "?";
+            // 
+            // linkLabel7
+            // 
+            this.linkLabel7.AutoSize = true;
+            this.linkLabel7.Location = new System.Drawing.Point(210, 206);
+            this.linkLabel7.Name = "linkLabel7";
+            this.linkLabel7.Size = new System.Drawing.Size(13, 13);
+            this.linkLabel7.TabIndex = 30;
+            this.linkLabel7.TabStop = true;
+            this.linkLabel7.Text = "?";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(6, 329);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(120, 21);
+            this.label4.TabIndex = 28;
+            this.label4.Text = "Preset Settings";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(6, 282);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(145, 21);
+            this.label3.TabIndex = 27;
+            this.label3.Text = "Keyboard Settings";
+            // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "Default"});
-            this.comboBox1.Location = new System.Drawing.Point(79, 217);
+            this.comboBox1.Location = new System.Drawing.Point(79, 203);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(124, 21);
             this.comboBox1.TabIndex = 26;
@@ -272,7 +317,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(14, 220);
+            this.label2.Location = new System.Drawing.Point(14, 206);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 13);
             this.label2.TabIndex = 25;
@@ -280,9 +325,9 @@
             // 
             // optDetachKey
             // 
-            this.optDetachKey.Location = new System.Drawing.Point(57, 272);
+            this.optDetachKey.Location = new System.Drawing.Point(56, 251);
             this.optDetachKey.Name = "optDetachKey";
-            this.optDetachKey.Size = new System.Drawing.Size(173, 22);
+            this.optDetachKey.Size = new System.Drawing.Size(147, 22);
             this.optDetachKey.TabIndex = 24;
             this.optDetachKey.Text = "Detach Key ...";
             this.optDetachKey.UseVisualStyleBackColor = true;
@@ -292,42 +337,17 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(6, 244);
+            this.label1.Location = new System.Drawing.Point(6, 227);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(158, 21);
             this.label1.TabIndex = 23;
             this.label1.Text = "Application Settings";
             // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox1.Location = new System.Drawing.Point(19, 322);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(211, 54);
-            this.richTextBox1.TabIndex = 21;
-            this.richTextBox1.Text = "Click a question mark to get more information on each setting";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(6, 298);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(45, 21);
-            this.label19.TabIndex = 20;
-            this.label19.Text = "Help";
-            // 
             // linkLabel6
             // 
             this.linkLabel6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.linkLabel6.AutoSize = true;
-            this.linkLabel6.Location = new System.Drawing.Point(210, 62);
+            this.linkLabel6.Location = new System.Drawing.Point(210, 60);
             this.linkLabel6.Name = "linkLabel6";
             this.linkLabel6.Size = new System.Drawing.Size(13, 13);
             this.linkLabel6.TabIndex = 19;
@@ -338,7 +358,7 @@
             // 
             this.linkLabel5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.linkLabel5.AutoSize = true;
-            this.linkLabel5.Location = new System.Drawing.Point(210, 121);
+            this.linkLabel5.Location = new System.Drawing.Point(210, 107);
             this.linkLabel5.Name = "linkLabel5";
             this.linkLabel5.Size = new System.Drawing.Size(13, 13);
             this.linkLabel5.TabIndex = 18;
@@ -349,7 +369,7 @@
             // 
             this.linkLabel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.linkLabel4.AutoSize = true;
-            this.linkLabel4.Location = new System.Drawing.Point(210, 147);
+            this.linkLabel4.Location = new System.Drawing.Point(210, 133);
             this.linkLabel4.Name = "linkLabel4";
             this.linkLabel4.Size = new System.Drawing.Size(13, 13);
             this.linkLabel4.TabIndex = 17;
@@ -359,7 +379,7 @@
             // linkLabel3
             // 
             this.linkLabel3.AutoSize = true;
-            this.linkLabel3.Location = new System.Drawing.Point(210, 198);
+            this.linkLabel3.Location = new System.Drawing.Point(210, 184);
             this.linkLabel3.Name = "linkLabel3";
             this.linkLabel3.Size = new System.Drawing.Size(13, 13);
             this.linkLabel3.TabIndex = 16;
@@ -369,7 +389,7 @@
             // linkLabel2
             // 
             this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Location = new System.Drawing.Point(84, 198);
+            this.linkLabel2.Location = new System.Drawing.Point(84, 184);
             this.linkLabel2.Name = "linkLabel2";
             this.linkLabel2.Size = new System.Drawing.Size(13, 13);
             this.linkLabel2.TabIndex = 15;
@@ -380,7 +400,7 @@
             // 
             this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(210, 177);
+            this.linkLabel1.Location = new System.Drawing.Point(210, 160);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(13, 13);
             this.linkLabel1.TabIndex = 14;
@@ -391,18 +411,18 @@
             // 
             this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(57, 300);
+            this.button4.Location = new System.Drawing.Point(56, 353);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(173, 21);
+            this.button4.Size = new System.Drawing.Size(146, 21);
             this.button4.TabIndex = 13;
-            this.button4.Text = "Save - Preset Settings and Input Scheme";
+            this.button4.Text = "Save - Settings and Input Scheme";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.SaveToFile);
             // 
             // optInvertY
             // 
             this.optInvertY.AutoSize = true;
-            this.optInvertY.Location = new System.Drawing.Point(141, 197);
+            this.optInvertY.Location = new System.Drawing.Point(141, 183);
             this.optInvertY.Name = "optInvertY";
             this.optInvertY.Size = new System.Drawing.Size(63, 17);
             this.optInvertY.TabIndex = 12;
@@ -412,7 +432,7 @@
             // optInvertX
             // 
             this.optInvertX.AutoSize = true;
-            this.optInvertX.Location = new System.Drawing.Point(15, 197);
+            this.optInvertX.Location = new System.Drawing.Point(15, 183);
             this.optInvertX.Name = "optInvertX";
             this.optInvertX.Size = new System.Drawing.Size(63, 17);
             this.optInvertX.TabIndex = 11;
@@ -422,7 +442,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(11, 174);
+            this.label18.Location = new System.Drawing.Point(11, 160);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(62, 13);
             this.label18.TabIndex = 10;
@@ -433,14 +453,14 @@
             this.optYSense.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.optYSense.DecimalPlaces = 15;
-            this.optYSense.Location = new System.Drawing.Point(79, 171);
+            this.optYSense.Location = new System.Drawing.Point(76, 157);
             this.optYSense.Maximum = new decimal(new int[] {
             1000,
             0,
             0,
             0});
             this.optYSense.Name = "optYSense";
-            this.optYSense.Size = new System.Drawing.Size(124, 20);
+            this.optYSense.Size = new System.Drawing.Size(127, 20);
             this.optYSense.TabIndex = 9;
             this.optYSense.Value = new decimal(new int[] {
             -820297523,
@@ -453,14 +473,14 @@
             this.optXSense.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.optXSense.DecimalPlaces = 15;
-            this.optXSense.Location = new System.Drawing.Point(79, 145);
+            this.optXSense.Location = new System.Drawing.Point(76, 131);
             this.optXSense.Maximum = new decimal(new int[] {
             1000,
             0,
             0,
             0});
             this.optXSense.Name = "optXSense";
-            this.optXSense.Size = new System.Drawing.Size(124, 20);
+            this.optXSense.Size = new System.Drawing.Size(127, 20);
             this.optXSense.TabIndex = 7;
             this.optXSense.Value = new decimal(new int[] {
             -820297523,
@@ -471,7 +491,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(11, 149);
+            this.label17.Location = new System.Drawing.Point(11, 135);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(62, 13);
             this.label17.TabIndex = 6;
@@ -481,7 +501,7 @@
             // 
             this.optTickRate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.optTickRate.Location = new System.Drawing.Point(79, 119);
+            this.optTickRate.Location = new System.Drawing.Point(76, 105);
             this.optTickRate.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -493,7 +513,7 @@
             0,
             0});
             this.optTickRate.Name = "optTickRate";
-            this.optTickRate.Size = new System.Drawing.Size(124, 20);
+            this.optTickRate.Size = new System.Drawing.Size(127, 20);
             this.optTickRate.TabIndex = 5;
             this.optTickRate.Value = new decimal(new int[] {
             40,
@@ -504,7 +524,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(16, 121);
+            this.label16.Location = new System.Drawing.Point(16, 107);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(57, 13);
             this.label16.TabIndex = 4;
@@ -514,7 +534,7 @@
             // 
             this.optName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.optName.Location = new System.Drawing.Point(76, 59);
+            this.optName.Location = new System.Drawing.Point(76, 45);
             this.optName.Name = "optName";
             this.optName.Size = new System.Drawing.Size(127, 20);
             this.optName.TabIndex = 3;
@@ -522,7 +542,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(35, 62);
+            this.label15.Location = new System.Drawing.Point(35, 48);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(38, 13);
             this.label15.TabIndex = 2;
@@ -532,7 +552,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(6, 21);
+            this.label6.Location = new System.Drawing.Point(6, 19);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(120, 21);
             this.label6.TabIndex = 1;
@@ -542,7 +562,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(6, 89);
+            this.label5.Location = new System.Drawing.Point(6, 75);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(124, 21);
             this.label5.TabIndex = 0;
@@ -552,7 +572,7 @@
             // 
             this.ll_ResetOriginalName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ll_ResetOriginalName.AutoSize = true;
-            this.ll_ResetOriginalName.Location = new System.Drawing.Point(11, 62);
+            this.ll_ResetOriginalName.Location = new System.Drawing.Point(11, 48);
             this.ll_ResetOriginalName.Name = "ll_ResetOriginalName";
             this.ll_ResetOriginalName.Size = new System.Drawing.Size(15, 13);
             this.ll_ResetOriginalName.TabIndex = 22;
@@ -630,7 +650,7 @@
             // editor_InputKeyboard
             // 
             this.editor_InputKeyboard.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.editor_InputKeyboard.BackgroundImage = global::XboxKeyboardMouse.Properties.Resources.XboxOne_Elite_Closer;
+            this.editor_InputKeyboard.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("editor_InputKeyboard.BackgroundImage")));
             this.editor_InputKeyboard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.editor_InputKeyboard.Controls.Add(this.panel2);
             this.editor_InputKeyboard.Controls.Add(this.panel1);
@@ -657,7 +677,6 @@
             // 
             // panel2
             // 
-            this.panel2.BackgroundImage = global::XboxKeyboardMouse.Properties.Resources._360_RT;
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.panel2.Controls.Add(this.xbo_k_TRight);
             this.panel2.Enabled = false;
@@ -684,7 +703,6 @@
             // 
             // panel1
             // 
-            this.panel1.BackgroundImage = global::XboxKeyboardMouse.Properties.Resources._360_LT;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.panel1.Controls.Add(this.xbo_k_TLeft);
             this.panel1.Location = new System.Drawing.Point(1, 0);
@@ -843,7 +861,7 @@
             this.xbo_k_Guide.BackColor = System.Drawing.Color.Transparent;
             this.xbo_k_Guide.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xbo_k_Guide.ForeColor = System.Drawing.Color.White;
-            this.xbo_k_Guide.Location = new System.Drawing.Point(194, 30);
+            this.xbo_k_Guide.Location = new System.Drawing.Point(195, 30);
             this.xbo_k_Guide.Name = "xbo_k_Guide";
             this.xbo_k_Guide.Size = new System.Drawing.Size(128, 47);
             this.xbo_k_Guide.TabIndex = 9;
@@ -916,8 +934,9 @@
             // 
             // editor_InputMouse
             // 
-            this.editor_InputMouse.BackgroundImage = global::XboxKeyboardMouse.Properties.Resources.XboxOne_Elite_Closer;
+            this.editor_InputMouse.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("editor_InputMouse.BackgroundImage")));
             this.editor_InputMouse.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.editor_InputMouse.Controls.Add(this.label7);
             this.editor_InputMouse.Controls.Add(this.panel3);
             this.editor_InputMouse.Controls.Add(this.panel4);
             this.editor_InputMouse.Controls.Add(this.xbo_m_SR);
@@ -943,7 +962,6 @@
             // 
             // panel3
             // 
-            this.panel3.BackgroundImage = global::XboxKeyboardMouse.Properties.Resources._360_RT;
             this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.panel3.Controls.Add(this.xbo_m_TRight);
             this.panel3.Location = new System.Drawing.Point(456, 0);
@@ -968,7 +986,6 @@
             // 
             // panel4
             // 
-            this.panel4.BackgroundImage = global::XboxKeyboardMouse.Properties.Resources._360_LT;
             this.panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.panel4.Controls.Add(this.xbo_m_TLeft);
             this.panel4.Location = new System.Drawing.Point(1, 0);
@@ -1125,9 +1142,9 @@
             // xbo_m_Guide
             // 
             this.xbo_m_Guide.BackColor = System.Drawing.Color.Transparent;
-            this.xbo_m_Guide.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xbo_m_Guide.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
             this.xbo_m_Guide.ForeColor = System.Drawing.Color.White;
-            this.xbo_m_Guide.Location = new System.Drawing.Point(198, 30);
+            this.xbo_m_Guide.Location = new System.Drawing.Point(193, 30);
             this.xbo_m_Guide.Name = "xbo_m_Guide";
             this.xbo_m_Guide.Size = new System.Drawing.Size(128, 47);
             this.xbo_m_Guide.TabIndex = 9;
@@ -1249,6 +1266,17 @@
             this.label21.TabIndex = 0;
             this.label21.Text = "Name: ";
             // 
+            // label7
+            // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Trebuchet MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(159, 339);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(219, 27);
+            this.label7.TabIndex = 24;
+            this.label7.Text = "TODO: Mouse Controls";
+            // 
             // Options
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1277,6 +1305,7 @@
             this.panel1.ResumeLayout(false);
             this.tabPage6.ResumeLayout(false);
             this.editor_InputMouse.ResumeLayout(false);
+            this.editor_InputMouse.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
@@ -1315,8 +1344,6 @@
         private System.Windows.Forms.TabControl tabControl2;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.GroupBox editor_Preset;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.Label label19;
         private System.Windows.Forms.LinkLabel linkLabel6;
         private System.Windows.Forms.LinkLabel linkLabel5;
         private System.Windows.Forms.LinkLabel linkLabel4;
@@ -1375,5 +1402,10 @@
         private System.Windows.Forms.Button optDetachKey;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.LinkLabel linkLabel8;
+        private System.Windows.Forms.LinkLabel linkLabel7;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label7;
     }
 }

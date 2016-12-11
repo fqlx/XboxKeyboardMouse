@@ -95,6 +95,7 @@ namespace XboxKeyboardMouse {
             if ((appBounds.Height - appBounds.Y) == screenBounds.Height && (appBounds.Width - appBounds.X) == screenBounds.Width) {
                 runningFullScreen = true;
             }
+
             return runningFullScreen;
         }
     }

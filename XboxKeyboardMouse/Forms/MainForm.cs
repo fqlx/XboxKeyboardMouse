@@ -69,5 +69,9 @@ namespace XboxKeyboardMouse {
             // Save the current active config 
             Program.SetActiveConfig(Program.ActiveConfig.Name + ".ini");
         }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e) {
+            Hooks.LowLevelKeyboardHook.LockEscape = checkBox1.Checked;
+        }
     }
 }
