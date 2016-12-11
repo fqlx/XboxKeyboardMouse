@@ -353,7 +353,7 @@
             // 
             this.linkLabel6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.linkLabel6.AutoSize = true;
-            this.linkLabel6.Location = new System.Drawing.Point(210, 60);
+            this.linkLabel6.Location = new System.Drawing.Point(210, 48);
             this.linkLabel6.Name = "linkLabel6";
             this.linkLabel6.Size = new System.Drawing.Size(13, 13);
             this.linkLabel6.TabIndex = 19;
