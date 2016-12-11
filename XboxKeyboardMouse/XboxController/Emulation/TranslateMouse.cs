@@ -33,7 +33,6 @@ namespace XboxKeyboardMouse {
 
                 Thread.Sleep(Program.ActiveConfig.Mouse_TickRate);
             }
-
         }
 
 

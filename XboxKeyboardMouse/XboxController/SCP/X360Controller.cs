@@ -140,7 +140,7 @@ namespace ScpDriverInterface {
         LeftBumper = 1 << 8,
         RightBumper = 1 << 9,
 
-        Logo = 1 << 10,
+        Guide = 1 << 10,
 
         A = 1 << 12,
         B = 1 << 13,

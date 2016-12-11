@@ -47,6 +47,46 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationCore" />
     <Reference Include="SlimDX, Version=4.0.13.43, Culture=neutral, PublicKeyToken=b1b0c32fd1ffe4f9, processorArchitecture=AMD64">
@@ -69,7 +109,13 @@
   <ItemGroup>
     <Compile Include="Config\Data.cs" />
     <Compile Include="Config\IniFile.cs" />
-    <Compile Include="CursorView.cs" />
+    <Compile Include="Hooks\LowLevelKeyboardHook.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="XboxController\CursorView.cs" />
     <Compile Include="Forms\ControllerPreview.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,20 +159,15 @@
     <Compile Include="Forms\SelectMouseButton.Designer.cs">
       <DependentUpon>SelectMouseButton.cs</DependentUpon>
     </Compile>
-    <Compile Include="GamepadState.cs" />
-    <Compile Include="Activate.cs" />
+    <Compile Include="XboxController\SCP\GamepadState.cs" />
+    <Compile Include="XboxController\Emulation\Activate.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="ScpBus.cs" />
-    <Compile Include="TranslateKeyboard.cs" />
-    <Compile Include="TranslateMouse.cs" />
-    <Compile Include="X360Controller.cs" />
-    <Compile Include="XboxStream.cs" />
+    <Compile Include="XboxController\SCP\ScpBus.cs" />
+    <Compile Include="XboxController\Emulation\TranslateKeyboard.cs" />
+    <Compile Include="XboxController\Emulation\TranslateMouse.cs" />
+    <Compile Include="XboxController\SCP\X360Controller.cs" />
+    <Compile Include="XboxController\Emulation\XboxStream.cs" />
     <EmbeddedResource Include="Forms\ControllerPreview.resx">
       <DependentUpon>ControllerPreview.cs</DependentUpon>
     </EmbeddedResource>
@@ -150,6 +191,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
@@ -181,22 +223,25 @@
     <EmbeddedResource Include="Resources\nocursor.cur" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Images\XboxOne_Controller.png" />
+    <None Include="Resources\Images\XboxOne_Controller.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Images\XboxOne_Closer.png" />
+    <None Include="Resources\Images\XboxOne_Closer.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Images\xbox_elite_controller_front_circle_pad.jpg" />
+    <None Include="Resources\Images\xbox_elite_controller_front_circle_pad.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Images\XboxOne_Elite_Closer.png" />
+    <None Include="Resources\Images\XboxOne_Elite_Closer.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Images\360_LT.png" />
+    <None Include="Resources\Images\360_LT.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Images\360_RT.png" />
+    <None Include="Resources\Images\360_RT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Forms\Controls\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

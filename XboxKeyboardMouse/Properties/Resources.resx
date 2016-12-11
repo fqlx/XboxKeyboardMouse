@@ -118,16 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="XboxOne_Elite_Closer" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\XboxOne_Elite_Closer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="nocursor" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\nocursor.cur;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="360_LT" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\360_LT.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="XboxOne_Elite_Closer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\XboxOne_Elite_Closer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="360_RT" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\360_RT.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="_360_LT" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\360_LT.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_360_RT" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\360_RT.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

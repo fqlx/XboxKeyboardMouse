@@ -51,42 +51,42 @@ namespace XboxKeyboardMouse.Forms {
 
 
             if (xKM.Activate.controller.Buttons == X360Buttons.Start)
-                xbo_m_Start.BackColor = on;
+                 xbo_m_Start.BackColor = on;
             else xbo_m_Start.BackColor = off;
             if (xKM.Activate.controller.Buttons == X360Buttons.Back)
-                xbo_m_Back.BackColor = on;
+                 xbo_m_Back.BackColor = on;
             else xbo_m_Back.BackColor = off;
-            if (xKM.Activate.controller.Buttons == X360Buttons.Logo)
-                xbo_m_Guide.BackColor = on;
+            if (xKM.Activate.controller.Buttons == X360Buttons.Guide)
+                 xbo_m_Guide.BackColor = on;
             else xbo_m_Guide.BackColor = off;
 
             if (xKM.Activate.controller.Buttons == X360Buttons.RightStick)
-                xbo_m_RS.BackColor = on;
+                 xbo_m_RS.BackColor = on;
             else xbo_m_RS.BackColor = off;
             if (xKM.Activate.controller.Buttons == X360Buttons.LeftStick)
-                xbo_m_LS.BackColor = on;
+                 xbo_m_LS.BackColor = on;
             else xbo_m_LS.BackColor = off;
 
 
             if (xKM.Activate.controller.Buttons == X360Buttons.LeftBumper)
-                xbo_m_SL.BackColor = on;
+                 xbo_m_SL.BackColor = on;
             else xbo_m_SL.BackColor = off;
             if (xKM.Activate.controller.Buttons == X360Buttons.RightBumper)
-                xbo_m_SR.BackColor = on;
+                 xbo_m_SR.BackColor = on;
             else xbo_m_SR.BackColor = off;
 
 
             if (xKM.Activate.controller.Buttons == X360Buttons.Up)
-                xbo_m_DpadUp.BackColor = on;
+                 xbo_m_DpadUp.BackColor = on;
             else xbo_m_DpadUp.BackColor = off;
             if (xKM.Activate.controller.Buttons == X360Buttons.Down)
-                xbo_m_DpadDown.BackColor = on;
+                 xbo_m_DpadDown.BackColor = on;
             else xbo_m_DpadDown.BackColor = off;
             if(xKM.Activate.controller.Buttons == X360Buttons.Left)
                  xbo_m_DpadLeft.BackColor = on;
             else xbo_m_DpadLeft.BackColor = off;
             if (xKM.Activate.controller.Buttons == X360Buttons.Right)
-                xbo_m_DpadRight.BackColor = on;
+                 xbo_m_DpadRight.BackColor = on;
             else xbo_m_DpadRight.BackColor = off;
 
             if (xKM.Activate.controller.LeftTrigger >= 1)

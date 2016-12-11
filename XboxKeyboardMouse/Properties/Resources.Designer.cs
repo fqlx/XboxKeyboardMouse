@@ -65,7 +65,7 @@ namespace XboxKeyboardMouse.Properties {
         /// </summary>
         public static System.Drawing.Bitmap _360_LT {
             get {
-                object obj = ResourceManager.GetObject("360_LT", resourceCulture);
+                object obj = ResourceManager.GetObject("_360_LT", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -75,7 +75,7 @@ namespace XboxKeyboardMouse.Properties {
         /// </summary>
         public static System.Drawing.Bitmap _360_RT {
             get {
-                object obj = ResourceManager.GetObject("360_RT", resourceCulture);
+                object obj = ResourceManager.GetObject("_360_RT", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

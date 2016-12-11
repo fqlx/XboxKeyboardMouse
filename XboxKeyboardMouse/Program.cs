@@ -17,6 +17,7 @@ namespace XboxKeyboardMouse {
         public static Config.Data ActiveConfig;
         public static bool DoneLoadingCfg = false;
         public static string ActiveConfigFile = "";
+        public static IntPtr ptrKeyboardHook;
 
         public static bool SetActiveConfig(string File) {
             var cfg = "profiles/" + File;
@@ -66,7 +67,7 @@ namespace XboxKeyboardMouse {
                     TranslateKeyboard.buttons.Add((Key)ActiveConfig.Controls_KB_Xbox_DPAD_Right, ScpDriverInterface.X360Buttons.Right);
 
                 if (ActiveConfig.Controls_KB_Xbox_Guide != 0)
-                    TranslateKeyboard.buttons.Add((Key)ActiveConfig.Controls_KB_Xbox_Guide, ScpDriverInterface.X360Buttons.Logo);
+                    TranslateKeyboard.buttons.Add((Key)ActiveConfig.Controls_KB_Xbox_Guide, ScpDriverInterface.X360Buttons.Guide);
                 if (ActiveConfig.Controls_KB_Xbox_Start != 0)
                     TranslateKeyboard.buttons.Add((Key)ActiveConfig.Controls_KB_Xbox_Start, ScpDriverInterface.X360Buttons.Start);
                 if (ActiveConfig.Controls_KB_Xbox_Back != 0)
@@ -112,17 +113,16 @@ namespace XboxKeyboardMouse {
         }
 
         [STAThread]
-        static void Main() {
+        static void Main(string[] args) {
             ReadConfiguration();
 
             Thread tApplicationRun = new Thread(ApplicationRun);
             tApplicationRun.SetApartmentState(ApartmentState.STA);
             tApplicationRun.Start();
 
-            while (!DoneLoadingCfg) {
+            while (!DoneLoadingCfg)
                 Thread.Sleep(100);
-            }
-
+            
             Thread tPause = new Thread(Pause);
             tPause.SetApartmentState(ApartmentState.STA);
             tPause.IsBackground = true;
@@ -142,7 +142,19 @@ namespace XboxKeyboardMouse {
             ActiveConfig = Data.Load(ActiveConfigFile);
             ReloadControlScheme();
             DoneLoadingCfg = true;
-            
+
+            // Start our lowlevel keyboard hook
+            if (IntPtr.Size == 8) {
+                Hooks.LowLevelKeyboardHook._hookID =
+                    Hooks.LowLevelKeyboardHook.SetHook(Hooks.LowLevelKeyboardHook._proc);
+
+                if (Hooks.LowLevelKeyboardHook._hookID == IntPtr.Zero) {
+                    MessageBox.Show("Failed to find the Xbox Application to disable Escape.");
+                }
+            } else {
+                MessageBox.Show("In 32bit mode you cannot disable the Escape key!", "Notice about 32bit", MessageBoxButtons.OK, MessageBoxIcon.Question);
+            }
+
             Application.Run(mainform);
         }
 

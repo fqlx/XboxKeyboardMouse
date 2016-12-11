@@ -65,11 +65,18 @@ namespace XboxKeyboardMouse {
             scpbus.Report(CONTROLLER_NUMBER, report, output);
         }
 
+        public static void SendGuide(bool state) {
+            if (state)
+                 controller.Buttons = controller.Buttons |  X360Buttons.Guide;
+            else controller.Buttons = controller.Buttons & ~X360Buttons.Guide;
+            
+            SendtoController(controller);
+        }
+
         public static void OnProcessExit(object sender, EventArgs e) {
             scpbus.Unplug(CONTROLLER_NUMBER);
             Application.ExitThread();
         }
-
 
         public static void ResetController() {
             controller.RightStickX = 0;
