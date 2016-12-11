@@ -15,16 +15,16 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B2A0A59D-BF2A-4AD1-81D9-430FA9AD154D}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{B2A0A59D-BF2A-4AD1-81D9-430FA9AD154D}.Debug|Any CPU.Build.0 = Debug|x86
-		{B2A0A59D-BF2A-4AD1-81D9-430FA9AD154D}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{B2A0A59D-BF2A-4AD1-81D9-430FA9AD154D}.Debug|x64.Build.0 = Debug|Any CPU
+		{B2A0A59D-BF2A-4AD1-81D9-430FA9AD154D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2A0A59D-BF2A-4AD1-81D9-430FA9AD154D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2A0A59D-BF2A-4AD1-81D9-430FA9AD154D}.Debug|x64.ActiveCfg = Debug|x64
+		{B2A0A59D-BF2A-4AD1-81D9-430FA9AD154D}.Debug|x64.Build.0 = Debug|x64
 		{B2A0A59D-BF2A-4AD1-81D9-430FA9AD154D}.Debug|x86.ActiveCfg = Debug|x86
 		{B2A0A59D-BF2A-4AD1-81D9-430FA9AD154D}.Debug|x86.Build.0 = Debug|x86
 		{B2A0A59D-BF2A-4AD1-81D9-430FA9AD154D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2A0A59D-BF2A-4AD1-81D9-430FA9AD154D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B2A0A59D-BF2A-4AD1-81D9-430FA9AD154D}.Release|x64.ActiveCfg = Release|Any CPU
-		{B2A0A59D-BF2A-4AD1-81D9-430FA9AD154D}.Release|x64.Build.0 = Release|Any CPU
+		{B2A0A59D-BF2A-4AD1-81D9-430FA9AD154D}.Release|x64.ActiveCfg = Release|x64
+		{B2A0A59D-BF2A-4AD1-81D9-430FA9AD154D}.Release|x64.Build.0 = Release|x64
 		{B2A0A59D-BF2A-4AD1-81D9-430FA9AD154D}.Release|x86.ActiveCfg = Release|x86
 		{B2A0A59D-BF2A-4AD1-81D9-430FA9AD154D}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection

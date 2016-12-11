@@ -88,6 +88,7 @@
             this.xbo_k_LeftStick = new System.Windows.Forms.Label();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.editor_InputMouse = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.xbo_m_TRight = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -113,7 +114,6 @@
             this.btnCreatePreset = new System.Windows.Forms.Button();
             this.tbCreateName = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -265,6 +265,7 @@
             // 
             // linkLabel8
             // 
+            this.linkLabel8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.linkLabel8.AutoSize = true;
             this.linkLabel8.Location = new System.Drawing.Point(210, 260);
             this.linkLabel8.Name = "linkLabel8";
@@ -275,6 +276,7 @@
             // 
             // linkLabel7
             // 
+            this.linkLabel7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.linkLabel7.AutoSize = true;
             this.linkLabel7.Location = new System.Drawing.Point(210, 206);
             this.linkLabel7.Name = "linkLabel7";
@@ -287,7 +289,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(6, 329);
+            this.label4.Location = new System.Drawing.Point(6, 326);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(120, 21);
             this.label4.TabIndex = 28;
@@ -305,6 +307,8 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "Default"});
@@ -325,6 +329,8 @@
             // 
             // optDetachKey
             // 
+            this.optDetachKey.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.optDetachKey.Location = new System.Drawing.Point(56, 251);
             this.optDetachKey.Name = "optDetachKey";
             this.optDetachKey.Size = new System.Drawing.Size(147, 22);
@@ -378,6 +384,7 @@
             // 
             // linkLabel3
             // 
+            this.linkLabel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.linkLabel3.AutoSize = true;
             this.linkLabel3.Location = new System.Drawing.Point(210, 184);
             this.linkLabel3.Name = "linkLabel3";
@@ -388,6 +395,7 @@
             // 
             // linkLabel2
             // 
+            this.linkLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.linkLabel2.AutoSize = true;
             this.linkLabel2.Location = new System.Drawing.Point(84, 184);
             this.linkLabel2.Name = "linkLabel2";
@@ -421,6 +429,7 @@
             // 
             // optInvertY
             // 
+            this.optInvertY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.optInvertY.AutoSize = true;
             this.optInvertY.Location = new System.Drawing.Point(141, 183);
             this.optInvertY.Name = "optInvertY";
@@ -431,6 +440,7 @@
             // 
             // optInvertX
             // 
+            this.optInvertX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.optInvertX.AutoSize = true;
             this.optInvertX.Location = new System.Drawing.Point(15, 183);
             this.optInvertX.Name = "optInvertX";
@@ -934,6 +944,7 @@
             // 
             // editor_InputMouse
             // 
+            this.editor_InputMouse.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.editor_InputMouse.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("editor_InputMouse.BackgroundImage")));
             this.editor_InputMouse.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.editor_InputMouse.Controls.Add(this.label7);
@@ -959,6 +970,17 @@
             this.editor_InputMouse.Name = "editor_InputMouse";
             this.editor_InputMouse.Size = new System.Drawing.Size(516, 393);
             this.editor_InputMouse.TabIndex = 9;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Trebuchet MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(159, 339);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(219, 27);
+            this.label7.TabIndex = 24;
+            this.label7.Text = "TODO: Mouse Controls";
             // 
             // panel3
             // 
@@ -1265,17 +1287,6 @@
             this.label21.Size = new System.Drawing.Size(41, 13);
             this.label21.TabIndex = 0;
             this.label21.Text = "Name: ";
-            // 
-            // label7
-            // 
-            this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Trebuchet MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(159, 339);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(219, 27);
-            this.label7.TabIndex = 24;
-            this.label7.Text = "TODO: Mouse Controls";
             // 
             // Options
             // 

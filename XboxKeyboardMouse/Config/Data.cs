@@ -57,6 +57,17 @@ namespace XboxKeyboardMouse.Config {
             public int Controls_KB_Detach_MOD           = (int)Key.LeftAlt;
             public int Controls_KB_Detach_KEY           = (int)Key.C;
 
+            // Sticks
+            public int Controls_KB_Sticks_AXIS_L_Up     = (int)Key.None;
+            public int Controls_KB_Sticks_AXIS_L_Down   = (int)Key.None;
+            public int Controls_KB_Sticks_AXIS_L_Left   = (int)Key.None;
+            public int Controls_KB_Sticks_AXIS_L_Right  = (int)Key.None;
+
+            public int Controls_KB_Sticks_AXIS_R_Up     = (int)Key.None;
+            public int Controls_KB_Sticks_AXIS_R_Down   = (int)Key.None;
+            public int Controls_KB_Sticks_AXIS_R_Left   = (int)Key.None;
+            public int Controls_KB_Sticks_AXIS_R_Right  = (int)Key.None;
+
         // <-- Xbox Controls Keyboard
 
         // --> Xbox Controls Mouse 
@@ -138,14 +149,24 @@ namespace XboxKeyboardMouse.Config {
                 Read(f, "Controls_Keyboard", "Dpad_Left", ref d.Controls_KB_Xbox_DPAD_Left);
                 Read(f, "Controls_Keyboard", "Dpad_Right", ref d.Controls_KB_Xbox_DPAD_Right);
 
-                Read(f, "Controls_Keyboard", "Sticks_Left", ref d.Controls_KB_Xbox_Sticks_Left);
-                Read(f, "Controls_Keyboard", "Sticks_Right", ref d.Controls_KB_Xbox_Sticks_Right);
-
                 Read(f, "Controls_Keyboard", "Trigger_Left", ref d.Controls_KB_Xbox_Trigger_Left);
                 Read(f, "Controls_Keyboard", "Trigger_Right", ref d.Controls_KB_Xbox_Trigger_Right);
 
                 Read(f, "Controls_Keyboard", "Detach_Mod", ref d.Controls_KB_Detach_MOD);
                 Read(f, "Controls_Keyboard", "Detach_Key", ref d.Controls_KB_Detach_KEY);
+
+                Read(f, "Controls_Keyboard", "Sticks_Left", ref d.Controls_KB_Xbox_Sticks_Left);
+                Read(f, "Controls_Keyboard", "Sticks_Right", ref d.Controls_KB_Xbox_Sticks_Right);
+                
+                Read(f, "Controls_Keyboard", "Sticks_AXIS_Left_Up",     ref d.Controls_KB_Sticks_AXIS_L_Up);
+                Read(f, "Controls_Keyboard", "Sticks_AXIS_Left_Down",   ref d.Controls_KB_Sticks_AXIS_L_Down);
+                Read(f, "Controls_Keyboard", "Sticks_AXIS_Left_Left",   ref d.Controls_KB_Sticks_AXIS_L_Left);
+                Read(f, "Controls_Keyboard", "Sticks_AXIS_Left_Right",  ref d.Controls_KB_Sticks_AXIS_L_Right);
+
+                Read(f, "Controls_Keyboard", "Sticks_AXIS_Right_Up",    ref d.Controls_KB_Sticks_AXIS_R_Up);
+                Read(f, "Controls_Keyboard", "Sticks_AXIS_Right_Down",  ref d.Controls_KB_Sticks_AXIS_R_Down);
+                Read(f, "Controls_Keyboard", "Sticks_AXIS_Right_Left",  ref d.Controls_KB_Sticks_AXIS_R_Left);
+                Read(f, "Controls_Keyboard", "Sticks_AXIS_Right_Right", ref d.Controls_KB_Sticks_AXIS_R_Right);
             }
 
             /* Controls - Mouse */ {
@@ -223,6 +244,16 @@ namespace XboxKeyboardMouse.Config {
 
                 Write(f, "Controls_Keyboard", "Detach_Mod", d.Controls_KB_Detach_MOD);
                 Write(f, "Controls_Keyboard", "Detach_Key", d.Controls_KB_Detach_KEY);
+
+                Write(f, "Controls_Keyboard", "Sticks_AXIS_Left_Up", d.Controls_KB_Sticks_AXIS_L_Up);
+                Write(f, "Controls_Keyboard", "Sticks_AXIS_Left_Down", d.Controls_KB_Sticks_AXIS_L_Down);
+                Write(f, "Controls_Keyboard", "Sticks_AXIS_Left_Left", d.Controls_KB_Sticks_AXIS_L_Left);
+                Write(f, "Controls_Keyboard", "Sticks_AXIS_Left_Right", d.Controls_KB_Sticks_AXIS_L_Right);
+
+                Write(f, "Controls_Keyboard", "Sticks_AXIS_Right_Up", d.Controls_KB_Sticks_AXIS_R_Up);
+                Write(f, "Controls_Keyboard", "Sticks_AXIS_Right_Down", d.Controls_KB_Sticks_AXIS_R_Down);
+                Write(f, "Controls_Keyboard", "Sticks_AXIS_Right_Left", d.Controls_KB_Sticks_AXIS_R_Left);
+                Write(f, "Controls_Keyboard", "Sticks_AXIS_Right_Right", d.Controls_KB_Sticks_AXIS_R_Right);
             }
 
             /* Controls - Mouse */ {
