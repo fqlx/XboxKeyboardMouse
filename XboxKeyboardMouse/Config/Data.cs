@@ -36,7 +36,7 @@ namespace XboxKeyboardMouse.Config {
             public int Controls_KB_Xbox_RightBumper     = (int)Key.E;
 
             // Xbox Access Buttons
-            public int Controls_KB_Xbox_Guide           = (int)Key.G;
+            public int Controls_KB_Xbox_Guide           = (int)Key.Escape;
             public int Controls_KB_Xbox_Start           = (int)Key.B;
             public int Controls_KB_Xbox_Back            = (int)Key.V;
 

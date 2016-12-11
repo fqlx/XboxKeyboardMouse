@@ -34,7 +34,7 @@ You may customise your own controller layout through the gui but the default lay
 |               |                   |
 | B             | Start/Menu        |
 | V             | Select/Back/Nav   |
-| G             | Xbox Logo         |
+| Escape        | Xbox Logo/Guide   |
 |               |                   |
 | Arrow Keys    | DPAD              |
 |               |                   |
@@ -56,7 +56,7 @@ You may customise your own controller layout through the gui but the default lay
 #Could be better
 1.  Problems translating mouse movement into the right stick directional look.  Very challenging to make it a smooth experience.  
     - Was altered from the original to be smoother but still a 50/50 experience.
-2.  Live preview
+2.  Live preview improvements (Nicer gui?)
 
 #Todo
 1.  Check if SlimDX and SCP driver are installed and if not throw an understandable error.
