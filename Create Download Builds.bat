@@ -9,7 +9,7 @@ if %mm% == 1 (
 ) else if %mm% == 2 (
 	set mm=Feb
 ) else if %mm% == 3 (
-	set mm=March
+	set mm=Mar
 ) else if %mm% == 4 (
 	set mm=Apr
 ) else if %mm% == 5 (
@@ -27,7 +27,7 @@ if %mm% == 1 (
 ) else if %mm% == 11 (
 	set mm=Nov
 ) else if %mm% == 12 (
-	set mm=AYAYAYAYY ITS CHRISTMAS!
+	set mm=Dec
 )
 
 REM setup the msbuild for vs15
