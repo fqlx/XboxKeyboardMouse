@@ -65,3 +65,4 @@ You may customise your own controller layout through the gui but the default lay
 4.  Scroll Wheel movement has not been added (Main usage maybe RTS).
 5.  There is no help text options yet.
 6.  You cant use the keyboard for triggers... Yet
+7.  Add Jenkins job to compile merges
