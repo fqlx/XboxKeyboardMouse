@@ -67,11 +67,16 @@ namespace XboxKeyboardMouse {
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e) {
             // Save the current active config 
-            Program.SetActiveConfig(Program.ActiveConfig.Name + ".ini");
+            var file = Program.ActiveConfig.Name + ".ini";
+            Config.Data.Save(file, Program.ActiveConfig);
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e) {
             Hooks.LowLevelKeyboardHook.LockEscape = checkBox1.Checked;
+        }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e) {
+            Environment.Exit(0);
         }
     }
 }

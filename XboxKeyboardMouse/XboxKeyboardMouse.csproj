@@ -109,6 +109,15 @@
   <ItemGroup>
     <Compile Include="Config\Data.cs" />
     <Compile Include="Config\IniFile.cs" />
+    <Compile Include="Forms\Controls\CircleControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\OptionsFrms\Mouse_Engine_Relative.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\OptionsFrms\Mouse_Engine_Relative.Designer.cs">
+      <DependentUpon>Mouse_Engine_Relative.cs</DependentUpon>
+    </Compile>
     <Compile Include="Hooks\LowLevelKeyboardHook.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -177,6 +186,9 @@
     <EmbeddedResource Include="Forms\Options.resx">
       <DependentUpon>Options.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\OptionsFrms\Mouse_Engine_Relative.resx">
+      <DependentUpon>Mouse_Engine_Relative.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\SelectKey.resx">
       <DependentUpon>SelectKey.cs</DependentUpon>
     </EmbeddedResource>
@@ -240,9 +252,7 @@
   <ItemGroup>
     <None Include="Resources\Images\360_RT.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Forms\Controls\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -8,16 +8,37 @@ namespace XboxKeyboardMouse {
 
         public enum TriggerType { LeftTrigger, RightTrigger }
 
-        public static Dictionary<Key, short> mapLeftStickY = new Dictionary<Key, short> {
-            { Key.W, short.MaxValue },
-            { Key.S, short.MinValue },
-        };
+        public static void ClearAllDicts() {
+            if (mapLeftStickY == null)
+                 mapLeftStickY = new Dictionary<Key, short>();
+            else mapLeftStickY.Clear();
 
-        public static Dictionary<Key, short> mapLeftStickX = new Dictionary<Key, short> {
-            { Key.A, short.MinValue },
-            { Key.D, short.MaxValue },
-        };
+            if (mapLeftStickX == null)
+                 mapLeftStickX = new Dictionary<Key, short>();
+            else mapLeftStickX.Clear();
 
+            if (mapRightStickX == null)
+                 mapRightStickX = new Dictionary<Key, short>();
+            else mapRightStickX.Clear();
+
+            if (mapRightStickY == null)
+                 mapRightStickY = new Dictionary<Key, short>();
+            else mapRightStickY.Clear();
+
+            if (buttons == null)
+                buttons = new Dictionary<Key, X360Buttons>();
+            else buttons.Clear();
+
+            if (triggers == null)
+                 triggers = new Dictionary<Key, TriggerType>();
+            else triggers.Clear();
+        }
+
+        public static Dictionary<Key, short> mapLeftStickY;
+        public static Dictionary<Key, short> mapLeftStickX;
+        public static Dictionary<Key, short> mapRightStickX;
+        public static Dictionary<Key, short> mapRightStickY;
+        
         public static Dictionary<Key, X360Buttons> buttons = new Dictionary<Key, X360Buttons>();
         public static Dictionary<Key, TriggerType> triggers = new Dictionary<Key, TriggerType>();
 
@@ -31,7 +52,6 @@ namespace XboxKeyboardMouse {
                 btnStatus.Clear();
                 foreach (KeyValuePair<Key, short> entry in mapLeftStickY) {
                     bool v;
-
                     if (entry.Key == Key.Escape)
                          v = Hooks.LowLevelKeyboardHook.EscapePressed;
                     else v = Keyboard.IsKeyDown(entry.Key);
@@ -41,14 +61,13 @@ namespace XboxKeyboardMouse {
                     btnStatus.Add(v);
                 }
 
-                if (!btnStatus.Contains(true)) {
-                    controller.LeftStickY = 0;
-                }
+                if (!btnStatus.Contains(true)) controller.LeftStickY = 0;
 
                 btnStatus.Clear();
                 foreach (KeyValuePair<Key, short> entry in mapLeftStickX) {
-                    bool v;
+                    if (entry.Key == Key.None) continue;
 
+                    bool v;
                     if (entry.Key == Key.Escape)
                          v = Hooks.LowLevelKeyboardHook.EscapePressed;
                     else v = Keyboard.IsKeyDown(entry.Key);
@@ -57,15 +76,36 @@ namespace XboxKeyboardMouse {
                     btnStatus.Add(v);
                 }
 
-                if (!btnStatus.Contains(true)) {
-                    controller.LeftStickX = 0;
+                // Reset sticks if required
+                if (!btnStatus.Contains(true)) controller.LeftStickX = 0;
+
+
+                foreach (KeyValuePair<Key, short> entry in mapRightStickX) {
+                    bool v;
+                    if (entry.Key == Key.Escape)
+                        v = Hooks.LowLevelKeyboardHook.EscapePressed;
+                    else v = Keyboard.IsKeyDown(entry.Key);
+
+                    if (v) controller.RightStickX = entry.Value;
+
+                    btnStatus.Add(v);
+                }
+
+                foreach (KeyValuePair<Key, short> entry in mapRightStickY) {
+                    bool v;
+                    if (entry.Key == Key.Escape)
+                        v = Hooks.LowLevelKeyboardHook.EscapePressed;
+                    else v = Keyboard.IsKeyDown(entry.Key);
+
+                    if (v) controller.RightStickY = entry.Value;
+
+                    btnStatus.Add(v);
                 }
 
                 foreach (KeyValuePair<Key, X360Buttons> entry in buttons) {
                     if (entry.Key == Key.None) continue;
 
                     bool v;
-
                     if (entry.Key == Key.Escape)
                          v = Hooks.LowLevelKeyboardHook.EscapePressed;
                     else v = Keyboard.IsKeyDown(entry.Key);
