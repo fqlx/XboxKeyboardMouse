@@ -346,6 +346,15 @@ namespace XboxKeyboardMouse.Forms {
             editor_InputMouse.Enabled = true;
 
             originalName = cfg.Name;
+
+            // Check if the mouse setting is valid
+            if (cfg.Mouse_Eng_Type >= 1) {
+                MessageBox.Show("Invalid mouse engine selected -> Reset to default!");
+                cfg.Mouse_Eng_Type = 0;
+                Config.Data.Save(GetSelectedProfile() + ".ini", cfg);
+            }
+
+            comboBox1.SelectedIndex = cfg.Mouse_Eng_Type;
         }
 
         private void btnPresOptActive_Click(object sender, EventArgs e) {
@@ -489,6 +498,29 @@ namespace XboxKeyboardMouse.Forms {
 
             string kbKey = ((System.Windows.Input.Key)cfg.Controls_KB_Detach_KEY).ToString();
             optDetachKey.Text = $"On/Off Key: {kbMod} {kbKey}";
+        }
+
+        OptionsFrms.Mouse_Engine_Relative meRelative = null;
+        private void button1_Click(object sender, EventArgs e) {
+            if (comboBox1.SelectedIndex == 0) {
+                MessageBox.Show("There is no options for this engine.");
+            } else if (comboBox1.SelectedIndex == 1) {
+                if (meRelative == null || meRelative.IsDisposed)
+                    meRelative = new OptionsFrms.Mouse_Engine_Relative(cfg);
+                
+                meRelative.ShowDialog();
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) {
+            int index = comboBox1.SelectedIndex;
+
+            if (index >= 2) {
+                MessageBox.Show("Invalid selected mouse engine");
+                index = 0;
+            }
+
+            cfg.Mouse_Eng_Type = index;
         }
     }
 }

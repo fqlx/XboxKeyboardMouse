@@ -21,12 +21,14 @@ namespace XboxKeyboardMouse.Config {
             public bool Mouse_Invert_Y          = false;
 
             public int Mouse_TickRate           = 40;
-            public int Mouse_Type               = 0;
+            public int Mouse_Eng_Type           = 0;
+            
+            public int Mouse_Eng_Relative_Val   = 1639;
         // <-- Mouse
 
         // --> Xbox Controls Keyboard
 
-            // Main AXBY buttons
+        // Main AXBY buttons
             public int Controls_KB_Xbox_A               = (int)Key.Space;
             public int Controls_KB_Xbox_B               = (int)Key.LeftCtrl;
             public int Controls_KB_Xbox_X               = (int)Key.R;
@@ -63,12 +65,15 @@ namespace XboxKeyboardMouse.Config {
             public int Controls_KB_Sticks_AXIS_L_Down   = (int)Key.S;
             public int Controls_KB_Sticks_AXIS_L_Left   = (int)Key.A;
             public int Controls_KB_Sticks_AXIS_L_Right  = (int)Key.D;
-
+            
             public int Controls_KB_Sticks_AXIS_R_Up     = (int)Key.None;
             public int Controls_KB_Sticks_AXIS_R_Down   = (int)Key.None;
             public int Controls_KB_Sticks_AXIS_R_Left   = (int)Key.None;
             public int Controls_KB_Sticks_AXIS_R_Right  = (int)Key.None;
-
+            
+            // Mouse Settings
+            public int Controls_KB_MReset_MOD           = (int)Key.LeftAlt;
+            public int Controls_KB_MReset_KEY           = (int)Key.P;
         // <-- Xbox Controls Keyboard
 
         // --> Xbox Controls Mouse 
@@ -131,7 +136,8 @@ namespace XboxKeyboardMouse.Config {
                 Read(f, "Mouse", "X_Inverted",  ref d.Mouse_Invert_X);
                 Read(f, "Mouse", "Y_Inverted",  ref d.Mouse_Invert_Y);
 
-                Read(f, "Mouse", "Type",        ref d.Mouse_Type);
+                Read(f, "Mouse", "Type",        ref d.Mouse_Eng_Type);
+                Read(f, "Mouse", "ERel_Val",    ref d.Mouse_Eng_Relative_Val);
             }
 
             /* Controls - Keyboard */ {
@@ -170,6 +176,9 @@ namespace XboxKeyboardMouse.Config {
                 Read(f, "Controls_Keyboard", "Sticks_AXIS_Right_Down",  ref d.Controls_KB_Sticks_AXIS_R_Down);
                 Read(f, "Controls_Keyboard", "Sticks_AXIS_Right_Left",  ref d.Controls_KB_Sticks_AXIS_R_Left);
                 Read(f, "Controls_Keyboard", "Sticks_AXIS_Right_Right", ref d.Controls_KB_Sticks_AXIS_R_Right);
+
+                Read(f, "Controls_Keyboard", "Mouse_Reset_Look_MOD", ref d.Controls_KB_MReset_MOD);
+                Read(f, "Controls_Keyboard", "Mouse_Reset_Look_KEY", ref d.Controls_KB_MReset_KEY);
             }
 
             /* Controls - Mouse */ {
@@ -200,8 +209,6 @@ namespace XboxKeyboardMouse.Config {
             return d;
         }
 
-
-
         public static void Save(string file, Data d) {
             if (!System.IO.Directory.Exists("profiles")) {
                 System.IO.Directory.CreateDirectory("profiles");
@@ -219,7 +226,8 @@ namespace XboxKeyboardMouse.Config {
 
                 Write(f, "Mouse", "X_Inverted", d.Mouse_Invert_X);
                 Write(f, "Mouse", "Y_Inverted", d.Mouse_Invert_Y);
-                Write(f, "Mouse", "Type",       d.Mouse_Type);
+                Write(f, "Mouse", "Type",       d.Mouse_Eng_Type);
+                Write(f, "Mouse", "ERel_Val",   d.Mouse_Eng_Relative_Val);
             }
 
             /* Controls - Keyboard */ {
@@ -254,10 +262,13 @@ namespace XboxKeyboardMouse.Config {
                 Write(f, "Controls_Keyboard", "Sticks_AXIS_Left_Left", d.Controls_KB_Sticks_AXIS_L_Left);
                 Write(f, "Controls_Keyboard", "Sticks_AXIS_Left_Right", d.Controls_KB_Sticks_AXIS_L_Right);
 
-                Write(f, "Controls_Keyboard", "Sticks_AXIS_Right_Up", d.Controls_KB_Sticks_AXIS_R_Up);
-                Write(f, "Controls_Keyboard", "Sticks_AXIS_Right_Down", d.Controls_KB_Sticks_AXIS_R_Down);
-                Write(f, "Controls_Keyboard", "Sticks_AXIS_Right_Left", d.Controls_KB_Sticks_AXIS_R_Left);
+                Write(f, "Controls_Keyboard", "Sticks_AXIS_Right_Up",    d.Controls_KB_Sticks_AXIS_R_Up);
+                Write(f, "Controls_Keyboard", "Sticks_AXIS_Right_Down",  d.Controls_KB_Sticks_AXIS_R_Down);
+                Write(f, "Controls_Keyboard", "Sticks_AXIS_Right_Left",  d.Controls_KB_Sticks_AXIS_R_Left);
                 Write(f, "Controls_Keyboard", "Sticks_AXIS_Right_Right", d.Controls_KB_Sticks_AXIS_R_Right);
+
+                Write(f, "Controls_Keyboard", "Mouse_Reset_Look_MOD",    d.Controls_KB_MReset_MOD);
+                Write(f, "Controls_Keyboard", "Mouse_Reset_Look_KEY",    d.Controls_KB_MReset_KEY);
             }
 
             /* Controls - Mouse */ {
@@ -290,8 +301,7 @@ namespace XboxKeyboardMouse.Config {
         }
         
         private static void Read(IniFile ini, string Section, string Name, ref double @out) {
-            string sTmp;
-            double dTmp = 0;
+            string sTmp; double dTmp = 0;
 
             try {
                 sTmp = ini.GetSetting(Section, Name);
@@ -307,8 +317,7 @@ namespace XboxKeyboardMouse.Config {
         }
 
         private static void Read(IniFile ini, string Section, string Name, ref int @out) {
-            string sTmp;
-            int dTmp = 0;
+            string sTmp; int dTmp = 0;
 
             try {
                 sTmp = ini.GetSetting(Section, Name);

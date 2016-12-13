@@ -32,10 +32,10 @@
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.editor_Preset = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.linkLabel8 = new System.Windows.Forms.LinkLabel();
             this.linkLabel7 = new System.Windows.Forms.LinkLabel();
             this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.optDetachKey = new System.Windows.Forms.Button();
@@ -155,7 +155,7 @@
             this.lbPresets.IntegralHeight = false;
             this.lbPresets.Location = new System.Drawing.Point(6, 19);
             this.lbPresets.Name = "lbPresets";
-            this.lbPresets.Size = new System.Drawing.Size(144, 357);
+            this.lbPresets.Size = new System.Drawing.Size(144, 363);
             this.lbPresets.TabIndex = 0;
             // 
             // tabControl1
@@ -166,10 +166,10 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Location = new System.Drawing.Point(-2, 2);
+            this.tabControl1.Location = new System.Drawing.Point(-2, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(540, 443);
+            this.tabControl1.Size = new System.Drawing.Size(540, 449);
             this.tabControl1.TabIndex = 2;
             // 
             // tabPage1
@@ -179,7 +179,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(532, 417);
+            this.tabPage1.Size = new System.Drawing.Size(532, 423);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Application Options";
             // 
@@ -188,7 +188,7 @@
             this.label20.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Segoe Print", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(61, 33);
+            this.label20.Location = new System.Drawing.Point(61, 36);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(404, 190);
             this.label20.TabIndex = 0;
@@ -202,7 +202,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(532, 417);
+            this.tabPage2.Size = new System.Drawing.Size(532, 423);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Preset Manager";
             // 
@@ -217,7 +217,7 @@
             this.tabControl2.Location = new System.Drawing.Point(-5, 1);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(541, 420);
+            this.tabControl2.Size = new System.Drawing.Size(541, 426);
             this.tabControl2.TabIndex = 9;
             // 
             // tabPage4
@@ -228,7 +228,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(533, 394);
+            this.tabPage4.Size = new System.Drawing.Size(533, 400);
             this.tabPage4.TabIndex = 0;
             this.tabPage4.Text = "Preset Options";
             // 
@@ -237,10 +237,10 @@
             this.editor_Preset.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.editor_Preset.Controls.Add(this.button1);
             this.editor_Preset.Controls.Add(this.linkLabel8);
             this.editor_Preset.Controls.Add(this.linkLabel7);
             this.editor_Preset.Controls.Add(this.label4);
-            this.editor_Preset.Controls.Add(this.label3);
             this.editor_Preset.Controls.Add(this.comboBox1);
             this.editor_Preset.Controls.Add(this.label2);
             this.editor_Preset.Controls.Add(this.optDetachKey);
@@ -268,16 +268,28 @@
             this.editor_Preset.Enabled = false;
             this.editor_Preset.Location = new System.Drawing.Point(271, 6);
             this.editor_Preset.Name = "editor_Preset";
-            this.editor_Preset.Size = new System.Drawing.Size(256, 382);
+            this.editor_Preset.Size = new System.Drawing.Size(256, 388);
             this.editor_Preset.TabIndex = 9;
             this.editor_Preset.TabStop = false;
             this.editor_Preset.Text = "Select a preset to get started";
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(78, 230);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(146, 22);
+            this.button1.TabIndex = 32;
+            this.button1.Text = "Engine Options";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // linkLabel8
             // 
             this.linkLabel8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.linkLabel8.AutoSize = true;
-            this.linkLabel8.Location = new System.Drawing.Point(230, 260);
+            this.linkLabel8.Location = new System.Drawing.Point(229, 288);
             this.linkLabel8.Name = "linkLabel8";
             this.linkLabel8.Size = new System.Drawing.Size(13, 13);
             this.linkLabel8.TabIndex = 31;
@@ -299,26 +311,17 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(6, 326);
+            this.label4.Location = new System.Drawing.Point(6, 314);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(120, 21);
             this.label4.TabIndex = 28;
             this.label4.Text = "Preset Settings";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(6, 282);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(145, 21);
-            this.label3.TabIndex = 27;
-            this.label3.Text = "Keyboard Settings";
-            // 
             // comboBox1
             // 
             this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "Default"});
@@ -326,7 +329,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(144, 21);
             this.comboBox1.TabIndex = 26;
-            this.comboBox1.Text = "Default";
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -341,7 +344,7 @@
             // 
             this.optDetachKey.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.optDetachKey.Location = new System.Drawing.Point(56, 251);
+            this.optDetachKey.Location = new System.Drawing.Point(55, 283);
             this.optDetachKey.Name = "optDetachKey";
             this.optDetachKey.Size = new System.Drawing.Size(167, 22);
             this.optDetachKey.TabIndex = 24;
@@ -353,7 +356,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(6, 227);
+            this.label1.Location = new System.Drawing.Point(5, 259);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(158, 21);
             this.label1.TabIndex = 23;
@@ -429,7 +432,7 @@
             // 
             this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(56, 353);
+            this.button4.Location = new System.Drawing.Point(56, 341);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(166, 21);
             this.button4.TabIndex = 13;
@@ -611,7 +614,7 @@
             this.groupBox1.Controls.Add(this.btnPresOptDel);
             this.groupBox1.Location = new System.Drawing.Point(6, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(259, 382);
+            this.groupBox1.Size = new System.Drawing.Size(259, 388);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Load Presets";
@@ -663,7 +666,7 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(533, 394);
+            this.tabPage5.Size = new System.Drawing.Size(533, 400);
             this.tabPage5.TabIndex = 1;
             this.tabPage5.Text = "Input Mapper - Keyboard";
             // 
@@ -700,7 +703,7 @@
             this.editor_InputKeyboard.Controls.Add(this.xbo_k_joy_l_right);
             this.editor_InputKeyboard.Controls.Add(this.xbo_k_joy_l_down);
             this.editor_InputKeyboard.Enabled = false;
-            this.editor_InputKeyboard.Location = new System.Drawing.Point(10, 1);
+            this.editor_InputKeyboard.Location = new System.Drawing.Point(10, 4);
             this.editor_InputKeyboard.Name = "editor_InputKeyboard";
             this.editor_InputKeyboard.Size = new System.Drawing.Size(516, 393);
             this.editor_InputKeyboard.TabIndex = 6;
@@ -723,7 +726,7 @@
             this.xbo_k_joy_r_left.BackColor = System.Drawing.Color.Transparent;
             this.xbo_k_joy_r_left.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xbo_k_joy_r_left.ForeColor = System.Drawing.Color.Black;
-            this.xbo_k_joy_r_left.Location = new System.Drawing.Point(244, 295);
+            this.xbo_k_joy_r_left.Location = new System.Drawing.Point(244, 294);
             this.xbo_k_joy_r_left.Name = "xbo_k_joy_r_left";
             this.xbo_k_joy_r_left.Size = new System.Drawing.Size(50, 78);
             this.xbo_k_joy_r_left.TabIndex = 29;
@@ -736,7 +739,7 @@
             this.xbo_k_joy_r_right.BackColor = System.Drawing.Color.Transparent;
             this.xbo_k_joy_r_right.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xbo_k_joy_r_right.ForeColor = System.Drawing.Color.Black;
-            this.xbo_k_joy_r_right.Location = new System.Drawing.Point(353, 295);
+            this.xbo_k_joy_r_right.Location = new System.Drawing.Point(353, 294);
             this.xbo_k_joy_r_right.Name = "xbo_k_joy_r_right";
             this.xbo_k_joy_r_right.Size = new System.Drawing.Size(53, 78);
             this.xbo_k_joy_r_right.TabIndex = 28;
@@ -1022,7 +1025,7 @@
             this.xbo_k_joy_l_left.BackColor = System.Drawing.Color.Transparent;
             this.xbo_k_joy_l_left.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xbo_k_joy_l_left.ForeColor = System.Drawing.Color.Black;
-            this.xbo_k_joy_l_left.Location = new System.Drawing.Point(98, 297);
+            this.xbo_k_joy_l_left.Location = new System.Drawing.Point(98, 296);
             this.xbo_k_joy_l_left.Name = "xbo_k_joy_l_left";
             this.xbo_k_joy_l_left.Size = new System.Drawing.Size(49, 75);
             this.xbo_k_joy_l_left.TabIndex = 24;
@@ -1035,7 +1038,7 @@
             this.xbo_k_joy_l_right.BackColor = System.Drawing.Color.Transparent;
             this.xbo_k_joy_l_right.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xbo_k_joy_l_right.ForeColor = System.Drawing.Color.Black;
-            this.xbo_k_joy_l_right.Location = new System.Drawing.Point(204, 297);
+            this.xbo_k_joy_l_right.Location = new System.Drawing.Point(204, 296);
             this.xbo_k_joy_l_right.Name = "xbo_k_joy_l_right";
             this.xbo_k_joy_l_right.Size = new System.Drawing.Size(42, 75);
             this.xbo_k_joy_l_right.TabIndex = 23;
@@ -1064,7 +1067,7 @@
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(533, 394);
+            this.tabPage6.Size = new System.Drawing.Size(533, 400);
             this.tabPage6.TabIndex = 2;
             this.tabPage6.Text = "Input Mapper - Mouse";
             // 
@@ -1092,7 +1095,7 @@
             this.editor_InputMouse.Controls.Add(this.xbo_m_RS);
             this.editor_InputMouse.Controls.Add(this.xbo_m_LS);
             this.editor_InputMouse.Enabled = false;
-            this.editor_InputMouse.Location = new System.Drawing.Point(10, 1);
+            this.editor_InputMouse.Location = new System.Drawing.Point(10, 4);
             this.editor_InputMouse.Name = "editor_InputMouse";
             this.editor_InputMouse.Size = new System.Drawing.Size(516, 393);
             this.editor_InputMouse.TabIndex = 9;
@@ -1359,7 +1362,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(532, 417);
+            this.tabPage3.Size = new System.Drawing.Size(532, 423);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Add a preset";
             // 
@@ -1370,7 +1373,7 @@
             this.groupBox3.Controls.Add(this.btnCreatePreset);
             this.groupBox3.Controls.Add(this.tbCreateName);
             this.groupBox3.Controls.Add(this.label21);
-            this.groupBox3.Location = new System.Drawing.Point(107, 26);
+            this.groupBox3.Location = new System.Drawing.Point(107, 29);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(301, 94);
             this.groupBox3.TabIndex = 0;
@@ -1556,7 +1559,6 @@
         private System.Windows.Forms.LinkLabel linkLabel8;
         private System.Windows.Forms.LinkLabel linkLabel7;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label7;
         private Controls.CircleControl circleControl1;
         private Controls.CircleControl circleControl2;
@@ -1568,5 +1570,6 @@
         private System.Windows.Forms.Label xbo_k_joy_l_left;
         private System.Windows.Forms.Label xbo_k_joy_l_right;
         private System.Windows.Forms.Label xbo_k_joy_l_down;
+        private System.Windows.Forms.Button button1;
     }
 }

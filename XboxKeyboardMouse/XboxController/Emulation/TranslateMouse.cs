@@ -35,7 +35,6 @@ namespace XboxKeyboardMouse {
             }
         }
 
-
         private static void MouseMovement_Default() {
             Point mouse = Control.MousePosition;
 
@@ -110,6 +109,9 @@ namespace XboxKeyboardMouse {
             Cursor.Position = centered;
         }
 
+        private static void MouseMovement_Relative() {
+
+        }
 
         public static void MouseButtonsInput(X360Controller controller) {
             MouseState state = mouse.GetCurrentState();
