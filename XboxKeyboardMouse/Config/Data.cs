@@ -21,6 +21,7 @@ namespace XboxKeyboardMouse.Config {
             public bool Mouse_Invert_Y          = false;
 
             public int Mouse_TickRate           = 40;
+            public int Mouse_Type               = 0;
         // <-- Mouse
 
         // --> Xbox Controls Keyboard
@@ -58,10 +59,10 @@ namespace XboxKeyboardMouse.Config {
             public int Controls_KB_Detach_KEY           = (int)Key.C;
 
             // Sticks
-            public int Controls_KB_Sticks_AXIS_L_Up     = (int)Key.None;
-            public int Controls_KB_Sticks_AXIS_L_Down   = (int)Key.None;
-            public int Controls_KB_Sticks_AXIS_L_Left   = (int)Key.None;
-            public int Controls_KB_Sticks_AXIS_L_Right  = (int)Key.None;
+            public int Controls_KB_Sticks_AXIS_L_Up     = (int)Key.W;
+            public int Controls_KB_Sticks_AXIS_L_Down   = (int)Key.S;
+            public int Controls_KB_Sticks_AXIS_L_Left   = (int)Key.A;
+            public int Controls_KB_Sticks_AXIS_L_Right  = (int)Key.D;
 
             public int Controls_KB_Sticks_AXIS_R_Up     = (int)Key.None;
             public int Controls_KB_Sticks_AXIS_R_Down   = (int)Key.None;
@@ -127,8 +128,10 @@ namespace XboxKeyboardMouse.Config {
                 Read(f, "Mouse", "X_Sensitivity", ref d.Mouse_Sensitivity_X);
                 Read(f, "Mouse", "Y_Sensitivity", ref d.Mouse_Sensitivity_Y);
 
-                Read(f, "Mouse", "X_Inverted", ref d.Mouse_Invert_X);
-                Read(f, "Mouse", "Y_Inverted", ref d.Mouse_Invert_Y);
+                Read(f, "Mouse", "X_Inverted",  ref d.Mouse_Invert_X);
+                Read(f, "Mouse", "Y_Inverted",  ref d.Mouse_Invert_Y);
+
+                Read(f, "Mouse", "Type",        ref d.Mouse_Type);
             }
 
             /* Controls - Keyboard */ {
@@ -216,6 +219,7 @@ namespace XboxKeyboardMouse.Config {
 
                 Write(f, "Mouse", "X_Inverted", d.Mouse_Invert_X);
                 Write(f, "Mouse", "Y_Inverted", d.Mouse_Invert_Y);
+                Write(f, "Mouse", "Type",       d.Mouse_Type);
             }
 
             /* Controls - Keyboard */ {

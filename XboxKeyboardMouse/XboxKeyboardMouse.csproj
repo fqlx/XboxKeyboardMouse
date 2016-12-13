@@ -109,6 +109,9 @@
   <ItemGroup>
     <Compile Include="Config\Data.cs" />
     <Compile Include="Config\IniFile.cs" />
+    <Compile Include="Forms\Controls\CircleControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Hooks\LowLevelKeyboardHook.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -240,9 +243,7 @@
   <ItemGroup>
     <None Include="Resources\Images\360_RT.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Forms\Controls\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -43,11 +43,11 @@ namespace XboxKeyboardMouse {
         }
 
         public static void ReloadControlScheme() {
+            TranslateKeyboard.ClearAllDicts();
+
             lock (TranslateKeyboard.buttons) {
-
-                TranslateKeyboard.buttons.Clear();
-                TranslateKeyboard.triggers.Clear();
-
+            lock (TranslateKeyboard.mapLeftStickY)  { lock (TranslateKeyboard.mapLeftStickX) { 
+            lock (TranslateKeyboard.mapRightStickX) { lock (TranslateKeyboard.mapRightStickY) { 
                 if (ActiveConfig.Controls_KB_Xbox_A != 0)
                     TranslateKeyboard.buttons.Add((Key)ActiveConfig.Controls_KB_Xbox_A, ScpDriverInterface.X360Buttons.A);
                 if (ActiveConfig.Controls_KB_Xbox_B != 0)
@@ -87,7 +87,26 @@ namespace XboxKeyboardMouse {
                     TranslateKeyboard.triggers.Add((Key)ActiveConfig.Controls_KB_Xbox_Trigger_Left, TranslateKeyboard.TriggerType.LeftTrigger);
                 if (ActiveConfig.Controls_KB_Xbox_Trigger_Right != 0)
                     TranslateKeyboard.triggers.Add((Key)ActiveConfig.Controls_KB_Xbox_Trigger_Right, TranslateKeyboard.TriggerType.RightTrigger);
-            }
+
+
+                if (ActiveConfig.Controls_KB_Sticks_AXIS_L_Up != 0)
+                    TranslateKeyboard.mapLeftStickY.Add((Key)ActiveConfig.Controls_KB_Sticks_AXIS_L_Up, short.MaxValue);
+                if (ActiveConfig.Controls_KB_Sticks_AXIS_L_Down != 0)
+                    TranslateKeyboard.mapLeftStickY.Add((Key)ActiveConfig.Controls_KB_Sticks_AXIS_L_Down, short.MinValue);
+                if (ActiveConfig.Controls_KB_Sticks_AXIS_L_Left != 0)
+                    TranslateKeyboard.mapLeftStickX.Add((Key)ActiveConfig.Controls_KB_Sticks_AXIS_L_Left, short.MinValue);
+                if (ActiveConfig.Controls_KB_Sticks_AXIS_L_Right != 0)
+                    TranslateKeyboard.mapLeftStickX.Add((Key)ActiveConfig.Controls_KB_Sticks_AXIS_L_Right, short.MaxValue);
+
+                if (ActiveConfig.Controls_KB_Sticks_AXIS_R_Up != 0)
+                    TranslateKeyboard.mapRightStickY.Add((Key)ActiveConfig.Controls_KB_Sticks_AXIS_R_Up, short.MaxValue);
+                if (ActiveConfig.Controls_KB_Sticks_AXIS_R_Down != 0)
+                    TranslateKeyboard.mapRightStickY.Add((Key)ActiveConfig.Controls_KB_Sticks_AXIS_R_Down, short.MinValue);
+                if (ActiveConfig.Controls_KB_Sticks_AXIS_R_Left != 0)
+                    TranslateKeyboard.mapRightStickX.Add((Key)ActiveConfig.Controls_KB_Sticks_AXIS_R_Left, short.MinValue);
+                if (ActiveConfig.Controls_KB_Sticks_AXIS_R_Right != 0)
+                    TranslateKeyboard.mapRightStickX.Add((Key)ActiveConfig.Controls_KB_Sticks_AXIS_R_Right, short.MaxValue);
+            } } } } }
         }
 
         public static void ReadConfiguration(string defaultProfile = "default.ini") {

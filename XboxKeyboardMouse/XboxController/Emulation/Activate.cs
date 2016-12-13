@@ -34,8 +34,8 @@ namespace XboxKeyboardMouse {
 
         private static void KeyboardMouseInput() {
             while (true) {
-                TranslateKeyboard.KeyboardInput(controller);
                 TranslateMouse.MouseButtonsInput(controller);
+                TranslateKeyboard.KeyboardInput(controller);
 
                 SendtoController(controller);
             }

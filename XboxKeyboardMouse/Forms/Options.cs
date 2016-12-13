@@ -98,7 +98,10 @@ namespace XboxKeyboardMouse.Forms {
 
         private void XBO_Input_OnLeave(object sender, EventArgs e) {
             var lbl = (Label)sender;
-            lbl.ForeColor = Color.White;
+            var lblTag = (string)lbl.Tag;
+            if (lblTag.StartsWith("JR") || lblTag.StartsWith("JL"))
+                 lbl.ForeColor = Color.Black;
+            else lbl.ForeColor = Color.White;
         }
 
         private void XBO_Input_OnLeaveTrig(object sender, EventArgs e) {
@@ -164,6 +167,16 @@ namespace XboxKeyboardMouse.Forms {
             xbo_k_TLeft.Text          = "";
             xbo_k_TRight.Text         = "";
 
+            xbo_k_joy_l_up.Text       = "";
+            xbo_k_joy_l_down.Text     = "";
+            xbo_k_joy_l_left.Text     = "";
+            xbo_k_joy_l_right.Text    = "";
+
+            xbo_k_joy_r_up.Text       = "";
+            xbo_k_joy_r_down.Text     = "";
+            xbo_k_joy_r_left.Text     = "";
+            xbo_k_joy_r_right.Text    = "";
+
             // Mouse
             xbo_m_A.Text              = "";
             xbo_m_B.Text              = "";
@@ -214,6 +227,16 @@ namespace XboxKeyboardMouse.Forms {
             xbo_k_TLeft.Text          = ((System.Windows.Input.Key)cfg.Controls_KB_Xbox_Trigger_Left).ToString();
             xbo_k_TRight.Text         = ((System.Windows.Input.Key)cfg.Controls_KB_Xbox_Trigger_Right).ToString();
 
+            xbo_k_joy_l_up.Text       = ((System.Windows.Input.Key)cfg.Controls_KB_Sticks_AXIS_L_Up).ToString(); ;
+            xbo_k_joy_l_down.Text     = ((System.Windows.Input.Key)cfg.Controls_KB_Sticks_AXIS_L_Down).ToString(); ;
+            xbo_k_joy_l_left.Text     = ((System.Windows.Input.Key)cfg.Controls_KB_Sticks_AXIS_L_Left).ToString(); ;
+            xbo_k_joy_l_right.Text    = ((System.Windows.Input.Key)cfg.Controls_KB_Sticks_AXIS_L_Right).ToString(); ;
+
+            xbo_k_joy_r_up.Text       = ((System.Windows.Input.Key)cfg.Controls_KB_Sticks_AXIS_R_Up).ToString(); ;
+            xbo_k_joy_r_down.Text     = ((System.Windows.Input.Key)cfg.Controls_KB_Sticks_AXIS_R_Down).ToString(); ;
+            xbo_k_joy_r_left.Text     = ((System.Windows.Input.Key)cfg.Controls_KB_Sticks_AXIS_R_Left).ToString(); ;
+            xbo_k_joy_r_right.Text    = ((System.Windows.Input.Key)cfg.Controls_KB_Sticks_AXIS_R_Right).ToString();;
+
             // Mouse
             xbo_m_A.Text              = ((MouseButton)cfg.Controls_M_Xbox_A).ToString();
             xbo_m_B.Text              = ((MouseButton)cfg.Controls_M_Xbox_B).ToString();
@@ -252,6 +275,12 @@ namespace XboxKeyboardMouse.Forms {
                 MessageBox.Show("The selected profile: " + GetSelectedListProfile() +
                     " no longer exists...\nFile: " + GetSelectedListProfilePath());
                 return;
+            }
+
+            if (GetSelectedListProfile().Trim() == "default.ini") {
+                // Remake the default ini
+                Config.Data d = new Config.Data();
+                Config.Data.Save("profiles/default.ini", d);
             }
 
             if (Program.ActiveConfig.Name.Trim() == GetSelectedListProfile().Trim()) {
