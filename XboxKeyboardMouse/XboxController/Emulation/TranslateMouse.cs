@@ -26,10 +26,17 @@ namespace XboxKeyboardMouse {
             centered = new Point(Screen.PrimaryScreen.Bounds.Width / 2, Screen.PrimaryScreen.Bounds.Height / 2);
             Cursor.Position = centered;
 
-            while (true) {
+            const int Mode_Default  = 0;
+            const int Mode_Relative = 1;
 
-                // Call default mouse movement
-                MouseMovement_Default();
+            while (true) {
+                var mode = Program.ActiveConfig.Mouse_Eng_Type;
+
+                switch (mode) {
+                case Mode_Default:  MouseMovement_Default(); break;
+                case Mode_Relative: MouseMovement_Relative(); break;
+                default:            break;
+                }
 
                 Thread.Sleep(Program.ActiveConfig.Mouse_TickRate);
             }
@@ -69,22 +76,22 @@ namespace XboxKeyboardMouse {
             /* Calculate Joystick X */ {
                 double x;
                 if (Program.ActiveConfig.Mouse_Invert_X)
-                    x = centered.X - mouse.X;
+                     x = centered.X - mouse.X;
                 else x = mouse.X - centered.X;
 
                 double max = (Screen.PrimaryScreen.Bounds.Width / 4) * 1.5;
                 double current = x + (x * Program.ActiveConfig.Mouse_Sensitivity_X);
-                double percentage = (current / max) * 100;
+                double percentage = (current / max) * Program.ActiveConfig.Mouse_FinalMod;
                 double number = iMax;
                 double final = number * percentage / 100;
 
-                if (final >= iMax && final > 0) final = iMax;
+                if      (final >= iMax && final > 0) final = iMax;
                 else if (final <= iMin && final < 0) final = iMin;
 
                 joyX = Convert.ToInt16(final);
             }
 
-            /* Caculate Joystick Y */ {
+            /* Calculate Joystick Y */ {
                 double y;
                 if (Program.ActiveConfig.Mouse_Invert_Y)
                      y = mouse.Y - centered.Y;
@@ -92,7 +99,7 @@ namespace XboxKeyboardMouse {
 
                 double max = Screen.PrimaryScreen.Bounds.Height / 2;
                 double current = y + (y * Program.ActiveConfig.Mouse_Sensitivity_Y);
-                double percentage = (current / max) * 100;
+                double percentage = (current / max) * Program.ActiveConfig.Mouse_FinalMod;
                 double number = iMax;
                 double final = number * percentage / 100;
 
@@ -102,15 +109,73 @@ namespace XboxKeyboardMouse {
             }
 
             //PrintVals(joyX, joyY);
-            Activate.controller.RightStickX = joyX;
-            Activate.controller.RightStickY = joyY;
-            Activate.SendtoController(Activate.controller);
+            Activate.Controller.RightStickX = joyX;
+            Activate.Controller.RightStickY = joyY;
+            Activate.SendtoController(Activate.Controller);
 
             Cursor.Position = centered;
         }
 
         private static void MouseMovement_Relative() {
 
+            Point mouse = Control.MousePosition;
+            short joyX = Activate.Controller.RightStickX;
+            short joyY = Activate.Controller.RightStickY;
+
+            /* 
+             * The idea is to do this
+             * just increment the current JOY X and Y by using
+             * translated values from the mouse's X and Y new positions
+             * same as above/default but instead we are incrementing position
+             * and decrementing rather than just setting
+             */
+
+            /* Calculate Joystick X */ {
+                double x;
+
+                if (Program.ActiveConfig.Mouse_Invert_X)
+                     x = centered.X - mouse.X;
+                else x = mouse.X - centered.X;
+
+                double max = (Screen.PrimaryScreen.Bounds.Width / 4) * 1.5;
+                double current = x + (x * Program.ActiveConfig.Mouse_Sensitivity_X);
+                double percentage = (current / max) * Program.ActiveConfig.Mouse_FinalMod;
+                double number = iMax;
+                double final = number * percentage / 100;
+
+                if (final >= iMax && final > 0) final = iMax;
+                else if (final <= iMin && final < 0) final = iMin;
+
+                short tJoyX = Convert.ToInt16(final);
+                joyX += tJoyX;
+            }
+
+            /* Calculate Joystick Y */ {
+                double y;
+                if (Program.ActiveConfig.Mouse_Invert_Y)
+                    y = mouse.Y - centered.Y;
+                else y = centered.Y - mouse.Y;
+
+                double max = Screen.PrimaryScreen.Bounds.Height / 2;
+                double current = y + (y * Program.ActiveConfig.Mouse_Sensitivity_Y);
+                double percentage = (current / max) * Program.ActiveConfig.Mouse_FinalMod;
+                double number = iMax;
+                double final = number * percentage / 100;
+
+                if (final >= iMax && final > 0) final = iMax;
+                else if (final <= iMin && final < 0) final = iMin;
+
+                short TJoyY = Convert.ToInt16(final);
+
+                joyY += TJoyY;
+            }
+
+
+            Activate.Controller.RightStickX = joyX;
+            Activate.Controller.RightStickY = joyY;
+            Activate.SendtoController(Activate.Controller);
+
+            Cursor.Position = centered;
         }
 
         public static void MouseButtonsInput(X360Controller controller) {

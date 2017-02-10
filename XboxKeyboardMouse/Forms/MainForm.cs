@@ -76,7 +76,7 @@ namespace XboxKeyboardMouse {
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e) {
-            Environment.Exit(0);
+            Environment.Exit(1);
         }
     }
 }
