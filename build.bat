@@ -35,28 +35,28 @@ REM change the 14.0 to your vs version!
 call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86_amd64
 
 echo Building Solution for 32 Bit (x86)...
-	echo msbuild "XboxKeyboardMouse.sln" /p:Configuration=Release /p:Platform="x64" /t:Build /p:OutputPath="%~dp0%Downloads"
+	echo msbuild "XboxKeyboardMouse.sln" /p:Configuration=Release /p:Platform="x86" /t:Build /p:OutputPath="%~dp0%Downloads"
 
 	REM Build the x32 version
-	msbuild "XboxKeyboardMouse.sln" /p:Configuration=Release /p:Platform="x64" /t:Build /p:OutputPath="%~dp0%Downloads"
+	msbuild "XboxKeyboardMouse.sln" /p:Configuration=Release /p:Platform="x86" /t:Build /p:OutputPath="%~dp0%Downloads"
 
 	REM Delete the output files
 	echo Deleting debug files
 
 	REM Setup our special file name
-	set fileName="XboxKeyboardMouse %mm% %dd% %yyyy% - x86.exe"
+	set fileName=XboxKeyboardMouse %mm% %dd% %yyyy% - x86.exe
 	echo Renaming file to %fileName%
-
-	REM remove file with same name in event of multiple builds per day
-	del "%~dp0%Downloads\%fileName%">NUL
 	
 	REM Rename XboxKeyboardMouse.exe to our desired name
-	set renameCommand=ren "%~dp0
+	set renameCommand=move /y "%~dp0
 	set renameCommand=%renameCommand%Downloads\XboxKeyboardMouse.exe"
-	set renameCommand=%renameCommand% %fileName%
+	set renameCommand=%renameCommand% "%~dp0
+	set renameCommand=%renameCommand%Downloads\%fileName%"
+	echo %renameCommand%
 	%renameCommand%
 echo. 
 echo. 
+
 echo Building Solution for 64 Bit (x86_64)...
 	echo msbuild "XboxKeyboardMouse.sln" /p:Configuration=Release /p:Platform="x64" /t:Build /p:OutputPath="%~dp0%Downloads"
 
@@ -64,27 +64,25 @@ echo Building Solution for 64 Bit (x86_64)...
 	msbuild "XboxKeyboardMouse.sln" /p:Configuration=Release /p:Platform="x64" /t:Build /p:OutputPath="%~dp0%Downloads"
 
 	REM Setup our special file name
-	set fileName="XboxKeyboardMouse %mm% %dd% %yyyy% - x86_64.exe"
+	set fileName=XboxKeyboardMouse %mm% %dd% %yyyy% - x86_64.exe
 	echo Renaming file to %fileName%
 	
-	REM remove file with same name in event of multiple builds per day
-	del "%~dp0%Downloads\%fileName%">NUL
-	
 	REM Rename XboxKeyboardMouse.exe to our desired name
-	set renameCommand=ren "%~dp0
+	set renameCommand=move /y "%~dp0
 	set renameCommand=%renameCommand%Downloads\XboxKeyboardMouse.exe"
-	set renameCommand=%renameCommand% %fileName%
+	set renameCommand=%renameCommand% "%~dp0
+	set renameCommand=%renameCommand%Downloads\%fileName%"
+	echo %renameCommand%
 	%renameCommand%
 	
 rem Finally delete the old files
-echo Deleting not needed files
+echo Deleting un-needed files
 
 del "%~dp0%Downloads\SlimDX.dll">NUL
 del "%~dp0%Downloads\SlimDX.pdb">NUL
 del "%~dp0%Downloads\SlimDX.xml">NUL
 del "%~dp0%Downloads\XboxKeyboardMouse.exe.config">NUL
 del "%~dp0%Downloads\XboxKeyboardMouse.pdb">NUL
-
 del "%~dp0%Downloads\XboxKeyboardMouse.exe">NUL
 
 echo.

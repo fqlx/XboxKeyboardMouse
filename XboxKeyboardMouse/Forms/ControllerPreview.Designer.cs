@@ -24,6 +24,12 @@
         /// </summary>
         private void InitializeComponent() {
             this.editor_InputMouse = new System.Windows.Forms.Panel();
+            this.axisRight = new XboxKeyboardMouse.Forms.Controls.CircleControl();
+            this.axisLeft = new XboxKeyboardMouse.Forms.Controls.CircleControl();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.xbo_k_TLeft = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.xbo_k_TRight = new System.Windows.Forms.Label();
             this.xbo_m_SR = new System.Windows.Forms.Label();
             this.xbo_m_SL = new System.Windows.Forms.Label();
             this.xbo_m_B = new System.Windows.Forms.Label();
@@ -39,19 +45,25 @@
             this.xbo_m_Start = new System.Windows.Forms.Label();
             this.xbo_m_RS = new System.Windows.Forms.Label();
             this.xbo_m_LS = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.xbo_k_TRight = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.xbo_k_TLeft = new System.Windows.Forms.Label();
+            this.leftX = new System.Windows.Forms.Label();
+            this.leftY = new System.Windows.Forms.Label();
+            this.rightY = new System.Windows.Forms.Label();
+            this.rightX = new System.Windows.Forms.Label();
             this.editor_InputMouse.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // editor_InputMouse
             // 
             this.editor_InputMouse.BackgroundImage = global::XboxKeyboardMouse.Properties.Resources.XboxOne_Elite_Closer;
             this.editor_InputMouse.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.editor_InputMouse.Controls.Add(this.rightY);
+            this.editor_InputMouse.Controls.Add(this.rightX);
+            this.editor_InputMouse.Controls.Add(this.leftY);
+            this.editor_InputMouse.Controls.Add(this.leftX);
+            this.editor_InputMouse.Controls.Add(this.axisRight);
+            this.editor_InputMouse.Controls.Add(this.axisLeft);
             this.editor_InputMouse.Controls.Add(this.panel1);
             this.editor_InputMouse.Controls.Add(this.panel2);
             this.editor_InputMouse.Controls.Add(this.xbo_m_SR);
@@ -74,6 +86,70 @@
             this.editor_InputMouse.Name = "editor_InputMouse";
             this.editor_InputMouse.Size = new System.Drawing.Size(516, 393);
             this.editor_InputMouse.TabIndex = 8;
+            // 
+            // axisRight
+            // 
+            this.axisRight.AxisDotColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(194)))), ((int)(((byte)(30)))));
+            this.axisRight.DrawAxisDot = true;
+            this.axisRight.Location = new System.Drawing.Point(294, 289);
+            this.axisRight.Name = "axisRight";
+            this.axisRight.Size = new System.Drawing.Size(70, 70);
+            this.axisRight.TabIndex = 25;
+            // 
+            // axisLeft
+            // 
+            this.axisLeft.AxisDotColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(194)))), ((int)(((byte)(30)))));
+            this.axisLeft.DrawAxisDot = true;
+            this.axisLeft.Location = new System.Drawing.Point(150, 289);
+            this.axisLeft.Name = "axisLeft";
+            this.axisLeft.Size = new System.Drawing.Size(70, 70);
+            this.axisLeft.TabIndex = 24;
+            // 
+            // panel1
+            // 
+            this.panel1.BackgroundImage = global::XboxKeyboardMouse.Properties.Resources._360_LT;
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel1.Controls.Add(this.xbo_k_TLeft);
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(58, 77);
+            this.panel1.TabIndex = 23;
+            // 
+            // xbo_k_TLeft
+            // 
+            this.xbo_k_TLeft.BackColor = System.Drawing.Color.Transparent;
+            this.xbo_k_TLeft.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xbo_k_TLeft.ForeColor = System.Drawing.Color.Gray;
+            this.xbo_k_TLeft.Location = new System.Drawing.Point(-1, -2);
+            this.xbo_k_TLeft.Name = "xbo_k_TLeft";
+            this.xbo_k_TLeft.Size = new System.Drawing.Size(59, 35);
+            this.xbo_k_TLeft.TabIndex = 19;
+            this.xbo_k_TLeft.Tag = "TL";
+            this.xbo_k_TLeft.Text = " ";
+            // 
+            // panel2
+            // 
+            this.panel2.BackgroundImage = global::XboxKeyboardMouse.Properties.Resources._360_RT;
+            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel2.Controls.Add(this.xbo_k_TRight);
+            this.panel2.Location = new System.Drawing.Point(456, -1);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(58, 77);
+            this.panel2.TabIndex = 22;
+            // 
+            // xbo_k_TRight
+            // 
+            this.xbo_k_TRight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.xbo_k_TRight.BackColor = System.Drawing.Color.Transparent;
+            this.xbo_k_TRight.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xbo_k_TRight.ForeColor = System.Drawing.Color.Gray;
+            this.xbo_k_TRight.Location = new System.Drawing.Point(0, -2);
+            this.xbo_k_TRight.Name = "xbo_k_TRight";
+            this.xbo_k_TRight.Size = new System.Drawing.Size(56, 39);
+            this.xbo_k_TRight.TabIndex = 22;
+            this.xbo_k_TRight.Tag = "TR";
+            this.xbo_k_TRight.Text = " ";
+            this.xbo_k_TRight.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // xbo_m_SR
             // 
@@ -273,57 +349,45 @@
             this.xbo_m_LS.Text = " ";
             this.xbo_m_LS.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // panel2
+            // leftX
             // 
-            this.panel2.BackgroundImage = global::XboxKeyboardMouse.Properties.Resources._360_RT;
-            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel2.Controls.Add(this.xbo_k_TRight);
-            this.panel2.Location = new System.Drawing.Point(456, -1);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(58, 77);
-            this.panel2.TabIndex = 22;
+            this.leftX.Location = new System.Drawing.Point(226, 289);
+            this.leftX.Name = "leftX";
+            this.leftX.Size = new System.Drawing.Size(60, 13);
+            this.leftX.TabIndex = 26;
+            this.leftX.Text = "LX: 00000";
+            this.leftX.Click += new System.EventHandler(this.leftX_Click);
             // 
-            // xbo_k_TRight
+            // leftY
             // 
-            this.xbo_k_TRight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.xbo_k_TRight.BackColor = System.Drawing.Color.Transparent;
-            this.xbo_k_TRight.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xbo_k_TRight.ForeColor = System.Drawing.Color.Gray;
-            this.xbo_k_TRight.Location = new System.Drawing.Point(0, -2);
-            this.xbo_k_TRight.Name = "xbo_k_TRight";
-            this.xbo_k_TRight.Size = new System.Drawing.Size(56, 39);
-            this.xbo_k_TRight.TabIndex = 22;
-            this.xbo_k_TRight.Tag = "TR";
-            this.xbo_k_TRight.Text = " ";
-            this.xbo_k_TRight.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.leftY.Location = new System.Drawing.Point(226, 304);
+            this.leftY.Name = "leftY";
+            this.leftY.Size = new System.Drawing.Size(60, 13);
+            this.leftY.TabIndex = 27;
+            this.leftY.Text = "LY: 00000";
+            this.leftY.Click += new System.EventHandler(this.leftY_Click);
             // 
-            // panel1
+            // rightY
             // 
-            this.panel1.BackgroundImage = global::XboxKeyboardMouse.Properties.Resources._360_LT;
-            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel1.Controls.Add(this.xbo_k_TLeft);
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(58, 77);
-            this.panel1.TabIndex = 23;
+            this.rightY.Location = new System.Drawing.Point(226, 346);
+            this.rightY.Name = "rightY";
+            this.rightY.Size = new System.Drawing.Size(60, 13);
+            this.rightY.TabIndex = 29;
+            this.rightY.Text = "RY: 00000";
             // 
-            // xbo_k_TLeft
+            // rightX
             // 
-            this.xbo_k_TLeft.BackColor = System.Drawing.Color.Transparent;
-            this.xbo_k_TLeft.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xbo_k_TLeft.ForeColor = System.Drawing.Color.Gray;
-            this.xbo_k_TLeft.Location = new System.Drawing.Point(-1, -2);
-            this.xbo_k_TLeft.Name = "xbo_k_TLeft";
-            this.xbo_k_TLeft.Size = new System.Drawing.Size(59, 35);
-            this.xbo_k_TLeft.TabIndex = 19;
-            this.xbo_k_TLeft.Tag = "TL";
-            this.xbo_k_TLeft.Text = " ";
+            this.rightX.Location = new System.Drawing.Point(226, 331);
+            this.rightX.Name = "rightX";
+            this.rightX.Size = new System.Drawing.Size(60, 13);
+            this.rightX.TabIndex = 28;
+            this.rightX.Text = "RX: 00000";
             // 
             // ControllerPreview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(512, 391);
+            this.ClientSize = new System.Drawing.Size(512, 389);
             this.Controls.Add(this.editor_InputMouse);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -332,8 +396,8 @@
             this.Text = "ControllerPreview";
             this.Load += new System.EventHandler(this.ControllerPreview_Load);
             this.editor_InputMouse.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -360,5 +424,11 @@
         private System.Windows.Forms.Label xbo_k_TRight;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label xbo_k_TLeft;
+        private Controls.CircleControl axisRight;
+        private Controls.CircleControl axisLeft;
+        private System.Windows.Forms.Label rightY;
+        private System.Windows.Forms.Label rightX;
+        private System.Windows.Forms.Label leftY;
+        private System.Windows.Forms.Label leftX;
     }
 }
