@@ -55,7 +55,7 @@
     <PlatformTarget>x64</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>true</Prefer32Bit>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <OutputPath>bin\x64\Release\</OutputPath>
@@ -65,7 +65,7 @@
     <PlatformTarget>x64</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>true</Prefer32Bit>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -112,10 +112,10 @@
     <Compile Include="Forms\Controls\CircleControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Forms\OptionsFrms\Mouse_Engine_Relative.cs">
+    <Compile Include="Forms\KeySelection\Mouse_Engine_Relative.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\OptionsFrms\Mouse_Engine_Relative.Designer.cs">
+    <Compile Include="Forms\KeySelection\Mouse_Engine_Relative.Designer.cs">
       <DependentUpon>Mouse_Engine_Relative.cs</DependentUpon>
     </Compile>
     <Compile Include="Hooks\LowLevelKeyboardHook.cs" />
@@ -143,29 +143,29 @@
     <Compile Include="Forms\Options.Designer.cs">
       <DependentUpon>Options.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SelectKey.cs">
+    <Compile Include="Forms\KeySelection\SelectKey.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\SelectKey.Designer.cs">
+    <Compile Include="Forms\KeySelection\SelectKey.Designer.cs">
       <DependentUpon>SelectKey.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SelectKey_Modifier.cs">
+    <Compile Include="Forms\KeySelection\SelectKey_Modifier.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\SelectKey_Modifier.Designer.cs">
+    <Compile Include="Forms\KeySelection\SelectKey_Modifier.Designer.cs">
       <DependentUpon>SelectKey_Modifier.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SelectKey_Storage.cs">
+    <Compile Include="Forms\KeySelection\SelectKey_Storage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\SelectKey_Storage.Designer.cs">
+    <Compile Include="Forms\KeySelection\SelectKey_Storage.Designer.cs">
       <DependentUpon>SelectKey_Storage.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\SelectKey_Storage.cs" />
-    <Compile Include="Forms\SelectMouseButton.cs">
+    <Compile Include="Forms\KeySelection\SelectMouseButton.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\SelectMouseButton.Designer.cs">
+    <Compile Include="Forms\KeySelection\SelectMouseButton.Designer.cs">
       <DependentUpon>SelectMouseButton.cs</DependentUpon>
     </Compile>
     <Compile Include="XboxController\SCP\GamepadState.cs" />
@@ -186,19 +186,19 @@
     <EmbeddedResource Include="Forms\Options.resx">
       <DependentUpon>Options.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\OptionsFrms\Mouse_Engine_Relative.resx">
+    <EmbeddedResource Include="Forms\KeySelection\Mouse_Engine_Relative.resx">
       <DependentUpon>Mouse_Engine_Relative.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SelectKey.resx">
+    <EmbeddedResource Include="Forms\KeySelection\SelectKey.resx">
       <DependentUpon>SelectKey.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SelectKey_Modifier.resx">
+    <EmbeddedResource Include="Forms\KeySelection\SelectKey_Modifier.resx">
       <DependentUpon>SelectKey_Modifier.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SelectKey_Storage.resx">
+    <EmbeddedResource Include="Forms\KeySelection\SelectKey_Storage.resx">
       <DependentUpon>SelectKey_Storage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SelectMouseButton.resx">
+    <EmbeddedResource Include="Forms\KeySelection\SelectMouseButton.resx">
       <DependentUpon>SelectMouseButton.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

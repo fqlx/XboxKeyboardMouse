@@ -71,12 +71,8 @@ namespace XboxKeyboardMouse {
             Config.Data.Save(file, Program.ActiveConfig);
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e) {
-            Hooks.LowLevelKeyboardHook.LockEscape = checkBox1.Checked;
-        }
-
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e) {
-            Environment.Exit(0);
+            Application.Exit();
         }
     }
 }

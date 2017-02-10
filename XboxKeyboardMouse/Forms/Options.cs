@@ -315,6 +315,8 @@ namespace XboxKeyboardMouse.Forms {
             optYSense.Value = (decimal)cfg.Mouse_Sensitivity_Y;
             optInvertX.Checked = cfg.Mouse_Invert_X;
             optInvertY.Checked = cfg.Mouse_Invert_Y;
+            optMouseEngine.SelectedIndex = cfg.Mouse_Eng_Type;
+            optMouseModifier.Value = (decimal)cfg.Mouse_FinalMod;
 
             // Ensure that there is a detach key
             var k1 = (System.Windows.Input.Key)cfg.Controls_KB_Detach_MOD;
@@ -348,13 +350,13 @@ namespace XboxKeyboardMouse.Forms {
             originalName = cfg.Name;
 
             // Check if the mouse setting is valid
-            if (cfg.Mouse_Eng_Type >= 1) {
+            if (cfg.Mouse_Eng_Type > TranslateMouse.MaxMouseMode || cfg.Mouse_Eng_Type < 0) {
                 MessageBox.Show("Invalid mouse engine selected -> Reset to default!");
                 cfg.Mouse_Eng_Type = 0;
                 Config.Data.Save(GetSelectedProfile() + ".ini", cfg);
             }
 
-            comboBox1.SelectedIndex = cfg.Mouse_Eng_Type;
+            optMouseEngine.SelectedIndex = cfg.Mouse_Eng_Type;
         }
 
         private void btnPresOptActive_Click(object sender, EventArgs e) {
@@ -419,11 +421,13 @@ namespace XboxKeyboardMouse.Forms {
             // require extra work
 
             // Mouse settings
-            cfg.Mouse_Invert_X = optInvertX.Checked;
-            cfg.Mouse_Invert_Y = optInvertX.Checked;
+            cfg.Mouse_Invert_X      = optInvertX.Checked;
+            cfg.Mouse_Invert_Y      = optInvertX.Checked;
             cfg.Mouse_Sensitivity_X = (double)optXSense.Value;
             cfg.Mouse_Sensitivity_Y = (double)optYSense.Value;
-            cfg.Mouse_TickRate = (int)optTickRate.Value;
+            cfg.Mouse_TickRate      = (int)optTickRate.Value;
+            cfg.Mouse_Eng_Type      = (int)optMouseEngine.SelectedIndex;
+            cfg.Mouse_FinalMod      = (double)optMouseModifier.Value;
 
             if (cfg.Name.Trim() != optName.Text.Trim()) {
                 cfg.Name = optName.Text.Trim();
@@ -502,25 +506,36 @@ namespace XboxKeyboardMouse.Forms {
 
         OptionsFrms.Mouse_Engine_Relative meRelative = null;
         private void button1_Click(object sender, EventArgs e) {
-            if (comboBox1.SelectedIndex == 0) {
+            MessageBox.Show("There is no options for this engine.");
+
+            /*
+            if (optMouseEngine.SelectedIndex == 0) {
                 MessageBox.Show("There is no options for this engine.");
-            } else if (comboBox1.SelectedIndex == 1) {
+            } else if (optMouseEngine.SelectedIndex == 1) {
                 if (meRelative == null || meRelative.IsDisposed)
                     meRelative = new OptionsFrms.Mouse_Engine_Relative(cfg);
                 
                 meRelative.ShowDialog();
-            }
+            }*/
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) {
-            int index = comboBox1.SelectedIndex;
+            int index = optMouseEngine.SelectedIndex;
 
-            if (index >= 2) {
+            if (index > TranslateMouse.MaxMouseMode) {
                 MessageBox.Show("Invalid selected mouse engine");
                 index = 0;
             }
 
             cfg.Mouse_Eng_Type = index;
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e) {
+            Hooks.LowLevelKeyboardHook.LockEscape = checkBox1.Checked;
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e) {
+            Program.HideCursor = checkBox2.Checked;
         }
     }
 }

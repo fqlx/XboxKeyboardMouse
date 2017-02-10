@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Options));
             this.lbPresets = new System.Windows.Forms.ListBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -32,20 +33,14 @@
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.editor_Preset = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.optMouseModifier = new System.Windows.Forms.NumericUpDown();
             this.button1 = new System.Windows.Forms.Button();
-            this.linkLabel8 = new System.Windows.Forms.LinkLabel();
-            this.linkLabel7 = new System.Windows.Forms.LinkLabel();
             this.label4 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.optMouseEngine = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.optDetachKey = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.linkLabel6 = new System.Windows.Forms.LinkLabel();
-            this.linkLabel5 = new System.Windows.Forms.LinkLabel();
-            this.linkLabel4 = new System.Windows.Forms.LinkLabel();
-            this.linkLabel3 = new System.Windows.Forms.LinkLabel();
-            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.button4 = new System.Windows.Forms.Button();
             this.optInvertY = new System.Windows.Forms.CheckBox();
             this.optInvertX = new System.Windows.Forms.CheckBox();
@@ -66,11 +61,13 @@
             this.btnPreOptLoad = new System.Windows.Forms.Button();
             this.btnPresOptDel = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.editor_InputKeyboard = new System.Windows.Forms.Panel();
+            this.editor_InputKeyboard = new System.Windows.Forms.PictureBox();
+            this.xbo_k_joy_r_down = new System.Windows.Forms.Label();
             this.xbo_k_joy_r_up = new System.Windows.Forms.Label();
+            this.xbo_k_joy_l_up = new System.Windows.Forms.Label();
+            this.xbo_k_joy_l_down = new System.Windows.Forms.Label();
             this.xbo_k_joy_r_left = new System.Windows.Forms.Label();
             this.xbo_k_joy_r_right = new System.Windows.Forms.Label();
-            this.xbo_k_joy_r_down = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.xbo_k_TRight = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -90,10 +87,8 @@
             this.xbo_k_Start = new System.Windows.Forms.Label();
             this.xbo_k_RightStick = new System.Windows.Forms.Label();
             this.xbo_k_LeftStick = new System.Windows.Forms.Label();
-            this.xbo_k_joy_l_up = new System.Windows.Forms.Label();
             this.xbo_k_joy_l_left = new System.Windows.Forms.Label();
             this.xbo_k_joy_l_right = new System.Windows.Forms.Label();
-            this.xbo_k_joy_l_down = new System.Windows.Forms.Label();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.editor_InputMouse = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
@@ -122,19 +117,26 @@
             this.btnCreatePreset = new System.Windows.Forms.Button();
             this.tbCreateName = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.circleControl2 = new XboxKeyboardMouse.Forms.Controls.CircleControl();
             this.circleControl1 = new XboxKeyboardMouse.Forms.Controls.CircleControl();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.editor_Preset.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.optMouseModifier)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.optYSense)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.optXSense)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.optTickRate)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.tabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.editor_InputKeyboard)).BeginInit();
             this.editor_InputKeyboard.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -144,6 +146,7 @@
             this.panel4.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.tabPage7.SuspendLayout();
             this.SuspendLayout();
             // 
             // lbPresets
@@ -166,6 +169,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Location = new System.Drawing.Point(-2, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -175,6 +179,8 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage1.Controls.Add(this.checkBox2);
+            this.tabPage1.Controls.Add(this.checkBox1);
             this.tabPage1.Controls.Add(this.label20);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
@@ -237,20 +243,14 @@
             this.editor_Preset.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.editor_Preset.Controls.Add(this.label3);
+            this.editor_Preset.Controls.Add(this.optMouseModifier);
             this.editor_Preset.Controls.Add(this.button1);
-            this.editor_Preset.Controls.Add(this.linkLabel8);
-            this.editor_Preset.Controls.Add(this.linkLabel7);
             this.editor_Preset.Controls.Add(this.label4);
-            this.editor_Preset.Controls.Add(this.comboBox1);
+            this.editor_Preset.Controls.Add(this.optMouseEngine);
             this.editor_Preset.Controls.Add(this.label2);
             this.editor_Preset.Controls.Add(this.optDetachKey);
             this.editor_Preset.Controls.Add(this.label1);
-            this.editor_Preset.Controls.Add(this.linkLabel6);
-            this.editor_Preset.Controls.Add(this.linkLabel5);
-            this.editor_Preset.Controls.Add(this.linkLabel4);
-            this.editor_Preset.Controls.Add(this.linkLabel3);
-            this.editor_Preset.Controls.Add(this.linkLabel2);
-            this.editor_Preset.Controls.Add(this.linkLabel1);
             this.editor_Preset.Controls.Add(this.button4);
             this.editor_Preset.Controls.Add(this.optInvertY);
             this.editor_Preset.Controls.Add(this.optInvertX);
@@ -273,68 +273,84 @@
             this.editor_Preset.TabStop = false;
             this.editor_Preset.Text = "Select a preset to get started";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(32, 184);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(62, 13);
+            this.label3.TabIndex = 34;
+            this.label3.Text = "Times Mod:";
+            // 
+            // optMouseModifier
+            // 
+            this.optMouseModifier.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.optMouseModifier.DecimalPlaces = 6;
+            this.optMouseModifier.Location = new System.Drawing.Point(104, 180);
+            this.optMouseModifier.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.optMouseModifier.Name = "optMouseModifier";
+            this.optMouseModifier.Size = new System.Drawing.Size(147, 20);
+            this.optMouseModifier.TabIndex = 33;
+            this.toolTip1.SetToolTip(this.optMouseModifier, "Multiplies the mouse\'s final output to the controller (You will require to experi" +
+        "ment)\r\n");
+            this.optMouseModifier.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(78, 230);
+            this.button1.Location = new System.Drawing.Point(103, 255);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(146, 22);
+            this.button1.Size = new System.Drawing.Size(148, 22);
             this.button1.TabIndex = 32;
             this.button1.Text = "Engine Options";
+            this.toolTip1.SetToolTip(this.button1, "Options for the selected mouse engine");
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // linkLabel8
-            // 
-            this.linkLabel8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.linkLabel8.AutoSize = true;
-            this.linkLabel8.Location = new System.Drawing.Point(229, 288);
-            this.linkLabel8.Name = "linkLabel8";
-            this.linkLabel8.Size = new System.Drawing.Size(13, 13);
-            this.linkLabel8.TabIndex = 31;
-            this.linkLabel8.TabStop = true;
-            this.linkLabel8.Text = "?";
-            // 
-            // linkLabel7
-            // 
-            this.linkLabel7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.linkLabel7.AutoSize = true;
-            this.linkLabel7.Location = new System.Drawing.Point(230, 206);
-            this.linkLabel7.Name = "linkLabel7";
-            this.linkLabel7.Size = new System.Drawing.Size(13, 13);
-            this.linkLabel7.TabIndex = 30;
-            this.linkLabel7.TabStop = true;
-            this.linkLabel7.Text = "?";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(6, 314);
+            this.label4.Location = new System.Drawing.Point(6, 332);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(120, 21);
             this.label4.TabIndex = 28;
             this.label4.Text = "Preset Settings";
             // 
-            // comboBox1
+            // optMouseEngine
             // 
-            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.optMouseEngine.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Default"});
-            this.comboBox1.Location = new System.Drawing.Point(79, 203);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(144, 21);
-            this.comboBox1.TabIndex = 26;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.optMouseEngine.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.optMouseEngine.FormattingEnabled = true;
+            this.optMouseEngine.Items.AddRange(new object[] {
+            "Percentage",
+            "Relative",
+            "Raw Input",
+            "Raw Input + Sensitivity",
+            "None"});
+            this.optMouseEngine.Location = new System.Drawing.Point(103, 228);
+            this.optMouseEngine.Name = "optMouseEngine";
+            this.optMouseEngine.Size = new System.Drawing.Size(147, 21);
+            this.optMouseEngine.TabIndex = 26;
+            this.toolTip1.SetToolTip(this.optMouseEngine, "The mouse controller engine. Each mouse engine will serve and do a seperate purpo" +
+        "se.");
+            this.optMouseEngine.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(14, 206);
+            this.label2.Location = new System.Drawing.Point(50, 231);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 13);
             this.label2.TabIndex = 25;
@@ -344,11 +360,13 @@
             // 
             this.optDetachKey.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.optDetachKey.Location = new System.Drawing.Point(55, 283);
+            this.optDetachKey.Location = new System.Drawing.Point(103, 306);
             this.optDetachKey.Name = "optDetachKey";
-            this.optDetachKey.Size = new System.Drawing.Size(167, 22);
+            this.optDetachKey.Size = new System.Drawing.Size(146, 22);
             this.optDetachKey.TabIndex = 24;
+            this.optDetachKey.Tag = "#";
             this.optDetachKey.Text = "Detach Key ...";
+            this.toolTip1.SetToolTip(this.optDetachKey, "This is the key that will be used to enable/disable the controller");
             this.optDetachKey.UseVisualStyleBackColor = true;
             this.optDetachKey.Click += new System.EventHandler(this.optDetachKey_Click);
             // 
@@ -356,87 +374,22 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(5, 259);
+            this.label1.Location = new System.Drawing.Point(5, 282);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(158, 21);
             this.label1.TabIndex = 23;
             this.label1.Text = "Application Settings";
             // 
-            // linkLabel6
-            // 
-            this.linkLabel6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.linkLabel6.AutoSize = true;
-            this.linkLabel6.Location = new System.Drawing.Point(230, 48);
-            this.linkLabel6.Name = "linkLabel6";
-            this.linkLabel6.Size = new System.Drawing.Size(13, 13);
-            this.linkLabel6.TabIndex = 19;
-            this.linkLabel6.TabStop = true;
-            this.linkLabel6.Text = "?";
-            // 
-            // linkLabel5
-            // 
-            this.linkLabel5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.linkLabel5.AutoSize = true;
-            this.linkLabel5.Location = new System.Drawing.Point(230, 107);
-            this.linkLabel5.Name = "linkLabel5";
-            this.linkLabel5.Size = new System.Drawing.Size(13, 13);
-            this.linkLabel5.TabIndex = 18;
-            this.linkLabel5.TabStop = true;
-            this.linkLabel5.Text = "?";
-            // 
-            // linkLabel4
-            // 
-            this.linkLabel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.linkLabel4.AutoSize = true;
-            this.linkLabel4.Location = new System.Drawing.Point(230, 133);
-            this.linkLabel4.Name = "linkLabel4";
-            this.linkLabel4.Size = new System.Drawing.Size(13, 13);
-            this.linkLabel4.TabIndex = 17;
-            this.linkLabel4.TabStop = true;
-            this.linkLabel4.Text = "?";
-            // 
-            // linkLabel3
-            // 
-            this.linkLabel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.linkLabel3.AutoSize = true;
-            this.linkLabel3.Location = new System.Drawing.Point(230, 184);
-            this.linkLabel3.Name = "linkLabel3";
-            this.linkLabel3.Size = new System.Drawing.Size(13, 13);
-            this.linkLabel3.TabIndex = 16;
-            this.linkLabel3.TabStop = true;
-            this.linkLabel3.Text = "?";
-            // 
-            // linkLabel2
-            // 
-            this.linkLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Location = new System.Drawing.Point(104, 184);
-            this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(13, 13);
-            this.linkLabel2.TabIndex = 15;
-            this.linkLabel2.TabStop = true;
-            this.linkLabel2.Text = "?";
-            // 
-            // linkLabel1
-            // 
-            this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(230, 160);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(13, 13);
-            this.linkLabel1.TabIndex = 14;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "?";
-            // 
             // button4
             // 
             this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(56, 341);
+            this.button4.Location = new System.Drawing.Point(103, 359);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(166, 21);
+            this.button4.Size = new System.Drawing.Size(146, 21);
             this.button4.TabIndex = 13;
-            this.button4.Text = "Save - Settings and Input Scheme";
+            this.button4.Text = "Save all changes";
+            this.toolTip1.SetToolTip(this.button4, "Saves all the changes including the input mapper changes to the config.");
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.SaveToFile);
             // 
@@ -444,28 +397,30 @@
             // 
             this.optInvertY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.optInvertY.AutoSize = true;
-            this.optInvertY.Location = new System.Drawing.Point(161, 183);
+            this.optInvertY.Location = new System.Drawing.Point(187, 205);
             this.optInvertY.Name = "optInvertY";
             this.optInvertY.Size = new System.Drawing.Size(63, 17);
             this.optInvertY.TabIndex = 12;
             this.optInvertY.Text = "Invert Y";
+            this.toolTip1.SetToolTip(this.optInvertY, "Inverts the Y Axis");
             this.optInvertY.UseVisualStyleBackColor = true;
             // 
             // optInvertX
             // 
             this.optInvertX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.optInvertX.AutoSize = true;
-            this.optInvertX.Location = new System.Drawing.Point(35, 183);
+            this.optInvertX.Location = new System.Drawing.Point(103, 206);
             this.optInvertX.Name = "optInvertX";
             this.optInvertX.Size = new System.Drawing.Size(63, 17);
             this.optInvertX.TabIndex = 11;
             this.optInvertX.Text = "Invert X";
+            this.toolTip1.SetToolTip(this.optInvertX, "Inverts the X Axis");
             this.optInvertX.UseVisualStyleBackColor = true;
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(11, 160);
+            this.label18.Location = new System.Drawing.Point(31, 158);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(62, 13);
             this.label18.TabIndex = 10;
@@ -476,7 +431,7 @@
             this.optYSense.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.optYSense.DecimalPlaces = 15;
-            this.optYSense.Location = new System.Drawing.Point(76, 157);
+            this.optYSense.Location = new System.Drawing.Point(103, 154);
             this.optYSense.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -485,6 +440,7 @@
             this.optYSense.Name = "optYSense";
             this.optYSense.Size = new System.Drawing.Size(147, 20);
             this.optYSense.TabIndex = 9;
+            this.toolTip1.SetToolTip(this.optYSense, "Multiplies the mouse input on the X axis");
             this.optYSense.Value = new decimal(new int[] {
             -820297523,
             191223,
@@ -496,7 +452,7 @@
             this.optXSense.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.optXSense.DecimalPlaces = 15;
-            this.optXSense.Location = new System.Drawing.Point(76, 131);
+            this.optXSense.Location = new System.Drawing.Point(103, 128);
             this.optXSense.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -505,6 +461,7 @@
             this.optXSense.Name = "optXSense";
             this.optXSense.Size = new System.Drawing.Size(147, 20);
             this.optXSense.TabIndex = 7;
+            this.toolTip1.SetToolTip(this.optXSense, "Multiplies the mouse input on the X axis");
             this.optXSense.Value = new decimal(new int[] {
             -820297523,
             191223,
@@ -514,7 +471,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(11, 135);
+            this.label17.Location = new System.Drawing.Point(31, 133);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(62, 13);
             this.label17.TabIndex = 6;
@@ -524,7 +481,7 @@
             // 
             this.optTickRate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.optTickRate.Location = new System.Drawing.Point(76, 105);
+            this.optTickRate.Location = new System.Drawing.Point(103, 102);
             this.optTickRate.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -538,6 +495,8 @@
             this.optTickRate.Name = "optTickRate";
             this.optTickRate.Size = new System.Drawing.Size(147, 20);
             this.optTickRate.TabIndex = 5;
+            this.toolTip1.SetToolTip(this.optTickRate, "How often the mouse input is reset and taken into account \r\n(Smaller values may r" +
+        "equire higher sensitivity)");
             this.optTickRate.Value = new decimal(new int[] {
             40,
             0,
@@ -547,7 +506,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(16, 107);
+            this.label16.Location = new System.Drawing.Point(36, 105);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(57, 13);
             this.label16.TabIndex = 4;
@@ -557,15 +516,16 @@
             // 
             this.optName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.optName.Location = new System.Drawing.Point(76, 45);
+            this.optName.Location = new System.Drawing.Point(103, 45);
             this.optName.Name = "optName";
             this.optName.Size = new System.Drawing.Size(147, 20);
             this.optName.TabIndex = 3;
+            this.toolTip1.SetToolTip(this.optName, "Preset name (This is also the file name)");
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(32, 48);
+            this.label15.Location = new System.Drawing.Point(55, 48);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(38, 13);
             this.label15.TabIndex = 2;
@@ -585,7 +545,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(6, 75);
+            this.label5.Location = new System.Drawing.Point(6, 72);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(124, 21);
             this.label5.TabIndex = 0;
@@ -595,12 +555,14 @@
             // 
             this.ll_ResetOriginalName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ll_ResetOriginalName.AutoSize = true;
-            this.ll_ResetOriginalName.Location = new System.Drawing.Point(12, 48);
+            this.ll_ResetOriginalName.Location = new System.Drawing.Point(31, 48);
             this.ll_ResetOriginalName.Name = "ll_ResetOriginalName";
             this.ll_ResetOriginalName.Size = new System.Drawing.Size(15, 13);
             this.ll_ResetOriginalName.TabIndex = 22;
             this.ll_ResetOriginalName.TabStop = true;
             this.ll_ResetOriginalName.Text = "R";
+            this.toolTip1.SetToolTip(this.ll_ResetOriginalName, "Resets to the default value (Default value is the preset name when it was loaded)" +
+        "");
             this.ll_ResetOriginalName.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ResetNameOptionToDefault);
             // 
             // groupBox1
@@ -626,6 +588,8 @@
             this.btnPresOptActive.Size = new System.Drawing.Size(95, 29);
             this.btnPresOptActive.TabIndex = 9;
             this.btnPresOptActive.Text = "Set as Active";
+            this.toolTip1.SetToolTip(this.btnPresOptActive, "Sets the selected profile as Active\r\n(This means that the selected profile will b" +
+        "e used)");
             this.btnPresOptActive.UseVisualStyleBackColor = true;
             this.btnPresOptActive.Click += new System.EventHandler(this.btnPresOptActive_Click);
             // 
@@ -636,6 +600,7 @@
             this.btnPresOptRef.Size = new System.Drawing.Size(95, 45);
             this.btnPresOptRef.TabIndex = 8;
             this.btnPresOptRef.Text = "Refresh all presets";
+            this.toolTip1.SetToolTip(this.btnPresOptRef, "Refreshes profile list from local profile dir\r\n(profiles folder)");
             this.btnPresOptRef.UseVisualStyleBackColor = true;
             this.btnPresOptRef.Click += new System.EventHandler(this.btnPresOptRef_Click);
             // 
@@ -646,6 +611,7 @@
             this.btnPreOptLoad.Size = new System.Drawing.Size(95, 29);
             this.btnPreOptLoad.TabIndex = 7;
             this.btnPreOptLoad.Text = "Load Profile";
+            this.toolTip1.SetToolTip(this.btnPreOptLoad, "Loads selected profile");
             this.btnPreOptLoad.UseVisualStyleBackColor = true;
             this.btnPreOptLoad.Click += new System.EventHandler(this.btnPreOptLoad_Click);
             // 
@@ -656,12 +622,15 @@
             this.btnPresOptDel.Size = new System.Drawing.Size(95, 29);
             this.btnPresOptDel.TabIndex = 2;
             this.btnPresOptDel.Text = "Delete Profile";
+            this.toolTip1.SetToolTip(this.btnPresOptDel, "Deletes selected profile \r\n(CANNOT BE UNDONE)");
             this.btnPresOptDel.UseVisualStyleBackColor = true;
             this.btnPresOptDel.Click += new System.EventHandler(this.btnPresOptDel_Click);
             // 
             // tabPage5
             // 
             this.tabPage5.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage5.Controls.Add(this.circleControl2);
+            this.tabPage5.Controls.Add(this.circleControl1);
             this.tabPage5.Controls.Add(this.editor_InputKeyboard);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
@@ -675,11 +644,12 @@
             this.editor_InputKeyboard.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.editor_InputKeyboard.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("editor_InputKeyboard.BackgroundImage")));
             this.editor_InputKeyboard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.editor_InputKeyboard.Controls.Add(this.circleControl2);
+            this.editor_InputKeyboard.Controls.Add(this.xbo_k_joy_r_down);
             this.editor_InputKeyboard.Controls.Add(this.xbo_k_joy_r_up);
+            this.editor_InputKeyboard.Controls.Add(this.xbo_k_joy_l_up);
+            this.editor_InputKeyboard.Controls.Add(this.xbo_k_joy_l_down);
             this.editor_InputKeyboard.Controls.Add(this.xbo_k_joy_r_left);
             this.editor_InputKeyboard.Controls.Add(this.xbo_k_joy_r_right);
-            this.editor_InputKeyboard.Controls.Add(this.xbo_k_joy_r_down);
             this.editor_InputKeyboard.Controls.Add(this.panel2);
             this.editor_InputKeyboard.Controls.Add(this.panel1);
             this.editor_InputKeyboard.Controls.Add(this.xbo_k_RightSholder);
@@ -697,16 +667,28 @@
             this.editor_InputKeyboard.Controls.Add(this.xbo_k_Start);
             this.editor_InputKeyboard.Controls.Add(this.xbo_k_RightStick);
             this.editor_InputKeyboard.Controls.Add(this.xbo_k_LeftStick);
-            this.editor_InputKeyboard.Controls.Add(this.circleControl1);
-            this.editor_InputKeyboard.Controls.Add(this.xbo_k_joy_l_up);
             this.editor_InputKeyboard.Controls.Add(this.xbo_k_joy_l_left);
             this.editor_InputKeyboard.Controls.Add(this.xbo_k_joy_l_right);
-            this.editor_InputKeyboard.Controls.Add(this.xbo_k_joy_l_down);
             this.editor_InputKeyboard.Enabled = false;
             this.editor_InputKeyboard.Location = new System.Drawing.Point(10, 4);
             this.editor_InputKeyboard.Name = "editor_InputKeyboard";
             this.editor_InputKeyboard.Size = new System.Drawing.Size(516, 393);
             this.editor_InputKeyboard.TabIndex = 6;
+            this.editor_InputKeyboard.TabStop = false;
+            // 
+            // xbo_k_joy_r_down
+            // 
+            this.xbo_k_joy_r_down.BackColor = System.Drawing.Color.Transparent;
+            this.xbo_k_joy_r_down.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xbo_k_joy_r_down.ForeColor = System.Drawing.Color.Black;
+            this.xbo_k_joy_r_down.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.xbo_k_joy_r_down.Location = new System.Drawing.Point(249, 351);
+            this.xbo_k_joy_r_down.Name = "xbo_k_joy_r_down";
+            this.xbo_k_joy_r_down.Size = new System.Drawing.Size(149, 35);
+            this.xbo_k_joy_r_down.TabIndex = 30;
+            this.xbo_k_joy_r_down.Tag = "JRD";
+            this.xbo_k_joy_r_down.Text = "N";
+            this.xbo_k_joy_r_down.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // xbo_k_joy_r_up
             // 
@@ -715,20 +697,47 @@
             this.xbo_k_joy_r_up.ForeColor = System.Drawing.Color.Black;
             this.xbo_k_joy_r_up.Location = new System.Drawing.Point(269, 280);
             this.xbo_k_joy_r_up.Name = "xbo_k_joy_r_up";
-            this.xbo_k_joy_r_up.Size = new System.Drawing.Size(108, 24);
+            this.xbo_k_joy_r_up.Size = new System.Drawing.Size(108, 32);
             this.xbo_k_joy_r_up.TabIndex = 31;
             this.xbo_k_joy_r_up.Tag = "JRU";
             this.xbo_k_joy_r_up.Text = "N";
             this.xbo_k_joy_r_up.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // xbo_k_joy_l_up
+            // 
+            this.xbo_k_joy_l_up.BackColor = System.Drawing.Color.Transparent;
+            this.xbo_k_joy_l_up.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xbo_k_joy_l_up.ForeColor = System.Drawing.Color.Black;
+            this.xbo_k_joy_l_up.Location = new System.Drawing.Point(111, 283);
+            this.xbo_k_joy_l_up.Name = "xbo_k_joy_l_up";
+            this.xbo_k_joy_l_up.Size = new System.Drawing.Size(132, 29);
+            this.xbo_k_joy_l_up.TabIndex = 26;
+            this.xbo_k_joy_l_up.Tag = "JLU";
+            this.xbo_k_joy_l_up.Text = "W";
+            this.xbo_k_joy_l_up.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // xbo_k_joy_l_down
+            // 
+            this.xbo_k_joy_l_down.BackColor = System.Drawing.Color.Transparent;
+            this.xbo_k_joy_l_down.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xbo_k_joy_l_down.ForeColor = System.Drawing.Color.Black;
+            this.xbo_k_joy_l_down.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.xbo_k_joy_l_down.Location = new System.Drawing.Point(97, 351);
+            this.xbo_k_joy_l_down.Name = "xbo_k_joy_l_down";
+            this.xbo_k_joy_l_down.Size = new System.Drawing.Size(157, 36);
+            this.xbo_k_joy_l_down.TabIndex = 25;
+            this.xbo_k_joy_l_down.Tag = "JLD";
+            this.xbo_k_joy_l_down.Text = "S";
+            this.xbo_k_joy_l_down.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // xbo_k_joy_r_left
             // 
             this.xbo_k_joy_r_left.BackColor = System.Drawing.Color.Transparent;
             this.xbo_k_joy_r_left.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xbo_k_joy_r_left.ForeColor = System.Drawing.Color.Black;
-            this.xbo_k_joy_r_left.Location = new System.Drawing.Point(244, 294);
+            this.xbo_k_joy_r_left.Location = new System.Drawing.Point(245, 293);
             this.xbo_k_joy_r_left.Name = "xbo_k_joy_r_left";
-            this.xbo_k_joy_r_left.Size = new System.Drawing.Size(50, 78);
+            this.xbo_k_joy_r_left.Size = new System.Drawing.Size(58, 78);
             this.xbo_k_joy_r_left.TabIndex = 29;
             this.xbo_k_joy_r_left.Tag = "JRL";
             this.xbo_k_joy_r_left.Text = "N";
@@ -739,27 +748,13 @@
             this.xbo_k_joy_r_right.BackColor = System.Drawing.Color.Transparent;
             this.xbo_k_joy_r_right.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xbo_k_joy_r_right.ForeColor = System.Drawing.Color.Black;
-            this.xbo_k_joy_r_right.Location = new System.Drawing.Point(353, 294);
+            this.xbo_k_joy_r_right.Location = new System.Drawing.Point(342, 293);
             this.xbo_k_joy_r_right.Name = "xbo_k_joy_r_right";
-            this.xbo_k_joy_r_right.Size = new System.Drawing.Size(53, 78);
+            this.xbo_k_joy_r_right.Size = new System.Drawing.Size(64, 78);
             this.xbo_k_joy_r_right.TabIndex = 28;
             this.xbo_k_joy_r_right.Tag = "JRR";
             this.xbo_k_joy_r_right.Text = "N";
             this.xbo_k_joy_r_right.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // xbo_k_joy_r_down
-            // 
-            this.xbo_k_joy_r_down.BackColor = System.Drawing.Color.Transparent;
-            this.xbo_k_joy_r_down.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xbo_k_joy_r_down.ForeColor = System.Drawing.Color.Black;
-            this.xbo_k_joy_r_down.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.xbo_k_joy_r_down.Location = new System.Drawing.Point(251, 364);
-            this.xbo_k_joy_r_down.Name = "xbo_k_joy_r_down";
-            this.xbo_k_joy_r_down.Size = new System.Drawing.Size(149, 24);
-            this.xbo_k_joy_r_down.TabIndex = 30;
-            this.xbo_k_joy_r_down.Tag = "JRD";
-            this.xbo_k_joy_r_down.Text = "N";
-            this.xbo_k_joy_r_down.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // panel2
             // 
@@ -908,9 +903,9 @@
             this.xbo_k_DpadUp.BackColor = System.Drawing.Color.Transparent;
             this.xbo_k_DpadUp.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xbo_k_DpadUp.ForeColor = System.Drawing.Color.White;
-            this.xbo_k_DpadUp.Location = new System.Drawing.Point(161, 127);
+            this.xbo_k_DpadUp.Location = new System.Drawing.Point(161, 125);
             this.xbo_k_DpadUp.Name = "xbo_k_DpadUp";
-            this.xbo_k_DpadUp.Size = new System.Drawing.Size(59, 55);
+            this.xbo_k_DpadUp.Size = new System.Drawing.Size(61, 57);
             this.xbo_k_DpadUp.TabIndex = 12;
             this.xbo_k_DpadUp.Tag = "DPU";
             this.xbo_k_DpadUp.Text = "BTN";
@@ -923,7 +918,7 @@
             this.xbo_k_DpadLeft.ForeColor = System.Drawing.Color.White;
             this.xbo_k_DpadLeft.Location = new System.Drawing.Point(102, 182);
             this.xbo_k_DpadLeft.Name = "xbo_k_DpadLeft";
-            this.xbo_k_DpadLeft.Size = new System.Drawing.Size(76, 32);
+            this.xbo_k_DpadLeft.Size = new System.Drawing.Size(77, 37);
             this.xbo_k_DpadLeft.TabIndex = 11;
             this.xbo_k_DpadLeft.Tag = "DPL";
             this.xbo_k_DpadLeft.Text = "BTN";
@@ -1007,27 +1002,14 @@
             this.xbo_k_LeftStick.Text = "BTN";
             this.xbo_k_LeftStick.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // xbo_k_joy_l_up
-            // 
-            this.xbo_k_joy_l_up.BackColor = System.Drawing.Color.Transparent;
-            this.xbo_k_joy_l_up.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xbo_k_joy_l_up.ForeColor = System.Drawing.Color.Black;
-            this.xbo_k_joy_l_up.Location = new System.Drawing.Point(111, 283);
-            this.xbo_k_joy_l_up.Name = "xbo_k_joy_l_up";
-            this.xbo_k_joy_l_up.Size = new System.Drawing.Size(132, 21);
-            this.xbo_k_joy_l_up.TabIndex = 26;
-            this.xbo_k_joy_l_up.Tag = "JLU";
-            this.xbo_k_joy_l_up.Text = "W";
-            this.xbo_k_joy_l_up.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            // 
             // xbo_k_joy_l_left
             // 
             this.xbo_k_joy_l_left.BackColor = System.Drawing.Color.Transparent;
             this.xbo_k_joy_l_left.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xbo_k_joy_l_left.ForeColor = System.Drawing.Color.Black;
-            this.xbo_k_joy_l_left.Location = new System.Drawing.Point(98, 296);
+            this.xbo_k_joy_l_left.Location = new System.Drawing.Point(99, 293);
             this.xbo_k_joy_l_left.Name = "xbo_k_joy_l_left";
-            this.xbo_k_joy_l_left.Size = new System.Drawing.Size(49, 75);
+            this.xbo_k_joy_l_left.Size = new System.Drawing.Size(57, 75);
             this.xbo_k_joy_l_left.TabIndex = 24;
             this.xbo_k_joy_l_left.Tag = "JLL";
             this.xbo_k_joy_l_left.Text = "A";
@@ -1038,27 +1020,13 @@
             this.xbo_k_joy_l_right.BackColor = System.Drawing.Color.Transparent;
             this.xbo_k_joy_l_right.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xbo_k_joy_l_right.ForeColor = System.Drawing.Color.Black;
-            this.xbo_k_joy_l_right.Location = new System.Drawing.Point(204, 296);
+            this.xbo_k_joy_l_right.Location = new System.Drawing.Point(195, 294);
             this.xbo_k_joy_l_right.Name = "xbo_k_joy_l_right";
-            this.xbo_k_joy_l_right.Size = new System.Drawing.Size(42, 75);
+            this.xbo_k_joy_l_right.Size = new System.Drawing.Size(47, 75);
             this.xbo_k_joy_l_right.TabIndex = 23;
             this.xbo_k_joy_l_right.Tag = "JLR";
             this.xbo_k_joy_l_right.Text = "D";
             this.xbo_k_joy_l_right.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // xbo_k_joy_l_down
-            // 
-            this.xbo_k_joy_l_down.BackColor = System.Drawing.Color.Transparent;
-            this.xbo_k_joy_l_down.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xbo_k_joy_l_down.ForeColor = System.Drawing.Color.Black;
-            this.xbo_k_joy_l_down.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.xbo_k_joy_l_down.Location = new System.Drawing.Point(96, 364);
-            this.xbo_k_joy_l_down.Name = "xbo_k_joy_l_down";
-            this.xbo_k_joy_l_down.Size = new System.Drawing.Size(157, 24);
-            this.xbo_k_joy_l_down.TabIndex = 25;
-            this.xbo_k_joy_l_down.Tag = "JLD";
-            this.xbo_k_joy_l_down.Text = "S";
-            this.xbo_k_joy_l_down.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // tabPage6
             // 
@@ -1417,19 +1385,73 @@
             this.label21.TabIndex = 0;
             this.label21.Text = "Name: ";
             // 
+            // tabPage7
+            // 
+            this.tabPage7.Controls.Add(this.richTextBox1);
+            this.tabPage7.Location = new System.Drawing.Point(4, 22);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage7.Size = new System.Drawing.Size(532, 423);
+            this.tabPage7.TabIndex = 3;
+            this.tabPage7.Text = "Information";
+            this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBox1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox1.Location = new System.Drawing.Point(3, 3);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.Size = new System.Drawing.Size(526, 417);
+            this.richTextBox1.TabIndex = 0;
+            this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
+            // 
             // circleControl2
             // 
-            this.circleControl2.Location = new System.Drawing.Point(293, 303);
+            this.circleControl2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.circleControl2.AxisDotColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(194)))), ((int)(((byte)(30)))));
+            this.circleControl2.Location = new System.Drawing.Point(315, 319);
             this.circleControl2.Name = "circleControl2";
-            this.circleControl2.Size = new System.Drawing.Size(61, 61);
+            this.circleControl2.Size = new System.Drawing.Size(34, 34);
             this.circleControl2.TabIndex = 27;
             // 
             // circleControl1
             // 
-            this.circleControl1.Location = new System.Drawing.Point(145, 304);
+            this.circleControl1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.circleControl1.AxisDotColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(194)))), ((int)(((byte)(30)))));
+            this.circleControl1.Location = new System.Drawing.Point(169, 319);
             this.circleControl1.Name = "circleControl1";
-            this.circleControl1.Size = new System.Drawing.Size(61, 61);
+            this.circleControl1.Size = new System.Drawing.Size(34, 34);
             this.circleControl1.TabIndex = 22;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.checkBox2.Checked = true;
+            this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox2.Location = new System.Drawing.Point(351, 254);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(114, 16);
+            this.checkBox2.TabIndex = 10;
+            this.checkBox2.Text = "Hide Cursor";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.Location = new System.Drawing.Point(65, 254);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(121, 16);
+            this.checkBox1.TabIndex = 9;
+            this.checkBox1.Text = "Lock escape button";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // Options
             // 
@@ -1439,6 +1461,7 @@
             this.Controls.Add(this.tabControl1);
             this.MinimumSize = new System.Drawing.Size(553, 487);
             this.Name = "Options";
+            this.ShowIcon = false;
             this.Text = "Options";
             this.Load += new System.EventHandler(this.Options_Load);
             this.tabControl1.ResumeLayout(false);
@@ -1449,11 +1472,13 @@
             this.tabPage4.ResumeLayout(false);
             this.editor_Preset.ResumeLayout(false);
             this.editor_Preset.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.optMouseModifier)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.optYSense)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.optXSense)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.optTickRate)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.tabPage5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.editor_InputKeyboard)).EndInit();
             this.editor_InputKeyboard.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
@@ -1465,6 +1490,7 @@
             this.tabPage3.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.tabPage7.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1478,7 +1504,7 @@
         private System.Windows.Forms.Button btnPresOptDel;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Label xbo_k_LeftStick;
-        private System.Windows.Forms.Panel editor_InputKeyboard;
+        private System.Windows.Forms.PictureBox editor_InputKeyboard;
         private System.Windows.Forms.Label xbo_k_Guide;
         private System.Windows.Forms.Label xbo_k_Back;
         private System.Windows.Forms.Label xbo_k_Start;
@@ -1498,12 +1524,6 @@
         private System.Windows.Forms.TabControl tabControl2;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.GroupBox editor_Preset;
-        private System.Windows.Forms.LinkLabel linkLabel6;
-        private System.Windows.Forms.LinkLabel linkLabel5;
-        private System.Windows.Forms.LinkLabel linkLabel4;
-        private System.Windows.Forms.LinkLabel linkLabel3;
-        private System.Windows.Forms.LinkLabel linkLabel2;
-        private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.CheckBox optInvertY;
         private System.Windows.Forms.CheckBox optInvertX;
@@ -1555,9 +1575,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button optDetachKey;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.LinkLabel linkLabel8;
-        private System.Windows.Forms.LinkLabel linkLabel7;
+        private System.Windows.Forms.ComboBox optMouseEngine;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label7;
         private Controls.CircleControl circleControl1;
@@ -1571,5 +1589,12 @@
         private System.Windows.Forms.Label xbo_k_joy_l_right;
         private System.Windows.Forms.Label xbo_k_joy_l_down;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.NumericUpDown optMouseModifier;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.TabPage tabPage7;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

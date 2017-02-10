@@ -16,8 +16,10 @@ namespace XboxKeyboardMouse {
         /** Public Variables Across the Whole Application */
         public static Config.Data ActiveConfig;
         public static bool DoneLoadingCfg = false;
+        public static bool HideCursor     = true;
         public static string ActiveConfigFile = "";
         public static IntPtr ptrKeyboardHook;
+
 
         public static bool SetActiveConfig(string File) {
             var cfg = "profiles/" + File;
@@ -196,14 +198,18 @@ namespace XboxKeyboardMouse {
 
                         CursorView.CursorShow();
 
-                        if (Activate.tKMInput.IsAlive == true && Activate.tXboxStream.IsAlive == true)
-                            MessageBox.Show("Error:  Threads failed to abort");
-                        else {
+                        //if (Activate.tKMInput.IsAlive == true && Activate.tXboxStream.IsAlive == true) {
+                            // TODO: Handle failed threads
+                        //    MessageBox.Show("Error:  Threads failed to abort");
+                            
+                        //}  
+                        
+                        //else {
                             // Reset the controller
                             Activate.ResetController();
-
+                            
                             mainform.StatusStopped();
-                        }
+                        //}
                     } else if (Activate.tKMInput.IsAlive == false && Activate.tXboxStream.IsAlive == false) {
                         Thread tActivateKM = new Thread(Activate.ActivateKeyboardAndMouse);
                         tActivateKM.SetApartmentState(ApartmentState.STA);

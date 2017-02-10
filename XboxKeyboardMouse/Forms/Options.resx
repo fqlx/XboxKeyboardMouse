@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="label20.Text" xml:space="preserve">
-    <value>So bored... oh look another homerman, well might aswell say it anyway
+    <value>So bored... oh look another hooomman, well might aswell say it anyway
 
 
 
@@ -129,6 +129,9 @@ Wait you can see me... does that mean you are the chosen one...
 
 YOU HAVE FINALLY ARIVED!</value>
   </data>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="editor_InputKeyboard.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -33935,5 +33938,46 @@ YOU HAVE FINALLY ARIVED!</value>
         0zRN0zRN0zRN0zRN0zRN0zRN0zRN0zRN0zRN0zRN0zRN0zRN0zRN0zRN0zRN0zRN0zRN0zRN0zRN0zRN
         0zRN0zRti9iOHf8fT95QifpYKtgAAAAASUVORK5CYII=
 </value>
+  </data>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="richTextBox1.Text" xml:space="preserve">
+    <value>#####################
+### Mouse Engines ###
+#####################
+A mouse engine is a handler for the mouse, there are serveral build in handlers.
+There are various configurations that can be combined with each engine.
+
+Why are there more than one mouse handler? 
+There are many different games as there are stars and many of them require different ways of playing them.
+And frankly some of our engines suck so we try to improve or remake them.
+
+The current engines are: 
+Percentage
+Relative
+Raw Input
+Raw Input + Sensitivity
+None
+
+Percentage
+----------
+This engine works by trying to translate your mouse movement as a percentage and applying that number to the controller's analog location, it seems good on paper but does not perform that very well
+
+Relative
+----------
+This move will allow you to move your mouse around and keep it in the current location as before, hence the relative movement. When you move your mouse the sticks location stays the same and is incremented / decremented on each movement
+
+Raw Input
+----------
+This will take the changes (in pixels) of your mouse movement from last the capture and just apply it straight onto the joystick, this will change depending on your monitor size, Smaller monitors eg less than 1080p may not have that much of a great effect.
+
+Raw Input + Sensitivity
+----------
+This will take the same as Raw Input but will multiply the pixels by the sensitivity values set in the config.
+
+None
+----------
+Disables the mouse movement</value>
   </data>
 </root>
