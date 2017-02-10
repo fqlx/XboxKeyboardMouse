@@ -63,6 +63,5 @@ You may customise your own controller layout through the gui but the default lay
 2.  Work on smoothing mouse translation/normalization
 3.  Mouse input buttons dont work as of yet.
 4.  Scroll Wheel movement has not been added (Main usage maybe RTS).
-5.  There is no help text options yet.
-6.  You cant use the keyboard for triggers... Yet
-7.  Add Jenkins job to compile merges
+5.  You cant use the keyboard for triggers... Yet
+6.  Add Jenkins job to compile merges
