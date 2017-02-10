@@ -24,6 +24,8 @@ namespace XboxKeyboardMouse.Config {
             public int Mouse_Eng_Type           = 0;
             
             public int Mouse_Eng_Relative_Val   = 1639;
+
+            public double Mouse_FinalMod        = 10;
         // <-- Mouse
 
         // --> Xbox Controls Keyboard
@@ -130,14 +132,16 @@ namespace XboxKeyboardMouse.Config {
             Read(f, "Config", "Name", ref d.Name);
 
             /* Mouse Settings */ {
-                Read(f, "Mouse", "X_Sensitivity", ref d.Mouse_Sensitivity_X);
-                Read(f, "Mouse", "Y_Sensitivity", ref d.Mouse_Sensitivity_Y);
+                Read(f, "Mouse", "X_Sensitivity",  ref d.Mouse_Sensitivity_X);
+                Read(f, "Mouse", "Y_Sensitivity",  ref d.Mouse_Sensitivity_Y);
 
-                Read(f, "Mouse", "X_Inverted",  ref d.Mouse_Invert_X);
-                Read(f, "Mouse", "Y_Inverted",  ref d.Mouse_Invert_Y);
+                Read(f, "Mouse", "X_Inverted",     ref d.Mouse_Invert_X);
+                Read(f, "Mouse", "Y_Inverted",     ref d.Mouse_Invert_Y);
 
-                Read(f, "Mouse", "Type",        ref d.Mouse_Eng_Type);
-                Read(f, "Mouse", "ERel_Val",    ref d.Mouse_Eng_Relative_Val);
+                Read(f, "Mouse", "Type",           ref d.Mouse_Eng_Type);
+                Read(f, "Mouse", "ERel_Val",       ref d.Mouse_Eng_Relative_Val);
+
+                Read(f, "Mouse", "Final_Modifier", ref d.Mouse_FinalMod);
             }
 
             /* Controls - Keyboard */ {
@@ -228,6 +232,8 @@ namespace XboxKeyboardMouse.Config {
                 Write(f, "Mouse", "Y_Inverted", d.Mouse_Invert_Y);
                 Write(f, "Mouse", "Type",       d.Mouse_Eng_Type);
                 Write(f, "Mouse", "ERel_Val",   d.Mouse_Eng_Relative_Val);
+
+                Write(f, "Mouse", "Final_Modifier", d.Mouse_FinalMod);
             }
 
             /* Controls - Keyboard */ {

@@ -69,7 +69,7 @@ namespace XboxKeyboardMouse {
         }
 
         private static void LockAndHideCursor() {
-            CursorView.CursorHide();
+            //CursorView.CursorHide();
 
             tMouseMovement = new Thread(TranslateMouse.MouseMovementInput);
             tMouseMovement.SetApartmentState(ApartmentState.STA);

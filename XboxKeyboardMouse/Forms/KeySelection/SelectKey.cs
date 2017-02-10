@@ -34,13 +34,13 @@ namespace XboxKeyboardMouse.Forms {
         public void SaveKeyCode() {
             switch (Tag) {
 
-            case "LS":      cfg.Controls_KB_Xbox_Sticks_Left = KeyCode; break;
+            case "LS":      cfg.Controls_KB_Xbox_Sticks_Left  = KeyCode; break;
             case "RS":      cfg.Controls_KB_Xbox_Sticks_Right = KeyCode; break;
 
-            case "SL":      cfg.Controls_KB_Xbox_LeftBumper = KeyCode; break;
+            case "SL":      cfg.Controls_KB_Xbox_LeftBumper  = KeyCode; break;
             case "SR":      cfg.Controls_KB_Xbox_RightBumper = KeyCode; break;
 
-            case "BACK":    cfg.Controls_KB_Xbox_Back = KeyCode; break;
+            case "BACK":    cfg.Controls_KB_Xbox_Back  = KeyCode; break;
             case "START":   cfg.Controls_KB_Xbox_Start = KeyCode; break;
             case "GUIDE":   cfg.Controls_KB_Xbox_Guide = KeyCode; break;
 
@@ -49,22 +49,22 @@ namespace XboxKeyboardMouse.Forms {
             case "X":       cfg.Controls_KB_Xbox_X = KeyCode;  break;
             case "Y":       cfg.Controls_KB_Xbox_Y = KeyCode; break;
 
-            case "DPU":     cfg.Controls_KB_Xbox_DPAD_Left = KeyCode; break;
-            case "DPD":     cfg.Controls_KB_Xbox_DPAD_Down = KeyCode; break;
-            case "DPL":     cfg.Controls_KB_Xbox_DPAD_Left = KeyCode; break;
+            case "DPU":     cfg.Controls_KB_Xbox_DPAD_Up    = KeyCode; break;
+            case "DPD":     cfg.Controls_KB_Xbox_DPAD_Down  = KeyCode; break;
+            case "DPL":     cfg.Controls_KB_Xbox_DPAD_Left  = KeyCode; break;
             case "DPR":     cfg.Controls_KB_Xbox_DPAD_Right = KeyCode; break;
 
-            case "TL":      cfg.Controls_KB_Xbox_Trigger_Left = KeyCode; break;
+            case "TL":      cfg.Controls_KB_Xbox_Trigger_Left  = KeyCode; break;
             case "TR":      cfg.Controls_KB_Xbox_Trigger_Right = KeyCode; break;
 
-            case "JLU":     cfg.Controls_KB_Sticks_AXIS_L_Up = KeyCode; break;
-            case "JLD":     cfg.Controls_KB_Sticks_AXIS_L_Down = KeyCode; break;
-            case "JLL":     cfg.Controls_KB_Sticks_AXIS_L_Left = KeyCode; break;
+            case "JLU":     cfg.Controls_KB_Sticks_AXIS_L_Up    = KeyCode; break;
+            case "JLD":     cfg.Controls_KB_Sticks_AXIS_L_Down  = KeyCode; break;
+            case "JLL":     cfg.Controls_KB_Sticks_AXIS_L_Left  = KeyCode; break;
             case "JLR":     cfg.Controls_KB_Sticks_AXIS_L_Right = KeyCode; break;
 
-            case "JRU":     cfg.Controls_KB_Sticks_AXIS_R_Up = KeyCode; break;
-            case "JRD":     cfg.Controls_KB_Sticks_AXIS_R_Down = KeyCode; break;
-            case "JRL":     cfg.Controls_KB_Sticks_AXIS_R_Left = KeyCode; break;
+            case "JRU":     cfg.Controls_KB_Sticks_AXIS_R_Up    = KeyCode; break;
+            case "JRD":     cfg.Controls_KB_Sticks_AXIS_R_Down  = KeyCode; break;
+            case "JRL":     cfg.Controls_KB_Sticks_AXIS_R_Left  = KeyCode; break;
             case "JRR":     cfg.Controls_KB_Sticks_AXIS_R_Right = KeyCode; break;
 
             }
