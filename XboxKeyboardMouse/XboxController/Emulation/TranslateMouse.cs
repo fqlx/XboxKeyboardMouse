@@ -22,20 +22,29 @@ namespace XboxKeyboardMouse {
         static short iMax = short.MaxValue;
         static short iMin = short.MinValue;
 
+        public static int MaxMouseMode = 4;
+
         public static void MouseMovementInput() {
             centered = new Point(Screen.PrimaryScreen.Bounds.Width / 2, Screen.PrimaryScreen.Bounds.Height / 2);
             Cursor.Position = centered;
 
-            const int Mode_Default  = 0;
-            const int Mode_Relative = 1;
+            const int Mode_Default      = 0;
+            const int Mode_Relative     = 1;
+            const int Mode_Raw          = 2;
+            const int Mode_Raw_Sens     = 3;
+            const int Mode_None         = 4;
 
             while (true) {
                 var mode = Program.ActiveConfig.Mouse_Eng_Type;
 
                 switch (mode) {
-                case Mode_Default:  MouseMovement_Default(); break;
-                case Mode_Relative: MouseMovement_Relative(); break;
-                default:            break;
+                case Mode_Default:      MouseMovement_Default();        break;
+                case Mode_Relative:     MouseMovement_Relative();       break;
+                case Mode_Raw:          MouseMovement_Raw();            break;
+                case Mode_Raw_Sens:     MouseMovement_Raw_S();          break;
+                case Mode_None:         break;
+
+                default:                break;
                 }
 
                 Thread.Sleep(Program.ActiveConfig.Mouse_TickRate);
@@ -178,6 +187,82 @@ namespace XboxKeyboardMouse {
             Cursor.Position = centered;
         }
 
+        private static void MouseMovement_Raw() {
+            Point mouse = Control.MousePosition;
+
+            short joyX = 0;
+            short joyY = 0;
+
+            double x = Program.ActiveConfig.Mouse_Invert_X ?
+                       centered.X - mouse.X : mouse.X - centered.X;
+            double y = Program.ActiveConfig.Mouse_Invert_Y ?
+                       mouse.Y - centered.Y : centered.Y - mouse.Y;
+
+            if (x > short.MaxValue)
+                x = short.MaxValue;
+            else if (x < short.MinValue)
+                x = short.MinValue;
+
+            if (y > short.MaxValue)
+                y = short.MaxValue;
+            else if (y < short.MinValue)
+                y = short.MinValue;
+
+            // Lets just first time apply raw values 
+            // to the sticks
+            joyX = (short)x;
+            joyY = (short)y;
+
+        #if (DEBUG)
+            PrintVals(joyX, joyY);
+        #endif
+
+            Activate.Controller.RightStickX = joyX;
+            Activate.Controller.RightStickY = joyY;
+            Activate.SendtoController(Activate.Controller);
+
+            Cursor.Position = centered;
+        }
+        
+        private static void MouseMovement_Raw_S() {
+            Point mouse = Control.MousePosition;
+
+            short joyX = 0;
+            short joyY = 0;
+
+            double x = Program.ActiveConfig.Mouse_Invert_X ? 
+                       centered.X - mouse.X : mouse.X - centered.X;
+            double y = Program.ActiveConfig.Mouse_Invert_Y ?
+                       mouse.Y - centered.Y : centered.Y - mouse.Y;
+
+            x = x * Program.ActiveConfig.Mouse_Sensitivity_X;
+            y = y * Program.ActiveConfig.Mouse_Sensitivity_Y;
+
+            if (x > short.MaxValue)
+                x = short.MaxValue;
+            else if (x < short.MinValue)
+                x = short.MinValue;
+
+            if (y > short.MaxValue)
+                y = short.MaxValue;
+            else if (y < short.MinValue)
+                y = short.MinValue;
+
+            // Lets just first time apply raw values 
+            // to the sticks
+            joyX = (short)x;
+            joyY = (short)y;
+
+        #if (DEBUG)
+            PrintVals(joyX, joyY);
+        #endif
+            Activate.Controller.RightStickX = joyX;
+            Activate.Controller.RightStickY = joyY;
+            Activate.SendtoController(Activate.Controller);
+
+            Cursor.Position = centered;
+        }
+
         public static void MouseButtonsInput(X360Controller controller) {
             MouseState state = mouse.GetCurrentState();
 
@@ -188,6 +273,12 @@ namespace XboxKeyboardMouse {
             if (state.IsPressed(1))
                  controller.LeftTrigger = 255;
             else controller.LeftTrigger = 0;
+        }
+        
+        private static void PrintVals(short x, short y) {
+            Debugger.Log(
+                0, "ControlInput", 
+                $"TranslateMouse - X: {x}, Y: {y}\n");
         }
     }
 }

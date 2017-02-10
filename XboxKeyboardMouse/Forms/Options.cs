@@ -350,7 +350,7 @@ namespace XboxKeyboardMouse.Forms {
             originalName = cfg.Name;
 
             // Check if the mouse setting is valid
-            if (cfg.Mouse_Eng_Type > 1 || cfg.Mouse_Eng_Type < 0) {
+            if (cfg.Mouse_Eng_Type > TranslateMouse.MaxMouseMode || cfg.Mouse_Eng_Type < 0) {
                 MessageBox.Show("Invalid mouse engine selected -> Reset to default!");
                 cfg.Mouse_Eng_Type = 0;
                 Config.Data.Save(GetSelectedProfile() + ".ini", cfg);
@@ -522,12 +522,20 @@ namespace XboxKeyboardMouse.Forms {
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) {
             int index = optMouseEngine.SelectedIndex;
 
-            if (index >= 2) {
+            if (index > TranslateMouse.MaxMouseMode) {
                 MessageBox.Show("Invalid selected mouse engine");
                 index = 0;
             }
 
             cfg.Mouse_Eng_Type = index;
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e) {
+            Hooks.LowLevelKeyboardHook.LockEscape = checkBox1.Checked;
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e) {
+            Program.HideCursor = checkBox2.Checked;
         }
     }
 }

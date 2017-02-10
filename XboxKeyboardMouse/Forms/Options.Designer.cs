@@ -118,8 +118,12 @@
             this.tbCreateName = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.circleControl2 = new XboxKeyboardMouse.Forms.Controls.CircleControl();
             this.circleControl1 = new XboxKeyboardMouse.Forms.Controls.CircleControl();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -142,6 +146,7 @@
             this.panel4.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.tabPage7.SuspendLayout();
             this.SuspendLayout();
             // 
             // lbPresets
@@ -164,6 +169,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Location = new System.Drawing.Point(-2, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -173,6 +179,8 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage1.Controls.Add(this.checkBox2);
+            this.tabPage1.Controls.Add(this.checkBox1);
             this.tabPage1.Controls.Add(this.label20);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
@@ -291,7 +299,7 @@
             this.toolTip1.SetToolTip(this.optMouseModifier, "Multiplies the mouse\'s final output to the controller (You will require to experi" +
         "ment)\r\n");
             this.optMouseModifier.Value = new decimal(new int[] {
-            10,
+            100,
             0,
             0,
             0});
@@ -326,8 +334,11 @@
             this.optMouseEngine.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.optMouseEngine.FormattingEnabled = true;
             this.optMouseEngine.Items.AddRange(new object[] {
-            "Default",
-            "Relative"});
+            "Percentage",
+            "Relative",
+            "Raw Input",
+            "Raw Input + Sensitivity",
+            "None"});
             this.optMouseEngine.Location = new System.Drawing.Point(103, 228);
             this.optMouseEngine.Name = "optMouseEngine";
             this.optMouseEngine.Size = new System.Drawing.Size(147, 21);
@@ -1374,6 +1385,30 @@
             this.label21.TabIndex = 0;
             this.label21.Text = "Name: ";
             // 
+            // tabPage7
+            // 
+            this.tabPage7.Controls.Add(this.richTextBox1);
+            this.tabPage7.Location = new System.Drawing.Point(4, 22);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage7.Size = new System.Drawing.Size(532, 423);
+            this.tabPage7.TabIndex = 3;
+            this.tabPage7.Text = "Information";
+            this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBox1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox1.Location = new System.Drawing.Point(3, 3);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.Size = new System.Drawing.Size(526, 417);
+            this.richTextBox1.TabIndex = 0;
+            this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
+            // 
             // circleControl2
             // 
             this.circleControl2.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -1392,6 +1427,32 @@
             this.circleControl1.Size = new System.Drawing.Size(34, 34);
             this.circleControl1.TabIndex = 22;
             // 
+            // checkBox2
+            // 
+            this.checkBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.checkBox2.Checked = true;
+            this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox2.Location = new System.Drawing.Point(351, 254);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(114, 16);
+            this.checkBox2.TabIndex = 10;
+            this.checkBox2.Text = "Hide Cursor";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.Location = new System.Drawing.Point(65, 254);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(121, 16);
+            this.checkBox1.TabIndex = 9;
+            this.checkBox1.Text = "Lock escape button";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
             // Options
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1400,6 +1461,7 @@
             this.Controls.Add(this.tabControl1);
             this.MinimumSize = new System.Drawing.Size(553, 487);
             this.Name = "Options";
+            this.ShowIcon = false;
             this.Text = "Options";
             this.Load += new System.EventHandler(this.Options_Load);
             this.tabControl1.ResumeLayout(false);
@@ -1428,6 +1490,7 @@
             this.tabPage3.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.tabPage7.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1529,5 +1592,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.NumericUpDown optMouseModifier;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.TabPage tabPage7;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

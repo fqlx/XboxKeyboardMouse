@@ -24,8 +24,10 @@
         /// </summary>
         private void InitializeComponent() {
             this.editor_InputMouse = new System.Windows.Forms.Panel();
-            this.axisRight = new XboxKeyboardMouse.Forms.Controls.CircleControl();
-            this.axisLeft = new XboxKeyboardMouse.Forms.Controls.CircleControl();
+            this.rightY = new System.Windows.Forms.Label();
+            this.rightX = new System.Windows.Forms.Label();
+            this.leftY = new System.Windows.Forms.Label();
+            this.leftX = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.xbo_k_TLeft = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -45,10 +47,8 @@
             this.xbo_m_Start = new System.Windows.Forms.Label();
             this.xbo_m_RS = new System.Windows.Forms.Label();
             this.xbo_m_LS = new System.Windows.Forms.Label();
-            this.leftX = new System.Windows.Forms.Label();
-            this.leftY = new System.Windows.Forms.Label();
-            this.rightY = new System.Windows.Forms.Label();
-            this.rightX = new System.Windows.Forms.Label();
+            this.axisRight = new XboxKeyboardMouse.Forms.Controls.CircleControl();
+            this.axisLeft = new XboxKeyboardMouse.Forms.Controls.CircleControl();
             this.editor_InputMouse.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -87,23 +87,39 @@
             this.editor_InputMouse.Size = new System.Drawing.Size(516, 393);
             this.editor_InputMouse.TabIndex = 8;
             // 
-            // axisRight
+            // rightY
             // 
-            this.axisRight.AxisDotColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(194)))), ((int)(((byte)(30)))));
-            this.axisRight.DrawAxisDot = true;
-            this.axisRight.Location = new System.Drawing.Point(294, 289);
-            this.axisRight.Name = "axisRight";
-            this.axisRight.Size = new System.Drawing.Size(70, 70);
-            this.axisRight.TabIndex = 25;
+            this.rightY.Location = new System.Drawing.Point(226, 346);
+            this.rightY.Name = "rightY";
+            this.rightY.Size = new System.Drawing.Size(60, 13);
+            this.rightY.TabIndex = 29;
+            this.rightY.Text = "RY: 00000";
             // 
-            // axisLeft
+            // rightX
             // 
-            this.axisLeft.AxisDotColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(194)))), ((int)(((byte)(30)))));
-            this.axisLeft.DrawAxisDot = true;
-            this.axisLeft.Location = new System.Drawing.Point(150, 289);
-            this.axisLeft.Name = "axisLeft";
-            this.axisLeft.Size = new System.Drawing.Size(70, 70);
-            this.axisLeft.TabIndex = 24;
+            this.rightX.Location = new System.Drawing.Point(226, 331);
+            this.rightX.Name = "rightX";
+            this.rightX.Size = new System.Drawing.Size(60, 13);
+            this.rightX.TabIndex = 28;
+            this.rightX.Text = "RX: 00000";
+            // 
+            // leftY
+            // 
+            this.leftY.Location = new System.Drawing.Point(226, 304);
+            this.leftY.Name = "leftY";
+            this.leftY.Size = new System.Drawing.Size(60, 13);
+            this.leftY.TabIndex = 27;
+            this.leftY.Text = "LY: 00000";
+            this.leftY.Click += new System.EventHandler(this.leftY_Click);
+            // 
+            // leftX
+            // 
+            this.leftX.Location = new System.Drawing.Point(226, 289);
+            this.leftX.Name = "leftX";
+            this.leftX.Size = new System.Drawing.Size(60, 13);
+            this.leftX.TabIndex = 26;
+            this.leftX.Text = "LX: 00000";
+            this.leftX.Click += new System.EventHandler(this.leftX_Click);
             // 
             // panel1
             // 
@@ -349,39 +365,23 @@
             this.xbo_m_LS.Text = " ";
             this.xbo_m_LS.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // leftX
+            // axisRight
             // 
-            this.leftX.Location = new System.Drawing.Point(226, 289);
-            this.leftX.Name = "leftX";
-            this.leftX.Size = new System.Drawing.Size(60, 13);
-            this.leftX.TabIndex = 26;
-            this.leftX.Text = "LX: 00000";
-            this.leftX.Click += new System.EventHandler(this.leftX_Click);
+            this.axisRight.AxisDotColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(194)))), ((int)(((byte)(30)))));
+            this.axisRight.DrawAxisDot = true;
+            this.axisRight.Location = new System.Drawing.Point(294, 289);
+            this.axisRight.Name = "axisRight";
+            this.axisRight.Size = new System.Drawing.Size(70, 70);
+            this.axisRight.TabIndex = 25;
             // 
-            // leftY
+            // axisLeft
             // 
-            this.leftY.Location = new System.Drawing.Point(226, 304);
-            this.leftY.Name = "leftY";
-            this.leftY.Size = new System.Drawing.Size(60, 13);
-            this.leftY.TabIndex = 27;
-            this.leftY.Text = "LY: 00000";
-            this.leftY.Click += new System.EventHandler(this.leftY_Click);
-            // 
-            // rightY
-            // 
-            this.rightY.Location = new System.Drawing.Point(226, 346);
-            this.rightY.Name = "rightY";
-            this.rightY.Size = new System.Drawing.Size(60, 13);
-            this.rightY.TabIndex = 29;
-            this.rightY.Text = "RY: 00000";
-            // 
-            // rightX
-            // 
-            this.rightX.Location = new System.Drawing.Point(226, 331);
-            this.rightX.Name = "rightX";
-            this.rightX.Size = new System.Drawing.Size(60, 13);
-            this.rightX.TabIndex = 28;
-            this.rightX.Text = "RX: 00000";
+            this.axisLeft.AxisDotColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(194)))), ((int)(((byte)(30)))));
+            this.axisLeft.DrawAxisDot = true;
+            this.axisLeft.Location = new System.Drawing.Point(150, 289);
+            this.axisLeft.Name = "axisLeft";
+            this.axisLeft.Size = new System.Drawing.Size(70, 70);
+            this.axisLeft.TabIndex = 24;
             // 
             // ControllerPreview
             // 
@@ -393,7 +393,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ControllerPreview";
-            this.Text = "ControllerPreview";
+            this.Text = "Controller Live/Realtime Preview";
             this.Load += new System.EventHandler(this.ControllerPreview_Load);
             this.editor_InputMouse.ResumeLayout(false);
             this.panel1.ResumeLayout(false);

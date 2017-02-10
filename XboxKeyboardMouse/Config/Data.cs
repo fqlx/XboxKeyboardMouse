@@ -25,7 +25,7 @@ namespace XboxKeyboardMouse.Config {
             
             public int Mouse_Eng_Relative_Val   = 1639;
 
-            public double Mouse_FinalMod        = 10;
+            public double Mouse_FinalMod        = 100;
         // <-- Mouse
 
         // --> Xbox Controls Keyboard

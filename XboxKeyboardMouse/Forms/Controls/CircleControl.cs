@@ -95,7 +95,7 @@ namespace XboxKeyboardMouse.Forms.Controls {
                 axisX = x;
                 axisY = y;
 
-                System.Diagnostics.Debugger.Log(0, "", $"JOYSTICK UPDATE ({Name}) : X {axisX}, Y {axisY}\n");
+                //System.Diagnostics.Debugger.Log(0, "", $"JOYSTICK UPDATE ({Name}) : X {axisX}, Y {axisY}\n");
 
                 this.Invalidate();
             }

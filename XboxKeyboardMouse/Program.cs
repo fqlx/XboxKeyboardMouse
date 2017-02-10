@@ -16,8 +16,10 @@ namespace XboxKeyboardMouse {
         /** Public Variables Across the Whole Application */
         public static Config.Data ActiveConfig;
         public static bool DoneLoadingCfg = false;
+        public static bool HideCursor     = true;
         public static string ActiveConfigFile = "";
         public static IntPtr ptrKeyboardHook;
+
 
         public static bool SetActiveConfig(string File) {
             var cfg = "profiles/" + File;
