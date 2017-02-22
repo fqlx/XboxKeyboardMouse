@@ -3,7 +3,7 @@ Keyboard and mouse for Xbox One streaming to Windows 10.
 
 It sends keyboard and mouse inputs to an emulated Xbox controller using SCP driver.
 
-![Screenshot](http://callumcarmicheal.com/projects/XKM_Oct_02_2017.PNG "Image of the GUI as of 11/12/16")
+![Screenshot](https://cloud.githubusercontent.com/assets/6545688/23099037/50091be8-f655-11e6-838c-b94d7a62572b.PNG)
 
 #Prereq
 1.  You need SCPToolkit driver installed to use
