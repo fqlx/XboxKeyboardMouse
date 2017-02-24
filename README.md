@@ -5,16 +5,15 @@ It sends keyboard and mouse inputs to an emulated Xbox controller using SCP driv
 
 ![Screenshot](https://cloud.githubusercontent.com/assets/6545688/23099037/50091be8-f655-11e6-838c-b94d7a62572b.PNG "Image of the GUI as of 11/12/16")
 
-#Prereq
-1.  You need SCPToolkit driver installed to use
-2.  You need SlimDX Runtime installed (x86)
-3.  https://github.com/nefarius/ScpToolkit
-4.  https://slimdx.org/download.php
+#Prerequisites
+1.  [You need SCPToolkit driver installed to use](https://github.com/nefarius/ScpToolkit)
+2.  [You need SlimDX Runtime installed (x86)](https://slimdx.org/download.php)
 
 #Download
-1. Go to download folder
-2. Get the latest exe
-3. 'View Raw'
+1. [Download the repositry as a zip](https://github.com/fqlx/XboxKeyboardMouse/archive/master.zip)
+2. Extract the download folder to anywhere on your pc
+3. Rename the download folder to something of your choice
+4. Run `XboxKeyboardMouse 24 02 2017 - x86.exe` or `XboxKeyboardMouse 24 02 2017 - x86_64.exe`
 
 #Current Layout
 You may customise your own controller layout through the gui but the default layout is 
