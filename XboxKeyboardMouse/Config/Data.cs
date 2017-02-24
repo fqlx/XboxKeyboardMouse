@@ -12,20 +12,26 @@ namespace XboxKeyboardMouse.Config {
         // --> Config Settings
             public string Name = "default";
         // <-- Config Settings
+
+        // --> Application Settings
+            public bool Application_ShowCursor = false;
+            public bool Application_LockEscape = true;
+        // <-- Application Settings
         
         // --> Mouse
-            public double Mouse_Sensitivity_X   = 6.213f;
-            public double Mouse_Sensitivity_Y   = 6.213f;
-
+            // --> GENERIC
+            public double Mouse_Sensitivity_X   = 1000.21299982071f;
+            public double Mouse_Sensitivity_Y   = 1000.21299982071f;
+            public double Mouse_FinalMod        = 100;
+            
             public bool Mouse_Invert_X          = false;
             public bool Mouse_Invert_Y          = false;
 
-            public int Mouse_TickRate           = 40;
-            public int Mouse_Eng_Type           = 0;
-            
-            public int Mouse_Eng_Relative_Val   = 1639;
+            public bool Mouse_Is_RightStick = true;
+            // <-- GENERIC
 
-            public double Mouse_FinalMod        = 100;
+            public int Mouse_TickRate           = 16;
+            public int Mouse_Eng_Type           = 3;
         // <-- Mouse
 
         // --> Xbox Controls Keyboard
@@ -131,17 +137,25 @@ namespace XboxKeyboardMouse.Config {
 
             Read(f, "Config", "Name", ref d.Name);
 
+            /* Application Settings */ {
+                Read(f, "Application", "Show_Cursor", ref d.Application_ShowCursor);
+                Read(f, "Application", "Lock_Escape", ref d.Application_LockEscape);
+            }
+
             /* Mouse Settings */ {
-                Read(f, "Mouse", "X_Sensitivity",  ref d.Mouse_Sensitivity_X);
-                Read(f, "Mouse", "Y_Sensitivity",  ref d.Mouse_Sensitivity_Y);
+                Read(f, "Mouse", "X_Sensitivity",   ref d.Mouse_Sensitivity_X);
+                Read(f, "Mouse", "Y_Sensitivity",   ref d.Mouse_Sensitivity_Y);
 
-                Read(f, "Mouse", "X_Inverted",     ref d.Mouse_Invert_X);
-                Read(f, "Mouse", "Y_Inverted",     ref d.Mouse_Invert_Y);
+                Read(f, "Mouse", "X_Inverted",      ref d.Mouse_Invert_X);
+                Read(f, "Mouse", "Y_Inverted",      ref d.Mouse_Invert_Y);
 
-                Read(f, "Mouse", "Type",           ref d.Mouse_Eng_Type);
-                Read(f, "Mouse", "ERel_Val",       ref d.Mouse_Eng_Relative_Val);
+                Read(f, "Mouse", "Type",            ref d.Mouse_Eng_Type);
 
-                Read(f, "Mouse", "Final_Modifier", ref d.Mouse_FinalMod);
+                Read(f, "Mouse", "TickRate",        ref d.Mouse_TickRate);
+                Read(f, "Mouse", "Final_Modifier",  ref d.Mouse_FinalMod);
+                
+                Read(f, "Mouse", "Is_RightStick",   ref d.Mouse_Is_RightStick);
+                // Todo: Save Engine Specific Stuff
             }
 
             /* Controls - Keyboard */ {
@@ -224,16 +238,23 @@ namespace XboxKeyboardMouse.Config {
             IniFile f = new IniFile("profiles/" + file);
             Write(f, "Config", "Name", d.Name);
 
-            /* Mouse Settings */ {
-                Write(f, "Mouse", "X_Sensitivity", d.Mouse_Sensitivity_X);
-                Write(f, "Mouse", "Y_Sensitivity", d.Mouse_Sensitivity_Y);
+            /* Application Settings */ {
+                Write(f, "Application", "Show_Cursor", d.Application_ShowCursor);
+                Write(f, "Application", "Lock_Escape", d.Application_LockEscape);
+            }
 
-                Write(f, "Mouse", "X_Inverted", d.Mouse_Invert_X);
-                Write(f, "Mouse", "Y_Inverted", d.Mouse_Invert_Y);
-                Write(f, "Mouse", "Type",       d.Mouse_Eng_Type);
-                Write(f, "Mouse", "ERel_Val",   d.Mouse_Eng_Relative_Val);
+            /* Mouse Settings */ { 
+                Write(f, "Mouse", "X_Sensitivity",  d.Mouse_Sensitivity_X);
+                Write(f, "Mouse", "Y_Sensitivity",  d.Mouse_Sensitivity_Y);
 
+                Write(f, "Mouse", "X_Inverted",     d.Mouse_Invert_X);
+                Write(f, "Mouse", "Y_Inverted",     d.Mouse_Invert_Y);
+                Write(f, "Mouse", "Type",           d.Mouse_Eng_Type);
+
+                Write(f, "Mouse", "TickRate",       d.Mouse_TickRate);
                 Write(f, "Mouse", "Final_Modifier", d.Mouse_FinalMod);
+
+                Write(f, "Mouse", "Is_RightStick",  d.Mouse_Is_RightStick);
             }
 
             /* Controls - Keyboard */ {
@@ -334,10 +355,17 @@ namespace XboxKeyboardMouse.Config {
             }
         }
 
-        private static void Read(IniFile ini, string Section, string Name, ref bool @out) {
-            string tf = ini.GetSetting(Section, Name).ToLower();
-            string[] chks = { "1", "y", "t", "true" };
-            @out = chks.Contains(tf.ToLower());
+        private static void Read(IniFile ini, string Section, string Name, ref bool @out, bool @default = false) {
+            string tmp = ini.GetSetting(Section, Name);
+
+            if (tmp == null) {
+                Write(ini, Section, Name, @default);
+            } else {
+                string tf = tmp.ToLower();
+
+                string[] chks = { "1", "y", "t", "true" };
+                @out = chks.Contains(tf.ToLower());
+            }
         }
 
         private static void Write(IniFile ini, string Section, string Name, double val) {

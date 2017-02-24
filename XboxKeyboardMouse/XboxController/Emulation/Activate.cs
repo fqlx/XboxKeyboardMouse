@@ -2,6 +2,7 @@
 using System;
 using System.Threading;
 using System.Windows.Forms;
+using XboxKeyboardMouse.Libs;
 
 namespace XboxKeyboardMouse {
     class Activate {
@@ -42,26 +43,42 @@ namespace XboxKeyboardMouse {
         }
 
 
-        public static void ActivateKeyboardAndMouse() {
+        public static void ActivateKeyboardAndMouse(bool ActivateStreamThread = true, bool ActivateInputThread = true) {
             Init();
 
-            tXboxStream = new Thread(XboxStream.ToggleCursor);
-            tXboxStream.SetApartmentState(ApartmentState.STA);
-            tXboxStream.IsBackground = true;
-            tXboxStream.Start();
+            // Cursor Toggle thread
+            if (ActivateStreamThread) {
+                tXboxStream = new Thread(XboxStream.ToggleCursor);
+                tXboxStream.SetApartmentState(ApartmentState.STA);
+                tXboxStream.IsBackground = true;
+                tXboxStream.Start();
 
-            tKMInput = new Thread(Activate.KeyboardMouseInput);
-            tKMInput.SetApartmentState(ApartmentState.STA);
-            tKMInput.IsBackground = true;
-            tKMInput.Start();
+                #if (DEBUG)
+                    Logger.appendLogLine("Threads", "Starting: tXboxStream thread", Logger.Type.Info);
+                #endif
+            }
 
-            Program.mainform.StatusWaiting();
+            // Keyboard and Mouse input thread
+            if (ActivateInputThread) {
+                tKMInput = new Thread(Activate.KeyboardMouseInput);
+                tKMInput.SetApartmentState(ApartmentState.STA);
+                tKMInput.IsBackground = true;
+                tKMInput.Start();
+
+                #if (DEBUG)
+                    Logger.appendLogLine("Threads", "Starting: tKMInput thread", Logger.Type.Info);
+                #endif
+            }
+
+            // Set our status to waiting
+            Program.MainForm.StatusWaiting();
         }
 
         public static void SendtoController(X360Controller controller) {
             byte[] report = controller.GetReport();
             byte[] output = new byte[8];
 
+            // Send our data back to the virtual scp bus.
             scpbus.Report(CONTROLLER_NUMBER, report, output);
         }
 

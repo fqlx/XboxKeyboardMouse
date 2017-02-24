@@ -6,9 +6,13 @@ using System.Windows.Forms;
 using System;
 using System.Timers;
 using System.Threading;
+using XboxKeyboardMouse.Libs;
 
 namespace XboxKeyboardMouse {
     class TranslateMouse {
+        public static bool TRIGGER_LEFT_PRESSED  = false;
+        public static bool TRIGGER_RIGHT_PRESSED = false;
+
         static private DirectInput device;
         static private Mouse mouse;
 
@@ -22,13 +26,14 @@ namespace XboxKeyboardMouse {
         static short iMax = short.MaxValue;
         static short iMin = short.MinValue;
 
+
         public static int MaxMouseMode = 4;
 
         public static void MouseMovementInput() {
             centered = new Point(Screen.PrimaryScreen.Bounds.Width / 2, Screen.PrimaryScreen.Bounds.Height / 2);
             Cursor.Position = centered;
 
-            const int Mode_Default      = 0;
+            const int Mode_Percentage   = 0;
             const int Mode_Relative     = 1;
             const int Mode_Raw          = 2;
             const int Mode_Raw_Sens     = 3;
@@ -38,7 +43,7 @@ namespace XboxKeyboardMouse {
                 var mode = Program.ActiveConfig.Mouse_Eng_Type;
 
                 switch (mode) {
-                case Mode_Default:      MouseMovement_Default();        break;
+                case Mode_Percentage:   MouseMovement_Percentage();     break;
                 case Mode_Relative:     MouseMovement_Relative();       break;
                 case Mode_Raw:          MouseMovement_Raw();            break;
                 case Mode_Raw_Sens:     MouseMovement_Raw_S();          break;
@@ -51,7 +56,7 @@ namespace XboxKeyboardMouse {
             }
         }
 
-        private static void MouseMovement_Default() {
+        private static void MouseMovement_Percentage() {
             Point mouse = Control.MousePosition;
 
             short joyX;
@@ -117,10 +122,8 @@ namespace XboxKeyboardMouse {
                 joyY = Convert.ToInt16(final);
             }
 
-            //PrintVals(joyX, joyY);
-            Activate.Controller.RightStickX = joyX;
-            Activate.Controller.RightStickY = joyY;
-            Activate.SendtoController(Activate.Controller);
+            // Send Axis
+            SetAxis(joyX, joyY);
 
             Cursor.Position = centered;
         }
@@ -180,9 +183,8 @@ namespace XboxKeyboardMouse {
             }
 
 
-            Activate.Controller.RightStickX = joyX;
-            Activate.Controller.RightStickY = joyY;
-            Activate.SendtoController(Activate.Controller);
+            // Send Axis
+            SetAxis(joyX, joyY);
 
             Cursor.Position = centered;
         }
@@ -213,13 +215,8 @@ namespace XboxKeyboardMouse {
             joyX = (short)x;
             joyY = (short)y;
 
-        #if (DEBUG)
-            PrintVals(joyX, joyY);
-        #endif
-
-            Activate.Controller.RightStickX = joyX;
-            Activate.Controller.RightStickY = joyY;
-            Activate.SendtoController(Activate.Controller);
+            // Send Axis
+            SetAxis(joyX, joyY);
 
             Cursor.Position = centered;
         }
@@ -253,12 +250,9 @@ namespace XboxKeyboardMouse {
             joyX = (short)x;
             joyY = (short)y;
 
-        #if (DEBUG)
-            PrintVals(joyX, joyY);
-        #endif
-            Activate.Controller.RightStickX = joyX;
-            Activate.Controller.RightStickY = joyY;
-            Activate.SendtoController(Activate.Controller);
+
+            // Send Axis
+            SetAxis(joyX, joyY);
 
             Cursor.Position = centered;
         }
@@ -266,19 +260,38 @@ namespace XboxKeyboardMouse {
         public static void MouseButtonsInput(X360Controller controller) {
             MouseState state = mouse.GetCurrentState();
 
-            if (state.IsPressed(0))
-                 controller.RightTrigger = 255;
-            else controller.RightTrigger = 0;
+            TRIGGER_LEFT_PRESSED  = state.IsPressed(0);
+            TRIGGER_RIGHT_PRESSED = state.IsPressed(1);
 
-            if (state.IsPressed(1))
-                 controller.LeftTrigger = 255;
-            else controller.LeftTrigger = 0;
+            if (state.IsPressed(0)) {
+                controller.RightTrigger = 255;
+            } else {
+                if (!TranslateKeyboard.TRIGGER_RIGHT_PRESSED)
+                    controller.RightTrigger = 0;
+            }
+
+            if (state.IsPressed(1)) {
+                controller.LeftTrigger = 255;
+            } else {
+                if (!TranslateKeyboard.TRIGGER_LEFT_PRESSED)
+                    controller.LeftTrigger = 0;
+            }
         }
         
-        private static void PrintVals(short x, short y) {
-            Debugger.Log(
-                0, "ControlInput", 
-                $"TranslateMouse - X: {x}, Y: {y}\n");
+        private static void SetAxis(short x, short y) {
+        #if (DEBUG)
+            //Logger.appendLogLine("Mouse", $"Mouse (X, Y) = ({x.ToString().PadRight(6, ' ')}, {y.ToString().PadRight(6, ' ')})", Logger.Type.Controller);
+        #endif
+
+            if (Program.ActiveConfig.Mouse_Is_RightStick) {
+                Activate.Controller.RightStickX = x;
+                Activate.Controller.RightStickY = y;
+            } else {
+                Activate.Controller.LeftStickX = x;
+                Activate.Controller.LeftStickY = y;
+            }
+            
+            Activate.SendtoController(Activate.Controller);
         }
     }
 }

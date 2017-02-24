@@ -81,12 +81,82 @@ namespace XboxKeyboardMouse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap exit_to_app {
+            get {
+                object obj = ResourceManager.GetObject("exit-to-app", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap exit_to_app_black {
+            get {
+                object obj = ResourceManager.GetObject("exit-to-app_black", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap google_controller {
+            get {
+                object obj = ResourceManager.GetObject("google-controller", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap ic_settings_black_24dp_1x {
+            get {
+                object obj = ResourceManager.GetObject("ic_settings_black_24dp_1x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap ic_settings_black_24dp_2x {
+            get {
+                object obj = ResourceManager.GetObject("ic_settings_black_24dp_2x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         public static byte[] nocursor {
             get {
                 object obj = ResourceManager.GetObject("nocursor", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap power {
+            get {
+                object obj = ResourceManager.GetObject("power", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap power_big {
+            get {
+                object obj = ResourceManager.GetObject("power_big", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

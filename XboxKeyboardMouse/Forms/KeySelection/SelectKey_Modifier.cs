@@ -12,7 +12,7 @@ using XboxKeyboardMouse.Models;
 namespace XboxKeyboardMouse.Forms {
 
     public partial class SelectKey_Modifier : Form {
-        public SelectKey_Modifier(Models.SelectKey_Storage st, bool loadKeys = false) {
+        public SelectKey_Modifier(MSelectKey_Storage st, bool loadKeys = false) {
             storage = st;
 
             InitializeComponent();
@@ -21,7 +21,7 @@ namespace XboxKeyboardMouse.Forms {
                 updateKeyText();
         }
 
-        public Models.SelectKey_Storage storage;
+        public MSelectKey_Storage storage;
         private bool close;
 
         private void updateKeyText() {
@@ -57,7 +57,7 @@ namespace XboxKeyboardMouse.Forms {
         }
 
         private void lnkMod_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
-            Models.SelectKey_Storage s = new Models.SelectKey_Storage();
+            Models.MSelectKey_Storage s = new Models.MSelectKey_Storage();
 
             var frm = new SelectKey_Storage(s);
             frm.ShowDialog();
@@ -69,7 +69,7 @@ namespace XboxKeyboardMouse.Forms {
         }
 
         private void lnkKey_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
-            Models.SelectKey_Storage s = new Models.SelectKey_Storage();
+            Models.MSelectKey_Storage s = new Models.MSelectKey_Storage();
 
             var frm = new SelectKey_Storage(s);
             frm.ShowDialog();

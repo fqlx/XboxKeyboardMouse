@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace XboxKeyboardMouse.Forms {
     public partial class SelectKey_Storage : Form {
-        public SelectKey_Storage(Models.SelectKey_Storage storage) {
+        public SelectKey_Storage(Models.MSelectKey_Storage storage) {
             this.storage = storage;
 
             InitializeComponent();
@@ -20,7 +20,7 @@ namespace XboxKeyboardMouse.Forms {
             KeyUp += new System.Windows.Forms.KeyEventHandler(this.SelectKey_Storage_KeyUp);
         }
 
-        Models.SelectKey_Storage storage;
+        Models.MSelectKey_Storage storage;
 
         private void SelectKey_Storage_KeyUp(object sender, KeyEventArgs e) {
             // Get keycode

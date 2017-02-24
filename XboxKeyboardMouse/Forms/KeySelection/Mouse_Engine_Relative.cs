@@ -36,7 +36,7 @@ namespace XboxKeyboardMouse.Forms.OptionsFrms {
 
         private void button1_Click(object sender, EventArgs e) {
             // Get current modifers
-            Models.SelectKey_Storage storage = new Models.SelectKey_Storage() {
+            Models.MSelectKey_Storage storage = new Models.MSelectKey_Storage() {
                 Cancel = false,
                 inputKey = Controls_KB_MReset_KEY,
                 inputMod = Controls_KB_MReset_MOD

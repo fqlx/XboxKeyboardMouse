@@ -1,24 +1,36 @@
-﻿using System;
+﻿using MaterialSkin;
+using System;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Input;
 using XboxKeyboardMouse;
 using XboxKeyboardMouse.Config;
+using XboxKeyboardMouse.Forms;
+using XboxKeyboardMouse.Forms.Controls;
+using XboxKeyboardMouse.Libs;
 
 namespace XboxKeyboardMouse {
     static class Program {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
-        /// 
-        public static MainForm mainform = new MainForm();
+        public static MainForm MainForm;
 
         /** Public Variables Across the Whole Application */
-        public static Config.Data ActiveConfig;
-        public static bool DoneLoadingCfg = false;
-        public static bool HideCursor     = true;
-        public static string ActiveConfigFile = "";
-        public static IntPtr ptrKeyboardHook;
+        public static Config.Data         ActiveConfig;
+        public static bool                DoneLoadingCfg = false;
+        public static bool                HideCursor     = true;
+        public static string              ActiveConfigFile = "";
+        public static MaterialSkinManager mSkin;
+
+        public static bool                ToggleStatusState = false;
+
+        [DllImport("kernel32.dll")]
+            static extern bool AttachConsole(int input);
+        [DllImport("kernel32.dll", EntryPoint = "GetStdHandle", SetLastError = true, CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
+            public static extern IntPtr GetStdHandle(int nStdHandle);
+        [DllImport("kernel32.dll", EntryPoint = "AllocConsole", SetLastError = true, CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
+            public static extern int AllocConsole();
+        [DllImport("kernel32.dll", SetLastError = true)]
+            private static extern int FreeConsole();
 
 
         public static bool SetActiveConfig(string File) {
@@ -34,22 +46,32 @@ namespace XboxKeyboardMouse {
 
             // Make sure the ini file exists
             ReadConfiguration(File);
-            
+
+            ReloadActiveConfig();
+
             IniFile appcfg = new IniFile("config.ini");
             appcfg.AddSetting("Xbox", "KeyProfile", File);
             appcfg.SaveSettings();
+            
+            return true;
+        }
 
+        public static void ReloadActiveConfig() {
             ReloadControlScheme();
 
-            return true;
+            // Load our application settings
+            HideCursor = !ActiveConfig.Application_ShowCursor;
+            Hooks.LowLevelKeyboardHook.LockEscape = ActiveConfig.Application_LockEscape;
         }
 
         public static void ReloadControlScheme() {
             TranslateKeyboard.ClearAllDicts();
 
-            lock (TranslateKeyboard.buttons) {
-            lock (TranslateKeyboard.mapLeftStickY)  { lock (TranslateKeyboard.mapLeftStickX) { 
-            lock (TranslateKeyboard.mapRightStickX) { lock (TranslateKeyboard.mapRightStickY) { 
+            lock (TranslateKeyboard.buttons)        {
+            lock (TranslateKeyboard.mapLeftStickY)  {
+            lock (TranslateKeyboard.mapLeftStickX)  { 
+            lock (TranslateKeyboard.mapRightStickX) {
+            lock (TranslateKeyboard.mapRightStickY) { 
                 if (ActiveConfig.Controls_KB_Xbox_A != 0)
                     TranslateKeyboard.buttons.Add((Key)ActiveConfig.Controls_KB_Xbox_A, ScpDriverInterface.X360Buttons.A);
                 if (ActiveConfig.Controls_KB_Xbox_B != 0)
@@ -135,21 +157,32 @@ namespace XboxKeyboardMouse {
 
         [STAThread]
         static void Main(string[] args) {
+            // Check if we are debugging
+            // if so then attach the console
+            #if (DEBUG)
+                int conPtr = AllocConsole();
+                AttachConsole(conPtr);
+                Logger.appendLogLine("State", "Console Attached!", Logger.Type.Info);
+            #endif
+            
             ReadConfiguration();
+            ActiveConfig = Data.Load(ActiveConfigFile);
+            ReloadActiveConfig();
+            ReloadControlScheme();
 
             Thread tApplicationRun = new Thread(ApplicationRun);
             tApplicationRun.SetApartmentState(ApartmentState.STA);
             tApplicationRun.Start();
 
-            while (!DoneLoadingCfg)
+            while (MainForm == null)
                 Thread.Sleep(100);
-            
+
             Thread tPause = new Thread(Pause);
             tPause.SetApartmentState(ApartmentState.STA);
             tPause.IsBackground = true;
             tPause.Start();
-
-            Thread tActivateKM = new Thread(Activate.ActivateKeyboardAndMouse);
+            
+            Thread tActivateKM = new Thread(() => { Activate.ActivateKeyboardAndMouse();  });
             tActivateKM.SetApartmentState(ApartmentState.STA);
             tActivateKM.IsBackground = true;
             tActivateKM.Start();
@@ -157,13 +190,7 @@ namespace XboxKeyboardMouse {
 
         private static void ApplicationRun() {
             Application.EnableVisualStyles();
-
-            // Load configuration Files
-            // My improvised Config file
-            ActiveConfig = Data.Load(ActiveConfigFile);
-            ReloadControlScheme();
-            DoneLoadingCfg = true;
-
+            
             // Start our lowlevel keyboard hook
             if (IntPtr.Size == 8) {
                 Hooks.LowLevelKeyboardHook._hookID =
@@ -173,10 +200,12 @@ namespace XboxKeyboardMouse {
                     MessageBox.Show("Failed to find the Xbox Application to disable Escape.");
                 }
             } else {
-                MessageBox.Show("In 32bit mode you cannot disable the Escape key!", "Notice about 32bit", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                //MessageBox.Show("In 32bit mode you cannot disable the Escape key!", "Notice about 32bit", MessageBoxButtons.OK, MessageBoxIcon.Question);
             }
 
-            Application.Run(mainform);
+            mSkin = MaterialSkinManager.Instance;
+            MainForm = new MainForm();
+            Application.Run(MainForm);
         }
 
         private static void Pause() {
@@ -187,36 +216,54 @@ namespace XboxKeyboardMouse {
                         Keyboard.IsKeyDown((Key)ActiveConfig.Controls_KB_Detach_KEY) :
                     Keyboard.IsKeyDown((Key)ActiveConfig.Controls_KB_Detach_KEY));
 
-                if (detachKey) {
-                    if (Activate.tKMInput.IsAlive == true && Activate.tXboxStream.IsAlive == true) {
-                        Activate.tXboxStream.Abort();
-                        Activate.tKMInput.Abort();
+                if (detachKey || ToggleStatusState) {
+                    if (ToggleStatusState) {
+                        ToggleStatusState = false;
+                    }
 
-                        try {
-                            XboxStream.tMouseMovement.Abort();
-                        } catch (Exception) { }
+                    bool inputDead = !Activate.tKMInput.IsAlive;
+                    bool streamDead = !Activate.tXboxStream.IsAlive;
+
+                    #if (DEBUG)
+                        Logger.appendLogLine("Threads", $"Threads Status: Input - {!inputDead}, Stream - {!streamDead}",
+                                             Logger.Type.Debug);
+                    #endif
+
+                    if (!inputDead && !streamDead) {
+                        #if (DEBUG)
+                            Logger.appendLogLine("Threads", "Aborting all threads!", Logger.Type.Info);
+                        #endif
+
+                        try { Activate.tXboxStream.Abort(); }       catch (Exception) { }
+                        try { Activate.tKMInput.Abort(); }          catch (Exception) { }
+                        try { XboxStream.tMouseMovement.Abort(); }  catch (Exception) { } 
 
                         CursorView.CursorShow();
 
-                        //if (Activate.tKMInput.IsAlive == true && Activate.tXboxStream.IsAlive == true) {
+                        /*
+                        if (Activate.tKMInput.IsAlive == true && Activate.tXboxStream.IsAlive == true) {
                             // TODO: Handle failed threads
-                        //    MessageBox.Show("Error:  Threads failed to abort");
+                            MessageBox.Show("Error:  Threads failed to abort");
+                        }  //*/
+
+                        // Reset the controller
+                        Activate.ResetController();
                             
-                        //}  
-                        
-                        //else {
-                            // Reset the controller
-                            Activate.ResetController();
-                            
-                            mainform.StatusStopped();
-                        //}
-                    } else if (Activate.tKMInput.IsAlive == false && Activate.tXboxStream.IsAlive == false) {
-                        Thread tActivateKM = new Thread(Activate.ActivateKeyboardAndMouse);
-                        tActivateKM.SetApartmentState(ApartmentState.STA);
-                        tActivateKM.IsBackground = true;
-                        tActivateKM.Start();
+                        MainForm.StatusStopped();
+                    } else {
+                        // && Activate.tXboxStream.IsAlive == false
+                        if (inputDead || streamDead) {
+                            // Start the required threads
+                            Thread tActivateKM = new Thread(() => {
+                                Activate.ActivateKeyboardAndMouse(streamDead, inputDead);
+                            });
+                            tActivateKM.SetApartmentState(ApartmentState.STA);
+                            tActivateKM.IsBackground = true;
+                            tActivateKM.Start();
+                        }
                     }
                 }
+
                 Thread.Sleep(100);
             }
         }
