@@ -60,8 +60,6 @@ You may customise your own controller layout through the gui but the default lay
 
 #Todo
 1.  Check if SlimDX and SCP driver are installed and if not throw an understandable error.
-2.  Work on smoothing mouse translation/normalization
-3.  Mouse input buttons dont work as of yet.
-4.  Scroll Wheel movement has not been added (Main usage maybe RTS).
-5.  You cant use the keyboard for triggers... Yet
-6.  Add Jenkins job to compile merges
+2.  Mouse input buttons dont work as of yet.
+3.  Scroll Wheel movement has not been added (Main usage maybe RTS).
+4.  Better Mouse Engines
