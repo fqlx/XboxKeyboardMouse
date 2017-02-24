@@ -38,7 +38,12 @@ namespace XboxKeyboardMouse {
             const int count = 512;
             StringBuilder text = new StringBuilder(count);
             while (true) {
-                Thread.Sleep(1000);
+                try { Thread.Sleep(1000); } 
+
+                // Ensures that the current thread does not
+                // just crash and cause issues
+                catch (ThreadAbortException) { break; }
+                
 
                 IntPtr handle = GetForegroundWindow();
 
@@ -46,7 +51,7 @@ namespace XboxKeyboardMouse {
                     if (text.ToString().Equals(XBOXAPP) == false) {
                         ShowAndFreeCursor();
                         started = false;
-                        Program.mainform.StatusWaiting();
+                        Program.MainForm.StatusWaiting();
 
                         continue;
                     }
@@ -62,7 +67,7 @@ namespace XboxKeyboardMouse {
                     if (started == false) {
                         LockAndHideCursor();
                         started = true;
-                        Program.mainform.StatusRunning();
+                        Program.MainForm.StatusRunning();
                     }
                 }
             }

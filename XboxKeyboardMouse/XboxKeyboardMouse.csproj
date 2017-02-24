@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>XboxKeyboardMouse</RootNamespace>
     <AssemblyName>XboxKeyboardMouse</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
@@ -27,6 +27,7 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -87,6 +88,9 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>XboxKeyboardMouse.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationCore" />
     <Reference Include="SlimDX, Version=4.0.13.43, Culture=neutral, PublicKeyToken=b1b0c32fd1ffe4f9, processorArchitecture=AMD64">
@@ -112,13 +116,56 @@
     <Compile Include="Forms\Controls\CircleControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Forms\Controls\RoundedForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Controls\RoundedForm.Designer.cs">
+      <DependentUpon>RoundedForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\KeySelection\Mouse_Engine_Relative.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\KeySelection\Mouse_Engine_Relative.Designer.cs">
       <DependentUpon>Mouse_Engine_Relative.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Controls\FormRWE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Controls\FormRWE.Designer.cs">
+      <DependentUpon>FormRWE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MouseSettings\GenericControls.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\MouseSettings\GenericControls.Designer.cs">
+      <DependentUpon>GenericControls.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MouseSettings\MouseEngineSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\MouseSettings\MouseEngineSettings.Designer.cs">
+      <DependentUpon>MouseEngineSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MouseSettings\NoControls.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\MouseSettings\NoControls.Designer.cs">
+      <DependentUpon>NoControls.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Options.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Options.Designer.cs">
+      <DependentUpon>Options.cs</DependentUpon>
+    </Compile>
     <Compile Include="Hooks\LowLevelKeyboardHook.cs" />
+    <Compile Include="Libs\Logger.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -131,17 +178,17 @@
     <Compile Include="Forms\ControllerPreview.Designer.cs">
       <DependentUpon>ControllerPreview.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\MainForm.cs">
+    <Compile Include="Forms\Old\Old_MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    <Compile Include="Forms\Old\Old_MainForm.Designer.cs">
+      <DependentUpon>Old_MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Options.cs">
+    <Compile Include="Forms\Old\Old_Options.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Options.Designer.cs">
-      <DependentUpon>Options.cs</DependentUpon>
+    <Compile Include="Forms\Old\Old_Options.Designer.cs">
+      <DependentUpon>Old_Options.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\KeySelection\SelectKey.cs">
       <SubType>Form</SubType>
@@ -180,11 +227,17 @@
     <EmbeddedResource Include="Forms\ControllerPreview.resx">
       <DependentUpon>ControllerPreview.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\MouseSettings\GenericControls.resx">
+      <DependentUpon>GenericControls.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Options.resx">
-      <DependentUpon>Options.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\MouseSettings\NoControls.resx">
+      <DependentUpon>NoControls.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Old\Old_MainForm.resx">
+      <DependentUpon>Old_MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Old\Old_Options.resx">
+      <DependentUpon>Old_Options.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\KeySelection\Mouse_Engine_Relative.resx">
       <DependentUpon>Mouse_Engine_Relative.cs</DependentUpon>
@@ -200,6 +253,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\KeySelection\SelectMouseButton.resx">
       <DependentUpon>SelectMouseButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Options.resx">
+      <DependentUpon>Options.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -252,7 +311,33 @@
   <ItemGroup>
     <None Include="Resources\Images\360_RT.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\ic_settings_black_24dp_1x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_settings_black_24dp_2x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\google-controller.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\power.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\power_big.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit-to-app_black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\3rdParty\MaterialSkin\MaterialSkin\MaterialSkin.csproj">
+      <Project>{8eb7611b-68cd-4b8b-987a-11717e2b250c}</Project>
+      <Name>MaterialSkin</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit-to-app.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

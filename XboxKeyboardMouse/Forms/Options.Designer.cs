@@ -23,44 +23,37 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Options));
-            this.lbPresets = new System.Windows.Forms.ListBox();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.btnExit = new MaterialSkin.Controls.MaterialFlatButton();
+            this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
+            this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.label20 = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabControl2 = new System.Windows.Forms.TabControl();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.editor_Preset = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.optMouseModifier = new System.Windows.Forms.NumericUpDown();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.optMouseEngine = new System.Windows.Forms.ComboBox();
+            this.file_Editing = new System.Windows.Forms.Label();
+            this.file_Active = new System.Windows.Forms.Label();
+            this.file_CreatePreset_Text = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.file_CreatePreset_Button = new MaterialSkin.Controls.MaterialFlatButton();
+            this.file_SetAsActive = new MaterialSkin.Controls.MaterialFlatButton();
+            this.file_RefreshList = new MaterialSkin.Controls.MaterialFlatButton();
+            this.file_DeletePreset = new MaterialSkin.Controls.MaterialFlatButton();
+            this.file_LoadPreset = new MaterialSkin.Controls.MaterialFlatButton();
+            this.lbPresets = new MaterialSkin.Controls.MaterialListView();
+            this.lbPresets_Column = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tabSettings = new System.Windows.Forms.TabPage();
+            this.settings_DetachKey = new MaterialSkin.Controls.MaterialFlatButton();
+            this.settings_ChangePresetName = new MaterialSkin.Controls.MaterialFlatButton();
             this.label2 = new System.Windows.Forms.Label();
-            this.optDetachKey = new System.Windows.Forms.Button();
+            this.label20 = new System.Windows.Forms.Label();
+            this.settings_ShowCursor = new MaterialSkin.Controls.MaterialCheckBox();
+            this.settings_LockEscape = new MaterialSkin.Controls.MaterialCheckBox();
+            this.settings_SaveAllChanges = new MaterialSkin.Controls.MaterialFlatButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.optInvertY = new System.Windows.Forms.CheckBox();
-            this.optInvertX = new System.Windows.Forms.CheckBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.optYSense = new System.Windows.Forms.NumericUpDown();
-            this.optXSense = new System.Windows.Forms.NumericUpDown();
-            this.label17 = new System.Windows.Forms.Label();
-            this.optTickRate = new System.Windows.Forms.NumericUpDown();
-            this.label16 = new System.Windows.Forms.Label();
-            this.optName = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.ll_ResetOriginalName = new System.Windows.Forms.LinkLabel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnPresOptActive = new System.Windows.Forms.Button();
-            this.btnPresOptRef = new System.Windows.Forms.Button();
-            this.btnPreOptLoad = new System.Windows.Forms.Button();
-            this.btnPresOptDel = new System.Windows.Forms.Button();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
+            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
+            this.preset_Name = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.tabKeyboard = new System.Windows.Forms.TabPage();
+            this.circleControl2 = new XboxKeyboardMouse.Forms.Controls.CircleControl();
+            this.circleControl1 = new XboxKeyboardMouse.Forms.Controls.CircleControl();
             this.editor_InputKeyboard = new System.Windows.Forms.PictureBox();
             this.xbo_k_joy_r_down = new System.Windows.Forms.Label();
             this.xbo_k_joy_r_up = new System.Windows.Forms.Label();
@@ -89,559 +82,558 @@
             this.xbo_k_LeftStick = new System.Windows.Forms.Label();
             this.xbo_k_joy_l_left = new System.Windows.Forms.Label();
             this.xbo_k_joy_l_right = new System.Windows.Forms.Label();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.editor_InputMouse = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.xbo_m_TRight = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.xbo_m_TLeft = new System.Windows.Forms.Label();
-            this.xbo_m_SR = new System.Windows.Forms.Label();
-            this.xbo_m_SL = new System.Windows.Forms.Label();
-            this.xbo_m_B = new System.Windows.Forms.Label();
-            this.xbo_m_Y = new System.Windows.Forms.Label();
-            this.xbo_m_X = new System.Windows.Forms.Label();
-            this.xbo_m_A = new System.Windows.Forms.Label();
-            this.xbo_m_DpadRight = new System.Windows.Forms.Label();
-            this.xbo_m_DpadUp = new System.Windows.Forms.Label();
-            this.xbo_m_DpadLeft = new System.Windows.Forms.Label();
-            this.xbo_m_DpadDown = new System.Windows.Forms.Label();
-            this.xbo_m_Guide = new System.Windows.Forms.Label();
-            this.xbo_m_Back = new System.Windows.Forms.Label();
-            this.xbo_m_Start = new System.Windows.Forms.Label();
-            this.xbo_m_RS = new System.Windows.Forms.Label();
-            this.xbo_m_LS = new System.Windows.Forms.Label();
+            this.tabMouse = new System.Windows.Forms.TabPage();
+            this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
+            this.mouseEngineList = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.mouseEngineContainer = new System.Windows.Forms.Panel();
+            this.mouse_TickRate = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.mouse_TickRate_Reset = new MaterialSkin.Controls.MaterialFlatButton();
+            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.mouseInvertAxisY = new MaterialSkin.Controls.MaterialCheckBox();
+            this.mouseInvertAxisX = new MaterialSkin.Controls.MaterialCheckBox();
+            this.mouse_TickInvalid = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.lblCreateStatus = new System.Windows.Forms.Label();
-            this.btnCreatePreset = new System.Windows.Forms.Button();
-            this.tbCreateName = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.tabPage7 = new System.Windows.Forms.TabPage();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.circleControl2 = new XboxKeyboardMouse.Forms.Controls.CircleControl();
-            this.circleControl1 = new XboxKeyboardMouse.Forms.Controls.CircleControl();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.tabControl1.SuspendLayout();
+            this.materialTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            this.tabControl2.SuspendLayout();
-            this.tabPage4.SuspendLayout();
-            this.editor_Preset.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.optMouseModifier)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.optYSense)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.optXSense)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.optTickRate)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            this.tabPage5.SuspendLayout();
+            this.tabSettings.SuspendLayout();
+            this.tabKeyboard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.editor_InputKeyboard)).BeginInit();
             this.editor_InputKeyboard.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.tabPage6.SuspendLayout();
-            this.editor_InputMouse.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
+            this.tabMouse.SuspendLayout();
             this.tabPage3.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.tabPage7.SuspendLayout();
             this.SuspendLayout();
             // 
-            // lbPresets
+            // btnExit
             // 
-            this.lbPresets.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.lbPresets.BackColor = System.Drawing.SystemColors.Control;
-            this.lbPresets.FormattingEnabled = true;
-            this.lbPresets.IntegralHeight = false;
-            this.lbPresets.Location = new System.Drawing.Point(6, 19);
-            this.lbPresets.Name = "lbPresets";
-            this.lbPresets.Size = new System.Drawing.Size(144, 363);
-            this.lbPresets.TabIndex = 0;
+            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExit.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnExit.BackColor = System.Drawing.SystemColors.Control;
+            this.btnExit.ControlAutoSize = false;
+            this.btnExit.Depth = 0;
+            this.btnExit.FontColor = System.Drawing.Color.Black;
+            this.btnExit.FontColorDisabled = System.Drawing.Color.Gray;
+            this.btnExit.Icon = global::XboxKeyboardMouse.Properties.Resources.exit_to_app;
+            this.btnExit.Location = new System.Drawing.Point(475, 5);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnExit.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Primary = false;
+            this.btnExit.SetBackgroundColor = true;
+            this.btnExit.SetFontColor = false;
+            this.btnExit.SetFontDisabledColor = false;
+            this.btnExit.Size = new System.Drawing.Size(41, 36);
+            this.btnExit.TabIndex = 6;
+            this.btnExit.Text = "EXIT";
+            this.btnExit.UseVisualStyleBackColor = false;
+            this.btnExit.Click += new System.EventHandler(this.ExitForm);
             // 
-            // tabControl1
+            // materialTabSelector1
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.materialTabSelector1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.materialTabSelector1.BaseTabControl = this.materialTabControl1;
+            this.materialTabSelector1.Depth = 0;
+            this.materialTabSelector1.Location = new System.Drawing.Point(-14, -1);
+            this.materialTabSelector1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialTabSelector1.Name = "materialTabSelector1";
+            this.materialTabSelector1.Size = new System.Drawing.Size(537, 49);
+            this.materialTabSelector1.TabIndex = 1;
+            this.materialTabSelector1.Text = "materialTabSelector1";
+            // 
+            // materialTabControl1
+            // 
+            this.materialTabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Controls.Add(this.tabPage7);
-            this.tabControl1.Location = new System.Drawing.Point(-2, 0);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(540, 449);
-            this.tabControl1.TabIndex = 2;
+            this.materialTabControl1.Controls.Add(this.tabPage1);
+            this.materialTabControl1.Controls.Add(this.tabSettings);
+            this.materialTabControl1.Controls.Add(this.tabKeyboard);
+            this.materialTabControl1.Controls.Add(this.tabMouse);
+            this.materialTabControl1.Controls.Add(this.tabPage3);
+            this.materialTabControl1.Depth = 0;
+            this.materialTabControl1.Location = new System.Drawing.Point(-5, 49);
+            this.materialTabControl1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialTabControl1.Name = "materialTabControl1";
+            this.materialTabControl1.SelectedIndex = 0;
+            this.materialTabControl1.Size = new System.Drawing.Size(532, 430);
+            this.materialTabControl1.TabIndex = 0;
             // 
             // tabPage1
             // 
-            this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage1.Controls.Add(this.checkBox2);
-            this.tabPage1.Controls.Add(this.checkBox1);
-            this.tabPage1.Controls.Add(this.label20);
+            this.tabPage1.Controls.Add(this.file_Editing);
+            this.tabPage1.Controls.Add(this.file_Active);
+            this.tabPage1.Controls.Add(this.file_CreatePreset_Text);
+            this.tabPage1.Controls.Add(this.file_CreatePreset_Button);
+            this.tabPage1.Controls.Add(this.file_SetAsActive);
+            this.tabPage1.Controls.Add(this.file_RefreshList);
+            this.tabPage1.Controls.Add(this.file_DeletePreset);
+            this.tabPage1.Controls.Add(this.file_LoadPreset);
+            this.tabPage1.Controls.Add(this.lbPresets);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(532, 423);
+            this.tabPage1.Size = new System.Drawing.Size(524, 404);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Application Options";
+            this.tabPage1.Text = "File";
             // 
-            // label20
+            // file_Editing
             // 
-            this.label20.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Segoe Print", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(61, 36);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(404, 190);
-            this.label20.TabIndex = 0;
-            this.label20.Text = resources.GetString("label20.Text");
-            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.file_Editing.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.file_Editing.AutoSize = true;
+            this.file_Editing.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.file_Editing.Location = new System.Drawing.Point(55, 293);
+            this.file_Editing.Name = "file_Editing";
+            this.file_Editing.Size = new System.Drawing.Size(60, 18);
+            this.file_Editing.TabIndex = 44;
+            this.file_Editing.Text = "Editing: ";
             // 
-            // tabPage2
+            // file_Active
             // 
-            this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage2.Controls.Add(this.tabControl2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(532, 423);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Preset Manager";
+            this.file_Active.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.file_Active.AutoSize = true;
+            this.file_Active.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.file_Active.Location = new System.Drawing.Point(13, 275);
+            this.file_Active.Name = "file_Active";
+            this.file_Active.Size = new System.Drawing.Size(102, 18);
+            this.file_Active.TabIndex = 43;
+            this.file_Active.Text = "Active Preset: ";
             // 
-            // tabControl2
+            // file_CreatePreset_Text
             // 
-            this.tabControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.file_CreatePreset_Text.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.file_CreatePreset_Text.Depth = 0;
+            this.file_CreatePreset_Text.ForeColor = System.Drawing.Color.Yellow;
+            this.file_CreatePreset_Text.Hint = "";
+            this.file_CreatePreset_Text.Location = new System.Drawing.Point(271, 324);
+            this.file_CreatePreset_Text.MaxLength = 300;
+            this.file_CreatePreset_Text.MouseState = MaterialSkin.MouseState.HOVER;
+            this.file_CreatePreset_Text.Name = "file_CreatePreset_Text";
+            this.file_CreatePreset_Text.PasswordChar = '\0';
+            this.file_CreatePreset_Text.SelectedText = "";
+            this.file_CreatePreset_Text.SelectionLength = 0;
+            this.file_CreatePreset_Text.SelectionStart = 0;
+            this.file_CreatePreset_Text.Size = new System.Drawing.Size(238, 23);
+            this.file_CreatePreset_Text.TabIndex = 6;
+            this.file_CreatePreset_Text.TabStop = false;
+            this.file_CreatePreset_Text.Text = "Preset Name";
+            this.file_CreatePreset_Text.UseSystemPasswordChar = false;
+            this.file_CreatePreset_Text.KeyUp += new System.Windows.Forms.KeyEventHandler(this.file_CheckIfExists);
+            // 
+            // file_CreatePreset_Button
+            // 
+            this.file_CreatePreset_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.file_CreatePreset_Button.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.file_CreatePreset_Button.ControlAutoSize = false;
+            this.file_CreatePreset_Button.Depth = 0;
+            this.file_CreatePreset_Button.Enabled = false;
+            this.file_CreatePreset_Button.FontColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.file_CreatePreset_Button.FontColorDisabled = System.Drawing.Color.Gray;
+            this.file_CreatePreset_Button.ForeColor = System.Drawing.Color.White;
+            this.file_CreatePreset_Button.Icon = null;
+            this.file_CreatePreset_Button.Location = new System.Drawing.Point(272, 359);
+            this.file_CreatePreset_Button.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.file_CreatePreset_Button.MouseState = MaterialSkin.MouseState.HOVER;
+            this.file_CreatePreset_Button.Name = "file_CreatePreset_Button";
+            this.file_CreatePreset_Button.Primary = false;
+            this.file_CreatePreset_Button.SetBackgroundColor = false;
+            this.file_CreatePreset_Button.SetFontColor = true;
+            this.file_CreatePreset_Button.SetFontDisabledColor = false;
+            this.file_CreatePreset_Button.Size = new System.Drawing.Size(238, 36);
+            this.file_CreatePreset_Button.TabIndex = 5;
+            this.file_CreatePreset_Button.Text = "Add Preset";
+            this.file_CreatePreset_Button.UseVisualStyleBackColor = false;
+            this.file_CreatePreset_Button.Click += new System.EventHandler(this.file_CreatePreset_Button_Click);
+            // 
+            // file_SetAsActive
+            // 
+            this.file_SetAsActive.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.file_SetAsActive.AutoSize = true;
+            this.file_SetAsActive.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.file_SetAsActive.ControlAutoSize = true;
+            this.file_SetAsActive.Depth = 0;
+            this.file_SetAsActive.FontColor = System.Drawing.Color.Black;
+            this.file_SetAsActive.FontColorDisabled = System.Drawing.Color.Gray;
+            this.file_SetAsActive.Icon = null;
+            this.file_SetAsActive.Location = new System.Drawing.Point(147, 359);
+            this.file_SetAsActive.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.file_SetAsActive.MouseState = MaterialSkin.MouseState.HOVER;
+            this.file_SetAsActive.Name = "file_SetAsActive";
+            this.file_SetAsActive.Primary = false;
+            this.file_SetAsActive.SetBackgroundColor = true;
+            this.file_SetAsActive.SetFontColor = false;
+            this.file_SetAsActive.SetFontDisabledColor = false;
+            this.file_SetAsActive.Size = new System.Drawing.Size(117, 36);
+            this.file_SetAsActive.TabIndex = 4;
+            this.file_SetAsActive.Text = "Set as Active";
+            this.file_SetAsActive.UseVisualStyleBackColor = false;
+            this.file_SetAsActive.Click += new System.EventHandler(this.file_SetAsActive_Click);
+            // 
+            // file_RefreshList
+            // 
+            this.file_RefreshList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.file_RefreshList.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.file_RefreshList.ControlAutoSize = false;
+            this.file_RefreshList.Depth = 0;
+            this.file_RefreshList.FontColor = System.Drawing.Color.Black;
+            this.file_RefreshList.FontColorDisabled = System.Drawing.Color.Gray;
+            this.file_RefreshList.Icon = null;
+            this.file_RefreshList.Location = new System.Drawing.Point(147, 317);
+            this.file_RefreshList.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.file_RefreshList.MouseState = MaterialSkin.MouseState.HOVER;
+            this.file_RefreshList.Name = "file_RefreshList";
+            this.file_RefreshList.Primary = false;
+            this.file_RefreshList.SetBackgroundColor = true;
+            this.file_RefreshList.SetFontColor = false;
+            this.file_RefreshList.SetFontDisabledColor = false;
+            this.file_RefreshList.Size = new System.Drawing.Size(117, 36);
+            this.file_RefreshList.TabIndex = 3;
+            this.file_RefreshList.Text = "Refresh List";
+            this.file_RefreshList.UseVisualStyleBackColor = false;
+            this.file_RefreshList.Click += new System.EventHandler(this.file_RefreshList_Click);
+            // 
+            // file_DeletePreset
+            // 
+            this.file_DeletePreset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.file_DeletePreset.AutoSize = true;
+            this.file_DeletePreset.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.file_DeletePreset.ControlAutoSize = true;
+            this.file_DeletePreset.Depth = 0;
+            this.file_DeletePreset.FontColor = System.Drawing.Color.Black;
+            this.file_DeletePreset.FontColorDisabled = System.Drawing.Color.Gray;
+            this.file_DeletePreset.Icon = null;
+            this.file_DeletePreset.Location = new System.Drawing.Point(13, 359);
+            this.file_DeletePreset.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.file_DeletePreset.MouseState = MaterialSkin.MouseState.HOVER;
+            this.file_DeletePreset.Name = "file_DeletePreset";
+            this.file_DeletePreset.Primary = false;
+            this.file_DeletePreset.SetBackgroundColor = true;
+            this.file_DeletePreset.SetFontColor = false;
+            this.file_DeletePreset.SetFontDisabledColor = false;
+            this.file_DeletePreset.Size = new System.Drawing.Size(125, 36);
+            this.file_DeletePreset.TabIndex = 2;
+            this.file_DeletePreset.Text = "Delete  Preset";
+            this.file_DeletePreset.UseVisualStyleBackColor = false;
+            this.file_DeletePreset.Click += new System.EventHandler(this.file_DeletePreset_Click);
+            // 
+            // file_LoadPreset
+            // 
+            this.file_LoadPreset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.file_LoadPreset.AutoSize = true;
+            this.file_LoadPreset.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.file_LoadPreset.ControlAutoSize = true;
+            this.file_LoadPreset.Depth = 0;
+            this.file_LoadPreset.FontColor = System.Drawing.Color.Black;
+            this.file_LoadPreset.FontColorDisabled = System.Drawing.Color.Gray;
+            this.file_LoadPreset.Icon = null;
+            this.file_LoadPreset.Location = new System.Drawing.Point(13, 317);
+            this.file_LoadPreset.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.file_LoadPreset.MouseState = MaterialSkin.MouseState.HOVER;
+            this.file_LoadPreset.Name = "file_LoadPreset";
+            this.file_LoadPreset.Primary = false;
+            this.file_LoadPreset.SetBackgroundColor = true;
+            this.file_LoadPreset.SetFontColor = false;
+            this.file_LoadPreset.SetFontDisabledColor = false;
+            this.file_LoadPreset.Size = new System.Drawing.Size(126, 36);
+            this.file_LoadPreset.TabIndex = 1;
+            this.file_LoadPreset.Text = "Load      Preset";
+            this.file_LoadPreset.UseVisualStyleBackColor = false;
+            this.file_LoadPreset.Click += new System.EventHandler(this.file_LoadPreset_Click);
+            // 
+            // lbPresets
+            // 
+            this.lbPresets.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl2.Controls.Add(this.tabPage4);
-            this.tabControl2.Controls.Add(this.tabPage5);
-            this.tabControl2.Controls.Add(this.tabPage6);
-            this.tabControl2.Location = new System.Drawing.Point(-5, 1);
-            this.tabControl2.Name = "tabControl2";
-            this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(541, 426);
-            this.tabControl2.TabIndex = 9;
+            this.lbPresets.AutoArrange = false;
+            this.lbPresets.BackColor = System.Drawing.SystemColors.Control;
+            this.lbPresets.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lbPresets.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lbPresets_Column});
+            this.lbPresets.Depth = 0;
+            this.lbPresets.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.lbPresets.FullRowSelect = true;
+            this.lbPresets.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.lbPresets.Location = new System.Drawing.Point(2, -42);
+            this.lbPresets.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.lbPresets.MouseState = MaterialSkin.MouseState.OUT;
+            this.lbPresets.MultiSelect = false;
+            this.lbPresets.Name = "lbPresets";
+            this.lbPresets.OwnerDraw = true;
+            this.lbPresets.Size = new System.Drawing.Size(541, 314);
+            this.lbPresets.Sorting = System.Windows.Forms.SortOrder.Descending;
+            this.lbPresets.TabIndex = 0;
+            this.lbPresets.UseCompatibleStateImageBehavior = false;
+            this.lbPresets.View = System.Windows.Forms.View.Details;
             // 
-            // tabPage4
+            // lbPresets_Column
             // 
-            this.tabPage4.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage4.Controls.Add(this.editor_Preset);
-            this.tabPage4.Controls.Add(this.groupBox1);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(533, 400);
-            this.tabPage4.TabIndex = 0;
-            this.tabPage4.Text = "Preset Options";
+            this.lbPresets_Column.Text = "";
+            this.lbPresets_Column.Width = 541;
             // 
-            // editor_Preset
+            // tabSettings
             // 
-            this.editor_Preset.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.editor_Preset.Controls.Add(this.label3);
-            this.editor_Preset.Controls.Add(this.optMouseModifier);
-            this.editor_Preset.Controls.Add(this.button1);
-            this.editor_Preset.Controls.Add(this.label4);
-            this.editor_Preset.Controls.Add(this.optMouseEngine);
-            this.editor_Preset.Controls.Add(this.label2);
-            this.editor_Preset.Controls.Add(this.optDetachKey);
-            this.editor_Preset.Controls.Add(this.label1);
-            this.editor_Preset.Controls.Add(this.button4);
-            this.editor_Preset.Controls.Add(this.optInvertY);
-            this.editor_Preset.Controls.Add(this.optInvertX);
-            this.editor_Preset.Controls.Add(this.label18);
-            this.editor_Preset.Controls.Add(this.optYSense);
-            this.editor_Preset.Controls.Add(this.optXSense);
-            this.editor_Preset.Controls.Add(this.label17);
-            this.editor_Preset.Controls.Add(this.optTickRate);
-            this.editor_Preset.Controls.Add(this.label16);
-            this.editor_Preset.Controls.Add(this.optName);
-            this.editor_Preset.Controls.Add(this.label15);
-            this.editor_Preset.Controls.Add(this.label6);
-            this.editor_Preset.Controls.Add(this.label5);
-            this.editor_Preset.Controls.Add(this.ll_ResetOriginalName);
-            this.editor_Preset.Enabled = false;
-            this.editor_Preset.Location = new System.Drawing.Point(271, 6);
-            this.editor_Preset.Name = "editor_Preset";
-            this.editor_Preset.Size = new System.Drawing.Size(256, 388);
-            this.editor_Preset.TabIndex = 9;
-            this.editor_Preset.TabStop = false;
-            this.editor_Preset.Text = "Select a preset to get started";
+            this.tabSettings.Controls.Add(this.settings_DetachKey);
+            this.tabSettings.Controls.Add(this.settings_ChangePresetName);
+            this.tabSettings.Controls.Add(this.label2);
+            this.tabSettings.Controls.Add(this.label20);
+            this.tabSettings.Controls.Add(this.settings_ShowCursor);
+            this.tabSettings.Controls.Add(this.settings_LockEscape);
+            this.tabSettings.Controls.Add(this.settings_SaveAllChanges);
+            this.tabSettings.Controls.Add(this.label1);
+            this.tabSettings.Controls.Add(this.label5);
+            this.tabSettings.Controls.Add(this.materialFlatButton1);
+            this.tabSettings.Controls.Add(this.materialLabel2);
+            this.tabSettings.Controls.Add(this.preset_Name);
+            this.tabSettings.Location = new System.Drawing.Point(4, 22);
+            this.tabSettings.Name = "tabSettings";
+            this.tabSettings.Padding = new System.Windows.Forms.Padding(3);
+            this.tabSettings.Size = new System.Drawing.Size(524, 404);
+            this.tabSettings.TabIndex = 1;
+            this.tabSettings.Text = "Settings";
             // 
-            // label3
+            // settings_DetachKey
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(32, 184);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(62, 13);
-            this.label3.TabIndex = 34;
-            this.label3.Text = "Times Mod:";
+            this.settings_DetachKey.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.settings_DetachKey.ControlAutoSize = false;
+            this.settings_DetachKey.Depth = 0;
+            this.settings_DetachKey.FontColor = System.Drawing.Color.Black;
+            this.settings_DetachKey.FontColorDisabled = System.Drawing.Color.Gray;
+            this.settings_DetachKey.Icon = null;
+            this.settings_DetachKey.Location = new System.Drawing.Point(91, 187);
+            this.settings_DetachKey.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.settings_DetachKey.MouseState = MaterialSkin.MouseState.HOVER;
+            this.settings_DetachKey.Name = "settings_DetachKey";
+            this.settings_DetachKey.Primary = false;
+            this.settings_DetachKey.SetBackgroundColor = false;
+            this.settings_DetachKey.SetFontColor = false;
+            this.settings_DetachKey.SetFontDisabledColor = false;
+            this.settings_DetachKey.Size = new System.Drawing.Size(351, 36);
+            this.settings_DetachKey.TabIndex = 12;
+            this.settings_DetachKey.Text = "Detach Key.....";
+            this.settings_DetachKey.UseVisualStyleBackColor = true;
+            this.settings_DetachKey.Click += new System.EventHandler(this.settings_DetachKey_Click);
             // 
-            // optMouseModifier
+            // settings_ChangePresetName
             // 
-            this.optMouseModifier.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.optMouseModifier.DecimalPlaces = 6;
-            this.optMouseModifier.Location = new System.Drawing.Point(104, 180);
-            this.optMouseModifier.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.optMouseModifier.Name = "optMouseModifier";
-            this.optMouseModifier.Size = new System.Drawing.Size(147, 20);
-            this.optMouseModifier.TabIndex = 33;
-            this.toolTip1.SetToolTip(this.optMouseModifier, "Multiplies the mouse\'s final output to the controller (You will require to experi" +
-        "ment)\r\n");
-            this.optMouseModifier.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(103, 255);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(148, 22);
-            this.button1.TabIndex = 32;
-            this.button1.Text = "Engine Options";
-            this.toolTip1.SetToolTip(this.button1, "Options for the selected mouse engine");
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(6, 332);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(120, 21);
-            this.label4.TabIndex = 28;
-            this.label4.Text = "Preset Settings";
-            // 
-            // optMouseEngine
-            // 
-            this.optMouseEngine.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.optMouseEngine.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.optMouseEngine.FormattingEnabled = true;
-            this.optMouseEngine.Items.AddRange(new object[] {
-            "Percentage",
-            "Relative",
-            "Raw Input",
-            "Raw Input + Sensitivity",
-            "None"});
-            this.optMouseEngine.Location = new System.Drawing.Point(103, 228);
-            this.optMouseEngine.Name = "optMouseEngine";
-            this.optMouseEngine.Size = new System.Drawing.Size(147, 21);
-            this.optMouseEngine.TabIndex = 26;
-            this.toolTip1.SetToolTip(this.optMouseEngine, "The mouse controller engine. Each mouse engine will serve and do a seperate purpo" +
-        "se.");
-            this.optMouseEngine.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.settings_ChangePresetName.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.settings_ChangePresetName.ControlAutoSize = false;
+            this.settings_ChangePresetName.Depth = 0;
+            this.settings_ChangePresetName.FontColor = System.Drawing.Color.Black;
+            this.settings_ChangePresetName.FontColorDisabled = System.Drawing.Color.Gray;
+            this.settings_ChangePresetName.Icon = null;
+            this.settings_ChangePresetName.Location = new System.Drawing.Point(134, 311);
+            this.settings_ChangePresetName.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.settings_ChangePresetName.MouseState = MaterialSkin.MouseState.HOVER;
+            this.settings_ChangePresetName.Name = "settings_ChangePresetName";
+            this.settings_ChangePresetName.Primary = false;
+            this.settings_ChangePresetName.SetBackgroundColor = false;
+            this.settings_ChangePresetName.SetFontColor = false;
+            this.settings_ChangePresetName.SetFontDisabledColor = false;
+            this.settings_ChangePresetName.Size = new System.Drawing.Size(296, 36);
+            this.settings_ChangePresetName.TabIndex = 11;
+            this.settings_ChangePresetName.Text = "Change Preset Name";
+            this.settings_ChangePresetName.UseVisualStyleBackColor = true;
+            this.settings_ChangePresetName.Click += new System.EventHandler(this.settings_ChangePresetName_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(50, 231);
+            this.label2.Font = new System.Drawing.Font("Segoe Print", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(131, 143);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 13);
-            this.label2.TabIndex = 25;
-            this.label2.Text = "Engine:";
+            this.label2.Size = new System.Drawing.Size(311, 38);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Shows the mouse arrow when Actived, this helps you \r\nto easily test mouse setting" +
+    "s with movement";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // optDetachKey
+            // label20
             // 
-            this.optDetachKey.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Segoe Print", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(131, 83);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(225, 19);
+            this.label20.TabIndex = 9;
+            this.label20.Text = "Stops escape from stopping the stream";
+            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // settings_ShowCursor
+            // 
+            this.settings_ShowCursor.AutoSize = true;
+            this.settings_ShowCursor.Depth = 0;
+            this.settings_ShowCursor.Font = new System.Drawing.Font("Roboto", 10F);
+            this.settings_ShowCursor.Location = new System.Drawing.Point(83, 112);
+            this.settings_ShowCursor.Margin = new System.Windows.Forms.Padding(0);
+            this.settings_ShowCursor.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.settings_ShowCursor.MouseState = MaterialSkin.MouseState.HOVER;
+            this.settings_ShowCursor.Name = "settings_ShowCursor";
+            this.settings_ShowCursor.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.settings_ShowCursor.Ripple = true;
+            this.settings_ShowCursor.Size = new System.Drawing.Size(177, 30);
+            this.settings_ShowCursor.TabIndex = 8;
+            this.settings_ShowCursor.Text = "Show the Mouse Cursor";
+            this.settings_ShowCursor.UseVisualStyleBackColor = true;
+            this.settings_ShowCursor.CheckedChanged += new System.EventHandler(this.settings_ShowCursor_CheckedChanged);
+            // 
+            // settings_LockEscape
+            // 
+            this.settings_LockEscape.AutoSize = true;
+            this.settings_LockEscape.Depth = 0;
+            this.settings_LockEscape.Font = new System.Drawing.Font("Roboto", 10F);
+            this.settings_LockEscape.Location = new System.Drawing.Point(83, 52);
+            this.settings_LockEscape.Margin = new System.Windows.Forms.Padding(0);
+            this.settings_LockEscape.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.settings_LockEscape.MouseState = MaterialSkin.MouseState.HOVER;
+            this.settings_LockEscape.Name = "settings_LockEscape";
+            this.settings_LockEscape.Ripple = true;
+            this.settings_LockEscape.Size = new System.Drawing.Size(227, 30);
+            this.settings_LockEscape.TabIndex = 7;
+            this.settings_LockEscape.Text = "Lock escape button (64 bit only)";
+            this.settings_LockEscape.UseVisualStyleBackColor = true;
+            this.settings_LockEscape.CheckedChanged += new System.EventHandler(this.settings_LockEscape_CheckedChanged);
+            // 
+            // settings_SaveAllChanges
+            // 
+            this.settings_SaveAllChanges.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.optDetachKey.Location = new System.Drawing.Point(103, 306);
-            this.optDetachKey.Name = "optDetachKey";
-            this.optDetachKey.Size = new System.Drawing.Size(146, 22);
-            this.optDetachKey.TabIndex = 24;
-            this.optDetachKey.Tag = "#";
-            this.optDetachKey.Text = "Detach Key ...";
-            this.toolTip1.SetToolTip(this.optDetachKey, "This is the key that will be used to enable/disable the controller");
-            this.optDetachKey.UseVisualStyleBackColor = true;
-            this.optDetachKey.Click += new System.EventHandler(this.optDetachKey_Click);
+            this.settings_SaveAllChanges.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.settings_SaveAllChanges.ControlAutoSize = false;
+            this.settings_SaveAllChanges.Depth = 0;
+            this.settings_SaveAllChanges.FontColor = System.Drawing.Color.Black;
+            this.settings_SaveAllChanges.FontColorDisabled = System.Drawing.Color.Gray;
+            this.settings_SaveAllChanges.Icon = null;
+            this.settings_SaveAllChanges.Location = new System.Drawing.Point(2, 359);
+            this.settings_SaveAllChanges.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.settings_SaveAllChanges.MouseState = MaterialSkin.MouseState.HOVER;
+            this.settings_SaveAllChanges.Name = "settings_SaveAllChanges";
+            this.settings_SaveAllChanges.Primary = false;
+            this.settings_SaveAllChanges.SetBackgroundColor = false;
+            this.settings_SaveAllChanges.SetFontColor = false;
+            this.settings_SaveAllChanges.SetFontDisabledColor = false;
+            this.settings_SaveAllChanges.Size = new System.Drawing.Size(520, 43);
+            this.settings_SaveAllChanges.TabIndex = 6;
+            this.settings_SaveAllChanges.Text = "Save all changes";
+            this.settings_SaveAllChanges.UseVisualStyleBackColor = true;
+            this.settings_SaveAllChanges.Click += new System.EventHandler(this.settings_SaveAllChanges_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(5, 282);
+            this.label1.Location = new System.Drawing.Point(12, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(158, 21);
-            this.label1.TabIndex = 23;
-            this.label1.Text = "Application Settings";
-            // 
-            // button4
-            // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(103, 359);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(146, 21);
-            this.button4.TabIndex = 13;
-            this.button4.Text = "Save all changes";
-            this.toolTip1.SetToolTip(this.button4, "Saves all the changes including the input mapper changes to the config.");
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.SaveToFile);
-            // 
-            // optInvertY
-            // 
-            this.optInvertY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.optInvertY.AutoSize = true;
-            this.optInvertY.Location = new System.Drawing.Point(187, 205);
-            this.optInvertY.Name = "optInvertY";
-            this.optInvertY.Size = new System.Drawing.Size(63, 17);
-            this.optInvertY.TabIndex = 12;
-            this.optInvertY.Text = "Invert Y";
-            this.toolTip1.SetToolTip(this.optInvertY, "Inverts the Y Axis");
-            this.optInvertY.UseVisualStyleBackColor = true;
-            // 
-            // optInvertX
-            // 
-            this.optInvertX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.optInvertX.AutoSize = true;
-            this.optInvertX.Location = new System.Drawing.Point(103, 206);
-            this.optInvertX.Name = "optInvertX";
-            this.optInvertX.Size = new System.Drawing.Size(63, 17);
-            this.optInvertX.TabIndex = 11;
-            this.optInvertX.Text = "Invert X";
-            this.toolTip1.SetToolTip(this.optInvertX, "Inverts the X Axis");
-            this.optInvertX.UseVisualStyleBackColor = true;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(31, 158);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(62, 13);
-            this.label18.TabIndex = 10;
-            this.label18.Text = "Y Sensivity:";
-            // 
-            // optYSense
-            // 
-            this.optYSense.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.optYSense.DecimalPlaces = 15;
-            this.optYSense.Location = new System.Drawing.Point(103, 154);
-            this.optYSense.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.optYSense.Name = "optYSense";
-            this.optYSense.Size = new System.Drawing.Size(147, 20);
-            this.optYSense.TabIndex = 9;
-            this.toolTip1.SetToolTip(this.optYSense, "Multiplies the mouse input on the X axis");
-            this.optYSense.Value = new decimal(new int[] {
-            -820297523,
-            191223,
-            0,
-            917504});
-            // 
-            // optXSense
-            // 
-            this.optXSense.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.optXSense.DecimalPlaces = 15;
-            this.optXSense.Location = new System.Drawing.Point(103, 128);
-            this.optXSense.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.optXSense.Name = "optXSense";
-            this.optXSense.Size = new System.Drawing.Size(147, 20);
-            this.optXSense.TabIndex = 7;
-            this.toolTip1.SetToolTip(this.optXSense, "Multiplies the mouse input on the X axis");
-            this.optXSense.Value = new decimal(new int[] {
-            -820297523,
-            191223,
-            0,
-            917504});
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(31, 133);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(62, 13);
-            this.label17.TabIndex = 6;
-            this.label17.Text = "X Sensivity:";
-            // 
-            // optTickRate
-            // 
-            this.optTickRate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.optTickRate.Location = new System.Drawing.Point(103, 102);
-            this.optTickRate.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.optTickRate.Minimum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.optTickRate.Name = "optTickRate";
-            this.optTickRate.Size = new System.Drawing.Size(147, 20);
-            this.optTickRate.TabIndex = 5;
-            this.toolTip1.SetToolTip(this.optTickRate, "How often the mouse input is reset and taken into account \r\n(Smaller values may r" +
-        "equire higher sensitivity)");
-            this.optTickRate.Value = new decimal(new int[] {
-            40,
-            0,
-            0,
-            0});
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(36, 105);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(57, 13);
-            this.label16.TabIndex = 4;
-            this.label16.Text = "Tick Rate:";
-            // 
-            // optName
-            // 
-            this.optName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.optName.Location = new System.Drawing.Point(103, 45);
-            this.optName.Name = "optName";
-            this.optName.Size = new System.Drawing.Size(147, 20);
-            this.optName.TabIndex = 3;
-            this.toolTip1.SetToolTip(this.optName, "Preset name (This is also the file name)");
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(55, 48);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(38, 13);
-            this.label15.TabIndex = 2;
-            this.label15.Text = "Name:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(6, 19);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(120, 21);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "Preset Settings";
+            this.label1.Size = new System.Drawing.Size(94, 21);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Application";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(6, 72);
+            this.label5.Location = new System.Drawing.Point(12, 250);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(124, 21);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Mouse Settings";
+            this.label5.Size = new System.Drawing.Size(56, 21);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Preset";
             // 
-            // ll_ResetOriginalName
+            // materialFlatButton1
             // 
-            this.ll_ResetOriginalName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ll_ResetOriginalName.AutoSize = true;
-            this.ll_ResetOriginalName.Location = new System.Drawing.Point(31, 48);
-            this.ll_ResetOriginalName.Name = "ll_ResetOriginalName";
-            this.ll_ResetOriginalName.Size = new System.Drawing.Size(15, 13);
-            this.ll_ResetOriginalName.TabIndex = 22;
-            this.ll_ResetOriginalName.TabStop = true;
-            this.ll_ResetOriginalName.Text = "R";
-            this.toolTip1.SetToolTip(this.ll_ResetOriginalName, "Resets to the default value (Default value is the preset name when it was loaded)" +
-        "");
-            this.ll_ResetOriginalName.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ResetNameOptionToDefault);
+            this.materialFlatButton1.AutoSize = true;
+            this.materialFlatButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialFlatButton1.ControlAutoSize = true;
+            this.materialFlatButton1.Depth = 0;
+            this.materialFlatButton1.FontColor = System.Drawing.Color.Black;
+            this.materialFlatButton1.FontColorDisabled = System.Drawing.Color.Gray;
+            this.materialFlatButton1.Icon = null;
+            this.materialFlatButton1.Location = new System.Drawing.Point(437, 276);
+            this.materialFlatButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialFlatButton1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialFlatButton1.Name = "materialFlatButton1";
+            this.materialFlatButton1.Primary = false;
+            this.materialFlatButton1.SetBackgroundColor = false;
+            this.materialFlatButton1.SetFontColor = false;
+            this.materialFlatButton1.SetFontDisabledColor = false;
+            this.materialFlatButton1.Size = new System.Drawing.Size(62, 36);
+            this.materialFlatButton1.TabIndex = 3;
+            this.materialFlatButton1.Text = "Reset";
+            this.materialFlatButton1.UseVisualStyleBackColor = true;
+            this.materialFlatButton1.Visible = false;
             // 
-            // groupBox1
+            // materialLabel2
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox1.Controls.Add(this.btnPresOptActive);
-            this.groupBox1.Controls.Add(this.btnPresOptRef);
-            this.groupBox1.Controls.Add(this.lbPresets);
-            this.groupBox1.Controls.Add(this.btnPreOptLoad);
-            this.groupBox1.Controls.Add(this.btnPresOptDel);
-            this.groupBox1.Location = new System.Drawing.Point(6, 6);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(259, 388);
-            this.groupBox1.TabIndex = 8;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Load Presets";
+            this.materialLabel2.AutoSize = true;
+            this.materialLabel2.Depth = 0;
+            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel2.Location = new System.Drawing.Point(79, 284);
+            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel2.Name = "materialLabel2";
+            this.materialLabel2.Size = new System.Drawing.Size(49, 19);
+            this.materialLabel2.TabIndex = 2;
+            this.materialLabel2.Text = "Name";
             // 
-            // btnPresOptActive
+            // preset_Name
             // 
-            this.btnPresOptActive.Location = new System.Drawing.Point(156, 54);
-            this.btnPresOptActive.Name = "btnPresOptActive";
-            this.btnPresOptActive.Size = new System.Drawing.Size(95, 29);
-            this.btnPresOptActive.TabIndex = 9;
-            this.btnPresOptActive.Text = "Set as Active";
-            this.toolTip1.SetToolTip(this.btnPresOptActive, "Sets the selected profile as Active\r\n(This means that the selected profile will b" +
-        "e used)");
-            this.btnPresOptActive.UseVisualStyleBackColor = true;
-            this.btnPresOptActive.Click += new System.EventHandler(this.btnPresOptActive_Click);
+            this.preset_Name.Depth = 0;
+            this.preset_Name.Hint = "";
+            this.preset_Name.Location = new System.Drawing.Point(134, 282);
+            this.preset_Name.MaxLength = 32767;
+            this.preset_Name.MouseState = MaterialSkin.MouseState.HOVER;
+            this.preset_Name.Name = "preset_Name";
+            this.preset_Name.PasswordChar = '\0';
+            this.preset_Name.SelectedText = "";
+            this.preset_Name.SelectionLength = 0;
+            this.preset_Name.SelectionStart = 0;
+            this.preset_Name.Size = new System.Drawing.Size(296, 23);
+            this.preset_Name.TabIndex = 1;
+            this.preset_Name.TabStop = false;
+            this.preset_Name.Text = "preset_Name";
+            this.preset_Name.UseSystemPasswordChar = false;
             // 
-            // btnPresOptRef
+            // tabKeyboard
             // 
-            this.btnPresOptRef.Location = new System.Drawing.Point(156, 124);
-            this.btnPresOptRef.Name = "btnPresOptRef";
-            this.btnPresOptRef.Size = new System.Drawing.Size(95, 45);
-            this.btnPresOptRef.TabIndex = 8;
-            this.btnPresOptRef.Text = "Refresh all presets";
-            this.toolTip1.SetToolTip(this.btnPresOptRef, "Refreshes profile list from local profile dir\r\n(profiles folder)");
-            this.btnPresOptRef.UseVisualStyleBackColor = true;
-            this.btnPresOptRef.Click += new System.EventHandler(this.btnPresOptRef_Click);
+            this.tabKeyboard.Controls.Add(this.circleControl2);
+            this.tabKeyboard.Controls.Add(this.circleControl1);
+            this.tabKeyboard.Controls.Add(this.editor_InputKeyboard);
+            this.tabKeyboard.Location = new System.Drawing.Point(4, 22);
+            this.tabKeyboard.Name = "tabKeyboard";
+            this.tabKeyboard.Padding = new System.Windows.Forms.Padding(3);
+            this.tabKeyboard.Size = new System.Drawing.Size(524, 404);
+            this.tabKeyboard.TabIndex = 3;
+            this.tabKeyboard.Text = "Keyboard";
             // 
-            // btnPreOptLoad
+            // circleControl2
             // 
-            this.btnPreOptLoad.Location = new System.Drawing.Point(156, 19);
-            this.btnPreOptLoad.Name = "btnPreOptLoad";
-            this.btnPreOptLoad.Size = new System.Drawing.Size(95, 29);
-            this.btnPreOptLoad.TabIndex = 7;
-            this.btnPreOptLoad.Text = "Load Profile";
-            this.toolTip1.SetToolTip(this.btnPreOptLoad, "Loads selected profile");
-            this.btnPreOptLoad.UseVisualStyleBackColor = true;
-            this.btnPreOptLoad.Click += new System.EventHandler(this.btnPreOptLoad_Click);
+            this.circleControl2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.circleControl2.AxisDotColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(194)))), ((int)(((byte)(30)))));
+            this.circleControl2.Location = new System.Drawing.Point(308, 319);
+            this.circleControl2.Name = "circleControl2";
+            this.circleControl2.Size = new System.Drawing.Size(34, 34);
+            this.circleControl2.TabIndex = 28;
             // 
-            // btnPresOptDel
+            // circleControl1
             // 
-            this.btnPresOptDel.Location = new System.Drawing.Point(156, 89);
-            this.btnPresOptDel.Name = "btnPresOptDel";
-            this.btnPresOptDel.Size = new System.Drawing.Size(95, 29);
-            this.btnPresOptDel.TabIndex = 2;
-            this.btnPresOptDel.Text = "Delete Profile";
-            this.toolTip1.SetToolTip(this.btnPresOptDel, "Deletes selected profile \r\n(CANNOT BE UNDONE)");
-            this.btnPresOptDel.UseVisualStyleBackColor = true;
-            this.btnPresOptDel.Click += new System.EventHandler(this.btnPresOptDel_Click);
-            // 
-            // tabPage5
-            // 
-            this.tabPage5.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage5.Controls.Add(this.circleControl2);
-            this.tabPage5.Controls.Add(this.circleControl1);
-            this.tabPage5.Controls.Add(this.editor_InputKeyboard);
-            this.tabPage5.Location = new System.Drawing.Point(4, 22);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(533, 400);
-            this.tabPage5.TabIndex = 1;
-            this.tabPage5.Text = "Input Mapper - Keyboard";
+            this.circleControl1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.circleControl1.AxisDotColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(194)))), ((int)(((byte)(30)))));
+            this.circleControl1.Location = new System.Drawing.Point(162, 318);
+            this.circleControl1.Name = "circleControl1";
+            this.circleControl1.Size = new System.Drawing.Size(34, 34);
+            this.circleControl1.TabIndex = 23;
             // 
             // editor_InputKeyboard
             // 
-            this.editor_InputKeyboard.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.editor_InputKeyboard.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.editor_InputKeyboard.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("editor_InputKeyboard.BackgroundImage")));
             this.editor_InputKeyboard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.editor_InputKeyboard.Controls.Add(this.xbo_k_joy_r_down);
@@ -670,10 +662,10 @@
             this.editor_InputKeyboard.Controls.Add(this.xbo_k_joy_l_left);
             this.editor_InputKeyboard.Controls.Add(this.xbo_k_joy_l_right);
             this.editor_InputKeyboard.Enabled = false;
-            this.editor_InputKeyboard.Location = new System.Drawing.Point(10, 4);
+            this.editor_InputKeyboard.Location = new System.Drawing.Point(3, 3);
             this.editor_InputKeyboard.Name = "editor_InputKeyboard";
-            this.editor_InputKeyboard.Size = new System.Drawing.Size(516, 393);
-            this.editor_InputKeyboard.TabIndex = 6;
+            this.editor_InputKeyboard.Size = new System.Drawing.Size(518, 398);
+            this.editor_InputKeyboard.TabIndex = 7;
             this.editor_InputKeyboard.TabStop = false;
             // 
             // xbo_k_joy_r_down
@@ -758,48 +750,47 @@
             // 
             // panel2
             // 
+            this.panel2.BackgroundImage = global::XboxKeyboardMouse.Properties.Resources._360_RT;
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.panel2.Controls.Add(this.xbo_k_TRight);
-            this.panel2.Enabled = false;
             this.panel2.Location = new System.Drawing.Point(456, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(58, 77);
             this.panel2.TabIndex = 21;
-            this.panel2.Visible = false;
             // 
             // xbo_k_TRight
             // 
-            this.xbo_k_TRight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.xbo_k_TRight.BackColor = System.Drawing.Color.Transparent;
+            this.xbo_k_TRight.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xbo_k_TRight.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xbo_k_TRight.ForeColor = System.Drawing.Color.Gray;
-            this.xbo_k_TRight.Location = new System.Drawing.Point(0, -2);
+            this.xbo_k_TRight.Location = new System.Drawing.Point(0, 0);
             this.xbo_k_TRight.Name = "xbo_k_TRight";
-            this.xbo_k_TRight.Size = new System.Drawing.Size(56, 79);
+            this.xbo_k_TRight.Size = new System.Drawing.Size(58, 77);
             this.xbo_k_TRight.TabIndex = 22;
             this.xbo_k_TRight.Tag = "TR";
             this.xbo_k_TRight.Text = "BTN";
             this.xbo_k_TRight.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.xbo_k_TRight.Visible = false;
             // 
             // panel1
             // 
+            this.panel1.BackgroundImage = global::XboxKeyboardMouse.Properties.Resources._360_LT;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.panel1.Controls.Add(this.xbo_k_TLeft);
             this.panel1.Location = new System.Drawing.Point(1, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(58, 77);
             this.panel1.TabIndex = 20;
-            this.panel1.Visible = false;
             // 
             // xbo_k_TLeft
             // 
             this.xbo_k_TLeft.BackColor = System.Drawing.Color.Transparent;
+            this.xbo_k_TLeft.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xbo_k_TLeft.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xbo_k_TLeft.ForeColor = System.Drawing.Color.Gray;
-            this.xbo_k_TLeft.Location = new System.Drawing.Point(-1, -2);
+            this.xbo_k_TLeft.Location = new System.Drawing.Point(0, 0);
             this.xbo_k_TLeft.Name = "xbo_k_TLeft";
-            this.xbo_k_TLeft.Size = new System.Drawing.Size(59, 79);
+            this.xbo_k_TLeft.Size = new System.Drawing.Size(58, 77);
             this.xbo_k_TLeft.TabIndex = 19;
             this.xbo_k_TLeft.Tag = "TL";
             this.xbo_k_TLeft.Text = "BTN";
@@ -810,7 +801,7 @@
             this.xbo_k_RightSholder.BackColor = System.Drawing.Color.Transparent;
             this.xbo_k_RightSholder.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xbo_k_RightSholder.ForeColor = System.Drawing.Color.White;
-            this.xbo_k_RightSholder.Location = new System.Drawing.Point(338, 30);
+            this.xbo_k_RightSholder.Location = new System.Drawing.Point(340, 30);
             this.xbo_k_RightSholder.Name = "xbo_k_RightSholder";
             this.xbo_k_RightSholder.Size = new System.Drawing.Size(68, 23);
             this.xbo_k_RightSholder.TabIndex = 19;
@@ -837,7 +828,7 @@
             this.xbo_k_B.BackColor = System.Drawing.Color.Transparent;
             this.xbo_k_B.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xbo_k_B.ForeColor = System.Drawing.Color.White;
-            this.xbo_k_B.Location = new System.Drawing.Point(400, 99);
+            this.xbo_k_B.Location = new System.Drawing.Point(402, 102);
             this.xbo_k_B.Name = "xbo_k_B";
             this.xbo_k_B.Size = new System.Drawing.Size(62, 30);
             this.xbo_k_B.TabIndex = 17;
@@ -851,7 +842,7 @@
             this.xbo_k_Y.BackColor = System.Drawing.Color.Transparent;
             this.xbo_k_Y.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xbo_k_Y.ForeColor = System.Drawing.Color.White;
-            this.xbo_k_Y.Location = new System.Drawing.Point(355, 62);
+            this.xbo_k_Y.Location = new System.Drawing.Point(357, 62);
             this.xbo_k_Y.Name = "xbo_k_Y";
             this.xbo_k_Y.Size = new System.Drawing.Size(79, 32);
             this.xbo_k_Y.TabIndex = 16;
@@ -1028,489 +1019,311 @@
             this.xbo_k_joy_l_right.Text = "D";
             this.xbo_k_joy_l_right.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // tabPage6
+            // tabMouse
             // 
-            this.tabPage6.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage6.Controls.Add(this.editor_InputMouse);
-            this.tabPage6.Location = new System.Drawing.Point(4, 22);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(533, 400);
-            this.tabPage6.TabIndex = 2;
-            this.tabPage6.Text = "Input Mapper - Mouse";
+            this.tabMouse.Controls.Add(this.materialLabel5);
+            this.tabMouse.Controls.Add(this.comboBox1);
+            this.tabMouse.Controls.Add(this.materialLabel4);
+            this.tabMouse.Controls.Add(this.materialLabel3);
+            this.tabMouse.Controls.Add(this.mouseEngineList);
+            this.tabMouse.Controls.Add(this.label4);
+            this.tabMouse.Controls.Add(this.mouseEngineContainer);
+            this.tabMouse.Controls.Add(this.mouse_TickRate);
+            this.tabMouse.Controls.Add(this.mouse_TickRate_Reset);
+            this.tabMouse.Controls.Add(this.materialLabel1);
+            this.tabMouse.Controls.Add(this.label3);
+            this.tabMouse.Controls.Add(this.label6);
+            this.tabMouse.Controls.Add(this.mouseInvertAxisY);
+            this.tabMouse.Controls.Add(this.mouseInvertAxisX);
+            this.tabMouse.Controls.Add(this.mouse_TickInvalid);
+            this.tabMouse.Location = new System.Drawing.Point(4, 22);
+            this.tabMouse.Name = "tabMouse";
+            this.tabMouse.Padding = new System.Windows.Forms.Padding(3);
+            this.tabMouse.Size = new System.Drawing.Size(524, 404);
+            this.tabMouse.TabIndex = 4;
+            this.tabMouse.Text = "Mouse";
             // 
-            // editor_InputMouse
+            // materialLabel5
             // 
-            this.editor_InputMouse.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.editor_InputMouse.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("editor_InputMouse.BackgroundImage")));
-            this.editor_InputMouse.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.editor_InputMouse.Controls.Add(this.label7);
-            this.editor_InputMouse.Controls.Add(this.panel3);
-            this.editor_InputMouse.Controls.Add(this.panel4);
-            this.editor_InputMouse.Controls.Add(this.xbo_m_SR);
-            this.editor_InputMouse.Controls.Add(this.xbo_m_SL);
-            this.editor_InputMouse.Controls.Add(this.xbo_m_B);
-            this.editor_InputMouse.Controls.Add(this.xbo_m_Y);
-            this.editor_InputMouse.Controls.Add(this.xbo_m_X);
-            this.editor_InputMouse.Controls.Add(this.xbo_m_A);
-            this.editor_InputMouse.Controls.Add(this.xbo_m_DpadRight);
-            this.editor_InputMouse.Controls.Add(this.xbo_m_DpadUp);
-            this.editor_InputMouse.Controls.Add(this.xbo_m_DpadLeft);
-            this.editor_InputMouse.Controls.Add(this.xbo_m_DpadDown);
-            this.editor_InputMouse.Controls.Add(this.xbo_m_Guide);
-            this.editor_InputMouse.Controls.Add(this.xbo_m_Back);
-            this.editor_InputMouse.Controls.Add(this.xbo_m_Start);
-            this.editor_InputMouse.Controls.Add(this.xbo_m_RS);
-            this.editor_InputMouse.Controls.Add(this.xbo_m_LS);
-            this.editor_InputMouse.Enabled = false;
-            this.editor_InputMouse.Location = new System.Drawing.Point(10, 4);
-            this.editor_InputMouse.Name = "editor_InputMouse";
-            this.editor_InputMouse.Size = new System.Drawing.Size(516, 393);
-            this.editor_InputMouse.TabIndex = 9;
+            this.materialLabel5.AutoSize = true;
+            this.materialLabel5.Depth = 0;
+            this.materialLabel5.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel5.Location = new System.Drawing.Point(43, 76);
+            this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel5.Name = "materialLabel5";
+            this.materialLabel5.Size = new System.Drawing.Size(43, 19);
+            this.materialLabel5.TabIndex = 48;
+            this.materialLabel5.Text = "Stick";
             // 
-            // label7
+            // comboBox1
             // 
-            this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Trebuchet MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(159, 339);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(219, 27);
-            this.label7.TabIndex = 24;
-            this.label7.Text = "TODO: Mouse Controls";
+            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Left",
+            "Right"});
+            this.comboBox1.Location = new System.Drawing.Point(92, 74);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(83, 21);
+            this.comboBox1.TabIndex = 47;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.mouseSelectStick_SelectedIndexChanged);
             // 
-            // panel3
+            // materialLabel4
             // 
-            this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel3.Controls.Add(this.xbo_m_TRight);
-            this.panel3.Location = new System.Drawing.Point(456, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(58, 77);
-            this.panel3.TabIndex = 23;
-            this.panel3.Visible = false;
+            this.materialLabel4.AutoSize = true;
+            this.materialLabel4.Depth = 0;
+            this.materialLabel4.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel4.Location = new System.Drawing.Point(43, 46);
+            this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel4.Name = "materialLabel4";
+            this.materialLabel4.Size = new System.Drawing.Size(46, 19);
+            this.materialLabel4.TabIndex = 46;
+            this.materialLabel4.Text = "Invert";
             // 
-            // xbo_m_TRight
+            // materialLabel3
             // 
-            this.xbo_m_TRight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.xbo_m_TRight.BackColor = System.Drawing.Color.Transparent;
-            this.xbo_m_TRight.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xbo_m_TRight.ForeColor = System.Drawing.Color.Gray;
-            this.xbo_m_TRight.Location = new System.Drawing.Point(3, -2);
-            this.xbo_m_TRight.Name = "xbo_m_TRight";
-            this.xbo_m_TRight.Size = new System.Drawing.Size(53, 79);
-            this.xbo_m_TRight.TabIndex = 23;
-            this.xbo_m_TRight.Tag = "TR";
-            this.xbo_m_TRight.Text = "BTN";
-            this.xbo_m_TRight.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.materialLabel3.AutoSize = true;
+            this.materialLabel3.Depth = 0;
+            this.materialLabel3.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel3.Location = new System.Drawing.Point(249, 77);
+            this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel3.Name = "materialLabel3";
+            this.materialLabel3.Size = new System.Drawing.Size(54, 19);
+            this.materialLabel3.TabIndex = 45;
+            this.materialLabel3.Text = "Engine";
             // 
-            // panel4
+            // mouseEngineList
             // 
-            this.panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel4.Controls.Add(this.xbo_m_TLeft);
-            this.panel4.Location = new System.Drawing.Point(1, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(58, 77);
-            this.panel4.TabIndex = 22;
-            this.panel4.Visible = false;
+            this.mouseEngineList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.mouseEngineList.FormattingEnabled = true;
+            this.mouseEngineList.Items.AddRange(new object[] {
+            "Percentage",
+            "Percentage  + Relative",
+            "Raw Input",
+            "Raw Input + Sensitivity",
+            "None"});
+            this.mouseEngineList.Location = new System.Drawing.Point(340, 77);
+            this.mouseEngineList.Name = "mouseEngineList";
+            this.mouseEngineList.Size = new System.Drawing.Size(164, 21);
+            this.mouseEngineList.TabIndex = 44;
+            this.mouseEngineList.SelectedIndexChanged += new System.EventHandler(this.mouseEngineList_SelectedIndexChanged);
             // 
-            // xbo_m_TLeft
+            // label4
             // 
-            this.xbo_m_TLeft.BackColor = System.Drawing.Color.Transparent;
-            this.xbo_m_TLeft.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xbo_m_TLeft.ForeColor = System.Drawing.Color.Gray;
-            this.xbo_m_TLeft.Location = new System.Drawing.Point(-1, -2);
-            this.xbo_m_TLeft.Name = "xbo_m_TLeft";
-            this.xbo_m_TLeft.Size = new System.Drawing.Size(57, 79);
-            this.xbo_m_TLeft.TabIndex = 20;
-            this.xbo_m_TLeft.Tag = "TL";
-            this.xbo_m_TLeft.Text = "BTN";
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(179, 13);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(70, 21);
+            this.label4.TabIndex = 42;
+            this.label4.Text = "Settings";
             // 
-            // xbo_m_SR
+            // mouseEngineContainer
             // 
-            this.xbo_m_SR.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.xbo_m_SR.BackColor = System.Drawing.Color.Transparent;
-            this.xbo_m_SR.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xbo_m_SR.ForeColor = System.Drawing.Color.White;
-            this.xbo_m_SR.Location = new System.Drawing.Point(336, 30);
-            this.xbo_m_SR.Name = "xbo_m_SR";
-            this.xbo_m_SR.Size = new System.Drawing.Size(68, 23);
-            this.xbo_m_SR.TabIndex = 19;
-            this.xbo_m_SR.Tag = "SR";
-            this.xbo_m_SR.Text = " BTN";
-            this.xbo_m_SR.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.mouseEngineContainer.Location = new System.Drawing.Point(47, 133);
+            this.mouseEngineContainer.Name = "mouseEngineContainer";
+            this.mouseEngineContainer.Size = new System.Drawing.Size(457, 254);
+            this.mouseEngineContainer.TabIndex = 39;
             // 
-            // xbo_m_SL
+            // mouse_TickRate
             // 
-            this.xbo_m_SL.BackColor = System.Drawing.Color.Transparent;
-            this.xbo_m_SL.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xbo_m_SL.ForeColor = System.Drawing.Color.White;
-            this.xbo_m_SL.Location = new System.Drawing.Point(109, 29);
-            this.xbo_m_SL.Name = "xbo_m_SL";
-            this.xbo_m_SL.Size = new System.Drawing.Size(68, 23);
-            this.xbo_m_SL.TabIndex = 18;
-            this.xbo_m_SL.Tag = "SL";
-            this.xbo_m_SL.Text = " BTN";
-            this.xbo_m_SL.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.mouse_TickRate.Depth = 0;
+            this.mouse_TickRate.Hint = "";
+            this.mouse_TickRate.Location = new System.Drawing.Point(340, 45);
+            this.mouse_TickRate.MaxLength = 10;
+            this.mouse_TickRate.MouseState = MaterialSkin.MouseState.HOVER;
+            this.mouse_TickRate.Name = "mouse_TickRate";
+            this.mouse_TickRate.PasswordChar = '\0';
+            this.mouse_TickRate.SelectedText = "";
+            this.mouse_TickRate.SelectionLength = 0;
+            this.mouse_TickRate.SelectionStart = 0;
+            this.mouse_TickRate.Size = new System.Drawing.Size(85, 23);
+            this.mouse_TickRate.TabIndex = 36;
+            this.mouse_TickRate.TabStop = false;
+            this.mouse_TickRate.Text = "0123456789";
+            this.mouse_TickRate.UseSystemPasswordChar = false;
+            this.mouse_TickRate.TextChanged += new System.EventHandler(this.mouse_TickRate_TextChanged);
             // 
-            // xbo_m_B
+            // mouse_TickRate_Reset
             // 
-            this.xbo_m_B.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.xbo_m_B.BackColor = System.Drawing.Color.Transparent;
-            this.xbo_m_B.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xbo_m_B.ForeColor = System.Drawing.Color.White;
-            this.xbo_m_B.Location = new System.Drawing.Point(398, 99);
-            this.xbo_m_B.Name = "xbo_m_B";
-            this.xbo_m_B.Size = new System.Drawing.Size(62, 30);
-            this.xbo_m_B.TabIndex = 17;
-            this.xbo_m_B.Tag = "B";
-            this.xbo_m_B.Text = " BTN";
-            this.xbo_m_B.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.mouse_TickRate_Reset.AutoSize = true;
+            this.mouse_TickRate_Reset.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.mouse_TickRate_Reset.ControlAutoSize = true;
+            this.mouse_TickRate_Reset.Depth = 0;
+            this.mouse_TickRate_Reset.FontColor = System.Drawing.Color.Black;
+            this.mouse_TickRate_Reset.FontColorDisabled = System.Drawing.Color.Gray;
+            this.mouse_TickRate_Reset.Icon = null;
+            this.mouse_TickRate_Reset.Location = new System.Drawing.Point(448, 38);
+            this.mouse_TickRate_Reset.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.mouse_TickRate_Reset.MouseState = MaterialSkin.MouseState.HOVER;
+            this.mouse_TickRate_Reset.Name = "mouse_TickRate_Reset";
+            this.mouse_TickRate_Reset.Primary = false;
+            this.mouse_TickRate_Reset.SetBackgroundColor = false;
+            this.mouse_TickRate_Reset.SetFontColor = false;
+            this.mouse_TickRate_Reset.SetFontDisabledColor = false;
+            this.mouse_TickRate_Reset.Size = new System.Drawing.Size(62, 36);
+            this.mouse_TickRate_Reset.TabIndex = 14;
+            this.mouse_TickRate_Reset.Text = "Reset";
+            this.mouse_TickRate_Reset.UseVisualStyleBackColor = true;
+            this.mouse_TickRate_Reset.Click += new System.EventHandler(this.mouse_TickRate_Reset_Click);
             // 
-            // xbo_m_Y
+            // materialLabel1
             // 
-            this.xbo_m_Y.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.xbo_m_Y.BackColor = System.Drawing.Color.Transparent;
-            this.xbo_m_Y.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xbo_m_Y.ForeColor = System.Drawing.Color.White;
-            this.xbo_m_Y.Location = new System.Drawing.Point(353, 62);
-            this.xbo_m_Y.Name = "xbo_m_Y";
-            this.xbo_m_Y.Size = new System.Drawing.Size(79, 32);
-            this.xbo_m_Y.TabIndex = 16;
-            this.xbo_m_Y.Tag = "Y";
-            this.xbo_m_Y.Text = " BTN";
-            this.xbo_m_Y.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.materialLabel1.AutoSize = true;
+            this.materialLabel1.Depth = 0;
+            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel1.Location = new System.Drawing.Point(248, 46);
+            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel1.Name = "materialLabel1";
+            this.materialLabel1.Size = new System.Drawing.Size(72, 19);
+            this.materialLabel1.TabIndex = 13;
+            this.materialLabel1.Text = "Tick Rate";
             // 
-            // xbo_m_X
+            // label3
             // 
-            this.xbo_m_X.BackColor = System.Drawing.Color.Transparent;
-            this.xbo_m_X.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xbo_m_X.ForeColor = System.Drawing.Color.White;
-            this.xbo_m_X.Location = new System.Drawing.Point(332, 96);
-            this.xbo_m_X.Name = "xbo_m_X";
-            this.xbo_m_X.Size = new System.Drawing.Size(49, 33);
-            this.xbo_m_X.TabIndex = 15;
-            this.xbo_m_X.Tag = "X";
-            this.xbo_m_X.Text = " BTN";
-            this.xbo_m_X.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(12, 109);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(123, 21);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "Engine Settings";
             // 
-            // xbo_m_A
+            // label6
             // 
-            this.xbo_m_A.BackColor = System.Drawing.Color.Transparent;
-            this.xbo_m_A.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xbo_m_A.ForeColor = System.Drawing.Color.White;
-            this.xbo_m_A.Location = new System.Drawing.Point(368, 127);
-            this.xbo_m_A.Name = "xbo_m_A";
-            this.xbo_m_A.Size = new System.Drawing.Size(50, 41);
-            this.xbo_m_A.TabIndex = 14;
-            this.xbo_m_A.Tag = "A";
-            this.xbo_m_A.Text = " BTN";
-            this.xbo_m_A.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(11, 13);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(40, 21);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Axis";
             // 
-            // xbo_m_DpadRight
+            // mouseInvertAxisY
             // 
-            this.xbo_m_DpadRight.BackColor = System.Drawing.Color.Transparent;
-            this.xbo_m_DpadRight.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xbo_m_DpadRight.ForeColor = System.Drawing.Color.White;
-            this.xbo_m_DpadRight.Location = new System.Drawing.Point(200, 176);
-            this.xbo_m_DpadRight.Name = "xbo_m_DpadRight";
-            this.xbo_m_DpadRight.Size = new System.Drawing.Size(74, 43);
-            this.xbo_m_DpadRight.TabIndex = 13;
-            this.xbo_m_DpadRight.Tag = "DPR";
-            this.xbo_m_DpadRight.Text = " BTN";
-            this.xbo_m_DpadRight.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.mouseInvertAxisY.AutoSize = true;
+            this.mouseInvertAxisY.Depth = 0;
+            this.mouseInvertAxisY.Font = new System.Drawing.Font("Roboto", 10F);
+            this.mouseInvertAxisY.Location = new System.Drawing.Point(135, 42);
+            this.mouseInvertAxisY.Margin = new System.Windows.Forms.Padding(0);
+            this.mouseInvertAxisY.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.mouseInvertAxisY.MouseState = MaterialSkin.MouseState.HOVER;
+            this.mouseInvertAxisY.Name = "mouseInvertAxisY";
+            this.mouseInvertAxisY.Ripple = true;
+            this.mouseInvertAxisY.Size = new System.Drawing.Size(38, 30);
+            this.mouseInvertAxisY.TabIndex = 9;
+            this.mouseInvertAxisY.Text = "Y";
+            this.mouseInvertAxisY.UseVisualStyleBackColor = true;
+            this.mouseInvertAxisY.CheckedChanged += new System.EventHandler(this.mouseInvertAxisY_CheckedChanged);
             // 
-            // xbo_m_DpadUp
+            // mouseInvertAxisX
             // 
-            this.xbo_m_DpadUp.BackColor = System.Drawing.Color.Transparent;
-            this.xbo_m_DpadUp.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xbo_m_DpadUp.ForeColor = System.Drawing.Color.White;
-            this.xbo_m_DpadUp.Location = new System.Drawing.Point(160, 127);
-            this.xbo_m_DpadUp.Name = "xbo_m_DpadUp";
-            this.xbo_m_DpadUp.Size = new System.Drawing.Size(59, 55);
-            this.xbo_m_DpadUp.TabIndex = 12;
-            this.xbo_m_DpadUp.Tag = "DPU";
-            this.xbo_m_DpadUp.Text = " BTN";
-            this.xbo_m_DpadUp.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.mouseInvertAxisX.AutoSize = true;
+            this.mouseInvertAxisX.Depth = 0;
+            this.mouseInvertAxisX.Font = new System.Drawing.Font("Roboto", 10F);
+            this.mouseInvertAxisX.Location = new System.Drawing.Point(88, 42);
+            this.mouseInvertAxisX.Margin = new System.Windows.Forms.Padding(0);
+            this.mouseInvertAxisX.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.mouseInvertAxisX.MouseState = MaterialSkin.MouseState.HOVER;
+            this.mouseInvertAxisX.Name = "mouseInvertAxisX";
+            this.mouseInvertAxisX.Ripple = true;
+            this.mouseInvertAxisX.Size = new System.Drawing.Size(39, 30);
+            this.mouseInvertAxisX.TabIndex = 8;
+            this.mouseInvertAxisX.Text = "X";
+            this.mouseInvertAxisX.UseVisualStyleBackColor = true;
+            this.mouseInvertAxisX.CheckedChanged += new System.EventHandler(this.mouseInvertAxisX_CheckedChanged);
             // 
-            // xbo_m_DpadLeft
+            // mouse_TickInvalid
             // 
-            this.xbo_m_DpadLeft.BackColor = System.Drawing.Color.Transparent;
-            this.xbo_m_DpadLeft.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xbo_m_DpadLeft.ForeColor = System.Drawing.Color.White;
-            this.xbo_m_DpadLeft.Location = new System.Drawing.Point(98, 182);
-            this.xbo_m_DpadLeft.Name = "xbo_m_DpadLeft";
-            this.xbo_m_DpadLeft.Size = new System.Drawing.Size(76, 32);
-            this.xbo_m_DpadLeft.TabIndex = 11;
-            this.xbo_m_DpadLeft.Tag = "DPL";
-            this.xbo_m_DpadLeft.Text = " BTN";
-            this.xbo_m_DpadLeft.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // xbo_m_DpadDown
-            // 
-            this.xbo_m_DpadDown.BackColor = System.Drawing.Color.Transparent;
-            this.xbo_m_DpadDown.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xbo_m_DpadDown.ForeColor = System.Drawing.Color.White;
-            this.xbo_m_DpadDown.Location = new System.Drawing.Point(157, 216);
-            this.xbo_m_DpadDown.Name = "xbo_m_DpadDown";
-            this.xbo_m_DpadDown.Size = new System.Drawing.Size(63, 53);
-            this.xbo_m_DpadDown.TabIndex = 10;
-            this.xbo_m_DpadDown.Tag = "DPD";
-            this.xbo_m_DpadDown.Text = " BTN";
-            this.xbo_m_DpadDown.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            // 
-            // xbo_m_Guide
-            // 
-            this.xbo_m_Guide.BackColor = System.Drawing.Color.Transparent;
-            this.xbo_m_Guide.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
-            this.xbo_m_Guide.ForeColor = System.Drawing.Color.White;
-            this.xbo_m_Guide.Location = new System.Drawing.Point(193, 30);
-            this.xbo_m_Guide.Name = "xbo_m_Guide";
-            this.xbo_m_Guide.Size = new System.Drawing.Size(128, 47);
-            this.xbo_m_Guide.TabIndex = 9;
-            this.xbo_m_Guide.Tag = "GUIDE";
-            this.xbo_m_Guide.Text = " BTN";
-            this.xbo_m_Guide.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            // 
-            // xbo_m_Back
-            // 
-            this.xbo_m_Back.BackColor = System.Drawing.Color.Transparent;
-            this.xbo_m_Back.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xbo_m_Back.ForeColor = System.Drawing.Color.White;
-            this.xbo_m_Back.Location = new System.Drawing.Point(183, 86);
-            this.xbo_m_Back.Name = "xbo_m_Back";
-            this.xbo_m_Back.Size = new System.Drawing.Size(69, 39);
-            this.xbo_m_Back.TabIndex = 8;
-            this.xbo_m_Back.Tag = "BACK";
-            this.xbo_m_Back.Text = " BTN";
-            this.xbo_m_Back.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // xbo_m_Start
-            // 
-            this.xbo_m_Start.BackColor = System.Drawing.Color.Transparent;
-            this.xbo_m_Start.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xbo_m_Start.ForeColor = System.Drawing.Color.White;
-            this.xbo_m_Start.Location = new System.Drawing.Point(264, 86);
-            this.xbo_m_Start.Name = "xbo_m_Start";
-            this.xbo_m_Start.Size = new System.Drawing.Size(62, 41);
-            this.xbo_m_Start.TabIndex = 7;
-            this.xbo_m_Start.Tag = "START";
-            this.xbo_m_Start.Text = " BTN";
-            this.xbo_m_Start.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // xbo_m_RS
-            // 
-            this.xbo_m_RS.BackColor = System.Drawing.Color.Transparent;
-            this.xbo_m_RS.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xbo_m_RS.ForeColor = System.Drawing.Color.White;
-            this.xbo_m_RS.Location = new System.Drawing.Point(286, 149);
-            this.xbo_m_RS.Name = "xbo_m_RS";
-            this.xbo_m_RS.Size = new System.Drawing.Size(82, 83);
-            this.xbo_m_RS.TabIndex = 6;
-            this.xbo_m_RS.Tag = "RS";
-            this.xbo_m_RS.Text = " BTN";
-            this.xbo_m_RS.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // xbo_m_LS
-            // 
-            this.xbo_m_LS.BackColor = System.Drawing.Color.Transparent;
-            this.xbo_m_LS.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xbo_m_LS.ForeColor = System.Drawing.Color.White;
-            this.xbo_m_LS.Location = new System.Drawing.Point(90, 82);
-            this.xbo_m_LS.Name = "xbo_m_LS";
-            this.xbo_m_LS.Size = new System.Drawing.Size(63, 57);
-            this.xbo_m_LS.TabIndex = 5;
-            this.xbo_m_LS.Tag = "LS";
-            this.xbo_m_LS.Text = " BTN";
-            this.xbo_m_LS.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.mouse_TickInvalid.AutoSize = true;
+            this.mouse_TickInvalid.Font = new System.Drawing.Font("Adobe Arabic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mouse_TickInvalid.ForeColor = System.Drawing.Color.Red;
+            this.mouse_TickInvalid.Location = new System.Drawing.Point(352, 26);
+            this.mouse_TickInvalid.Name = "mouse_TickInvalid";
+            this.mouse_TickInvalid.Size = new System.Drawing.Size(53, 16);
+            this.mouse_TickInvalid.TabIndex = 43;
+            this.mouse_TickInvalid.Text = "INVALID";
             // 
             // tabPage3
             // 
-            this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage3.Controls.Add(this.groupBox3);
+            this.tabPage3.Controls.Add(this.richTextBox1);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(532, 423);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Add a preset";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.groupBox3.Controls.Add(this.lblCreateStatus);
-            this.groupBox3.Controls.Add(this.btnCreatePreset);
-            this.groupBox3.Controls.Add(this.tbCreateName);
-            this.groupBox3.Controls.Add(this.label21);
-            this.groupBox3.Location = new System.Drawing.Point(107, 29);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(301, 94);
-            this.groupBox3.TabIndex = 0;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Create a preset";
-            // 
-            // lblCreateStatus
-            // 
-            this.lblCreateStatus.AutoSize = true;
-            this.lblCreateStatus.ForeColor = System.Drawing.Color.Black;
-            this.lblCreateStatus.Location = new System.Drawing.Point(66, 46);
-            this.lblCreateStatus.Name = "lblCreateStatus";
-            this.lblCreateStatus.Size = new System.Drawing.Size(52, 13);
-            this.lblCreateStatus.TabIndex = 3;
-            this.lblCreateStatus.Text = "Waiting...";
-            // 
-            // btnCreatePreset
-            // 
-            this.btnCreatePreset.Location = new System.Drawing.Point(25, 62);
-            this.btnCreatePreset.Name = "btnCreatePreset";
-            this.btnCreatePreset.Size = new System.Drawing.Size(253, 23);
-            this.btnCreatePreset.TabIndex = 2;
-            this.btnCreatePreset.Text = "Create the preset";
-            this.btnCreatePreset.UseVisualStyleBackColor = true;
-            this.btnCreatePreset.Click += new System.EventHandler(this.btnCreatePreset_Click);
-            // 
-            // tbCreateName
-            // 
-            this.tbCreateName.Location = new System.Drawing.Point(69, 23);
-            this.tbCreateName.Name = "tbCreateName";
-            this.tbCreateName.Size = new System.Drawing.Size(209, 20);
-            this.tbCreateName.TabIndex = 1;
-            this.tbCreateName.TextChanged += new System.EventHandler(this.tbCreateName_TextChanged);
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(22, 26);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(41, 13);
-            this.label21.TabIndex = 0;
-            this.label21.Text = "Name: ";
-            // 
-            // tabPage7
-            // 
-            this.tabPage7.Controls.Add(this.richTextBox1);
-            this.tabPage7.Location = new System.Drawing.Point(4, 22);
-            this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(532, 423);
-            this.tabPage7.TabIndex = 3;
-            this.tabPage7.Text = "Information";
-            this.tabPage7.UseVisualStyleBackColor = true;
+            this.tabPage3.Size = new System.Drawing.Size(524, 404);
+            this.tabPage3.TabIndex = 5;
+            this.tabPage3.Text = "Info";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // richTextBox1
             // 
+            this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.richTextBox1.BackColor = System.Drawing.SystemColors.Control;
             this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richTextBox1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox1.Location = new System.Drawing.Point(3, 3);
+            this.richTextBox1.Location = new System.Drawing.Point(6, -2);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(526, 417);
-            this.richTextBox1.TabIndex = 0;
+            this.richTextBox1.Size = new System.Drawing.Size(517, 404);
+            this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
-            // 
-            // circleControl2
-            // 
-            this.circleControl2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.circleControl2.AxisDotColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(194)))), ((int)(((byte)(30)))));
-            this.circleControl2.Location = new System.Drawing.Point(315, 319);
-            this.circleControl2.Name = "circleControl2";
-            this.circleControl2.Size = new System.Drawing.Size(34, 34);
-            this.circleControl2.TabIndex = 27;
-            // 
-            // circleControl1
-            // 
-            this.circleControl1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.circleControl1.AxisDotColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(194)))), ((int)(((byte)(30)))));
-            this.circleControl1.Location = new System.Drawing.Point(169, 319);
-            this.circleControl1.Name = "circleControl1";
-            this.circleControl1.Size = new System.Drawing.Size(34, 34);
-            this.circleControl1.TabIndex = 22;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.checkBox2.Checked = true;
-            this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox2.Location = new System.Drawing.Point(351, 254);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(114, 16);
-            this.checkBox2.TabIndex = 10;
-            this.checkBox2.Text = "Hide Cursor";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(65, 254);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(121, 16);
-            this.checkBox1.TabIndex = 9;
-            this.checkBox1.Text = "Lock escape button";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // Options
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(537, 448);
-            this.Controls.Add(this.tabControl1);
-            this.MinimumSize = new System.Drawing.Size(553, 487);
+            this.ClientSize = new System.Drawing.Size(523, 475);
+            this.Controls.Add(this.btnExit);
+            this.Controls.Add(this.materialTabSelector1);
+            this.Controls.Add(this.materialTabControl1);
             this.Name = "Options";
-            this.ShowIcon = false;
             this.Text = "Options";
             this.Load += new System.EventHandler(this.Options_Load);
-            this.tabControl1.ResumeLayout(false);
+            this.materialTabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.tabControl2.ResumeLayout(false);
-            this.tabPage4.ResumeLayout(false);
-            this.editor_Preset.ResumeLayout(false);
-            this.editor_Preset.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.optMouseModifier)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.optYSense)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.optXSense)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.optTickRate)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.tabPage5.ResumeLayout(false);
+            this.tabSettings.ResumeLayout(false);
+            this.tabSettings.PerformLayout();
+            this.tabKeyboard.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.editor_InputKeyboard)).EndInit();
             this.editor_InputKeyboard.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.tabPage6.ResumeLayout(false);
-            this.editor_InputMouse.ResumeLayout(false);
-            this.editor_InputMouse.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
+            this.tabMouse.ResumeLayout(false);
+            this.tabMouse.PerformLayout();
             this.tabPage3.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.tabPage7.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.ListBox lbPresets;
-        private System.Windows.Forms.TabControl tabControl1;
+        private MaterialSkin.Controls.MaterialTabControl materialTabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Button btnPresOptDel;
-        private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.Label xbo_k_LeftStick;
+        private MaterialSkin.Controls.MaterialTabSelector materialTabSelector1;
+        private System.Windows.Forms.TabPage tabSettings;
+        private System.Windows.Forms.TabPage tabKeyboard;
+        private System.Windows.Forms.TabPage tabMouse;
+        private MaterialSkin.Controls.MaterialFlatButton btnExit;
         private System.Windows.Forms.PictureBox editor_InputKeyboard;
-        private System.Windows.Forms.Label xbo_k_Guide;
-        private System.Windows.Forms.Label xbo_k_Back;
-        private System.Windows.Forms.Label xbo_k_Start;
-        private System.Windows.Forms.Label xbo_k_RightStick;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button btnPreOptLoad;
+        private System.Windows.Forms.Label xbo_k_joy_r_down;
+        private System.Windows.Forms.Label xbo_k_joy_r_up;
+        private System.Windows.Forms.Label xbo_k_joy_l_up;
+        private System.Windows.Forms.Label xbo_k_joy_l_down;
+        private System.Windows.Forms.Label xbo_k_joy_r_left;
+        private System.Windows.Forms.Label xbo_k_joy_r_right;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label xbo_k_TRight;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label xbo_k_TLeft;
         private System.Windows.Forms.Label xbo_k_RightSholder;
         private System.Windows.Forms.Label xbo_k_LeftSholder;
         private System.Windows.Forms.Label xbo_k_B;
@@ -1521,80 +1334,53 @@
         private System.Windows.Forms.Label xbo_k_DpadUp;
         private System.Windows.Forms.Label xbo_k_DpadLeft;
         private System.Windows.Forms.Label xbo_k_DpadDown;
-        private System.Windows.Forms.TabControl tabControl2;
-        private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.GroupBox editor_Preset;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.CheckBox optInvertY;
-        private System.Windows.Forms.CheckBox optInvertX;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.NumericUpDown optYSense;
-        private System.Windows.Forms.NumericUpDown optXSense;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.NumericUpDown optTickRate;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox optName;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btnPresOptRef;
-        private System.Windows.Forms.TabPage tabPage5;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button btnCreatePreset;
-        private System.Windows.Forms.TextBox tbCreateName;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Button btnPresOptActive;
-        private System.Windows.Forms.LinkLabel ll_ResetOriginalName;
-        private System.Windows.Forms.Label lblCreateStatus;
-        private System.Windows.Forms.TabPage tabPage6;
-        private System.Windows.Forms.Panel editor_InputMouse;
-        private System.Windows.Forms.Label xbo_m_SR;
-        private System.Windows.Forms.Label xbo_m_SL;
-        private System.Windows.Forms.Label xbo_m_B;
-        private System.Windows.Forms.Label xbo_m_Y;
-        private System.Windows.Forms.Label xbo_m_X;
-        private System.Windows.Forms.Label xbo_m_A;
-        private System.Windows.Forms.Label xbo_m_DpadRight;
-        private System.Windows.Forms.Label xbo_m_DpadUp;
-        private System.Windows.Forms.Label xbo_m_DpadLeft;
-        private System.Windows.Forms.Label xbo_m_DpadDown;
-        private System.Windows.Forms.Label xbo_m_Guide;
-        private System.Windows.Forms.Label xbo_m_Back;
-        private System.Windows.Forms.Label xbo_m_Start;
-        private System.Windows.Forms.Label xbo_m_RS;
-        private System.Windows.Forms.Label xbo_m_LS;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label xbo_k_TLeft;
-        private System.Windows.Forms.Label xbo_k_TRight;
-        private System.Windows.Forms.Label xbo_m_TLeft;
-        private System.Windows.Forms.Label xbo_m_TRight;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button optDetachKey;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox optMouseEngine;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label7;
-        private Controls.CircleControl circleControl1;
-        private Controls.CircleControl circleControl2;
-        private System.Windows.Forms.Label xbo_k_joy_r_up;
-        private System.Windows.Forms.Label xbo_k_joy_r_left;
-        private System.Windows.Forms.Label xbo_k_joy_r_right;
-        private System.Windows.Forms.Label xbo_k_joy_r_down;
-        private System.Windows.Forms.Label xbo_k_joy_l_up;
+        private System.Windows.Forms.Label xbo_k_Guide;
+        private System.Windows.Forms.Label xbo_k_Back;
+        private System.Windows.Forms.Label xbo_k_Start;
+        private System.Windows.Forms.Label xbo_k_RightStick;
+        private System.Windows.Forms.Label xbo_k_LeftStick;
         private System.Windows.Forms.Label xbo_k_joy_l_left;
         private System.Windows.Forms.Label xbo_k_joy_l_right;
-        private System.Windows.Forms.Label xbo_k_joy_l_down;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.NumericUpDown optMouseModifier;
-        private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.TabPage tabPage7;
+        private MaterialSkin.Controls.MaterialListView lbPresets;
+        private MaterialSkin.Controls.MaterialFlatButton file_SetAsActive;
+        private MaterialSkin.Controls.MaterialFlatButton file_RefreshList;
+        private MaterialSkin.Controls.MaterialFlatButton file_DeletePreset;
+        private MaterialSkin.Controls.MaterialFlatButton file_LoadPreset;
+        private System.Windows.Forms.ColumnHeader lbPresets_Column;
+        private MaterialSkin.Controls.MaterialSingleLineTextField file_CreatePreset_Text;
+        private MaterialSkin.Controls.MaterialFlatButton file_CreatePreset_Button;
+        private MaterialSkin.Controls.MaterialLabel materialLabel2;
+        private MaterialSkin.Controls.MaterialSingleLineTextField preset_Name;
+        private MaterialSkin.Controls.MaterialFlatButton materialFlatButton1;
+        private MaterialSkin.Controls.MaterialFlatButton settings_SaveAllChanges;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label5;
+        private MaterialSkin.Controls.MaterialCheckBox settings_ShowCursor;
+        private MaterialSkin.Controls.MaterialCheckBox settings_LockEscape;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private MaterialSkin.Controls.MaterialCheckBox mouseInvertAxisY;
+        private MaterialSkin.Controls.MaterialCheckBox mouseInvertAxisX;
+        private MaterialSkin.Controls.MaterialFlatButton mouse_TickRate_Reset;
+        private MaterialSkin.Controls.MaterialLabel materialLabel1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label6;
+        private MaterialSkin.Controls.MaterialSingleLineTextField mouse_TickRate;
+        private System.Windows.Forms.Panel mouseEngineContainer;
+        private System.Windows.Forms.Label label4;
+        private Controls.CircleControl circleControl1;
+        private Controls.CircleControl circleControl2;
+        private System.Windows.Forms.Label mouse_TickInvalid;
+        private MaterialSkin.Controls.MaterialFlatButton settings_ChangePresetName;
+        private MaterialSkin.Controls.MaterialFlatButton settings_DetachKey;
+        private MaterialSkin.Controls.MaterialLabel materialLabel3;
+        private System.Windows.Forms.ComboBox mouseEngineList;
+        private System.Windows.Forms.Label file_Editing;
+        private System.Windows.Forms.Label file_Active;
+        private MaterialSkin.Controls.MaterialLabel materialLabel5;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private MaterialSkin.Controls.MaterialLabel materialLabel4;
     }
 }

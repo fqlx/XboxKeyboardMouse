@@ -84,6 +84,11 @@ del "%~dp0%Downloads\SlimDX.xml">NUL
 del "%~dp0%Downloads\XboxKeyboardMouse.exe.config">NUL
 del "%~dp0%Downloads\XboxKeyboardMouse.pdb">NUL
 del "%~dp0%Downloads\XboxKeyboardMouse.exe">NUL
+del "%~dp0%Downloads\MaterialSkin.pdb">NUL
+del "%~dp0%Downloads\MaterialSkinExample.exe">NUL
+del "%~dp0%Downloads\MaterialSkinExample.exe.config">NUL
+del "%~dp0%Downloads\MaterialSkinExample.pdb">NUL
+
 
 echo.
 echo.
