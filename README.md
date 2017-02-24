@@ -53,11 +53,6 @@ You may customise your own controller layout through the gui but the default lay
 1.  SlimDx SDK installed - https://slimdx.org/
 2.  SCPToolkit driver installed
 
-#Could be better
-1.  Problems translating mouse movement into the right stick directional look.  Very challenging to make it a smooth experience.  
-    - Was altered from the original to be smoother but still a 50/50 experience.
-2.  Live preview improvements (Nicer gui?)
-
 #Todo
 1.  Check if SlimDX and SCP driver are installed and if not throw an understandable error.
 2.  Mouse input buttons dont work as of yet.
