@@ -79,6 +79,7 @@ namespace XboxKeyboardMouse {
                 // -------------------------------------------------------------------------------
                 //                           LEFT STICK, AXIS - Y
                 // -------------------------------------------------------------------------------
+                btnStatus.Clear();
                 foreach (KeyValuePair<Key, short> entry in mapLeftStickY) {
                     bool v;
                     if (entry.Key == Key.Escape)
