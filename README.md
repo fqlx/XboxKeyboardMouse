@@ -10,7 +10,7 @@ It sends keyboard and mouse inputs to an emulated Xbox controller using SCP driv
 2.  [You need SlimDX Runtime installed (x86)](https://slimdx.org/download.php)
 
 # Download
-1. [Download the repositry as a zip](https://github.com/fqlx/XboxKeyboardMouse/archive/master.zip)
+1. [Download the repository as a zip](https://github.com/fqlx/XboxKeyboardMouse/archive/master.zip)
 2. Extract the download folder to anywhere on your pc
 3. Rename the download folder to something of your choice
 4. Run `XboxKeyboardMouse 24 02 2017 - x86.exe` or `XboxKeyboardMouse 24 02 2017 - x86_64.exe`
