@@ -18,8 +18,10 @@ namespace XboxKeyboardMouse {
             try {
                 scpbus = new ScpBus();
             } catch (Exception ex) {
-                MessageBox.Show("SCP Bus failed to initialize");
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("You probably need to run the ScpToolkit Driver Installer." +
+                                System.Environment.NewLine + System.Environment.NewLine + ex.ToString(),
+                                "SCP Bus failed to initialize");
+                Environment.Exit(-1);
             }
 
             scpbus.PlugIn(1);
