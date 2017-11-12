@@ -2,7 +2,7 @@
 
 namespace ScpDriverInterface {
     /// <summary>
-    /// A virtual XBox 360 Controller. After setting the desired values, use the GetReport() method to generate a controller report that can be used with ScpBus's Report() method.
+    /// A virtual Xbox 360 Controller. After setting the desired values, use the GetReport() method to generate a controller report that can be used with ScpBus's Report() method.
     /// </summary>
     public class X360Controller {
         /// <summary>
@@ -88,9 +88,9 @@ namespace ScpDriverInterface {
         public short RightStickY { get; set; }
 
         /// <summary>
-        /// Generates a XBox 360 controller report as specified here: http://free60.org/wiki/GamePad#Input_report. This can be used with ScpBus's Report() method.
+        /// Generates a Xbox 360 controller report as specified here: http://free60.org/wiki/GamePad#Input_report. This can be used with ScpBus's Report() method.
         /// </summary>
-        /// <returns>A 20-byte XBox 360 controller report.</returns>
+        /// <returns>A 20-byte Xbox 360 controller report.</returns>
         public byte[] GetReport() {
             byte[] bytes = new byte[20];
 
