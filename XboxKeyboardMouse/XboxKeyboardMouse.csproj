@@ -178,18 +178,6 @@
     <Compile Include="Forms\ControllerPreview.Designer.cs">
       <DependentUpon>ControllerPreview.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Old\Old_MainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Old\Old_MainForm.Designer.cs">
-      <DependentUpon>Old_MainForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Old\Old_Options.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Old\Old_Options.Designer.cs">
-      <DependentUpon>Old_Options.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\KeySelection\SelectKey.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -232,12 +220,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MouseSettings\NoControls.resx">
       <DependentUpon>NoControls.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Old\Old_MainForm.resx">
-      <DependentUpon>Old_MainForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Old\Old_Options.resx">
-      <DependentUpon>Old_Options.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\KeySelection\Mouse_Engine_Relative.resx">
       <DependentUpon>Mouse_Engine_Relative.cs</DependentUpon>
