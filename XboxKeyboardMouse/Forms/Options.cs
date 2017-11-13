@@ -287,18 +287,18 @@ namespace XboxKeyboardMouse.Forms {
 
             var d = Directory.GetFiles("profiles", "*.ini", SearchOption.TopDirectoryOnly);
             foreach (var f in d) {
-                string presetFile = f.Split('\\')[1].Split('.')[0];
+                var presetFile = Path.GetFileNameWithoutExtension(f);
                 var item = new ListViewItem(presetFile);
                 lbPresets.Items.Add(item);
             }
         }
 
         public string GetSelectedListProfile() {
-            return lbPresets.SelectedItems[0].Text;
+            return lbPresets.SelectedItems.Count > 0 ? lbPresets.SelectedItems[0].Text : null;
         }
 
         public string GetSelectedListProfilePath() {
-            return "profiles/" + GetSelectedListProfile() + ".ini";
+            return Path.Combine("profiles", GetSelectedListProfile() + ".ini");
         }
 
         public string GetSelectedProfile() {
@@ -306,7 +306,7 @@ namespace XboxKeyboardMouse.Forms {
         }
 
         public string GetSelectedProfilePath() {
-            return "profiles/" + GetSelectedProfile() + ".ini";
+            return Path.Combine("profiles", GetSelectedProfile() + ".ini");
         }
 
         #region Preset Creation
@@ -316,7 +316,7 @@ namespace XboxKeyboardMouse.Forms {
 
         // Check if a preset exists
         private bool presetNameExists() {
-            return System.IO.File.Exists("profiles/" + file_CreatePreset_Text.Text + ".ini");
+            return File.Exists(Path.Combine("profiles", file_CreatePreset_Text.Text + ".ini"));
         }
 
         // Refresh the listing
@@ -337,7 +337,7 @@ namespace XboxKeyboardMouse.Forms {
         // Create the preset
         private void file_CreatePreset_Button_Click(object sender, EventArgs e) {
             var presetString = file_CreatePreset_Text.Text;
-            var filePath = "profiles/" + presetString + ".ini";
+            var filePath = Path.Combine("profiles", presetString + ".ini");
             
             if (presetNameExists()) {
                 file_CreatePreset_Button.Enabled = false;
@@ -370,7 +370,7 @@ namespace XboxKeyboardMouse.Forms {
 
         bool TabsAdded = false;
         private void file_LoadPreset_Click(object sender, EventArgs e) {
-            if (!System.IO.File.Exists(GetSelectedListProfilePath())) {
+            if (!File.Exists(GetSelectedListProfilePath())) {
                 MessageBox.Show("The selected profile: " + GetSelectedProfile() +
                     " no longer exists...\nFile: " + GetSelectedProfilePath());
                 RefreshConfigList();
@@ -467,7 +467,7 @@ namespace XboxKeyboardMouse.Forms {
         }
 
         private void file_SetAsActive_Click(object sender, EventArgs e) {
-            if (!System.IO.File.Exists(GetSelectedListProfilePath())) {
+            if (!File.Exists(GetSelectedListProfilePath())) {
                 MessageBox.Show("The selected profile: " + GetSelectedProfile() +
                     " no longer exists...\nFile: " + GetSelectedProfilePath());
                 RefreshConfigList();
@@ -491,7 +491,7 @@ namespace XboxKeyboardMouse.Forms {
             if (res != DialogResult.OK)
                 return;
 
-            if (!System.IO.File.Exists(GetSelectedListProfilePath())) {
+            if (!File.Exists(GetSelectedListProfilePath())) {
                 MessageBox.Show("The selected profile: " + GetSelectedListProfile() +
                     " no longer exists...\nFile: " + GetSelectedListProfilePath());
                 return;
@@ -511,7 +511,7 @@ namespace XboxKeyboardMouse.Forms {
             file_Editing.Enabled = true;
             file_Active.Text = Program.ActiveConfig.Name;
 
-            System.IO.File.Delete(GetSelectedListProfilePath());
+            File.Delete(GetSelectedListProfilePath());
             RefreshConfigList();
         }
 
@@ -590,7 +590,7 @@ namespace XboxKeyboardMouse.Forms {
 
             if (cfg.Name.Trim() != preset_Name.Text.Trim()) {
                 cfg.Name = preset_Name.Text.Trim();
-                File.Delete("profiles/" + GetSelectedProfile() + ".ini");
+                File.Delete(Path.Combine("profiles", GetSelectedProfile() + ".ini"));
             }
 
             // Saved
@@ -615,7 +615,7 @@ namespace XboxKeyboardMouse.Forms {
 
             if (cfg.Name.Trim() != preset_Name.Text.Trim()) {
                 cfg.Name = preset_Name.Text.Trim();
-                File.Delete("profiles/" + GetSelectedProfile() + ".ini");
+                File.Delete(Path.Combine("profiles", GetSelectedProfile() + ".ini"));
             }
 
             // Saved

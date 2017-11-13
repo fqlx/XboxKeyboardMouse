@@ -1,13 +1,12 @@
 ﻿using MaterialSkin;
 using System;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Input;
-using XboxKeyboardMouse;
 using XboxKeyboardMouse.Config;
 using XboxKeyboardMouse.Forms;
-using XboxKeyboardMouse.Forms.Controls;
 using XboxKeyboardMouse.Libs;
 
 namespace XboxKeyboardMouse {
@@ -33,24 +32,24 @@ namespace XboxKeyboardMouse {
             private static extern int FreeConsole();
 
 
-        public static bool SetActiveConfig(string File) {
-            var cfg = "profiles/" + File;
+        public static bool SetActiveConfig(string file) {
+            var cfg = Path.Combine("profiles", file);
 
-            if (!System.IO.File.Exists(cfg)) 
+            if (!File.Exists(cfg)) 
                  return false;
 
             lock (ActiveConfig) {
-                Data d = Data.Load(File);
+                Data d = Data.Load(file);
                 ActiveConfig = d;
             }
 
             // Make sure the ini file exists
-            ReadConfiguration(File);
+            ReadConfiguration(file);
 
             ReloadActiveConfig();
 
             IniFile appcfg = new IniFile("config.ini");
-            appcfg.AddSetting("Xbox", "KeyProfile", File);
+            appcfg.AddSetting("Xbox", "KeyProfile", file);
             appcfg.SaveSettings();
             
             return true;
@@ -137,8 +136,8 @@ namespace XboxKeyboardMouse {
             // Setup the default application cfg file if does not exist
             IniFile appcfg = null;
             
-            if (!System.IO.File.Exists("config.ini")) {
-                System.IO.File.Create("config.ini").Close();
+            if (!File.Exists("config.ini")) {
+                File.Create("config.ini").Close();
 
                 appcfg = new IniFile("config.ini");
                 appcfg.AddSetting("Xbox", "KeyProfile", defaultProfile);

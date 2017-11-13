@@ -1,20 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace XboxKeyboardMouse.Forms {
     public partial class SelectMouseButton : Form {
         Config.Data cfg;
         string Tag;
-
-        int SelectedButton = -1;
-
+        
         private int convert(MouseButtons btn) {
 
             if (btn == MouseButtons.None)

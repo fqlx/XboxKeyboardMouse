@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -120,11 +121,12 @@ namespace XboxKeyboardMouse.Config {
         public static Data Load(string file) {
             Data d = new Data();
 
-            if (!System.IO.Directory.Exists("profiles"))
-                System.IO.Directory.CreateDirectory("profiles");
+            if (!Directory.Exists("profiles"))
+                Directory.CreateDirectory("profiles");
 
-            if (!System.IO.File.Exists("profiles/" + file)) {
-                System.IO.File.Create("profiles/" + file).Close();
+            var filePath = Path.Combine("profiles", file);
+            if (!File.Exists(filePath)) {
+                File.Create(filePath).Close();
 
                 // Save the current config because it has the
                 // default values
@@ -132,8 +134,7 @@ namespace XboxKeyboardMouse.Config {
                 return d;
             }
             
-
-            IniFile f = new IniFile("profiles/" + file);
+            IniFile f = new IniFile(filePath);
 
             Read(f, "Config", "Name", ref d.Name);
 
@@ -228,14 +229,16 @@ namespace XboxKeyboardMouse.Config {
         }
 
         public static void Save(string file, Data d) {
-            if (!System.IO.Directory.Exists("profiles")) {
-                System.IO.Directory.CreateDirectory("profiles");
-            } if (!System.IO.File.Exists("profiles/" + file)) {
-                System.IO.File.Create("profiles/" + file).Close();
+            if (!Directory.Exists("profiles")) {
+                Directory.CreateDirectory("profiles");
             }
 
-
-            IniFile f = new IniFile("profiles/" + file);
+            var filePath = Path.Combine("profiles", file);
+            if (!File.Exists(filePath)) {
+                File.Create(filePath).Close();
+            }
+            
+            IniFile f = new IniFile(filePath);
             Write(f, "Config", "Name", d.Name);
 
             /* Application Settings */ {

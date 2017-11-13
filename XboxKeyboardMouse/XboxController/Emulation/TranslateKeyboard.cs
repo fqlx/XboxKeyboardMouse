@@ -170,7 +170,7 @@ namespace XboxKeyboardMouse {
 
                 //if (!tLeft)       controller.LeftTrigger = 0;
                 //else if (!tRight) controller.RightTrigger = 0;
-            } catch (Exception ex) { /* This occures when changing presets */ }
+            } catch (Exception) { /* This occures when changing presets */ }
         }
 
         private static void Debug_TimeTracer(X360Controller Controller) {
