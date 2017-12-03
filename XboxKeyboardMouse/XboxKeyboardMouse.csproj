@@ -203,7 +203,6 @@
     <Compile Include="Forms\KeySelection\SelectMouseButton.Designer.cs">
       <DependentUpon>SelectMouseButton.cs</DependentUpon>
     </Compile>
-    <Compile Include="XboxController\SCP\GamepadState.cs" />
     <Compile Include="XboxController\Emulation\Activate.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

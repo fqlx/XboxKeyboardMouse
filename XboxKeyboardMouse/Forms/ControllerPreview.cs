@@ -1,21 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using ScpDriverInterface;
+using System;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using SlimDX.XInput;
-using Gamepad;
 using xKM = XboxKeyboardMouse;
-using ScpDriverInterface;
 
-namespace XboxKeyboardMouse.Forms {
+namespace XboxKeyboardMouse.Forms
+{
     public partial class ControllerPreview : Form {
-
-        GamepadState xb;
         Color on  = Color.FromArgb(93, 194, 30);
         Color off = Color.Transparent;
 
@@ -26,8 +17,6 @@ namespace XboxKeyboardMouse.Forms {
         Timer t = new Timer();
 
         private void ControllerPreview_Load(object sender, EventArgs e) {
-            xb = new GamepadState(0);
-
             axisLeft.DrawAxisDot  = true;
             axisRight.DrawAxisDot = true;
 
@@ -124,14 +113,6 @@ namespace XboxKeyboardMouse.Forms {
                 rightX.Text = "RX: " + xKM.Activate.Controller.RightStickX;
                 rightY.Text = "RY: " + xKM.Activate.Controller.RightStickY;
             }
-        }
-
-        private void leftY_Click(object sender, EventArgs e) {
-
-        }
-
-        private void leftX_Click(object sender, EventArgs e) {
-
         }
     }
 }
