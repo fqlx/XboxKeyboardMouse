@@ -110,7 +110,6 @@
             this.leftY.Size = new System.Drawing.Size(60, 13);
             this.leftY.TabIndex = 27;
             this.leftY.Text = "LY: 00000";
-            this.leftY.Click += new System.EventHandler(this.leftY_Click);
             // 
             // leftX
             // 
@@ -119,7 +118,6 @@
             this.leftX.Size = new System.Drawing.Size(60, 13);
             this.leftX.TabIndex = 26;
             this.leftX.Text = "LX: 00000";
-            this.leftX.Click += new System.EventHandler(this.leftX_Click);
             // 
             // panel1
             // 
