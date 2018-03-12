@@ -323,7 +323,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ScpDriverInstaller.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
