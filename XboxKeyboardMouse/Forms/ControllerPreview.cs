@@ -1,4 +1,4 @@
-﻿using ScpDriverInterface;
+﻿using SimWinInput;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -9,6 +9,7 @@ namespace XboxKeyboardMouse.Forms
     public partial class ControllerPreview : Form {
         Color on  = Color.FromArgb(93, 194, 30);
         Color off = Color.Transparent;
+        private SimulatedGamePadState state;
 
         public ControllerPreview() {
             InitializeComponent();
@@ -17,6 +18,8 @@ namespace XboxKeyboardMouse.Forms
         Timer t = new Timer();
 
         private void ControllerPreview_Load(object sender, EventArgs e) {
+            state = SimGamePad.Instance.State[0];
+
             axisLeft.DrawAxisDot  = true;
             axisRight.DrawAxisDot = true;
 
@@ -29,89 +32,89 @@ namespace XboxKeyboardMouse.Forms
         private void T_Tick(object sender, EventArgs e) {
 
             /* The Fantastic Four, ABXY */ {
-                if (xKM.Activate.Controller.Buttons == X360Buttons.A)
+                if (state.Buttons == GamePadControl.A)
                      xbo_m_A.BackColor = on;
                 else xbo_m_A.BackColor = off;
-                if (xKM.Activate.Controller.Buttons == X360Buttons.B)
+                if (state.Buttons == GamePadControl.B)
                      xbo_m_B.BackColor = on;
                 else xbo_m_B.BackColor = off;
-                if (xKM.Activate.Controller.Buttons == X360Buttons.X)
+                if (state.Buttons == GamePadControl.X)
                      xbo_m_X.BackColor = on;
                 else xbo_m_X.BackColor = off;
-                if (xKM.Activate.Controller.Buttons == X360Buttons.Y)
+                if (state.Buttons == GamePadControl.Y)
                      xbo_m_Y.BackColor = on;
                 else xbo_m_Y.BackColor = off;
             }
 
             /* Special Buttons (Start, Back, Guide) */ {
-                if (xKM.Activate.Controller.Buttons == X360Buttons.Start)
+                if (state.Buttons == GamePadControl.Start)
                      xbo_m_Start.BackColor = on;
                 else xbo_m_Start.BackColor = off;
-                if (xKM.Activate.Controller.Buttons == X360Buttons.Back)
+                if (state.Buttons == GamePadControl.Back)
                      xbo_m_Back.BackColor = on;
                 else xbo_m_Back.BackColor = off;
-                if (xKM.Activate.Controller.Buttons == X360Buttons.Guide)
+                if (state.Buttons == GamePadControl.Guide)
                      xbo_m_Guide.BackColor = on;
                 else xbo_m_Guide.BackColor = off;
             }
 
             /* Sticks (Press) */
             {
-                if (xKM.Activate.Controller.Buttons == X360Buttons.RightStick)
+                if (state.Buttons == GamePadControl.RightStickClick)
                      xbo_m_RS.BackColor = on;
                 else xbo_m_RS.BackColor = off;
-                if (xKM.Activate.Controller.Buttons == X360Buttons.LeftStick)
+                if (state.Buttons == GamePadControl.LeftStickClick)
                      xbo_m_LS.BackColor = on;
                 else xbo_m_LS.BackColor = off;
             }
 
             /* Bumpers */ { 
-                if (xKM.Activate.Controller.Buttons == X360Buttons.LeftBumper)
+                if (state.Buttons == GamePadControl.LeftShoulder)
                      xbo_m_SL.BackColor = on;
                 else xbo_m_SL.BackColor = off;
-                if (xKM.Activate.Controller.Buttons == X360Buttons.RightBumper)
+                if (state.Buttons == GamePadControl.RightShoulder)
                      xbo_m_SR.BackColor = on;
                 else xbo_m_SR.BackColor = off;
             }
 
             /* DPAD */ { 
-                if (xKM.Activate.Controller.Buttons == X360Buttons.Up)
+                if (state.Buttons == GamePadControl.DPadUp)
                      xbo_m_DpadUp.BackColor = on;
                 else xbo_m_DpadUp.BackColor = off;
-                if (xKM.Activate.Controller.Buttons == X360Buttons.Down)
+                if (state.Buttons == GamePadControl.DPadDown)
                      xbo_m_DpadDown.BackColor = on;
                 else xbo_m_DpadDown.BackColor = off;
-                if(xKM.Activate.Controller.Buttons == X360Buttons.Left)
+                if(state.Buttons == GamePadControl.DPadLeft)
                      xbo_m_DpadLeft.BackColor = on;
                 else xbo_m_DpadLeft.BackColor = off;
-                if (xKM.Activate.Controller.Buttons == X360Buttons.Right)
+                if (state.Buttons == GamePadControl.DPadRight)
                      xbo_m_DpadRight.BackColor = on;
                 else xbo_m_DpadRight.BackColor = off;
             }
 
             /* Triggers */ {
-                if (xKM.Activate.Controller.LeftTrigger >= 1)
+                if (state.LeftTrigger >= 1)
                      xbo_k_TLeft.BackColor = on;
                 else xbo_k_TLeft.BackColor = off;
 
-                if (xKM.Activate.Controller.RightTrigger >= 1)
+                if (state.RightTrigger >= 1)
                      xbo_k_TRight.BackColor = on;
                 else xbo_k_TRight.BackColor = off;
             }
 
             /* Draw Joysticks */ {
                 axisLeft.SetAxis(
-                    xKM.Activate.Controller.LeftStickX,
-                    xKM.Activate.Controller.LeftStickY);
+                    state.LeftStickX,
+                    state.LeftStickY);
 
                 axisRight.SetAxis(
-                    xKM.Activate.Controller.RightStickX,
-                    xKM.Activate.Controller.RightStickY);
+                    state.RightStickX,
+                    state.RightStickY);
 
-                leftX.Text  = "LX: " + xKM.Activate.Controller.LeftStickX;
-                leftY.Text  = "LY: " + xKM.Activate.Controller.LeftStickY;
-                rightX.Text = "RX: " + xKM.Activate.Controller.RightStickX;
-                rightY.Text = "RY: " + xKM.Activate.Controller.RightStickY;
+                leftX.Text  = "LX: " + state.LeftStickX;
+                leftY.Text  = "LY: " + state.LeftStickY;
+                rightX.Text = "RX: " + state.RightStickX;
+                rightY.Text = "RY: " + state.RightStickY;
             }
         }
     }

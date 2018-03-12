@@ -1,4 +1,4 @@
-﻿using ScpDriverInterface;
+﻿using SimWinInput;
 using System;
 using System.Threading;
 using System.Windows.Forms;
@@ -6,51 +6,47 @@ using XboxKeyboardMouse.Libs;
 
 namespace XboxKeyboardMouse {
     class Activate {
-        const int CONTROLLER_NUMBER = 1;
-        static ScpBus scpbus = null;
-        public static X360Controller Controller;
-
         public static Thread tXboxStream, tKMInput;
+        private static SimGamePad simPad;
+        private static SimulatedGamePadState state;
+        private static bool shuttingDown = false;
 
-        private static X360Controller CreateController() {
-            X360Controller controller = new X360Controller();
-
-            try {
-                scpbus = new ScpBus();
-            } catch (Exception ex) {
-                MessageBox.Show("You probably need to run the ScpToolkit Driver Installer." +
-                                System.Environment.NewLine + System.Environment.NewLine + ex.ToString(),
-                                "SCP Bus failed to initialize");
-                Environment.Exit(-1);
+        private static void Init()
+        {
+            simPad = SimGamePad.Instance;
+            try
+            {
+                simPad.Initialize();
+                simPad.PlugIn();
+                state = simPad.State[0];
             }
-
-            scpbus.PlugIn(1);
-
-            return controller;
-        }
-
-        private static void Init() {
-            Controller = CreateController();
+            catch
+            {
+                shuttingDown = true;
+                MessageBox.Show("Could not initialize SimGamePad / ScpBus. Shutting down.");
+                Application.Exit();
+            }
 
             TranslateMouse.InitMouse();
         }
 
         private static void KeyboardMouseInput() {
-            while (true) {
-                TranslateMouse.MouseButtonsInput(Controller);
-                TranslateKeyboard.KeyboardInput(Controller);
+            while (!shuttingDown) {
+                TranslateMouse.MouseButtonsInput(state);
+                TranslateKeyboard.KeyboardInput(state);
+                SimGamePad.Instance.Update();
 
-                SendtoController(Controller);
+                // Poll aggressively, but avoid completely pegging the CPU to 100%.
+                Thread.Sleep(1);
             }
         }
-
 
         public static void ActivateKeyboardAndMouse(bool ActivateStreamThread = true, bool ActivateInputThread = true) {
             Init();
 
             // Cursor Toggle thread
             if (ActivateStreamThread) {
-                tXboxStream = new Thread(XboxStream.ToggleCursor);
+                tXboxStream = new Thread(XboxStream.XboxAppDetector);
                 tXboxStream.SetApartmentState(ApartmentState.STA);
                 tXboxStream.IsBackground = true;
                 tXboxStream.Start();
@@ -75,39 +71,30 @@ namespace XboxKeyboardMouse {
             // Set our status to waiting
             Program.MainForm.StatusWaiting();
         }
-
-        public static void SendtoController(X360Controller controller) {
-            byte[] report = controller.GetReport();
-            byte[] output = new byte[8];
-
-            // Send our data back to the virtual scp bus.
-            scpbus.Report(CONTROLLER_NUMBER, report, output);
-        }
-
-        public static void SendGuide(bool state) {
-            if (state)
-                 Controller.Buttons = Controller.Buttons |  X360Buttons.Guide;
-            else Controller.Buttons = Controller.Buttons & ~X360Buttons.Guide;
-            
-            SendtoController(Controller);
+        
+        public static void SendGuide(bool buttonDown) {
+            if (buttonDown)
+                 state.Buttons |= GamePadControl.Guide;
+            else state.Buttons &= ~GamePadControl.Guide;
+            simPad.Update();
         }
 
         public static void OnProcessExit(object sender, EventArgs e) {
-            scpbus.Unplug(CONTROLLER_NUMBER);
+            shuttingDown = true;
+            simPad.ShutDown();
             Application.ExitThread();
         }
 
         public static void ResetController() {
-            Controller.RightStickX = 0;
-            Controller.RightStickY = 0;
-            Controller.LeftStickX = 0;
-            Controller.LeftStickY = 0;
+            state.RightStickX = 0;
+            state.RightStickY = 0;
+            state.LeftStickX = 0;
+            state.LeftStickY = 0;
 
-            Controller.LeftTrigger = 0;
-            Controller.RightTrigger = 0;
+            state.LeftTrigger = 0;
+            state.RightTrigger = 0;
 
-            Controller.Buttons = X360Buttons.None;
+            state.Buttons = GamePadControl.None;
         }
     }
 }
-

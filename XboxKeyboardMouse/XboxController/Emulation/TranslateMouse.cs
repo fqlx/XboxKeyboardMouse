@@ -1,12 +1,10 @@
-﻿using ScpDriverInterface;
-using SlimDX.DirectInput;
+﻿using SlimDX.DirectInput;
 using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 using System;
-using System.Timers;
 using System.Threading;
-using XboxKeyboardMouse.Libs;
+using SimWinInput;
 
 namespace XboxKeyboardMouse {
     class TranslateMouse {
@@ -131,8 +129,8 @@ namespace XboxKeyboardMouse {
         private static void MouseMovement_Relative() {
 
             Point mouse = Control.MousePosition;
-            short joyX = Activate.Controller.RightStickX;
-            short joyY = Activate.Controller.RightStickY;
+            short joyX = SimGamePad.Instance.State[0].RightStickX;
+            short joyY = SimGamePad.Instance.State[0].RightStickY;
 
             /* 
              * The idea is to do this
@@ -257,7 +255,7 @@ namespace XboxKeyboardMouse {
             Cursor.Position = centered;
         }
 
-        public static void MouseButtonsInput(X360Controller controller) {
+        public static void MouseButtonsInput(SimulatedGamePadState controller) {
             MouseState state = mouse.GetCurrentState();
 
             TRIGGER_LEFT_PRESSED  = state.IsPressed(0);
@@ -284,14 +282,14 @@ namespace XboxKeyboardMouse {
         #endif
 
             if (Program.ActiveConfig.Mouse_Is_RightStick) {
-                Activate.Controller.RightStickX = x;
-                Activate.Controller.RightStickY = y;
+                SimGamePad.Instance.State[0].RightStickX = x;
+                SimGamePad.Instance.State[0].RightStickY = y;
             } else {
-                Activate.Controller.LeftStickX = x;
-                Activate.Controller.LeftStickY = y;
+                SimGamePad.Instance.State[0].LeftStickX = x;
+                SimGamePad.Instance.State[0].LeftStickY = y;
             }
-            
-            Activate.SendtoController(Activate.Controller);
+
+            SimGamePad.Instance.Update();
         }
     }
 }

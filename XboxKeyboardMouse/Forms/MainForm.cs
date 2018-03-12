@@ -1,21 +1,12 @@
 ﻿using MaterialSkin;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using XboxKeyboardMouse.Libs;
 
-namespace XboxKeyboardMouse.Forms {
+namespace XboxKeyboardMouse.Forms
+{
     public partial class MainForm : Controls.RoundedForm {
-        
-
-
-
         enum STATE {
             Running = 1,
             Waiting = 2,
