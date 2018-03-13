@@ -8,17 +8,16 @@ Note: This app only starts when the Xbox streaming app is in the foreground.
 ![Screenshot](https://cloud.githubusercontent.com/assets/6545688/23099037/50091be8-f655-11e6-838c-b94d7a62572b.PNG "Image of the GUI as of 11/12/16")
 
 # Prerequisites
-1.  [You need SCPToolkit driver installed to use](https://github.com/nefarius/ScpToolkit)
-2.  [You need SlimDX Runtime installed (x86)](https://slimdx.org/download.php)
+1. [You need SlimDX Runtime installed (x86)](https://slimdx.org/download.php)
 
 # Download
 1. [Download the repository as a zip](https://github.com/fqlx/XboxKeyboardMouse/archive/master.zip)
-2. Extract the download folder to anywhere on your pc
+2. Extract the download folder to anywhere on your PC
 3. Rename the download folder to something of your choice
 4. Run `XboxKeyboardMouse 24 02 2017 - x86.exe` or `XboxKeyboardMouse 24 02 2017 - x86_64.exe`
 
 # Current Layout
-You may customise your own controller layout through the gui but the default layout is 
+You may customize your own controller layout through the gui but the default layout is 
 
 | Keyboard/Mouse| Xbox Controller   |
 | ------------- |:-----------------:|
@@ -35,7 +34,7 @@ You may customise your own controller layout through the gui but the default lay
 |               |                   |
 | B             | Start/Menu        |
 | V             | Select/Back/Nav   |
-| Escape        | Xbox Logo/Guide   |
+| Tilde         | Xbox Logo/Guide   |
 |               |                   |
 | Arrow Keys    | DPAD              |
 |               |                   |
@@ -47,7 +46,7 @@ You may customise your own controller layout through the gui but the default lay
 
 # Lag
 1.  Run ScpToolkit Settings Manager
-2.  Use asynchronoous HID Report Processing
+2.  Use asynchronous HID Report Processing
 3.  Disable Rumble and Native Feed
 
 # Compile
