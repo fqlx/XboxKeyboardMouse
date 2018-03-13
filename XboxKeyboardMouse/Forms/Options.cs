@@ -1,17 +1,12 @@
 ﻿using MaterialSkin;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Input;
 
-namespace XboxKeyboardMouse.Forms {
+namespace XboxKeyboardMouse.Forms
+{
     public partial class Options : Controls.FormRWE {
 
         public Options() {
@@ -34,14 +29,10 @@ namespace XboxKeyboardMouse.Forms {
             // Display the current active file name
             file_Active.Text = "Active Preset: " + Program.ActiveConfig.Name;
         }
-
         
-
         public override void SetStatusColor(Color c) {
             btnExit.BackColor = c;
         }
-
-    // --> REGIONS
 
         #region Events
         // -----------
@@ -67,39 +58,29 @@ namespace XboxKeyboardMouse.Forms {
             materialTabControl1.Controls.Remove(tabPage3);
             materialTabSelector1.Invalidate();
         }
-        
+
         // -----------
         #endregion
 
         #region Xbox Input Editor
-        //
-        // Summary:
-        //     Defines values that specify the buttons on a mouse device.
+        /// <summary>Defines values that specify the buttons on a mouse device.</summary>
         public enum MouseButton {
-            //
-            // Summary:
-            //     Nothing
+            /// <summary>Nothing</summary>
             None = -1,
 
-            //
-            // Summary:
-            //     The left mouse button.
+            /// <summary>The left mouse button.   
             Left = 0,
-            //
-            // Summary:
-            //     The middle mouse button.
+            
+            /// <summary>The middle mouse button.</summary>
             Middle = 1,
-            //
-            // Summary:
-            //     The right mouse button.
+            
+            /// <summary>The right mouse button.</summary>
             Right = 2,
-            //
-            // Summary:
-            //     The first extended mouse button.
+
+            /// <summary>The first extended mouse button.</summary>
             XButton1 = 3,
-            //
-            // Summary:
-            //     The second extended mouse button.
+
+            /// <summary>The second extended mouse button.</summary>
             XButton2 = 4
         }
 
@@ -166,38 +147,38 @@ namespace XboxKeyboardMouse.Forms {
 
         private void LoadXboxInputButtons() {
             // Keyboard
-            xbo_k_A.Text = ((System.Windows.Input.Key)cfg.Controls_KB_Xbox_A).ToString();
-            xbo_k_B.Text = ((System.Windows.Input.Key)cfg.Controls_KB_Xbox_B).ToString();
-            xbo_k_X.Text = ((System.Windows.Input.Key)cfg.Controls_KB_Xbox_X).ToString();
-            xbo_k_Y.Text = ((System.Windows.Input.Key)cfg.Controls_KB_Xbox_Y).ToString();
+            xbo_k_A.Text = ((Key)cfg.Controls_KB_Xbox_A).ToString();
+            xbo_k_B.Text = ((Key)cfg.Controls_KB_Xbox_B).ToString();
+            xbo_k_X.Text = ((Key)cfg.Controls_KB_Xbox_X).ToString();
+            xbo_k_Y.Text = ((Key)cfg.Controls_KB_Xbox_Y).ToString();
 
-            xbo_k_LeftSholder.Text = ((System.Windows.Input.Key)cfg.Controls_KB_Xbox_LeftBumper).ToString();
-            xbo_k_DpadLeft.Text = ((System.Windows.Input.Key)cfg.Controls_KB_Xbox_DPAD_Left).ToString();
-            xbo_k_LeftStick.Text = ((System.Windows.Input.Key)cfg.Controls_KB_Xbox_Sticks_Left).ToString();
+            xbo_k_LeftSholder.Text = ((Key)cfg.Controls_KB_Xbox_LeftBumper).ToString();
+            xbo_k_DpadLeft.Text = ((Key)cfg.Controls_KB_Xbox_DPAD_Left).ToString();
+            xbo_k_LeftStick.Text = ((Key)cfg.Controls_KB_Xbox_Sticks_Left).ToString();
 
-            xbo_k_RightSholder.Text = ((System.Windows.Input.Key)cfg.Controls_KB_Xbox_RightBumper).ToString();
-            xbo_k_DpadRight.Text = ((System.Windows.Input.Key)cfg.Controls_KB_Xbox_DPAD_Right).ToString();
-            xbo_k_RightStick.Text = ((System.Windows.Input.Key)cfg.Controls_KB_Xbox_Sticks_Right).ToString();
+            xbo_k_RightSholder.Text = ((Key)cfg.Controls_KB_Xbox_RightBumper).ToString();
+            xbo_k_DpadRight.Text = ((Key)cfg.Controls_KB_Xbox_DPAD_Right).ToString();
+            xbo_k_RightStick.Text = ((Key)cfg.Controls_KB_Xbox_Sticks_Right).ToString();
 
-            xbo_k_DpadUp.Text = ((System.Windows.Input.Key)cfg.Controls_KB_Xbox_DPAD_Up).ToString();
-            xbo_k_DpadDown.Text = ((System.Windows.Input.Key)cfg.Controls_KB_Xbox_DPAD_Down).ToString();
+            xbo_k_DpadUp.Text = ((Key)cfg.Controls_KB_Xbox_DPAD_Up).ToString();
+            xbo_k_DpadDown.Text = ((Key)cfg.Controls_KB_Xbox_DPAD_Down).ToString();
 
-            xbo_k_Start.Text = ((System.Windows.Input.Key)cfg.Controls_KB_Xbox_Start).ToString();
-            xbo_k_Back.Text = ((System.Windows.Input.Key)cfg.Controls_KB_Xbox_Back).ToString();
-            xbo_k_Guide.Text = ((System.Windows.Input.Key)cfg.Controls_KB_Xbox_Guide).ToString();
+            xbo_k_Start.Text = ((Key)cfg.Controls_KB_Xbox_Start).ToString();
+            xbo_k_Back.Text = ((Key)cfg.Controls_KB_Xbox_Back).ToString();
+            xbo_k_Guide.Text = ((Key)cfg.Controls_KB_Xbox_Guide).ToString();
 
-            xbo_k_TLeft.Text = ((System.Windows.Input.Key)cfg.Controls_KB_Xbox_Trigger_Left).ToString();
-            xbo_k_TRight.Text = ((System.Windows.Input.Key)cfg.Controls_KB_Xbox_Trigger_Right).ToString();
+            xbo_k_TLeft.Text = ((Key)cfg.Controls_KB_Xbox_Trigger_Left).ToString();
+            xbo_k_TRight.Text = ((Key)cfg.Controls_KB_Xbox_Trigger_Right).ToString();
 
-            xbo_k_joy_l_up.Text = ((System.Windows.Input.Key)cfg.Controls_KB_Sticks_AXIS_L_Up).ToString(); ;
-            xbo_k_joy_l_down.Text = ((System.Windows.Input.Key)cfg.Controls_KB_Sticks_AXIS_L_Down).ToString(); ;
-            xbo_k_joy_l_left.Text = ((System.Windows.Input.Key)cfg.Controls_KB_Sticks_AXIS_L_Left).ToString(); ;
-            xbo_k_joy_l_right.Text = ((System.Windows.Input.Key)cfg.Controls_KB_Sticks_AXIS_L_Right).ToString(); ;
+            xbo_k_joy_l_up.Text = ((Key)cfg.Controls_KB_Sticks_AXIS_L_Up).ToString(); ;
+            xbo_k_joy_l_down.Text = ((Key)cfg.Controls_KB_Sticks_AXIS_L_Down).ToString(); ;
+            xbo_k_joy_l_left.Text = ((Key)cfg.Controls_KB_Sticks_AXIS_L_Left).ToString(); ;
+            xbo_k_joy_l_right.Text = ((Key)cfg.Controls_KB_Sticks_AXIS_L_Right).ToString(); ;
 
-            xbo_k_joy_r_up.Text = ((System.Windows.Input.Key)cfg.Controls_KB_Sticks_AXIS_R_Up).ToString(); ;
-            xbo_k_joy_r_down.Text = ((System.Windows.Input.Key)cfg.Controls_KB_Sticks_AXIS_R_Down).ToString(); ;
-            xbo_k_joy_r_left.Text = ((System.Windows.Input.Key)cfg.Controls_KB_Sticks_AXIS_R_Left).ToString(); ;
-            xbo_k_joy_r_right.Text = ((System.Windows.Input.Key)cfg.Controls_KB_Sticks_AXIS_R_Right).ToString(); ;
+            xbo_k_joy_r_up.Text = ((Key)cfg.Controls_KB_Sticks_AXIS_R_Up).ToString(); ;
+            xbo_k_joy_r_down.Text = ((Key)cfg.Controls_KB_Sticks_AXIS_R_Down).ToString(); ;
+            xbo_k_joy_r_left.Text = ((Key)cfg.Controls_KB_Sticks_AXIS_R_Left).ToString(); ;
+            xbo_k_joy_r_right.Text = ((Key)cfg.Controls_KB_Sticks_AXIS_R_Right).ToString(); ;
 
             /*/ Mouse
             xbo_m_A.Text = ((MouseButton)cfg.Controls_M_Xbox_A).ToString();
@@ -409,15 +390,15 @@ namespace XboxKeyboardMouse.Forms {
             mouse_TickRate.Text = "" + cfg.Mouse_TickRate;
 
             // Ensure that there is a detach key
-            var k1 = (System.Windows.Input.Key)cfg.Controls_KB_Detach_MOD;
-            var k2 = (System.Windows.Input.Key)cfg.Controls_KB_Detach_KEY;
-            var no = System.Windows.Input.Key.None;
+            var k1 = (Key)cfg.Controls_KB_Detach_MOD;
+            var k2 = (Key)cfg.Controls_KB_Detach_KEY;
+            var no = Key.None;
 
             if (k1 == no && k2 == no) {
                 MessageBox.Show("You cant disable the detach key, reset to default (LeftAlt + C)!");
 
-                cfg.Controls_KB_Detach_MOD = (int)System.Windows.Input.Key.LeftAlt;
-                cfg.Controls_KB_Detach_KEY = (int)System.Windows.Input.Key.C;
+                cfg.Controls_KB_Detach_MOD = (int)Key.LeftAlt;
+                cfg.Controls_KB_Detach_KEY = (int)Key.C;
 
                 Config.Data.Save(GetSelectedProfile() + ".ini", cfg);
             } else {
@@ -425,10 +406,10 @@ namespace XboxKeyboardMouse.Forms {
             }
 
             // Load detach key 
-            string kbMod = ((System.Windows.Input.Key)cfg.Controls_KB_Detach_MOD).ToString();
+            string kbMod = ((Key)cfg.Controls_KB_Detach_MOD).ToString();
             kbMod = (kbMod == "None" ? "" : $"{kbMod} +");
 
-            string kbKey = ((System.Windows.Input.Key)cfg.Controls_KB_Detach_KEY).ToString();
+            string kbKey = ((Key)cfg.Controls_KB_Detach_KEY).ToString();
             settings_DetachKey.Text = $"On/Off Key: {kbMod} {kbKey}";
 
             // Display our current file and active files
@@ -546,29 +527,29 @@ namespace XboxKeyboardMouse.Forms {
             }
             Hooks.LowLevelKeyboardHook.LockEscape = bEscape;
 
-            if (storage.Cancel) goto CheckReturn;
+            if (!storage.Cancel)
+            {
+                cfg.Controls_KB_Detach_KEY = storage.inputKey;
+                cfg.Controls_KB_Detach_MOD = storage.inputMod;
+            }
 
-            cfg.Controls_KB_Detach_KEY = storage.inputKey;
-            cfg.Controls_KB_Detach_MOD = storage.inputMod;
-
-        CheckReturn:
-            var k1 = (System.Windows.Input.Key)cfg.Controls_KB_Detach_MOD;
-            var k2 = (System.Windows.Input.Key)cfg.Controls_KB_Detach_KEY;
-            var no = System.Windows.Input.Key.None;
+            var k1 = (Key)cfg.Controls_KB_Detach_MOD;
+            var k2 = (Key)cfg.Controls_KB_Detach_KEY;
+            var no = Key.None;
 
             if (k1 == no && k2 == no) {
                 MessageBox.Show("You cant disable the detach key, reset to default (LeftAlt + C)!");
 
-                cfg.Controls_KB_Detach_MOD = (int)System.Windows.Input.Key.LeftAlt;
-                cfg.Controls_KB_Detach_KEY = (int)System.Windows.Input.Key.C;
+                cfg.Controls_KB_Detach_MOD = (int)Key.LeftAlt;
+                cfg.Controls_KB_Detach_KEY = (int)Key.C;
             }
 
             detachKeyCheckup();
 
-            string kbMod = ((System.Windows.Input.Key)cfg.Controls_KB_Detach_MOD).ToString();
+            string kbMod = ((Key)cfg.Controls_KB_Detach_MOD).ToString();
             kbMod = (kbMod == "None" ? "" : $"{kbMod} +");
 
-            string kbKey = ((System.Windows.Input.Key)cfg.Controls_KB_Detach_KEY).ToString();
+            string kbKey = ((Key)cfg.Controls_KB_Detach_KEY).ToString();
             settings_DetachKey.Text = $"On/Off Key: {kbMod} {kbKey}";
         }
 
@@ -717,12 +698,12 @@ namespace XboxKeyboardMouse.Forms {
         // -------------
 
         private void detachKeyCheckup(bool save = false) {
-            var k1 = (System.Windows.Input.Key)cfg.Controls_KB_Detach_MOD;
-            var k2 = (System.Windows.Input.Key)cfg.Controls_KB_Detach_KEY;
+            var k1 = (Key)cfg.Controls_KB_Detach_MOD;
+            var k2 = (Key)cfg.Controls_KB_Detach_KEY;
 
-            if (k2 == System.Windows.Input.Key.None & k1 != System.Windows.Input.Key.None) {
+            if (k2 == Key.None & k1 != Key.None) {
                 k2 = k1;
-                k1 = System.Windows.Input.Key.None;
+                k1 = Key.None;
             }
 
             cfg.Controls_KB_Detach_MOD = (int)k1;
@@ -737,8 +718,5 @@ namespace XboxKeyboardMouse.Forms {
 
         // -------------------
         #endregion
-
-        // <-- REGIONS
-
     }
 }

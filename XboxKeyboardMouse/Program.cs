@@ -174,6 +174,8 @@ namespace XboxKeyboardMouse {
             while (MainForm == null)
                 Thread.Sleep(100);
 
+            MainForm.FormClosing += (sender, e) => { Activate.ShutDown(); };
+
             Thread tPause = new Thread(Pause);
             tPause.SetApartmentState(ApartmentState.STA);
             tPause.IsBackground = true;

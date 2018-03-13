@@ -2,7 +2,6 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-using xKM = XboxKeyboardMouse;
 
 namespace XboxKeyboardMouse.Forms
 {

@@ -22,11 +22,11 @@ namespace XboxKeyboardMouse {
             }
             catch
             {
-                shuttingDown = true;
+                ShutDown();
                 MessageBox.Show("Could not initialize SimGamePad / ScpBus. Shutting down.");
                 Application.Exit();
             }
-
+            
             TranslateMouse.InitMouse();
         }
 
@@ -39,6 +39,8 @@ namespace XboxKeyboardMouse {
                 // Poll aggressively, but avoid completely pegging the CPU to 100%.
                 Thread.Sleep(1);
             }
+
+            ShutDown();
         }
 
         public static void ActivateKeyboardAndMouse(bool ActivateStreamThread = true, bool ActivateInputThread = true) {
@@ -71,6 +73,15 @@ namespace XboxKeyboardMouse {
             // Set our status to waiting
             Program.MainForm.StatusWaiting();
         }
+
+        public static void ShutDown()
+        {
+            if (shuttingDown == false)
+            {
+                shuttingDown = true;
+                simPad.ShutDown();
+            }
+        }
         
         public static void SendGuide(bool buttonDown) {
             if (buttonDown)
@@ -80,8 +91,7 @@ namespace XboxKeyboardMouse {
         }
 
         public static void OnProcessExit(object sender, EventArgs e) {
-            shuttingDown = true;
-            simPad.ShutDown();
+            ShutDown();
             Application.ExitThread();
         }
 

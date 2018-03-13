@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace XboxKeyboardMouse.Forms.OptionsFrms {
@@ -47,12 +40,12 @@ namespace XboxKeyboardMouse.Forms.OptionsFrms {
                 frm.ShowDialog();
             }
 
-            if (storage.Cancel) goto CheckReturn;
+            if (!storage.Cancel)
+            {
+                Controls_KB_MReset_KEY = storage.inputKey;
+                Controls_KB_MReset_MOD = storage.inputMod;
+            }
 
-            Controls_KB_MReset_KEY = storage.inputKey;
-            Controls_KB_MReset_MOD = storage.inputMod;
-
-        CheckReturn:
             resetButtonText();
         }
 
