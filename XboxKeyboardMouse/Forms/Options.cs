@@ -701,7 +701,7 @@ namespace XboxKeyboardMouse.Forms
             var k1 = (Key)cfg.Controls_KB_Detach_MOD;
             var k2 = (Key)cfg.Controls_KB_Detach_KEY;
 
-            if (k2 == Key.None & k1 != Key.None) {
+            if (k2 == Key.None && k1 != Key.None) {
                 k2 = k1;
                 k1 = Key.None;
             }

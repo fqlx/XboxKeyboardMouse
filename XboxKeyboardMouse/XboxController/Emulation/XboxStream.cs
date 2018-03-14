@@ -38,8 +38,6 @@ namespace XboxKeyboardMouse
             {
                 while (true)
                 {
-                    Thread.Sleep(500);
-
                     IntPtr handle = GetForegroundWindow();
 
                     if (GetWindowText(handle, text, count) > 0)
@@ -68,6 +66,8 @@ namespace XboxKeyboardMouse
                             Program.MainForm.StatusRunning();
                         }
                     }
+
+                    Thread.Sleep(500);
                 }
             }
             catch (ThreadAbortException)
