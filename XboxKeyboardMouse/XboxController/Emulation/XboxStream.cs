@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using XboxKeyboardMouse;
 
-namespace XboxKeyboardMouse {
+namespace XboxKeyboardMouse
+{
     class XboxStream {
         [DllImport("user32.dll")]
         private static extern IntPtr GetForegroundWindow();
@@ -31,45 +28,51 @@ namespace XboxKeyboardMouse {
 
         public static Thread tMouseMovement;
 
-        public static void ToggleCursor() {
+        public static void XboxAppDetector() {
             const String XBOXAPP = "Xbox";
             bool started = false;
 
             const int count = 512;
             StringBuilder text = new StringBuilder(count);
-            while (true) {
-                try { Thread.Sleep(1000); } 
+            try
+            {
+                while (true)
+                {
+                    IntPtr handle = GetForegroundWindow();
 
-                // Ensures that the current thread does not
-                // just crash and cause issues
-                catch (ThreadAbortException) { break; }
-                
+                    if (GetWindowText(handle, text, count) > 0)
+                    {
+                        if (text.ToString().Equals(XBOXAPP) == false)
+                        {
+                            ShowAndFreeCursor();
+                            started = false;
+                            Program.MainForm.StatusWaiting();
 
-                IntPtr handle = GetForegroundWindow();
+                            continue;
+                        }
 
-                if (GetWindowText(handle, text, count) > 0) {
-                    if (text.ToString().Equals(XBOXAPP) == false) {
-                        ShowAndFreeCursor();
-                        started = false;
-                        Program.MainForm.StatusWaiting();
+                        /*if (IsFullscreen(handle) == false) {
+                            ShowAndFreeCursor();
+                            started = false;
+                            Program.mainform.StatusWaiting();
 
-                        continue;
+                            continue;
+                        }*/
+
+                        if (started == false)
+                        {
+                            LockAndHideCursor();
+                            started = true;
+                            Program.MainForm.StatusRunning();
+                        }
                     }
 
-                    /*if (IsFullscreen(handle) == false) {
-                        ShowAndFreeCursor();
-                        started = false;
-                        Program.mainform.StatusWaiting();
-
-                        continue;
-                    }*/
-
-                    if (started == false) {
-                        LockAndHideCursor();
-                        started = true;
-                        Program.MainForm.StatusRunning();
-                    }
+                    Thread.Sleep(500);
                 }
+            }
+            catch (ThreadAbortException)
+            {
+                // Ensures that the current thread does not just crash and cause issues
             }
         }
 

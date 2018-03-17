@@ -1,4 +1,5 @@
 ﻿using MaterialSkin;
+using SimWinInput;
 using System;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -66,45 +67,42 @@ namespace XboxKeyboardMouse {
         public static void ReloadControlScheme() {
             TranslateKeyboard.ClearAllDicts();
 
-            lock (TranslateKeyboard.buttons)        {
-            lock (TranslateKeyboard.mapLeftStickY)  {
-            lock (TranslateKeyboard.mapLeftStickX)  { 
-            lock (TranslateKeyboard.mapRightStickX) {
-            lock (TranslateKeyboard.mapRightStickY) { 
+            lock (TranslateKeyboard.buttons)
+            {
                 if (ActiveConfig.Controls_KB_Xbox_A != 0)
-                    TranslateKeyboard.buttons.Add((Key)ActiveConfig.Controls_KB_Xbox_A, ScpDriverInterface.X360Buttons.A);
+                    TranslateKeyboard.buttons.Add((Key)ActiveConfig.Controls_KB_Xbox_A, GamePadControl.A);
                 if (ActiveConfig.Controls_KB_Xbox_B != 0)
-                    TranslateKeyboard.buttons.Add((Key)ActiveConfig.Controls_KB_Xbox_B, ScpDriverInterface.X360Buttons.B);
+                    TranslateKeyboard.buttons.Add((Key)ActiveConfig.Controls_KB_Xbox_B, GamePadControl.B);
                 if (ActiveConfig.Controls_KB_Xbox_X != 0)
-                    TranslateKeyboard.buttons.Add((Key)ActiveConfig.Controls_KB_Xbox_X, ScpDriverInterface.X360Buttons.X);
+                    TranslateKeyboard.buttons.Add((Key)ActiveConfig.Controls_KB_Xbox_X, GamePadControl.X);
                 if (ActiveConfig.Controls_KB_Xbox_Y != 0)
-                    TranslateKeyboard.buttons.Add((Key)ActiveConfig.Controls_KB_Xbox_Y, ScpDriverInterface.X360Buttons.Y);
+                    TranslateKeyboard.buttons.Add((Key)ActiveConfig.Controls_KB_Xbox_Y, GamePadControl.Y);
 
                 if (ActiveConfig.Controls_KB_Xbox_DPAD_Up != 0)
-                    TranslateKeyboard.buttons.Add((Key)ActiveConfig.Controls_KB_Xbox_DPAD_Up, ScpDriverInterface.X360Buttons.Up);
+                    TranslateKeyboard.buttons.Add((Key)ActiveConfig.Controls_KB_Xbox_DPAD_Up, GamePadControl.DPadUp);
                 if (ActiveConfig.Controls_KB_Xbox_DPAD_Down != 0)
-                    TranslateKeyboard.buttons.Add((Key)ActiveConfig.Controls_KB_Xbox_DPAD_Down, ScpDriverInterface.X360Buttons.Down);
+                    TranslateKeyboard.buttons.Add((Key)ActiveConfig.Controls_KB_Xbox_DPAD_Down, GamePadControl.DPadDown);
                 if (ActiveConfig.Controls_KB_Xbox_DPAD_Left != 0)
-                    TranslateKeyboard.buttons.Add((Key)ActiveConfig.Controls_KB_Xbox_DPAD_Left, ScpDriverInterface.X360Buttons.Left);
+                    TranslateKeyboard.buttons.Add((Key)ActiveConfig.Controls_KB_Xbox_DPAD_Left, GamePadControl.DPadLeft);
                 if (ActiveConfig.Controls_KB_Xbox_DPAD_Right != 0)
-                    TranslateKeyboard.buttons.Add((Key)ActiveConfig.Controls_KB_Xbox_DPAD_Right, ScpDriverInterface.X360Buttons.Right);
+                    TranslateKeyboard.buttons.Add((Key)ActiveConfig.Controls_KB_Xbox_DPAD_Right, GamePadControl.DPadRight);
 
                 if (ActiveConfig.Controls_KB_Xbox_Guide != 0)
-                    TranslateKeyboard.buttons.Add((Key)ActiveConfig.Controls_KB_Xbox_Guide, ScpDriverInterface.X360Buttons.Guide);
+                    TranslateKeyboard.buttons.Add((Key)ActiveConfig.Controls_KB_Xbox_Guide, GamePadControl.Guide);
                 if (ActiveConfig.Controls_KB_Xbox_Start != 0)
-                    TranslateKeyboard.buttons.Add((Key)ActiveConfig.Controls_KB_Xbox_Start, ScpDriverInterface.X360Buttons.Start);
+                    TranslateKeyboard.buttons.Add((Key)ActiveConfig.Controls_KB_Xbox_Start, GamePadControl.Start);
                 if (ActiveConfig.Controls_KB_Xbox_Back != 0)
-                    TranslateKeyboard.buttons.Add((Key)ActiveConfig.Controls_KB_Xbox_Back, ScpDriverInterface.X360Buttons.Back);
+                    TranslateKeyboard.buttons.Add((Key)ActiveConfig.Controls_KB_Xbox_Back, GamePadControl.Back);
 
                 if (ActiveConfig.Controls_KB_Xbox_LeftBumper != 0)
-                    TranslateKeyboard.buttons.Add((Key)ActiveConfig.Controls_KB_Xbox_LeftBumper, ScpDriverInterface.X360Buttons.LeftBumper);
+                    TranslateKeyboard.buttons.Add((Key)ActiveConfig.Controls_KB_Xbox_LeftBumper, GamePadControl.LeftShoulder);
                 if (ActiveConfig.Controls_KB_Xbox_RightBumper != 0)
-                    TranslateKeyboard.buttons.Add((Key)ActiveConfig.Controls_KB_Xbox_RightBumper, ScpDriverInterface.X360Buttons.RightBumper);
+                    TranslateKeyboard.buttons.Add((Key)ActiveConfig.Controls_KB_Xbox_RightBumper, GamePadControl.RightShoulder);
 
                 if (ActiveConfig.Controls_KB_Xbox_Sticks_Left != 0)
-                    TranslateKeyboard.buttons.Add((Key)ActiveConfig.Controls_KB_Xbox_Sticks_Left, ScpDriverInterface.X360Buttons.LeftStick);
+                    TranslateKeyboard.buttons.Add((Key)ActiveConfig.Controls_KB_Xbox_Sticks_Left, GamePadControl.LeftStickClick);
                 if (ActiveConfig.Controls_KB_Xbox_Sticks_Right != 0)
-                    TranslateKeyboard.buttons.Add((Key)ActiveConfig.Controls_KB_Xbox_Sticks_Right, ScpDriverInterface.X360Buttons.RightStick);
+                    TranslateKeyboard.buttons.Add((Key)ActiveConfig.Controls_KB_Xbox_Sticks_Right, GamePadControl.RightStickClick);
 
                 if (ActiveConfig.Controls_KB_Xbox_Trigger_Left != 0)
                     TranslateKeyboard.triggers.Add((Key)ActiveConfig.Controls_KB_Xbox_Trigger_Left, TranslateKeyboard.TriggerType.LeftTrigger);
@@ -129,7 +127,7 @@ namespace XboxKeyboardMouse {
                     TranslateKeyboard.mapRightStickX.Add((Key)ActiveConfig.Controls_KB_Sticks_AXIS_R_Left, short.MinValue);
                 if (ActiveConfig.Controls_KB_Sticks_AXIS_R_Right != 0)
                     TranslateKeyboard.mapRightStickX.Add((Key)ActiveConfig.Controls_KB_Sticks_AXIS_R_Right, short.MaxValue);
-            } } } } }
+            }
         }
 
         public static void ReadConfiguration(string defaultProfile = "default.ini") {
@@ -175,6 +173,8 @@ namespace XboxKeyboardMouse {
 
             while (MainForm == null)
                 Thread.Sleep(100);
+
+            MainForm.FormClosing += (sender, e) => { Activate.ShutDown(); };
 
             Thread tPause = new Thread(Pause);
             tPause.SetApartmentState(ApartmentState.STA);

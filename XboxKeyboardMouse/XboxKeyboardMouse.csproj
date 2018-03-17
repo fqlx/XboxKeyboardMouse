@@ -93,6 +93,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationCore" />
+    <Reference Include="SimWinGamePad, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimWinGamePad.1.0.4\lib\net40\SimWinGamePad.dll</HintPath>
+    </Reference>
     <Reference Include="SlimDX, Version=4.0.13.43, Culture=neutral, PublicKeyToken=b1b0c32fd1ffe4f9, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\Program Files (x86)\SlimDX\SDK (January 2012)\Bin\net40\x64\SlimDX.dll</HintPath>
@@ -206,10 +209,8 @@
     <Compile Include="XboxController\Emulation\Activate.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="XboxController\SCP\ScpBus.cs" />
     <Compile Include="XboxController\Emulation\TranslateKeyboard.cs" />
     <Compile Include="XboxController\Emulation\TranslateMouse.cs" />
-    <Compile Include="XboxController\SCP\X360Controller.cs" />
     <Compile Include="XboxController\Emulation\XboxStream.cs" />
     <EmbeddedResource Include="Forms\ControllerPreview.resx">
       <DependentUpon>ControllerPreview.cs</DependentUpon>
@@ -246,6 +247,7 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -318,6 +320,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\exit-to-app.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ScpDriverInstaller.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

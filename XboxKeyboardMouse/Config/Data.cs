@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Input;
 
-namespace XboxKeyboardMouse.Config {
+namespace XboxKeyboardMouse.Config
+{
     public class Data {
 
         // --> Config Settings
@@ -48,7 +46,7 @@ namespace XboxKeyboardMouse.Config {
             public int Controls_KB_Xbox_RightBumper     = (int)Key.E;
 
             // Xbox Access Buttons
-            public int Controls_KB_Xbox_Guide           = (int)Key.Escape;
+            public int Controls_KB_Xbox_Guide           = (int)Key.OemTilde;
             public int Controls_KB_Xbox_Start           = (int)Key.B;
             public int Controls_KB_Xbox_Back            = (int)Key.V;
 

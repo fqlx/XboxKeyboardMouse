@@ -1,15 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using XboxKeyboardMouse.Config;
 
-namespace XboxKeyboardMouse.Forms.MouseSettings {
+namespace XboxKeyboardMouse.Forms.MouseSettings
+{
     public partial class GenericControls : MouseEngineSettings {
         private Data config;
         

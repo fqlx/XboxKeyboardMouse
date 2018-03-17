@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace XboxKeyboardMouse.Hooks {
+namespace XboxKeyboardMouse.Hooks
+{
     class LowLevelKeyboardHook {
         public const int WH_KEYBOARD_LL = 13;
         public const int WM_KEYDOWN = 0x0100;

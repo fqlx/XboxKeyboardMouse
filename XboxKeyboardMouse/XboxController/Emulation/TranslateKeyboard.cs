@@ -1,4 +1,4 @@
-﻿using ScpDriverInterface;
+﻿using SimWinInput;
 using System;
 using System.Collections.Generic;
 using System.Windows.Input;
@@ -30,7 +30,7 @@ namespace XboxKeyboardMouse {
             else mapRightStickY.Clear();
 
             if (buttons == null)
-                 buttons = new Dictionary<Key, X360Buttons>();
+                 buttons = new Dictionary<Key, GamePadControl>();
             else buttons.Clear();
 
             if (triggers == null)
@@ -43,10 +43,10 @@ namespace XboxKeyboardMouse {
         public static Dictionary<Key, short> mapRightStickX;
         public static Dictionary<Key, short> mapRightStickY;
         
-        public static Dictionary<Key, X360Buttons> buttons = new Dictionary<Key, X360Buttons>();
+        public static Dictionary<Key, GamePadControl> buttons = new Dictionary<Key, GamePadControl>();
         public static Dictionary<Key, TriggerType> triggers = new Dictionary<Key, TriggerType>();
 
-        private static void KeyInput(X360Controller controller) {
+        private static void KeyInput(SimulatedGamePadState controller) {
             List<bool> btnStatus = new List<bool>();
 
             //bool tLeft  = false;
@@ -128,7 +128,7 @@ namespace XboxKeyboardMouse {
                 // -------------------------------------------------------------------------------
                 //                                MISC BUTTONS
                 // -------------------------------------------------------------------------------
-                foreach (KeyValuePair<Key, X360Buttons> entry in buttons) {
+                foreach (KeyValuePair<Key, GamePadControl> entry in buttons) {
                     if (entry.Key == Key.None) continue;
 
                     bool v;
@@ -137,8 +137,8 @@ namespace XboxKeyboardMouse {
                     else v = Keyboard.IsKeyDown(entry.Key);
 
                     if (v)
-                         controller.Buttons = controller.Buttons | entry.Value;
-                    else controller.Buttons = controller.Buttons & ~entry.Value;
+                         controller.Buttons |= entry.Value;
+                    else controller.Buttons &= ~entry.Value;
                 }
 
 
@@ -173,7 +173,7 @@ namespace XboxKeyboardMouse {
             } catch (Exception) { /* This occures when changing presets */ }
         }
 
-        private static void Debug_TimeTracer(X360Controller Controller) {
+        private static void Debug_TimeTracer(SimulatedGamePadState Controller) {
             // Get the start time
             var watch = System.Diagnostics.Stopwatch.StartNew();
 
@@ -190,7 +190,7 @@ namespace XboxKeyboardMouse {
             }
         }
 
-        public static void KeyboardInput(X360Controller controller) =>
+        public static void KeyboardInput(SimulatedGamePadState controller) =>
             #if (DEBUG)
                     // Only enable if you have timing issues AKA Latency on 
                     // the keyboard inputs
