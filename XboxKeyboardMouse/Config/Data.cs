@@ -30,7 +30,7 @@ namespace XboxKeyboardMouse.Config
             // <-- GENERIC
 
             public int Mouse_TickRate           = 16;
-            public int Mouse_Eng_Type           = 3;
+            public int Mouse_Eng_Type           = 5;
         // <-- Mouse
 
         // --> Xbox Controls Keyboard
