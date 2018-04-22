@@ -14,7 +14,7 @@ Note: This app only starts when the Xbox streaming app is in the foreground.
 1. [Download the repository as a zip](https://github.com/fqlx/XboxKeyboardMouse/archive/master.zip)
 2. Extract the download folder to anywhere on your PC
 3. Rename the download folder to something of your choice
-4. Run `XboxKeyboardMouse 24 02 2017 - x86.exe` or `XboxKeyboardMouse 24 02 2017 - x86_64.exe`
+4. Run `XboxKeyboardMouse`
 
 # Current Layout
 You may customize your own controller layout through the gui but the default layout is 
