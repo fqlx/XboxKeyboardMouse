@@ -1,6 +1,7 @@
 ﻿using SimWinInput;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Input;
 using XboxKeyboardMouse.Libs;
 
@@ -8,7 +9,6 @@ namespace XboxKeyboardMouse {
     class TranslateKeyboard {
         public static bool TRIGGER_LEFT_PRESSED = false;
         public static bool TRIGGER_RIGHT_PRESSED = false;
-
 
         public enum TriggerType { LeftTrigger, RightTrigger }
 
@@ -46,114 +46,50 @@ namespace XboxKeyboardMouse {
         public static Dictionary<Key, GamePadControl> buttons = new Dictionary<Key, GamePadControl>();
         public static Dictionary<Key, TriggerType> triggers = new Dictionary<Key, TriggerType>();
 
+        public static Dictionary<RunTimeOptionType, RunTimeOption> mapRunTimeOptions = new Dictionary<RunTimeOptionType, RunTimeOption>();
+
         private static void KeyInput(SimulatedGamePadState controller) {
             List<bool> btnStatus = new List<bool>();
-
-            //bool tLeft  = false;
-            //bool tRight = false;
-
+            
             try {
                 btnStatus.Clear();
 
                 bool mouseDisabled = Program.ActiveConfig.Mouse_Eng_Type == 4;
-                
 
                 // -------------------------------------------------------------------------------
-                //                           LEFT STICK, AXIS - X
+                //                                STICKS
                 // -------------------------------------------------------------------------------
-                btnStatus.Clear();
-                foreach (KeyValuePair<Key, short> entry in mapLeftStickX) {
-                    if (entry.Key == Key.None) continue;
-
-                    bool v;
-                    if (entry.Key == Key.Escape)
-                        v = Hooks.LowLevelKeyboardHook.EscapePressed;
-                    else v = Keyboard.IsKeyDown(entry.Key);
-
-                    if (v) controller.LeftStickX = entry.Value;
-                    btnStatus.Add(v);
-                } if (!btnStatus.Contains(true) && (mouseDisabled || Program.ActiveConfig.Mouse_Is_RightStick))
-                    controller.LeftStickX = 0;
-
-
-                // -------------------------------------------------------------------------------
-                //                           LEFT STICK, AXIS - Y
-                // -------------------------------------------------------------------------------
-                btnStatus.Clear();
-                foreach (KeyValuePair<Key, short> entry in mapLeftStickY) {
-                    bool v;
-                    if (entry.Key == Key.Escape)
-                        v = Hooks.LowLevelKeyboardHook.EscapePressed;
-                    else v = Keyboard.IsKeyDown(entry.Key);
-
-                    if (v) controller.LeftStickY = entry.Value;
-
-                    btnStatus.Add(v);
-                } if (!btnStatus.Contains(true) && (mouseDisabled || Program.ActiveConfig.Mouse_Is_RightStick))
-                    controller.LeftStickY = 0;
-
-
-                // -------------------------------------------------------------------------------
-                //                           RIGHT STICK, AXIS - X
-                // -------------------------------------------------------------------------------
-                foreach (KeyValuePair<Key, short> entry in mapRightStickX) {
-                    bool v;
-                    if (entry.Key == Key.Escape)
-                        v = Hooks.LowLevelKeyboardHook.EscapePressed;
-                    else v = Keyboard.IsKeyDown(entry.Key);
-
-                    if (v) controller.RightStickX = entry.Value;
-
-                    btnStatus.Add(v);
-                } if (!btnStatus.Contains(true) && (mouseDisabled || !Program.ActiveConfig.Mouse_Is_RightStick))
-                    controller.RightStickX = 0;
-
-
-                // -------------------------------------------------------------------------------
-                //                           RIGHT STICK, AXIS - Y
-                // -------------------------------------------------------------------------------
-                foreach (KeyValuePair<Key, short> entry in mapRightStickY) {
-                    bool v;
-                    if (entry.Key == Key.Escape)
-                        v = Hooks.LowLevelKeyboardHook.EscapePressed;
-                    else v = Keyboard.IsKeyDown(entry.Key);
-
-                    if (v) controller.RightStickY = entry.Value;
-
-                    btnStatus.Add(v);
-                } if (!btnStatus.Contains(true) && (mouseDisabled || !Program.ActiveConfig.Mouse_Is_RightStick))
-                    controller.RightStickY = 0;
-                
-                
-                // -------------------------------------------------------------------------------
-                //                                MISC BUTTONS
-                // -------------------------------------------------------------------------------
-                foreach (KeyValuePair<Key, GamePadControl> entry in buttons) {
-                    if (entry.Key == Key.None) continue;
-
-                    bool v;
-                    if (entry.Key == Key.Escape)
-                         v = Hooks.LowLevelKeyboardHook.EscapePressed;
-                    else v = Keyboard.IsKeyDown(entry.Key);
-
-                    if (v)
-                         controller.Buttons |= entry.Value;
-                    else controller.Buttons &= ~entry.Value;
+                if (mouseDisabled || Program.ActiveConfig.Mouse_Is_RightStick)
+                {
+                    controller.LeftStickX = StickValueFromKeyboardState(mapLeftStickX);
+                    controller.LeftStickY = StickValueFromKeyboardState(mapLeftStickY);
+                }
+                if (mouseDisabled || !Program.ActiveConfig.Mouse_Is_RightStick)
+                {
+                    controller.RightStickX = StickValueFromKeyboardState(mapRightStickX);
+                    controller.RightStickY = StickValueFromKeyboardState(mapRightStickY);
                 }
 
-
+                // -------------------------------------------------------------------------------
+                //                                BUTTONS
+                // -------------------------------------------------------------------------------
+                foreach (var control in GamePadControls.BinaryControls)
+                {
+                    // Explicitly set the state of every binary button we care about: If it's in our map
+                    // and the key is currently pressed, set the button to pressed, else set it to unpressed.
+                    if (AnyKeyIsPressedForControl(buttons, control))
+                        controller.Buttons |= control;
+                    else
+                        controller.Buttons &= ~control;
+                }
+                
                 // -------------------------------------------------------------------------------
                 //                                TRIGGERS
                 // -------------------------------------------------------------------------------
-
                 foreach (KeyValuePair<Key, TriggerType> entry in triggers) {
                     if (entry.Key == Key.None) continue;
 
-                    bool v;
-                    if (entry.Key == Key.Escape)
-                         v  = Hooks.LowLevelKeyboardHook.EscapePressed;
-                    else v  = Keyboard.IsKeyDown(entry.Key);
-
+                    bool v = Keyboard.IsKeyDown(entry.Key);
                     bool ir = entry.Value == TriggerType.RightTrigger;
 
                     if (v) {
@@ -168,9 +104,41 @@ namespace XboxKeyboardMouse {
                     }
                 }
 
-                //if (!tLeft)       controller.LeftTrigger = 0;
-                //else if (!tRight) controller.RightTrigger = 0;
-            } catch (Exception) { /* This occures when changing presets */ }
+                // -------------------------------------------------------------------------------
+                //                                CALIBRATION / RUNTIME OPTIONS
+                // -------------------------------------------------------------------------------
+                // Calibration / runtime options will detect the first key-down state for their associated button, but 
+                // will ignore further iterations where the button is still being held. This can be used to advance
+                // through calibration states, or have ways to swap configurations on the fly, etc.
+                foreach (var option in mapRunTimeOptions.Values)
+                {
+                    if (option.Key != Key.None && Keyboard.IsKeyDown(option.Key))
+                    {
+                        if (!option.Ran)
+                        {
+                            option.Run();
+                            option.Ran = true;
+                        }
+                    }
+                    else
+                    {
+                        option.Ran = false;
+                    }
+                }
+            }
+            catch (Exception) { /* This occures when changing presets */ }
+        }
+
+        private static short StickValueFromKeyboardState(Dictionary<Key, short> map)
+        {
+            return (from entry in map
+                    where entry.Key != Key.None && Keyboard.IsKeyDown(entry.Key)
+                    select entry.Value).FirstOrDefault();
+        }
+
+        private static bool AnyKeyIsPressedForControl(Dictionary<Key, GamePadControl> map, GamePadControl control)
+        {
+            return map.Any(entry => entry.Value == control && Keyboard.IsKeyDown(entry.Key));
         }
 
         private static void Debug_TimeTracer(SimulatedGamePadState Controller) {

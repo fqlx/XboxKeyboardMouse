@@ -65,8 +65,8 @@
             this.xbo_k_TRight = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.xbo_k_TLeft = new System.Windows.Forms.Label();
-            this.xbo_k_RightSholder = new System.Windows.Forms.Label();
-            this.xbo_k_LeftSholder = new System.Windows.Forms.Label();
+            this.xbo_k_RightShoulder = new System.Windows.Forms.Label();
+            this.xbo_k_LeftShoulder = new System.Windows.Forms.Label();
             this.xbo_k_B = new System.Windows.Forms.Label();
             this.xbo_k_Y = new System.Windows.Forms.Label();
             this.xbo_k_X = new System.Windows.Forms.Label();
@@ -644,8 +644,8 @@
             this.editor_InputKeyboard.Controls.Add(this.xbo_k_joy_r_right);
             this.editor_InputKeyboard.Controls.Add(this.panel2);
             this.editor_InputKeyboard.Controls.Add(this.panel1);
-            this.editor_InputKeyboard.Controls.Add(this.xbo_k_RightSholder);
-            this.editor_InputKeyboard.Controls.Add(this.xbo_k_LeftSholder);
+            this.editor_InputKeyboard.Controls.Add(this.xbo_k_RightShoulder);
+            this.editor_InputKeyboard.Controls.Add(this.xbo_k_LeftShoulder);
             this.editor_InputKeyboard.Controls.Add(this.xbo_k_B);
             this.editor_InputKeyboard.Controls.Add(this.xbo_k_Y);
             this.editor_InputKeyboard.Controls.Add(this.xbo_k_X);
@@ -795,32 +795,32 @@
             this.xbo_k_TLeft.Tag = "TL";
             this.xbo_k_TLeft.Text = "BTN";
             // 
-            // xbo_k_RightSholder
+            // xbo_k_RightShoulder
             // 
-            this.xbo_k_RightSholder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.xbo_k_RightSholder.BackColor = System.Drawing.Color.Transparent;
-            this.xbo_k_RightSholder.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xbo_k_RightSholder.ForeColor = System.Drawing.Color.White;
-            this.xbo_k_RightSholder.Location = new System.Drawing.Point(340, 30);
-            this.xbo_k_RightSholder.Name = "xbo_k_RightSholder";
-            this.xbo_k_RightSholder.Size = new System.Drawing.Size(68, 23);
-            this.xbo_k_RightSholder.TabIndex = 19;
-            this.xbo_k_RightSholder.Tag = "SR";
-            this.xbo_k_RightSholder.Text = "BTN";
-            this.xbo_k_RightSholder.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.xbo_k_RightShoulder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.xbo_k_RightShoulder.BackColor = System.Drawing.Color.Transparent;
+            this.xbo_k_RightShoulder.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xbo_k_RightShoulder.ForeColor = System.Drawing.Color.White;
+            this.xbo_k_RightShoulder.Location = new System.Drawing.Point(340, 30);
+            this.xbo_k_RightShoulder.Name = "xbo_k_RightShoulder";
+            this.xbo_k_RightShoulder.Size = new System.Drawing.Size(68, 23);
+            this.xbo_k_RightShoulder.TabIndex = 19;
+            this.xbo_k_RightShoulder.Tag = "SR";
+            this.xbo_k_RightShoulder.Text = "BTN";
+            this.xbo_k_RightShoulder.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // xbo_k_LeftSholder
+            // xbo_k_LeftShoulder
             // 
-            this.xbo_k_LeftSholder.BackColor = System.Drawing.Color.Transparent;
-            this.xbo_k_LeftSholder.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xbo_k_LeftSholder.ForeColor = System.Drawing.Color.White;
-            this.xbo_k_LeftSholder.Location = new System.Drawing.Point(111, 29);
-            this.xbo_k_LeftSholder.Name = "xbo_k_LeftSholder";
-            this.xbo_k_LeftSholder.Size = new System.Drawing.Size(68, 23);
-            this.xbo_k_LeftSholder.TabIndex = 18;
-            this.xbo_k_LeftSholder.Tag = "SL";
-            this.xbo_k_LeftSholder.Text = "BTN";
-            this.xbo_k_LeftSholder.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.xbo_k_LeftShoulder.BackColor = System.Drawing.Color.Transparent;
+            this.xbo_k_LeftShoulder.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xbo_k_LeftShoulder.ForeColor = System.Drawing.Color.White;
+            this.xbo_k_LeftShoulder.Location = new System.Drawing.Point(111, 29);
+            this.xbo_k_LeftShoulder.Name = "xbo_k_LeftShoulder";
+            this.xbo_k_LeftShoulder.Size = new System.Drawing.Size(68, 23);
+            this.xbo_k_LeftShoulder.TabIndex = 18;
+            this.xbo_k_LeftShoulder.Tag = "SL";
+            this.xbo_k_LeftShoulder.Text = "BTN";
+            this.xbo_k_LeftShoulder.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // xbo_k_B
             // 
@@ -1324,8 +1324,8 @@
         private System.Windows.Forms.Label xbo_k_TRight;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label xbo_k_TLeft;
-        private System.Windows.Forms.Label xbo_k_RightSholder;
-        private System.Windows.Forms.Label xbo_k_LeftSholder;
+        private System.Windows.Forms.Label xbo_k_RightShoulder;
+        private System.Windows.Forms.Label xbo_k_LeftShoulder;
         private System.Windows.Forms.Label xbo_k_B;
         private System.Windows.Forms.Label xbo_k_Y;
         private System.Windows.Forms.Label xbo_k_X;

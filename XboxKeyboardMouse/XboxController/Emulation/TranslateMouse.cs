@@ -29,7 +29,6 @@ namespace XboxKeyboardMouse {
 
         public static void MouseMovementInput() {
             centered = new Point(Screen.PrimaryScreen.Bounds.Width / 2, Screen.PrimaryScreen.Bounds.Height / 2);
-            Cursor.Position = centered;
 
             const int Mode_Percentage   = 0;
             const int Mode_Relative     = 1;
@@ -56,12 +55,38 @@ namespace XboxKeyboardMouse {
             }
         }
 
-        private static int calibration = 100;
+        private static DeadZoneCalibrator deadZoneCalibrator = null;
+
         private static Stopwatch stopwatch = Stopwatch.StartNew();
 
         private static T Clamp<T>(T value, T min, T max) where T : IComparable<T>
         {
             return value.CompareTo(min) < 0 ? min : value.CompareTo(max) > 0 ? max : value;
+        }
+
+        public static void RunCalibrateDeadZone()
+        {
+            HandleCalibrator(0, 50);
+        }
+
+        public static void RunFineTuneDeadZone()
+        {
+            // Fine tuning will go back a bit from where the last calibration ended, since human response
+            // times are limited, and iterate slower this time so the user end with a more accurate value.
+            HandleCalibrator((short)(Program.ActiveConfig.DeadZoneSize * 0.85), 10);
+        }
+
+        private static void HandleCalibrator(short startSize, short incrementSize)
+        {
+            if (deadZoneCalibrator != null)
+            {
+                Program.ActiveConfig.DeadZoneSize = deadZoneCalibrator.CurrentDeadZone;
+                deadZoneCalibrator = null;
+            }
+            else
+            {
+                deadZoneCalibrator = new DeadZoneCalibrator(startSize, incrementSize);
+            }
         }
 
         private static void MouseMovement_DeadZoning()
@@ -85,7 +110,8 @@ namespace XboxKeyboardMouse {
             // for each dead zone type.
 
             // Grab and reset mouse position and time passed, for calculating mouse velocity for this polling.
-            var mouse = Control.MousePosition;
+            var mouseX = Cursor.Position.X;
+            var mouseY = Cursor.Position.Y;
             Cursor.Position = centered;
             var timeSinceLastPoll = stopwatch.Elapsed.TotalMilliseconds;
             stopwatch.Restart();
@@ -96,28 +122,22 @@ namespace XboxKeyboardMouse {
             // 11 pixels of movement on one pass, then gave us a 16ms cycle with 8 pixels of movement on another,
             // we'd want the same final stick position for both since the user did not vary their mouse velocity.
             // Also invert these values now if the user has configured input inversion.
-            var changeX = Program.ActiveConfig.Mouse_Invert_X ? centered.X - mouse.X : mouse.X - centered.X;
-            var changeY = Program.ActiveConfig.Mouse_Invert_Y ? centered.Y - mouse.Y : mouse.Y - centered.Y;
+            var changeX = Program.ActiveConfig.Mouse_Invert_X ? centered.X - mouseX : mouseX - centered.X;
+            var changeY = Program.ActiveConfig.Mouse_Invert_Y ? centered.Y - mouseY : mouseY - centered.Y;
             double velocityX = changeX / timeSinceLastPoll;
             double velocityY = changeY / timeSinceLastPoll;
 
-            var squareDeadZoneSize = 0; //5950; // TODO: BASE ON CURRENT CONFIG SETTINGS!
-            // 5500 for Halo 1
-            // 5950 for GoW 4 (when in-game "Inner Dead Zone setting" is at default of "10")
-            // 0    for GoW 4 (when in-game "Inner Dead Zone setting" is at "0" instead; best for mouse here)
-            // 9650 for Minecraft (both new and XboxOne ed.)
-            if (false) // TODO: CALIBRATION MODE, PRETENDS MINIMUM MOUSE MOVEMENT, CONTINUOUSLY
-            {
-                squareDeadZoneSize = calibration;
-                velocityX = 1;
-                velocityY = 1;
-                calibration += 10;
-            }
-
-            // From here we need to perform dead-zone-adjusted scaling.
-            // (TODO: BASE DEAD ZONE SHAPE AND SIZE ON CURRENT CONFIG SETTINGS!)
             short joyX, joyY;
-            if (true)
+
+            var deadZoneSize = Program.ActiveConfig.DeadZoneSize;
+            if (deadZoneCalibrator != null)
+            {
+                // Pretend the mouse is always moving one pixel in each axis, until user intervention.
+                deadZoneSize = deadZoneCalibrator.AdvanceDeadZoneSize();
+                joyX = Convert.ToInt16(deadZoneSize);
+                joyY = Convert.ToInt16(deadZoneSize);
+            }
+            else if (true) // TODO: CORRECT CHECK FOR DEAD ZONE MODE IS SQUARE!
             {
                 // For a square dead zone, each axis can be scaled independently.
                 double maxRespectedVelocity = 5d;
@@ -130,13 +150,13 @@ namespace XboxKeyboardMouse {
                 percentMouseY = Clamp(percentMouseY, -1d, 1d);
 
                 // Start each axis adjusted to the appropriate dead zone edge (left/right or top/bottom).
-                var deadAdjustX = velocityX == 0 ? 0 : squareDeadZoneSize * (velocityX > 0 ? 1 : -1);
-                var deadAdjustY = velocityY == 0 ? 0 : squareDeadZoneSize * (velocityY > 0 ? 1 : -1);
+                var deadAdjustX = velocityX == 0 ? 0 : deadZoneSize * (velocityX > 0 ? 1 : -1);
+                var deadAdjustY = velocityY == 0 ? 0 : deadZoneSize * (velocityY > 0 ? 1 : -1);
 
                 // The final axis position adds in the percentage of remaining stick magnitude.
                 // (Minimum mouse movement should become just-past-deadzone; maximum respected mouse movement
                 // should become short.MaxValue in the end.)
-                var remainingStickMagnitude = short.MaxValue - squareDeadZoneSize;
+                var remainingStickMagnitude = short.MaxValue - deadZoneSize;
                 joyX = Convert.ToInt16(remainingStickMagnitude * percentMouseX + deadAdjustX);
                 joyY = Convert.ToInt16(remainingStickMagnitude * percentMouseY + deadAdjustY);
             }
@@ -274,8 +294,7 @@ namespace XboxKeyboardMouse {
 
                 joyY += TJoyY;
             }
-
-
+            
             // Send Axis
             SetAxis(joyX, joyY);
 
@@ -342,7 +361,6 @@ namespace XboxKeyboardMouse {
             // to the sticks
             joyX = (short)x;
             joyY = (short)y;
-
 
             // Send Axis
             SetAxis(joyX, joyY);

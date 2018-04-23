@@ -33,6 +33,10 @@ namespace XboxKeyboardMouse.Config
             public int Mouse_Eng_Type           = 5;
         // <-- Mouse
 
+        public int Controls_Calibrate_DeadZone     = (int)Key.F12;
+        public int Controls_Calibrate_FineDeadZone = (int)Key.F11;
+        public int DeadZoneSize                    = 0;
+        
         // --> Xbox Controls Keyboard
 
         // Main AXBY buttons
@@ -41,7 +45,7 @@ namespace XboxKeyboardMouse.Config
             public int Controls_KB_Xbox_X               = (int)Key.R;
             public int Controls_KB_Xbox_Y               = (int)Key.D1;
 
-            // Sholder Buttons
+            // Shoulder Buttons
             public int Controls_KB_Xbox_LeftBumper      = (int)Key.Q;
             public int Controls_KB_Xbox_RightBumper     = (int)Key.E;
 
@@ -91,7 +95,7 @@ namespace XboxKeyboardMouse.Config
             public int Controls_M_Xbox_X = -1;
             public int Controls_M_Xbox_Y = -1;
 
-            // Sholder Buttons
+            // Shoulder Buttons
             public int Controls_M_Xbox_LeftBumper = -1;
             public int Controls_M_Xbox_RightBumper = -1;
 

@@ -91,11 +91,11 @@ namespace XboxKeyboardMouse.Forms
             xbo_k_X.Text = "";
             xbo_k_Y.Text = "";
 
-            xbo_k_LeftSholder.Text = "";
+            xbo_k_LeftShoulder.Text = "";
             xbo_k_DpadLeft.Text = "";
             xbo_k_LeftStick.Text = "";
 
-            xbo_k_RightSholder.Text = "";
+            xbo_k_RightShoulder.Text = "";
             xbo_k_DpadRight.Text = "";
             xbo_k_RightStick.Text = "";
 
@@ -152,11 +152,11 @@ namespace XboxKeyboardMouse.Forms
             xbo_k_X.Text = ((Key)cfg.Controls_KB_Xbox_X).ToString();
             xbo_k_Y.Text = ((Key)cfg.Controls_KB_Xbox_Y).ToString();
 
-            xbo_k_LeftSholder.Text = ((Key)cfg.Controls_KB_Xbox_LeftBumper).ToString();
+            xbo_k_LeftShoulder.Text = ((Key)cfg.Controls_KB_Xbox_LeftBumper).ToString();
             xbo_k_DpadLeft.Text = ((Key)cfg.Controls_KB_Xbox_DPAD_Left).ToString();
             xbo_k_LeftStick.Text = ((Key)cfg.Controls_KB_Xbox_Sticks_Left).ToString();
 
-            xbo_k_RightSholder.Text = ((Key)cfg.Controls_KB_Xbox_RightBumper).ToString();
+            xbo_k_RightShoulder.Text = ((Key)cfg.Controls_KB_Xbox_RightBumper).ToString();
             xbo_k_DpadRight.Text = ((Key)cfg.Controls_KB_Xbox_DPAD_Right).ToString();
             xbo_k_RightStick.Text = ((Key)cfg.Controls_KB_Xbox_Sticks_Right).ToString();
 
@@ -392,10 +392,9 @@ namespace XboxKeyboardMouse.Forms
             // Ensure that there is a detach key
             var k1 = (Key)cfg.Controls_KB_Detach_MOD;
             var k2 = (Key)cfg.Controls_KB_Detach_KEY;
-            var no = Key.None;
 
-            if (k1 == no && k2 == no) {
-                MessageBox.Show("You cant disable the detach key, reset to default (LeftAlt + C)!");
+            if (k1 == Key.None && k2 == Key.None) {
+                MessageBox.Show("You can't disable the detach key. Reset to default (LeftAlt + C)!");
 
                 cfg.Controls_KB_Detach_MOD = (int)Key.LeftAlt;
                 cfg.Controls_KB_Detach_KEY = (int)Key.C;

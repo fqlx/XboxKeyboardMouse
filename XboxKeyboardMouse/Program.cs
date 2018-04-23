@@ -1,6 +1,7 @@
 ﻿using MaterialSkin;
 using SimWinInput;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -69,6 +70,18 @@ namespace XboxKeyboardMouse {
 
             lock (TranslateKeyboard.buttons)
             {
+                TranslateKeyboard.mapRunTimeOptions[RunTimeOptionType.CalibrateDeadZone] = ActiveConfig.Controls_Calibrate_DeadZone == 0 ? null : new RunTimeOption()
+                {
+                    Key = (Key)ActiveConfig.Controls_Calibrate_DeadZone,
+                    Run = TranslateMouse.RunCalibrateDeadZone,
+                };
+
+                TranslateKeyboard.mapRunTimeOptions[RunTimeOptionType.FineTuneDeadZone] = ActiveConfig.Controls_Calibrate_FineDeadZone == 0 ? null : new RunTimeOption()
+                {
+                    Key = (Key)ActiveConfig.Controls_Calibrate_FineDeadZone,
+                    Run = TranslateMouse.RunFineTuneDeadZone,
+                };
+
                 if (ActiveConfig.Controls_KB_Xbox_A != 0)
                     TranslateKeyboard.buttons.Add((Key)ActiveConfig.Controls_KB_Xbox_A, GamePadControl.A);
                 if (ActiveConfig.Controls_KB_Xbox_B != 0)
