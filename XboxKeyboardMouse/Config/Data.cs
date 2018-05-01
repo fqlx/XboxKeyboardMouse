@@ -30,9 +30,13 @@ namespace XboxKeyboardMouse.Config
             // <-- GENERIC
 
             public int Mouse_TickRate           = 16;
-            public int Mouse_Eng_Type           = 3;
+            public int Mouse_Eng_Type           = 5;
         // <-- Mouse
 
+        public int Controls_Calibrate_DeadZone     = (int)Key.F12;
+        public int Controls_Calibrate_FineDeadZone = (int)Key.F11;
+        public int DeadZoneSize                    = 0;
+        
         // --> Xbox Controls Keyboard
 
         // Main AXBY buttons
@@ -41,7 +45,7 @@ namespace XboxKeyboardMouse.Config
             public int Controls_KB_Xbox_X               = (int)Key.R;
             public int Controls_KB_Xbox_Y               = (int)Key.D1;
 
-            // Sholder Buttons
+            // Shoulder Buttons
             public int Controls_KB_Xbox_LeftBumper      = (int)Key.Q;
             public int Controls_KB_Xbox_RightBumper     = (int)Key.E;
 
@@ -91,7 +95,7 @@ namespace XboxKeyboardMouse.Config
             public int Controls_M_Xbox_X = -1;
             public int Controls_M_Xbox_Y = -1;
 
-            // Sholder Buttons
+            // Shoulder Buttons
             public int Controls_M_Xbox_LeftBumper = -1;
             public int Controls_M_Xbox_RightBumper = -1;
 
@@ -140,6 +144,10 @@ namespace XboxKeyboardMouse.Config
                 Read(f, "Application", "Show_Cursor", ref d.Application_ShowCursor);
                 Read(f, "Application", "Lock_Escape", ref d.Application_LockEscape);
             }
+
+            Read(f, "Mouse",             "DeadZone",    ref d.DeadZoneSize);
+            Read(f, "Controls_Keyboard", "CalibrateDZ", ref d.Controls_Calibrate_DeadZone);
+            Read(f, "Controls_Keyboard", "FineTuneDZ",  ref d.Controls_Calibrate_FineDeadZone);
 
             /* Mouse Settings */ {
                 Read(f, "Mouse", "X_Sensitivity",   ref d.Mouse_Sensitivity_X);
@@ -244,6 +252,10 @@ namespace XboxKeyboardMouse.Config
                 Write(f, "Application", "Lock_Escape", d.Application_LockEscape);
             }
 
+            Write(f, "Mouse",             "DeadZone",    d.DeadZoneSize);
+            Write(f, "Controls_Keyboard", "CalibrateDZ", d.Controls_Calibrate_DeadZone);
+            Write(f, "Controls_Keyboard", "FineTuneDZ",  d.Controls_Calibrate_FineDeadZone);
+            
             /* Mouse Settings */ { 
                 Write(f, "Mouse", "X_Sensitivity",  d.Mouse_Sensitivity_X);
                 Write(f, "Mouse", "Y_Sensitivity",  d.Mouse_Sensitivity_Y);
@@ -384,6 +396,5 @@ namespace XboxKeyboardMouse.Config
         private static void Write(IniFile ini, string Section, string Name, string val) {
             ini.AddSetting(Section, Name, val);
         }
-
     }
 }

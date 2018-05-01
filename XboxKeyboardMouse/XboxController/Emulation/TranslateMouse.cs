@@ -18,24 +18,24 @@ namespace XboxKeyboardMouse {
             device = new DirectInput();
             mouse = new Mouse(device);
             mouse.Acquire();
+            stopwatch.Start();
         }
 
         static Point centered = new Point(Screen.PrimaryScreen.Bounds.Width / 2, Screen.PrimaryScreen.Bounds.Height / 2);
         static short iMax = short.MaxValue;
         static short iMin = short.MinValue;
 
-
         public static int MaxMouseMode = 4;
 
         public static void MouseMovementInput() {
             centered = new Point(Screen.PrimaryScreen.Bounds.Width / 2, Screen.PrimaryScreen.Bounds.Height / 2);
-            Cursor.Position = centered;
 
             const int Mode_Percentage   = 0;
             const int Mode_Relative     = 1;
             const int Mode_Raw          = 2;
             const int Mode_Raw_Sens     = 3;
             const int Mode_None         = 4;
+            const int Mode_DeadZoning   = 5;
 
             while (true) {
                 var mode = Program.ActiveConfig.Mouse_Eng_Type;
@@ -45,6 +45,7 @@ namespace XboxKeyboardMouse {
                 case Mode_Relative:     MouseMovement_Relative();       break;
                 case Mode_Raw:          MouseMovement_Raw();            break;
                 case Mode_Raw_Sens:     MouseMovement_Raw_S();          break;
+                case Mode_DeadZoning:   MouseMovement_DeadZoning();     break;
                 case Mode_None:         break;
 
                 default:                break;
@@ -52,6 +53,120 @@ namespace XboxKeyboardMouse {
 
                 Thread.Sleep(Program.ActiveConfig.Mouse_TickRate);
             }
+        }
+
+        private static DeadZoneCalibrator deadZoneCalibrator = null;
+
+        private static Stopwatch stopwatch = Stopwatch.StartNew();
+
+        private static T Clamp<T>(T value, T min, T max) where T : IComparable<T>
+        {
+            return value.CompareTo(min) < 0 ? min : value.CompareTo(max) > 0 ? max : value;
+        }
+
+        public static void RunCalibrateDeadZone()
+        {
+            HandleCalibrator(0, 50);
+        }
+
+        public static void RunFineTuneDeadZone()
+        {
+            // Fine tuning will go back a bit from where the last calibration ended, since human response
+            // times are limited, and iterate slower this time so the user end with a more accurate value.
+            HandleCalibrator((short)(Program.ActiveConfig.DeadZoneSize * 0.85), 10);
+        }
+
+        private static void HandleCalibrator(short startSize, short incrementSize)
+        {
+            if (deadZoneCalibrator != null)
+            {
+                Program.ActiveConfig.DeadZoneSize = deadZoneCalibrator.CurrentDeadZone;
+                deadZoneCalibrator = null;
+            }
+            else
+            {
+                deadZoneCalibrator = new DeadZoneCalibrator(startSize, incrementSize);
+            }
+        }
+
+        private static void MouseMovement_DeadZoning()
+        {
+            // Each game may use "dead zones" of different size and shape to eliminate near-but-not-zero readings
+            // that controllers give at rest. (See https://itstillworks.com/12629709/what-is-a-dead-zone-in-an-fps.)
+            // Since mice do not suffer from this phenomenon at rest, users expect reaction out of the minimum
+            // possible mouse movements. To translate this to joystick positions effectively, we want that single
+            // pixel of mouse movement to position the joystick just past the joystick dead zone. (For effective 
+            // mouse control of any given game, we will have to discover and track dead zone details as part of the 
+            // control profile settings, or provide an auto-discovery mechanism that watches for screen change in
+            // order to automatically determine the dead zone details. Difficult, but doable. TODO: ATTEMPT THIS!)
+            // Possibly other details would need to be stored per game, as advanced techniques to combat other 
+            // game-specific joystick assists (weird accelerations and such) get figured out. Either way, usually
+            // the user should get best results out of tuning their in-game sensitivities way up, to allow for the 
+            // mouse-to-joystick translation to yield a high, accurate range, including fast mouse flicks to attain
+            // fast turning.
+            // Dead zones are usually square or circular, meaning either each axis is remapped to zero out small
+            // values axis-independently (for a square dead zone), or the vector is remapped to zero out small 
+            // vector lengths (for a circular dead zone). Thus, a slightly different algorithm will need to be used
+            // for each dead zone type.
+
+            // Grab and reset mouse position and time passed, for calculating mouse velocity for this polling.
+            var mouseX = Cursor.Position.X;
+            var mouseY = Cursor.Position.Y;
+            Cursor.Position = centered;
+            var timeSinceLastPoll = stopwatch.Elapsed.TotalMilliseconds;
+            stopwatch.Restart();
+
+            // Mouse velocity here is average pixels per milliseconds passed since the last polling. This helps 
+            // get correct-feeling, smooth movements, even if the thread pool is not being particularly nice to
+            // our polling thread ATM. For example, if the thread pool gives us a 22ms cycle from last poll with
+            // 11 pixels of movement on one pass, then gave us a 16ms cycle with 8 pixels of movement on another,
+            // we'd want the same final stick position for both since the user did not vary their mouse velocity.
+            // Also invert these values now if the user has configured input inversion.
+            var changeX = Program.ActiveConfig.Mouse_Invert_X ? centered.X - mouseX : mouseX - centered.X;
+            var changeY = Program.ActiveConfig.Mouse_Invert_Y ? centered.Y - mouseY : mouseY - centered.Y;
+            double velocityX = changeX / timeSinceLastPoll;
+            double velocityY = changeY / timeSinceLastPoll;
+
+            short joyX, joyY;
+
+            var deadZoneSize = Program.ActiveConfig.DeadZoneSize;
+            if (deadZoneCalibrator != null)
+            {
+                // Pretend the mouse is always moving one pixel in each axis, until user intervention.
+                deadZoneSize = deadZoneCalibrator.AdvanceDeadZoneSize();
+                joyX = Convert.ToInt16(deadZoneSize);
+                joyY = Convert.ToInt16(deadZoneSize);
+            }
+            else if (true) // TODO: CORRECT CHECK FOR DEAD ZONE MODE IS SQUARE!
+            {
+                // For a square dead zone, each axis can be scaled independently.
+                double maxRespectedVelocity = 5d;
+                double percentMouseX = velocityX == 0 ? 0 : velocityX / maxRespectedVelocity;
+                double percentMouseY = velocityY == 0 ? 0 : velocityY / maxRespectedVelocity;
+
+                // Clamp the movement to +/- 100% to avoid overflowing the final joystick values after scaling.
+                // (TODO: BASE THESE MAX RESPECTED MOUSE MOVEMENT ON CURRENT CONFIG SETTINGS TOO!)
+                percentMouseX = Clamp(percentMouseX, -1d, 1d);
+                percentMouseY = Clamp(percentMouseY, -1d, 1d);
+
+                // Start each axis adjusted to the appropriate dead zone edge (left/right or top/bottom).
+                var deadAdjustX = velocityX == 0 ? 0 : deadZoneSize * (velocityX > 0 ? 1 : -1);
+                var deadAdjustY = velocityY == 0 ? 0 : deadZoneSize * (velocityY > 0 ? 1 : -1);
+
+                // The final axis position adds in the percentage of remaining stick magnitude.
+                // (Minimum mouse movement should become just-past-deadzone; maximum respected mouse movement
+                // should become short.MaxValue in the end.)
+                var remainingStickMagnitude = short.MaxValue - deadZoneSize;
+                joyX = Convert.ToInt16(remainingStickMagnitude * percentMouseX + deadAdjustX);
+                joyY = Convert.ToInt16(remainingStickMagnitude * percentMouseY + deadAdjustY);
+            }
+            else
+            {
+                // TODO: CIRCULAR DEAD ZONE! (Vector math.)
+            }
+
+            // Send Axis
+            SetAxis(joyX, joyY);
         }
 
         private static void MouseMovement_Percentage() {
@@ -179,8 +294,7 @@ namespace XboxKeyboardMouse {
 
                 joyY += TJoyY;
             }
-
-
+            
             // Send Axis
             SetAxis(joyX, joyY);
 
@@ -247,7 +361,6 @@ namespace XboxKeyboardMouse {
             // to the sticks
             joyX = (short)x;
             joyY = (short)y;
-
 
             // Send Axis
             SetAxis(joyX, joyY);

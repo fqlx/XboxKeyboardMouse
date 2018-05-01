@@ -21,7 +21,6 @@ namespace XboxKeyboardMouse.Forms {
                 c.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SelectKey_KeyUp);
 
             KeyUp += new System.Windows.Forms.KeyEventHandler(this.SelectKey_KeyUp);
-
         }
 
         public void SaveKeyCode() {
@@ -39,7 +38,7 @@ namespace XboxKeyboardMouse.Forms {
 
             case "A":       cfg.Controls_KB_Xbox_A = KeyCode; break;
             case "B":       cfg.Controls_KB_Xbox_B = KeyCode; break;
-            case "X":       cfg.Controls_KB_Xbox_X = KeyCode;  break;
+            case "X":       cfg.Controls_KB_Xbox_X = KeyCode; break;
             case "Y":       cfg.Controls_KB_Xbox_Y = KeyCode; break;
 
             case "DPU":     cfg.Controls_KB_Xbox_DPAD_Up    = KeyCode; break;
@@ -61,7 +60,6 @@ namespace XboxKeyboardMouse.Forms {
             case "JRR":     cfg.Controls_KB_Sticks_AXIS_R_Right = KeyCode; break;
 
             }
-
         }
 
         private void button1_Click(object sender, EventArgs e) {

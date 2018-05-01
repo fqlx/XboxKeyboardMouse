@@ -17,7 +17,7 @@ Note: This app only starts when the Xbox streaming app is in the foreground.
 4. Run `XboxKeyboardMouse`
 
 # Current Layout
-You may customize your own controller layout through the gui but the default layout is 
+You may customize your own controller layout through the GUI but the default layout is:
 
 | Keyboard/Mouse| Xbox Controller   |
 | ------------- |:-----------------:|
@@ -43,18 +43,26 @@ You may customize your own controller layout through the gui but the default lay
 |               |                   |
 | WASD          | Left Stick        |
 | Mouse         | Right Stick       |
+|               |                   |
+| F12           | (Set Dead Zone)   |
+| F11           | (Adjust Dead Zone)|
+
+# Dead Zones
+The default mouse engine has the ability to accommodate for a game's dead zone for effective, accurate mouse control.
+However, XboxKeyboardMouse must be calibrated to learn the running game's dead zone. This takes a few seconds.
+Once learned, the saved profile will retain the current dead zone size, reducing the need to recalibrate every time, if you frequently return to the same game or games that happen to use very similar dead zones.
+To calibrate, follow these instructions, while running a game:
+* Use keyboard controls for a moment to ensure your XboxKeyboardMouse is active.
+* Press F12 to begin calibration. Wait with your finger over F12 and press it again when your aim starts moving.
+* Press F11 to begin fine-tuning the calibration. Wait with your finger over F11 and press it again when your aim starts moving.
+* (If aim started moving right away for the above step, you can repeat the step to try fine tuning again.)
+At this point, XboxKeyboardMouse has learned the game's dead zone size, and even single-pixel mouse movements should now translate into tiny amounts of aim. If you switch games, or aiming doesn't feel natural yet, you can simply repeat the process to recalibrate.
 
 # Lag
 1.  Run ScpToolkit Settings Manager
 2.  Use asynchronous HID Report Processing
 3.  Disable Rumble and Native Feed
 
-# Compile
-1.  SlimDx SDK installed - https://slimdx.org/
-2.  SCPToolkit driver installed
-
 # Todo
-1.  Check if SlimDX and SCP driver are installed and if not throw an understandable error.
-2.  Mouse input buttons dont work as of yet.
-3.  Scroll Wheel movement has not been added (Main usage maybe RTS).
-4.  Better Mouse Engines
+* Check if SlimDX is installed and if not throw an understandable error.
+* Scroll Wheel movement has not been added (Main usage maybe RTS).
