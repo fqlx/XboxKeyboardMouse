@@ -8,6 +8,14 @@ using SimWinInput;
 
 namespace XboxKeyboardMouse {
     class TranslateMouse {
+        /// <summary>The magnitude of dead zone size increases, each mouse polling, when running at regular calibration speed.</summary>
+        /// <remarks>Hand-tested value for balancing calibration speed versus accuracy, with a fine-tune calibration option in mind.</remarks>
+        private static short RegularCalibrationSpeedAdvancementPerPoll = 50;
+
+        /// <summary>The magnitude of dead zone size increases, each mouse polling, when running at fine-tuning calibration speed.</summary>
+        /// <remarks>Hand-tested value for balancing accuracy over speed, knowing our starting value should already be "close" to our target.option in mind.</remarks>
+        private static short FineTuneCalibrationSpeedAdvancementPerPoll = 10;
+
         public static bool TRIGGER_LEFT_PRESSED  = false;
         public static bool TRIGGER_RIGHT_PRESSED = false;
 
@@ -24,31 +32,18 @@ namespace XboxKeyboardMouse {
         static Point centered = new Point(Screen.PrimaryScreen.Bounds.Width / 2, Screen.PrimaryScreen.Bounds.Height / 2);
         static short iMax = short.MaxValue;
         static short iMin = short.MinValue;
-
-        public static int MaxMouseMode = 4;
-
+        
         public static void MouseMovementInput() {
             centered = new Point(Screen.PrimaryScreen.Bounds.Width / 2, Screen.PrimaryScreen.Bounds.Height / 2);
-
-            const int Mode_Percentage   = 0;
-            const int Mode_Relative     = 1;
-            const int Mode_Raw          = 2;
-            const int Mode_Raw_Sens     = 3;
-            const int Mode_None         = 4;
-            const int Mode_DeadZoning   = 5;
-
+            
             while (true) {
-                var mode = Program.ActiveConfig.Mouse_Eng_Type;
-
-                switch (mode) {
-                case Mode_Percentage:   MouseMovement_Percentage();     break;
-                case Mode_Relative:     MouseMovement_Relative();       break;
-                case Mode_Raw:          MouseMovement_Raw();            break;
-                case Mode_Raw_Sens:     MouseMovement_Raw_S();          break;
-                case Mode_DeadZoning:   MouseMovement_DeadZoning();     break;
-                case Mode_None:         break;
-
-                default:                break;
+                switch (Program.ActiveConfig.Mouse_Eng_Type) {
+                    case MouseTranslationMode.Percentage: MouseMovement_Percentage(); break;
+                    case MouseTranslationMode.Relative:   MouseMovement_Relative();   break;
+                    case MouseTranslationMode.Raw:        MouseMovement_Raw();        break;
+                    case MouseTranslationMode.RawSens:    MouseMovement_Raw_S();      break;
+                    case MouseTranslationMode.DeadZoning: MouseMovement_DeadZoning(); break;
+                    default: break;
                 }
 
                 Thread.Sleep(Program.ActiveConfig.Mouse_TickRate);
@@ -63,17 +58,17 @@ namespace XboxKeyboardMouse {
         {
             return value.CompareTo(min) < 0 ? min : value.CompareTo(max) > 0 ? max : value;
         }
-
+        
         public static void RunCalibrateDeadZone()
         {
-            HandleCalibrator(0, 50);
+            HandleCalibrator(0, RegularCalibrationSpeedAdvancementPerPoll);
         }
 
         public static void RunFineTuneDeadZone()
         {
             // Fine tuning will go back a bit from where the last calibration ended, since human response
             // times are limited, and iterate slower this time so the user end with a more accurate value.
-            HandleCalibrator((short)(Program.ActiveConfig.DeadZoneSize * 0.85), 10);
+            HandleCalibrator((short)(Program.ActiveConfig.DeadZoneSize * 0.85), FineTuneCalibrationSpeedAdvancementPerPoll);
         }
 
         private static void HandleCalibrator(short startSize, short incrementSize)
@@ -123,7 +118,7 @@ namespace XboxKeyboardMouse {
             // we'd want the same final stick position for both since the user did not vary their mouse velocity.
             // Also invert these values now if the user has configured input inversion.
             var changeX = Program.ActiveConfig.Mouse_Invert_X ? centered.X - mouseX : mouseX - centered.X;
-            var changeY = Program.ActiveConfig.Mouse_Invert_Y ? centered.Y - mouseY : mouseY - centered.Y;
+            var changeY = Program.ActiveConfig.Mouse_Invert_Y ? mouseY - centered.Y : centered.Y - mouseY;
             double velocityX = changeX / timeSinceLastPoll;
             double velocityY = changeY / timeSinceLastPoll;
 
@@ -137,7 +132,7 @@ namespace XboxKeyboardMouse {
                 joyX = Convert.ToInt16(deadZoneSize);
                 joyY = Convert.ToInt16(deadZoneSize);
             }
-            else if (true) // TODO: CORRECT CHECK FOR DEAD ZONE MODE IS SQUARE!
+            else // TODO: IF DEAD ZONE MODE IS SQUARE!
             {
                 // For a square dead zone, each axis can be scaled independently.
                 double maxRespectedVelocity = 5d;
@@ -160,10 +155,7 @@ namespace XboxKeyboardMouse {
                 joyX = Convert.ToInt16(remainingStickMagnitude * percentMouseX + deadAdjustX);
                 joyY = Convert.ToInt16(remainingStickMagnitude * percentMouseY + deadAdjustY);
             }
-            else
-            {
-                // TODO: CIRCULAR DEAD ZONE! (Vector math.)
-            }
+            // TODO: ELSE: If dead zone mode is circular! (Vector math.)
 
             // Send Axis
             SetAxis(joyX, joyY);
