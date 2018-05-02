@@ -12,37 +12,21 @@ namespace XboxKeyboardMouse {
 
         public enum TriggerType { LeftTrigger, RightTrigger }
 
-        public static void ClearAllDicts() {
-            if (mapLeftStickY == null)
-                 mapLeftStickY = new Dictionary<Key, short>();
-            else mapLeftStickY.Clear();
-
-            if (mapLeftStickX == null)
-                 mapLeftStickX = new Dictionary<Key, short>();
-            else mapLeftStickX.Clear();
-
-            if (mapRightStickX == null)
-                 mapRightStickX = new Dictionary<Key, short>();
-            else mapRightStickX.Clear();
-
-            if (mapRightStickY == null)
-                 mapRightStickY = new Dictionary<Key, short>();
-            else mapRightStickY.Clear();
-
-            if (buttons == null)
-                 buttons = new Dictionary<Key, GamePadControl>();
-            else buttons.Clear();
-
-            if (triggers == null)
-                 triggers = new Dictionary<Key, TriggerType>();
-            else triggers.Clear();
+        public static void ClearAllDicts()
+        {
+            mapLeftStickX.Clear();
+            mapLeftStickY.Clear();
+            mapRightStickX.Clear();
+            mapRightStickY.Clear();
+            buttons.Clear();
+            triggers.Clear();
         }
 
-        public static Dictionary<Key, short> mapLeftStickY;
-        public static Dictionary<Key, short> mapLeftStickX;
-        public static Dictionary<Key, short> mapRightStickX;
-        public static Dictionary<Key, short> mapRightStickY;
-        
+        public static Dictionary<Key, short> mapLeftStickY = new Dictionary<Key, short>();
+        public static Dictionary<Key, short> mapLeftStickX = new Dictionary<Key, short>();
+        public static Dictionary<Key, short> mapRightStickX = new Dictionary<Key, short>();
+        public static Dictionary<Key, short> mapRightStickY = new Dictionary<Key, short>();
+
         public static Dictionary<Key, GamePadControl> buttons = new Dictionary<Key, GamePadControl>();
         public static Dictionary<Key, TriggerType> triggers = new Dictionary<Key, TriggerType>();
 
@@ -54,7 +38,7 @@ namespace XboxKeyboardMouse {
             try {
                 btnStatus.Clear();
 
-                bool mouseDisabled = Program.ActiveConfig.Mouse_Eng_Type == 4;
+                bool mouseDisabled = Program.ActiveConfig.Mouse_Eng_Type == MouseTranslationMode.NONE;
 
                 // -------------------------------------------------------------------------------
                 //                                STICKS

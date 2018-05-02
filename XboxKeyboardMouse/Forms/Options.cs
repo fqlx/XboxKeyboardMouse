@@ -373,13 +373,13 @@ namespace XboxKeyboardMouse.Forms
             mouseInvertAxisY.Checked = cfg.Mouse_Invert_Y;
 
             // Check if the mouse setting is valid
-            if (cfg.Mouse_Eng_Type > TranslateMouse.MaxMouseMode || cfg.Mouse_Eng_Type < 0) {
+            if (cfg.Mouse_Eng_Type == MouseTranslationMode.INVALID) {
                 MessageBox.Show("Invalid mouse engine selected -> Reset to default!");
-                cfg.Mouse_Eng_Type = 0;
+                cfg.Mouse_Eng_Type = MouseTranslationMode.DeadZoning;
                 Config.Data.Save(GetSelectedProfile() + ".ini", cfg);
             }
 
-            mouseEngineList.SelectedIndex = cfg.Mouse_Eng_Type;
+            mouseEngineList.SelectedIndex = (int)cfg.Mouse_Eng_Type;
 
             // Ensure tickrate is not 0
             if (cfg.Mouse_TickRate == 0) {
@@ -620,13 +620,7 @@ namespace XboxKeyboardMouse.Forms
 
         private void mouseEngineList_SelectedIndexChanged(object sender, EventArgs e) {
             var index = mouseEngineList.SelectedIndex;
-
-            if (index > TranslateMouse.MaxMouseMode) {
-                MessageBox.Show("Invalid selected mouse engine");
-                index = 0;
-            }
-
-            cfg.Mouse_Eng_Type = index;
+            cfg.Mouse_Eng_Type = (MouseTranslationMode)index;
 
             // Load our mouse engine settings
             LoadMouseEngineSettings();
@@ -672,22 +666,15 @@ namespace XboxKeyboardMouse.Forms
             if (mouseEnginePanel != null)  
                 if (mouseEngineContainer.Controls.Contains(mouseEnginePanel))
                     mouseEngineContainer.Controls.Remove  (mouseEnginePanel);
-
-            // Get our config index
-            var index = cfg.Mouse_Eng_Type;
-            MouseSettings.MouseEngineSettings engine = null;
             
             // By default we want to set engine as GenericControls
-            if (index < TranslateMouse.MaxMouseMode) 
-                engine = new MouseSettings.GenericControls(cfg);
+            if (cfg.Mouse_Eng_Type != MouseTranslationMode.NONE && cfg.Mouse_Eng_Type != MouseTranslationMode.INVALID)
+                mouseEnginePanel = new MouseSettings.GenericControls(cfg);
+            else
+                mouseEnginePanel = new MouseSettings.NoControls();
             
-            if (engine == null) 
-                engine = new MouseSettings.NoControls();
-            
-
-            mouseEnginePanel    = engine;
-            mouseEngineContainer.Controls.Add(engine);
-            engine.Dock         = DockStyle.Fill;
+            mouseEngineContainer.Controls.Add(mouseEnginePanel);
+            mouseEnginePanel.Dock = DockStyle.Fill;
         }
 
         // ----------

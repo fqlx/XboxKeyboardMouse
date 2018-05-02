@@ -18,9 +18,9 @@ namespace XboxKeyboardMouse.Forms {
             this.Text += Tag;
 
             foreach (Control c in Controls)
-                c.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SelectKey_KeyUp);
+                c.KeyUp += this.SelectKey_KeyUp;
 
-            KeyUp += new System.Windows.Forms.KeyEventHandler(this.SelectKey_KeyUp);
+            KeyUp += this.SelectKey_KeyUp;
         }
 
         public void SaveKeyCode() {

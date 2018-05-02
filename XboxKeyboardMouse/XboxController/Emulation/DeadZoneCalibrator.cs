@@ -5,6 +5,9 @@ namespace XboxKeyboardMouse
     /// <summary>Calibrator for Dead Zone settings.</summary>
     public class DeadZoneCalibrator
     {
+        /// <summary>Cap dead zones somewhere nearing short max value to avoid short overflows.</summary>
+        private const short MaxRespectedDeadZoneSize = 30000;
+
         /// <summary>The current dead zone size being tested by the calibrator.</summary>
         /// <remarks>
         /// In the end, this should be nearer to matching the game's true dead zone. Some example
@@ -29,8 +32,8 @@ namespace XboxKeyboardMouse
             this.CurrentDeadZone += this.CalibrationIncrement;
             
             // Cap to avoid short conversion issues when user leaves calibrator running too long.
-            if (this.CurrentDeadZone > 30000)
-                this.CurrentDeadZone = 30000;
+            if (this.CurrentDeadZone > MaxRespectedDeadZoneSize)
+                this.CurrentDeadZone = MaxRespectedDeadZoneSize;
 
             return this.CurrentDeadZone;
         }

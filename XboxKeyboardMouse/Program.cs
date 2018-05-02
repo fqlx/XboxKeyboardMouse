@@ -1,7 +1,6 @@
 ﻿using MaterialSkin;
 using SimWinInput;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -9,9 +8,12 @@ using System.Windows.Forms;
 using System.Windows.Input;
 using XboxKeyboardMouse.Config;
 using XboxKeyboardMouse.Forms;
+#if (DEBUG)
 using XboxKeyboardMouse.Libs;
+#endif
 
-namespace XboxKeyboardMouse {
+namespace XboxKeyboardMouse
+{
     static class Program {
         public static MainForm MainForm;
 
@@ -32,8 +34,7 @@ namespace XboxKeyboardMouse {
             public static extern int AllocConsole();
         [DllImport("kernel32.dll", SetLastError = true)]
             private static extern int FreeConsole();
-
-
+        
         public static bool SetActiveConfig(string file) {
             var cfg = Path.Combine("profiles", file);
 
@@ -279,6 +280,5 @@ namespace XboxKeyboardMouse {
                 Thread.Sleep(100);
             }
         }
-
     }
 }

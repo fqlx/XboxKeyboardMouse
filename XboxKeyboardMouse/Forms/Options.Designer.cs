@@ -1106,7 +1106,8 @@
             "Percentage  + Relative",
             "Raw Input",
             "Raw Input + Sensitivity",
-            "None"});
+            "None",
+            "Dead-Zoning (default)"});
             this.mouseEngineList.Location = new System.Drawing.Point(340, 77);
             this.mouseEngineList.Name = "mouseEngineList";
             this.mouseEngineList.Size = new System.Drawing.Size(164, 21);

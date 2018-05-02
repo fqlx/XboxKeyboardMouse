@@ -210,6 +210,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="XboxController\Emulation\DeadZoneCalibrator.cs" />
+    <Compile Include="XboxController\Emulation\MouseTranslationMode.cs" />
     <Compile Include="XboxController\Emulation\RunTimeOptions.cs" />
     <Compile Include="XboxController\Emulation\TranslateKeyboard.cs" />
     <Compile Include="XboxController\Emulation\TranslateMouse.cs" />
