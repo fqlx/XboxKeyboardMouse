@@ -2,6 +2,7 @@
 using System;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Input;
 
@@ -25,11 +26,8 @@ namespace XboxKeyboardMouse.Forms
             file_CreatePreset_Button.SetFontDisabledColor = true;
             file_CreatePreset_Button.FontColorDisabled = preset_Color_Exists;
             file_CheckIfExists(null, null);
-
-            // Display the current active file name
-            file_Active.Text = "Active Preset: " + Program.ActiveConfig.Name;
         }
-        
+
         public override void SetStatusColor(Color c) {
             btnExit.BackColor = c;
         }
@@ -47,9 +45,13 @@ namespace XboxKeyboardMouse.Forms
             this.Hide();
         }
 
-        private void Options_Load(object sender, EventArgs e) {
+        private void Options_Load(object sender, EventArgs e)
+        {
+            // Automatically set the loaded active profile as the editing profile, for convenience,
+            // especially to help ensure users discover the editing tabs, and so on.
+            EditingProfile = Program.ActiveConfig.Name;
+
             ResetXboxInputButtons();
-            RefreshConfigList();
             ApplyInputEvents();
 
             materialTabControl1.Controls.Remove(tabSettings);
@@ -57,6 +59,10 @@ namespace XboxKeyboardMouse.Forms
             materialTabControl1.Controls.Remove(tabMouse);
             materialTabControl1.Controls.Remove(tabPage3);
             materialTabSelector1.Invalidate();
+
+            // Finish configuring the EditingProfile as the "loaded preset" for editing.
+            RefreshConfigList(EditingProfile);
+            file_LoadPreset_Click(null, null);
         }
 
         // -----------
@@ -261,33 +267,50 @@ namespace XboxKeyboardMouse.Forms
         // ------------------
         Config.Data cfg = new Config.Data();
         string originalName = "";
-        string SelectedProfile = "";
+        private string editingProfile = "";
 
-        private void RefreshConfigList(string Selected = "") {
+        private void RefreshConfigList(string selected = "") {
             lbPresets.Items.Clear();
 
-            var d = Directory.GetFiles("profiles", "*.ini", SearchOption.TopDirectoryOnly);
-            foreach (var f in d) {
-                var presetFile = Path.GetFileNameWithoutExtension(f);
-                var item = new ListViewItem(presetFile);
-                lbPresets.Items.Add(item);
+            var files = Directory.GetFiles("profiles", "*.ini", SearchOption.TopDirectoryOnly);
+            foreach (var filePath in files) {
+                var presetFile = Path.GetFileNameWithoutExtension(filePath);
+                lbPresets.Items.Add(new ListViewItem(presetFile) {
+                    Selected = presetFile == selected,
+                });
             }
         }
 
-        public string GetSelectedListProfile() {
-            return lbPresets.SelectedItems.Count > 0 ? lbPresets.SelectedItems[0].Text : null;
+        private string SelectedListProfile
+        {
+            get
+            {
+                // Workaround: Sometimes the SelectedItems lags behind; query the Items for IsSelected directly instead.
+                return (from item in lbPresets.Items.Cast<ListViewItem>() where item.Selected select item.Text).FirstOrDefault();
+            }
         }
 
-        public string GetSelectedListProfilePath() {
-            return Path.Combine("profiles", GetSelectedListProfile() + ".ini");
+        private string SelectedListProfilePath
+        {
+            get { return Path.Combine("profiles", SelectedListProfile + ".ini"); }
         }
 
-        public string GetSelectedProfile() {
-            return SelectedProfile;
+        private string EditingProfile
+        {
+            get { return editingProfile; }
+            set
+            {
+                editingProfile = value;
+                file_Editing.Text = "Editing: " + value;
+            }
         }
-
-        public string GetSelectedProfilePath() {
-            return Path.Combine("profiles", GetSelectedProfile() + ".ini");
+        
+        private string EditingProfilePath
+        {
+            get
+            {
+                return Path.Combine("profiles", EditingProfile + ".ini");
+            }
         }
 
         #region Preset Creation
@@ -335,7 +358,7 @@ namespace XboxKeyboardMouse.Forms
             // Saved
             file_CreatePreset_Button.FontColor = preset_Color_Created;
             
-            MessageBox.Show("Preset created in file (" + presetString + ".ini)");
+            MessageBox.Show(string.Format("Created preset '{0}'", presetString));
             RefreshConfigList();
         }
         #endregion
@@ -351,18 +374,21 @@ namespace XboxKeyboardMouse.Forms
 
         bool TabsAdded = false;
         private void file_LoadPreset_Click(object sender, EventArgs e) {
-            if (!File.Exists(GetSelectedListProfilePath())) {
-                MessageBox.Show("The selected profile: " + GetSelectedProfile() +
-                    " no longer exists...\nFile: " + GetSelectedProfilePath());
-                RefreshConfigList();
-
+            if (SelectedListProfile == null)
+            {
+                MessageBox.Show("You must select a profile first.");
                 return;
             }
 
-            // Load the config
-            cfg = Config.Data.Load(GetSelectedListProfile() + ".ini");
+            if (!File.Exists(SelectedListProfilePath)) {
+                MessageBox.Show(string.Format("The profile '{0}' no longer exists (at {1})", SelectedListProfile, SelectedListProfilePath));
+                RefreshConfigList();
+                return;
+            }
 
-            SelectedProfile = GetSelectedListProfile();
+            // Load the config for editing
+            cfg = Config.Data.Load(SelectedListProfile + ".ini");
+            EditingProfile = SelectedListProfile;
 
             // Load the controls onto the labels
             LoadXboxInputButtons();
@@ -376,7 +402,7 @@ namespace XboxKeyboardMouse.Forms
             if (cfg.Mouse_Eng_Type == MouseTranslationMode.INVALID) {
                 MessageBox.Show("Invalid mouse engine selected -> Reset to default!");
                 cfg.Mouse_Eng_Type = MouseTranslationMode.DeadZoning;
-                Config.Data.Save(GetSelectedProfile() + ".ini", cfg);
+                Config.Data.Save(EditingProfile + ".ini", cfg);
             }
 
             mouseEngineList.SelectedIndex = (int)cfg.Mouse_Eng_Type;
@@ -384,7 +410,7 @@ namespace XboxKeyboardMouse.Forms
             // Ensure tickrate is not 0
             if (cfg.Mouse_TickRate == 0) {
                 cfg.Mouse_TickRate = 40;
-                Config.Data.Save(GetSelectedProfile() + ".ini", cfg);
+                Config.Data.Save(EditingProfile + ".ini", cfg);
             }
 
             mouse_TickRate.Text = "" + cfg.Mouse_TickRate;
@@ -399,7 +425,7 @@ namespace XboxKeyboardMouse.Forms
                 cfg.Controls_KB_Detach_MOD = (int)Key.LeftAlt;
                 cfg.Controls_KB_Detach_KEY = (int)Key.C;
 
-                Config.Data.Save(GetSelectedProfile() + ".ini", cfg);
+                Config.Data.Save(EditingProfile + ".ini", cfg);
             } else {
                 detachKeyCheckup(true);
             }
@@ -412,7 +438,6 @@ namespace XboxKeyboardMouse.Forms
             settings_DetachKey.Text = $"On/Off Key: {kbMod} {kbKey}";
 
             // Display our current file and active files
-            file_Editing.Text = "Editing: " + GetSelectedProfile();
             file_Active.Text  = "Active Preset: " + Program.ActiveConfig.Name;
             
             editor_InputKeyboard.Enabled = true;
@@ -447,51 +472,59 @@ namespace XboxKeyboardMouse.Forms
         }
 
         private void file_SetAsActive_Click(object sender, EventArgs e) {
-            if (!File.Exists(GetSelectedListProfilePath())) {
-                MessageBox.Show("The selected profile: " + GetSelectedProfile() +
-                    " no longer exists...\nFile: " + GetSelectedProfilePath());
-                RefreshConfigList();
-
+            if (SelectedListProfile == null)
+            {
+                MessageBox.Show("You must select a profile first.");
                 return;
             }
 
-            var prof = GetSelectedProfile();
-            Program.SetActiveConfig(prof + ".ini");
+            if (!File.Exists(SelectedListProfilePath)) {
+                MessageBox.Show(string.Format("The profile '{0}' no longer exists (at {1})", SelectedListProfile, SelectedListProfilePath));
+                RefreshConfigList();
+                return;
+            }
 
-            file_Active.Text  = "Active Preset: " + Program.ActiveConfig.Name;
+            SetActive(SelectedListProfile + ".ini");
         }
 
-        private void file_DeletePreset_Click(object sender, EventArgs e) {
-            var res = MessageBox.Show(
-                "Are you sure you want to delete: " + GetSelectedListProfile() + "\nFile: " + GetSelectedListProfilePath(),
-                "Are you sure?",
-                MessageBoxButtons.OKCancel
-            );
+        private void SetActive(string profileName)
+        {
+            Program.SetActiveConfig(profileName);
+            file_Active.Text = "Active Preset: " + Program.ActiveConfig.Name;
+        }
 
-            if (res != DialogResult.OK)
-                return;
-
-            if (!File.Exists(GetSelectedListProfilePath())) {
-                MessageBox.Show("The selected profile: " + GetSelectedListProfile() +
-                    " no longer exists...\nFile: " + GetSelectedListProfilePath());
+        private void file_DeletePreset_Click(object sender, EventArgs e)
+        {
+            if (SelectedListProfile == null)
+            {
+                MessageBox.Show("You must select a profile first.");
                 return;
             }
 
-            if (GetSelectedListProfile().Trim() == "default.ini") {
+            if (!File.Exists(SelectedListProfilePath))
+            {
+                MessageBox.Show(string.Format("The profile '{0}' no longer exists (at {1})", SelectedListProfile, SelectedListProfilePath));
+                RefreshConfigList();
+                return;
+            }
+
+            var message = string.Format("Are you sure you want to delete the profile '{0}'?", SelectedListProfile, SelectedListProfilePath);
+            var result = MessageBox.Show(message, "Are you sure?", MessageBoxButtons.OKCancel);
+            if (result != DialogResult.OK)
+                return;
+
+            File.Delete(SelectedListProfilePath);
+
+            if (SelectedListProfile == "default") {
                 // Remake the default ini
                 Config.Data d = new Config.Data();
-                Config.Data.Save("profiles/default.ini", d);
+                Config.Data.Save("default.ini", d);
             }
 
-            if (Program.ActiveConfig.Name.Trim() == GetSelectedListProfilePath().Trim()) {
-                Program.SetActiveConfig("default.ini");
+            if (Program.ActiveConfig.Name == SelectedListProfile) {
+                SetActive("default.ini");
             }
-            
-            file_Editing.Text = GetSelectedProfile();
-            file_Editing.Enabled = true;
-            file_Active.Text = Program.ActiveConfig.Name;
 
-            File.Delete(GetSelectedListProfilePath());
             RefreshConfigList();
         }
 
@@ -570,22 +603,19 @@ namespace XboxKeyboardMouse.Forms
 
             if (cfg.Name.Trim() != preset_Name.Text.Trim()) {
                 cfg.Name = preset_Name.Text.Trim();
-                File.Delete(Path.Combine("profiles", GetSelectedProfile() + ".ini"));
+                File.Delete(EditingProfilePath);
             }
 
             // Saved
             Config.Data.Save(cfg.Name + ".ini", cfg);
 
-            MessageBox.Show(
-                "The selected profile: " + cfg.Name +
-                " has been saved...\nFile: " + $"profiles/{cfg.Name}.ini");
+            MessageBox.Show(string.Format("The profile '{0}' has been saved.", cfg.Name));
 
             if (Program.ActiveConfig.Name == originalName) {
                 Program.ActiveConfig = cfg;
                 Program.ReloadActiveConfig();
             }
-
-
+            
             // Refresh list
             RefreshConfigList();
         }
@@ -595,7 +625,7 @@ namespace XboxKeyboardMouse.Forms
 
             if (cfg.Name.Trim() != preset_Name.Text.Trim()) {
                 cfg.Name = preset_Name.Text.Trim();
-                File.Delete(Path.Combine("profiles", GetSelectedProfile() + ".ini"));
+                File.Delete(EditingProfilePath);
             }
 
             // Saved
@@ -696,7 +726,7 @@ namespace XboxKeyboardMouse.Forms
             cfg.Controls_KB_Detach_KEY = (int)k2;
 
             if (save)
-                Config.Data.Save(GetSelectedProfile() + ".ini", cfg);
+                Config.Data.Save(EditingProfile + ".ini", cfg);
         }
 
         // -------------
