@@ -12,11 +12,9 @@ Note: This app only starts when the Xbox streaming app is in the foreground.
 # Prerequisites
 1. [You need SlimDX Runtime installed (x86)](https://slimdx.org/download.php)
 
-# Download
-1. [Download the repository as a zip](https://github.com/fqlx/XboxKeyboardMouse/archive/master.zip)
-2. Extract the download folder to anywhere on your PC
-3. Rename the download folder to something of your choice
-4. Run `XboxKeyboardMouse`
+# Installation
+Simply run the installer: https://cdn.rawgit.com/fqlx/XboxKeyboardMouse/master/Installer/setup.exe
+* The application will check for updates upon each successive launch.
 
 # Current Layout
 You may customize your own controller layout through the GUI but the default layout is:

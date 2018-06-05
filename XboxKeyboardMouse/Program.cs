@@ -36,9 +36,9 @@ namespace XboxKeyboardMouse
             private static extern int FreeConsole();
         
         public static bool SetActiveConfig(string file) {
-            var cfg = Path.Combine("profiles", file);
+            var profilePath = Path.Combine("profiles", file);
 
-            if (!File.Exists(cfg)) 
+            if (!File.Exists(profilePath)) 
                  return false;
 
             lock (ActiveConfig) {

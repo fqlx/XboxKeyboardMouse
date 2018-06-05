@@ -99,10 +99,12 @@ namespace XboxKeyboardMouse {
             // the user should get best results out of tuning their in-game sensitivities way up, to allow for the 
             // mouse-to-joystick translation to yield a high, accurate range, including fast mouse flicks to attain
             // fast turning.
-            // Dead zones are usually square or circular, meaning either each axis is remapped to zero out small
-            // values axis-independently (for a square dead zone), or the vector is remapped to zero out small 
-            // vector lengths (for a circular dead zone). Thus, a slightly different algorithm will need to be used
-            // for each dead zone type.
+            // Dead zones are usually square or circular, meaning the game will ignore small stick positions when:
+            // * The absolute X and Y values of the stick are less than some value (for a "square" dead zone).
+            // * The (X,Y) vector length is less than some value (for a "circular" dead zone).
+            // For simplicity, we'll assume circular dead zones, because the math to scale into the range of legal
+            // non-ignored values for a square dead zone is more complicated than may appear (so the first attempt
+            // was glitchy), and vector math results work quite well regardless of the dead zone shape.
 
             // Grab and reset mouse position and time passed, for calculating mouse velocity for this polling.
             var mouseX = Cursor.Position.X;
@@ -119,10 +121,12 @@ namespace XboxKeyboardMouse {
             // Also invert these values now if the user has configured input inversion.
             var changeX = Program.ActiveConfig.Mouse_Invert_X ? centered.X - mouseX : mouseX - centered.X;
             var changeY = Program.ActiveConfig.Mouse_Invert_Y ? mouseY - centered.Y : centered.Y - mouseY;
-            double velocityX = changeX / timeSinceLastPoll;
-            double velocityY = changeY / timeSinceLastPoll;
+            double sensitivityScaleX = Program.ActiveConfig.Mouse_Sensitivity_X / 1000.0;
+            double sensitivityScaleY = Program.ActiveConfig.Mouse_Sensitivity_Y / 1000.0;
+            double velocityX = changeX * sensitivityScaleX / timeSinceLastPoll;
+            double velocityY = changeY * sensitivityScaleY / timeSinceLastPoll;
 
-            short joyX, joyY;
+            short joyX = 0, joyY = 0;
 
             var deadZoneSize = Program.ActiveConfig.DeadZoneSize;
             if (deadZoneCalibrator != null)
@@ -130,32 +134,33 @@ namespace XboxKeyboardMouse {
                 // Pretend the mouse is always moving one pixel in each axis, until user intervention.
                 deadZoneSize = deadZoneCalibrator.AdvanceDeadZoneSize();
                 joyX = Convert.ToInt16(deadZoneSize);
-                joyY = Convert.ToInt16(deadZoneSize);
+                joyY = 0;
             }
-            else // TODO: IF DEAD ZONE MODE IS SQUARE!
+            else if (velocityX != 0 || velocityY != 0)
             {
-                // For a square dead zone, each axis can be scaled independently.
-                double maxRespectedVelocity = 5d;
-                double percentMouseX = velocityX == 0 ? 0 : velocityX / maxRespectedVelocity;
-                double percentMouseY = velocityY == 0 ? 0 : velocityY / maxRespectedVelocity;
+                // Find the percentage of the max mouse vector was travelled, in order to scale the final
+                // vector by the full dead zone plus the same percent of the non-dead-zone area.
+                // This will allow tiny movements to be just outside the dead-zone but in the correct
+                // vector, while large movements scale out to the outer edge of possible stick positions,
+                // but still at the correct proportions.
 
-                // Clamp the movement to +/- 100% to avoid overflowing the final joystick values after scaling.
-                // (TODO: BASE THESE MAX RESPECTED MOUSE MOVEMENT ON CURRENT CONFIG SETTINGS TOO!)
-                percentMouseX = Clamp(percentMouseX, -1d, 1d);
-                percentMouseY = Clamp(percentMouseY, -1d, 1d);
+                var mouseVectorLengthToReachMaxStickPosition = 5d;
+                var mouseVector = new System.Windows.Vector(velocityX, velocityY);
+                var percentMouseMagnitude = mouseVector.Length / mouseVectorLengthToReachMaxStickPosition;
+                percentMouseMagnitude = Math.Min(percentMouseMagnitude, 1.0);
 
-                // Start each axis adjusted to the appropriate dead zone edge (left/right or top/bottom).
-                var deadAdjustX = velocityX == 0 ? 0 : deadZoneSize * (velocityX > 0 ? 1 : -1);
-                var deadAdjustY = velocityY == 0 ? 0 : deadZoneSize * (velocityY > 0 ? 1 : -1);
+                // Normalize the mouse vector in preparation for changing to the target stick scale.
+                mouseVector.Normalize();
 
-                // The final axis position adds in the percentage of remaining stick magnitude.
-                // (Minimum mouse movement should become just-past-deadzone; maximum respected mouse movement
-                // should become short.MaxValue in the end.)
+                // The mouseVector is now a raw direction that we want to multiply up into the stick
+                // range past the (assumed-to-be-circular) dead zone.
                 var remainingStickMagnitude = short.MaxValue - deadZoneSize;
-                joyX = Convert.ToInt16(remainingStickMagnitude * percentMouseX + deadAdjustX);
-                joyY = Convert.ToInt16(remainingStickMagnitude * percentMouseY + deadAdjustY);
+                var targetMagnitude = deadZoneSize + remainingStickMagnitude * percentMouseMagnitude;
+                mouseVector *= targetMagnitude;
+
+                joyX = Convert.ToInt16(mouseVector.X);
+                joyY = Convert.ToInt16(mouseVector.Y);
             }
-            // TODO: ELSE: If dead zone mode is circular! (Vector math.)
 
             // Send Axis
             SetAxis(joyX, joyY);
