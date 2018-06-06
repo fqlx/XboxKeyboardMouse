@@ -8,7 +8,7 @@
         <beforeApplicationStartup />
       </update>
     </subscription>
-    <deploymentProvider codebase="https://raw.githubusercontent.com/fqxl/XboxKeyboardMouse/master/Installer/XboxKeyboardMouse.application" />
+    <deploymentProvider codebase="https://raw.githubusercontent.com/fqlx/XboxKeyboardMouse/master/Installer/XboxKeyboardMouse.application" />
   </deployment>
   <compatibleFrameworks xmlns="urn:schemas-microsoft-com:clickonce.v2">
     <framework targetVersion="4.6.1" profile="Full" supportedRuntime="4.0.30319" />
