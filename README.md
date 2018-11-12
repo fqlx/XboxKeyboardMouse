@@ -54,9 +54,8 @@ Once learned, the saved profile will retain the current dead zone size, reducing
 To calibrate, follow these instructions, while running a game:
 * Use keyboard controls for a moment to ensure your XboxKeyboardMouse is active.
 * Press F12 to begin calibration. Wait with your finger over F12 and press it again when your aim starts moving.
-* Press F11 to begin fine-tuning the calibration. Wait with your finger over F11 and press it again when your aim starts moving.
-* (If aim started moving right away for the above step, you can repeat the step to try fine tuning again.)
-At this point, XboxKeyboardMouse has learned the game's dead zone size, and even single-pixel mouse movements should now translate into tiny amounts of aim. If you switch games, or aiming doesn't feel natural yet, you can simply repeat the process to recalibrate.
+* Press F11 to begin fine-tuning the calibration. Wait with your finger over F11 and press it again when your aim starts moving. (If aim started moving right away for the above step, you can repeat the step to try fine tuning again.)
+* At this point, XboxKeyboardMouse has learned the game's dead zone size, and even single-pixel mouse movements should now translate into tiny amounts of aim. If you switch games, or aiming doesn't feel natural yet, you can simply repeat the process to recalibrate.
 
 # Lag
 1.  Run ScpToolkit Settings Manager
