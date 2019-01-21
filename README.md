@@ -10,9 +10,9 @@ Note: This app only starts when the Xbox streaming app is in the foreground.
 ![Screenshot](https://cloud.githubusercontent.com/assets/6545688/23099037/50091be8-f655-11e6-838c-b94d7a62572b.PNG "Image of the GUI as of 11/12/16")
 
 # Prerequisites
-1. [You need SlimDX Runtime installed (x86)](https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/slimdx/SlimDX%20Runtime%20.NET%204.0%20x86%20(January%202012).msi). (direct download link)
+1. [You need SlimDX Runtime installed (x86)](/SlimDX%20Runtime%20.NET%204.0%20x86%20(January%202012).msi?raw=true). (direct download link)
 
-[Original SlimDX website](https://slimdx.org/download.php)
+[Original SlimDX website](https://slimdx.org/download.php) (currently down)
 
 # Installation
 Simply run the installer: https://cdn.rawgit.com/fqlx/XboxKeyboardMouse/master/Installer/setup.exe
