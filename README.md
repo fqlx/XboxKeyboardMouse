@@ -15,7 +15,7 @@ Note: This app only starts when the Xbox streaming app is in the foreground.
 [Original SlimDX website](https://slimdx.org/download.php) (currently down)
 
 # Installation
-Simply run the installer: https://cdn.rawgit.com/fqlx/XboxKeyboardMouse/master/Installer/setup.exe
+Simply run the installer: https://github.com/fqlx/XboxKeyboardMouse/raw/master/Installer/setup.exe
 * The application will check for updates upon each successive launch.
 
 # Current Layout
