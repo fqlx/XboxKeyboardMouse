@@ -38,11 +38,13 @@ namespace XboxKeyboardMouse
             {
                 while (true)
                 {
+                    Thread.Sleep(500);
+
                     IntPtr handle = GetForegroundWindow();
 
                     if (GetWindowText(handle, text, count) > 0)
                     {
-                        if (text.ToString().Equals(XBOXAPP) == false)
+                        if (!text.ToString().Equals(XBOXAPP))
                         {
                             ShowAndFreeCursor();
                             started = false;
@@ -59,15 +61,13 @@ namespace XboxKeyboardMouse
                             continue;
                         }*/
 
-                        if (started == false)
+                        if (!started)
                         {
                             LockAndHideCursor();
                             started = true;
                             Program.MainForm.StatusRunning();
                         }
                     }
-
-                    Thread.Sleep(500);
                 }
             }
             catch (ThreadAbortException)

@@ -149,7 +149,7 @@
             this.Controls.Add(this.materialFlatButton1);
             this.Controls.Add(this.panel1);
             this.Name = "MainForm";
-            this.Text = "TestForm";
+            this.Text = "XboxKeyboardMouse";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.panel1.ResumeLayout(false);
