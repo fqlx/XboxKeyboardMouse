@@ -41,7 +41,6 @@ namespace XboxKeyboardMouse
                     Thread.Sleep(500);
 
                     IntPtr handle = GetForegroundWindow();
-
                     if (GetWindowText(handle, text, count) > 0)
                     {
                         if (!text.ToString().Equals(XBOXAPP))
@@ -49,19 +48,8 @@ namespace XboxKeyboardMouse
                             ShowAndFreeCursor();
                             started = false;
                             Program.MainForm.StatusWaiting();
-
-                            continue;
                         }
-
-                        /*if (IsFullscreen(handle) == false) {
-                            ShowAndFreeCursor();
-                            started = false;
-                            Program.mainform.StatusWaiting();
-
-                            continue;
-                        }*/
-
-                        if (!started)
+                        else if (!started)
                         {
                             LockAndHideCursor();
                             started = true;
