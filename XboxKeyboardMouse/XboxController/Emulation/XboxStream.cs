@@ -38,36 +38,24 @@ namespace XboxKeyboardMouse
             {
                 while (true)
                 {
-                    IntPtr handle = GetForegroundWindow();
+                    Thread.Sleep(500);
 
+                    IntPtr handle = GetForegroundWindow();
                     if (GetWindowText(handle, text, count) > 0)
                     {
-                        if (text.ToString().Equals(XBOXAPP) == false)
+                        if (!text.ToString().Equals(XBOXAPP))
                         {
                             ShowAndFreeCursor();
                             started = false;
                             Program.MainForm.StatusWaiting();
-
-                            continue;
                         }
-
-                        /*if (IsFullscreen(handle) == false) {
-                            ShowAndFreeCursor();
-                            started = false;
-                            Program.mainform.StatusWaiting();
-
-                            continue;
-                        }*/
-
-                        if (started == false)
+                        else if (!started)
                         {
                             LockAndHideCursor();
                             started = true;
                             Program.MainForm.StatusRunning();
                         }
                     }
-
-                    Thread.Sleep(500);
                 }
             }
             catch (ThreadAbortException)

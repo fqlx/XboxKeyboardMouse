@@ -17021,7 +17021,7 @@
         T95QiTdQo3sAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="richTextBox1.Text" xml:space="preserve">
+  <data name="infoText" xml:space="preserve">
     <value>###################
 ### Stick Settings ###
 ###################
@@ -17068,15 +17068,29 @@ A mouse engine is a handler for the mouse, there are serveral build in handlers.
 There are various configurations that can be combined with each engine.
 
 Why are there more than one mouse handler? 
-There are many different games as there are stars and many of them require different ways of playing them.
+There are many different games and many of them require different ways of playing them.
 And frankly some of our engines suck so we try to improve or remake them.
 
 The current engines are: 
+Dead-Zoning (default)
 Percentage
 Percentage + Relative
 Raw Input
 Raw Input + Sensitivity
 None
+
+
+Dead-Zoning (default)
+---------------------
+This engine has the ability to accommodate for a game's dead zone for effective, accurate mouse control.
+This engine should give you the best results for most scenarios, but must be calibrated to learn the running game's dead zone. This takes a few seconds.
+Once learned, the saved profile will retain the current dead zone size, reducing the need to recalibrate every time, if you frequently return to the same game or games that happen to use very similar dead zones.
+To calibrate, follow these instructions, while running a game:
+* Use keyboard controls for a moment to ensure your XboxKeyboardMouse is active.
+* Press F12 to begin calibration. Wait with your finger over F12 and press it again when your aim starts moving.
+* Press F11 to begin fine-tuning the calibration. Wait with your finger over F11 and press it again when your aim starts moving.
+* (If aim started moving right away for the above step, you can repeat the step to try fine tuning again.)
+At this point, XboxKeyboardMouse has learned the game's dead zone size, and even single-pixel mouse movements should now translate into tiny amounts of aim. If you switch games, or aiming doesn't feel natural yet, you can simply repeat the process to recalibrate.
 
 Percentage
 ----------
@@ -17096,6 +17110,13 @@ This will take the same as Raw Input but will multiply the pixels by the sensiti
 
 None
 ----------
-Disables the mouse movement</value>
+Disables the mouse movement
+
+
+##############################
+### Additional Information ###
+##############################
+For additional information, bug reports, and so on: https://github.com/fqlx/XboxKeyboardMouse
+</value>
   </data>
 </root>

@@ -1,8 +1,11 @@
 ﻿using MaterialSkin;
 using System;
+using System.Deployment.Application;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Text;
 using System.Windows.Forms;
 using System.Windows.Input;
 
@@ -26,6 +29,8 @@ namespace XboxKeyboardMouse.Forms
             file_CreatePreset_Button.SetFontDisabledColor = true;
             file_CreatePreset_Button.FontColorDisabled = preset_Color_Exists;
             file_CheckIfExists(null, null);
+
+            PrepareInfoTab();
         }
 
         public override void SetStatusColor(Color c) {
@@ -731,6 +736,31 @@ namespace XboxKeyboardMouse.Forms
 
         // -------------
         #endregion
+
+        private void PrepareInfoTab()
+        {
+            var resources = new System.ComponentModel.ComponentResourceManager(typeof(Options));
+            StringBuilder fullInfo = new StringBuilder();
+
+            fullInfo.AppendLine("XboxKeyboardMouse");
+            fullInfo.Append("Version: ");
+            if (ApplicationDeployment.IsNetworkDeployed)
+            {
+                fullInfo.Append("ClickOnce-v");
+                fullInfo.AppendLine(ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString());
+            }
+            else
+            {
+                fullInfo.Append("Loose-v");
+                fullInfo.AppendLine(Assembly.GetExecutingAssembly().GetName().Version.ToString());
+            }
+            fullInfo.AppendLine();
+            fullInfo.AppendLine();
+
+            fullInfo.Append(resources.GetString("infoText"));
+
+            infoTextBox.Text = fullInfo.ToString();
+        }
 
         // -------------------
         #endregion

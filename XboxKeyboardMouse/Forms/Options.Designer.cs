@@ -99,7 +99,7 @@
             this.mouseInvertAxisX = new MaterialSkin.Controls.MaterialCheckBox();
             this.mouse_TickInvalid = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.infoTextBox = new System.Windows.Forms.RichTextBox();
             this.materialTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabSettings.SuspendLayout();
@@ -1253,7 +1253,7 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.richTextBox1);
+            this.tabPage3.Controls.Add(this.infoTextBox);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -1262,20 +1262,19 @@
             this.tabPage3.Text = "Info";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // richTextBox1
+            // infoTextBox
             // 
-            this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.infoTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox1.Location = new System.Drawing.Point(6, -2);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(517, 404);
-            this.richTextBox1.TabIndex = 1;
-            this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
+            this.infoTextBox.BackColor = System.Drawing.SystemColors.Control;
+            this.infoTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.infoTextBox.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.infoTextBox.Location = new System.Drawing.Point(6, -2);
+            this.infoTextBox.Name = "infoTextBox";
+            this.infoTextBox.ReadOnly = true;
+            this.infoTextBox.Size = new System.Drawing.Size(517, 404);
+            this.infoTextBox.TabIndex = 1;
             // 
             // Options
             // 
@@ -1361,7 +1360,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox infoTextBox;
         private MaterialSkin.Controls.MaterialCheckBox mouseInvertAxisY;
         private MaterialSkin.Controls.MaterialCheckBox mouseInvertAxisX;
         private MaterialSkin.Controls.MaterialFlatButton mouse_TickRate_Reset;
