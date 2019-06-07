@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
@@ -28,8 +29,54 @@ namespace XboxKeyboardMouse
 
         public static Thread tMouseMovement;
 
+        private static readonly string[] defaultAppNames = {
+            "Xbox",
+            "Xbox Console Companion",
+            "Xbox Console Companion - Beta",
+            "Xbox Companion-console",
+            "Xbox Companion-console - bèta",
+            "Xbox-konsol Companion",
+            "Xbox-konsol Companion - beta",
+            "Xbox konsoles palīgs",
+            "Xbox Konsolu Yardımcısı",
+            "Xbox Konsolu Yardımcısı - Beta",
+            "Xbox 主機小幫手",
+            "Xbox 主機小幫手 - beta 搶鮮版",
+            "Xbox 本体コンパニオン",
+            "Xbox 本体コンパニオン - ベータ",
+            "Xbox 본체 도우미",
+            "Xbox 본체 도우미 - 베타 버전",
+            "Xboxi konsooliabiline",
+            "Xboxi konsooliabiline - beetaversioon",
+            "„Xbox“ konsolės pagalbinė priemonė",
+            "„Xbox“ konsolės pagalbinė priemonė - beta versija",
+            "Compagnon de la console Xbox",
+            "Compagnon de la console Xbox - bêta",
+            "Compañero de la consola Xbox",
+            "Compañero de la consola Xbox - beta",
+            "Complemento da Consola Xbox",
+            "Complemento da Consola Xbox - beta",
+            "Companion console Xbox",
+            "Companion console Xbox - beta",
+            "Компаньон консоли Xbox",
+            "Компаньон консоли Xbox - бета-версия",
+            "Pomoćnik konzole Xbox",
+            "Pomoćnik konzole Xbox - beta-verzija",
+            "Pomocnik konsoli Xbox",
+            "Pomocnik konsoli Xbox - wersja Beta",
+            "Spremljevalec za konzolo Xbox",
+            "Spremljevalec za konzolo Xbox - beta",
+            "Teman Konsol Xbox",
+            "Teman Konsol Xbox - beta",
+            "Ứng dụng Đồng hành Bảng điều khiển Xbox",
+            "Ứng dụng Đồng hành Bảng điều khiển Xbox - beta",
+            "مصاحب وحدة تحكم Xbox",
+            "مصاحب وحدة تحكم Xbox - إصدار تجريبي",
+            "מסייע קונסולת Xbox",
+            "מסייע קונסולת Xbox - בתא",
+        };
+
         public static void XboxAppDetector() {
-            const String XBOXAPP = "Xbox";
             bool started = false;
 
             const int count = 512;
@@ -43,7 +90,7 @@ namespace XboxKeyboardMouse
                     IntPtr handle = GetForegroundWindow();
                     if (GetWindowText(handle, text, count) > 0)
                     {
-                        if (!text.ToString().Equals(XBOXAPP))
+                        if (!defaultAppNames.Contains(text.ToString()))
                         {
                             ShowAndFreeCursor();
                             started = false;
