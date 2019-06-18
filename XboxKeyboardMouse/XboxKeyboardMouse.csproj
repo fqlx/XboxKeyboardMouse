@@ -143,6 +143,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="UWPUtils.cs" />
     <Compile Include="XboxController\CursorView.cs" />
     <Compile Include="Forms\ControllerPreview.cs">
       <SubType>Form</SubType>
