@@ -51,6 +51,11 @@ namespace XboxKeyboardMouse
         );
         #endregion
 
+        /// <summary>
+        /// Gets the path of application running in foreground
+        /// </summary>
+        /// <param name="hWnd">Window handle</param>
+        /// <returns>Path of the application</returns>
         public static string GetProcessName(IntPtr hWnd)
         {
             string processName = null;
