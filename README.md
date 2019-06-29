@@ -55,6 +55,8 @@ However, XboxKeyboardMouse must be calibrated to learn the running game's dead z
 Once learned, the saved profile will retain the current dead zone size, reducing the need to recalibrate every time, if you frequently return to the same game or games that happen to use very similar dead zones.
 To calibrate, follow these instructions, while running a game:
 * Use keyboard controls for a moment to ensure your XboxKeyboardMouse is active.
+* Check your game menus to see if you have any in-game sensitivity settings (which are common) and/or dead zone settings (which are rare). XboxKeyboardMouse generally works best when in-game sensitivities are at their maximum setting, and in-game dead zones are at their minimum setting.
+* Back out of any menus so that your character is ready to aim.
 * Press F12 to begin calibration. Wait with your finger over F12 and press it again when your aim starts moving.
 * Press F11 to begin fine-tuning the calibration. Wait with your finger over F11 and press it again when your aim starts moving. (If aim started moving right away for the above step, you can repeat the step to try fine tuning again.)
 * At this point, XboxKeyboardMouse has learned the game's dead zone size, and even single-pixel mouse movements should now translate into tiny amounts of aim. If you switch games, or aiming doesn't feel natural yet, you can simply repeat the process to recalibrate.
