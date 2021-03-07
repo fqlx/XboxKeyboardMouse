@@ -3,7 +3,7 @@
 # XboxKeyboardMouse
 Keyboard and mouse for Xbox One streaming to Windows 10.
 
-It sends keyboard and mouse inputs to an emulated Xbox controller using SCP driver.  
+XboxKeyboardMouse sends keyboard and mouse inputs to the Xbox streaming app via magic (and some math).
 
 Note: This app only starts when the Xbox streaming app is in the foreground.
 
