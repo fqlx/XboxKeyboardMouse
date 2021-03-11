@@ -1,12 +1,13 @@
-﻿using SlimDX.DirectInput;
+﻿using SimWinInput;
+using SlimDX.DirectInput;
+using System;
 using System.Diagnostics;
 using System.Drawing;
-using System.Windows.Forms;
-using System;
 using System.Threading;
-using SimWinInput;
+using System.Windows.Forms;
 
-namespace XboxKeyboardMouse {
+namespace XboxKeyboardMouse
+{
     class TranslateMouse {
         /// <summary>The magnitude of dead zone size increases, each mouse polling, when running at regular calibration speed.</summary>
         /// <remarks>Hand-tested value for balancing calibration speed versus accuracy, with a fine-tune calibration option in mind.</remarks>
