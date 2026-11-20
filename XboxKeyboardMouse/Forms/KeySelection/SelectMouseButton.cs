@@ -3,7 +3,7 @@
 namespace XboxKeyboardMouse.Forms {
     public partial class SelectMouseButton : Form {
         Config.Data cfg;
-        string Tag;
+        string ControlTag;
         
         private int convert(MouseButtons btn) {
 
@@ -33,7 +33,7 @@ namespace XboxKeyboardMouse.Forms {
             InitializeComponent();
 
             this.cfg = cfg;
-            this.Tag = Tag;
+            this.ControlTag = Tag;
         }
 
         private void SelectMouseButton_MouseUp(object sender, MouseEventArgs e) {

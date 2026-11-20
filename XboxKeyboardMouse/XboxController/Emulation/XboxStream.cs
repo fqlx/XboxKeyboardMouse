@@ -91,8 +91,10 @@ namespace XboxKeyboardMouse
                      if (GetWindowText(handle, text, count) > 0)
 					 {
 						 string currentTitle = text.ToString();
+                        
+                        bool isExactMatch = defaultAppNames.Any(name =>
+                            string.Equals(name, currentTitle, StringComparison.OrdinalIgnoreCase));
 
-						 bool isExactMatch = defaultAppNames.Contains(currentTitle);
 						 // Xbox.com currently names the window
 						 // Users XBOX | Xbox Remote Play on Xbox.com - Google Chrome
 						 bool isXboxAndChrome =
