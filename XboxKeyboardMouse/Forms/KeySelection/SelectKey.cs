@@ -5,7 +5,7 @@ using System.Windows.Input;
 namespace XboxKeyboardMouse.Forms {
     public partial class SelectKey : Form {
         Config.Data cfg;
-        string Tag;
+        string ControlTag;
 
         int KeyCode = 0;
 
@@ -13,7 +13,7 @@ namespace XboxKeyboardMouse.Forms {
             InitializeComponent();
 
             this.cfg = cfg;
-            this.Tag = Tag;
+            this.ControlTag = Tag;
 
             this.Text += Tag;
 
@@ -24,7 +24,7 @@ namespace XboxKeyboardMouse.Forms {
         }
 
         public void SaveKeyCode() {
-            switch (Tag) {
+            switch (ControlTag) {
 
             case "LS":      cfg.Controls_KB_Xbox_Sticks_Left  = KeyCode; break;
             case "RS":      cfg.Controls_KB_Xbox_Sticks_Right = KeyCode; break;
